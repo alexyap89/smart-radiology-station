@@ -1952,3 +1952,10 @@ button.steps__item.is-live:hover { color: var(--paper); }
   .display__line { font-size: clamp(26px, 8vw, 36px); }
   .display__sub { max-width: none; }
 }
+
+/* the banner can be hidden (landing page): pin each child to its own row so the
+   screen area never collapses into an auto row */
+.stage { grid-template-rows: auto auto minmax(0, 1fr); }
+.stage > .topbar { grid-row: 1; }
+.stage > .scenario { grid-row: 2; }
+.stage > .main { grid-row: 3; min-height: 0; }
