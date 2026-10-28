@@ -1372,3 +1372,13 @@ button.steps__item.is-live:hover { color: var(--paper); }
 /* the media strip now carries only the clips */
 .media { grid-template-columns: minmax(0, 1fr); }
 .media .vids { grid-template-columns: repeat(3, 1fr); }
+
+/* keep the navigation pips on a tablet in landscape (1024x768), where a
+   presenter most needs to skip; only phones lose them */
+@media (min-width: 901px) and (max-width: 1024px) {
+  .steps { display: flex; gap: 8px; }
+  .steps__item { font-size: 9px; letter-spacing: .08em; }
+  .steps__item i { width: 14px; }
+  .steps__item.is-live i { width: 20px; }
+  .brand__org { display: none; }
+}
