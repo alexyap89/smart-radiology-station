@@ -1511,3 +1511,34 @@ button.steps__item.is-live:hover { color: var(--paper); }
   width: 6px; height: 6px; border-radius: 50%; background: var(--cyan);
 }
 .ailist b { color: var(--paper); font-weight: 600; }
+
+/* the AI read must be legible: it carries the verdict chip, the marker and the
+   decision-support disclaimer that ships with the vendor output */
+@media (min-width: 901px) {
+  .thumb img { max-height: min(42vh, 380px); }
+}
+@media (max-height: 830px) and (min-width: 721px) {
+  .thumb img { max-height: min(34vh, 300px); }
+}
+@media (max-width: 620px) {
+  .thumb img { max-height: 40vh; }
+}
+
+/* the AI panel must keep its own aspect: width:100% plus a capped height was
+   stretching it, which is what made the read look cropped */
+.thumb img {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(40vh, 360px);
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+@media (max-height: 830px) and (min-width: 721px) { .thumb img { max-height: min(30vh, 260px); } }
+@media (max-width: 620px) { .thumb img { max-height: 34vh; } }
+
+/* AI panel caption and the last 2 px of the quiz layout */
+.thumb figcaption { color: var(--paper-dim); letter-spacing: .1em; margin-top: 4px; }
+.reveal__pair { gap: 4px; }
+.reveal { gap: 6px; }
