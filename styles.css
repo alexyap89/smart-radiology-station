@@ -1468,3 +1468,11 @@ button.steps__item.is-live:hover { color: var(--paper); }
   .tk-n { font-size: 10px; }
   #s-takeaway .h2 { font-size: clamp(26px, 2.6vw, 40px); }
 }
+.tk-limit { margin: clamp(4px, 1vh, 10px) 0; max-width: 92ch; font-size: clamp(11px, .95vw, 14px); }
+
+/* takeaway: trim the vertical rhythm so the whole argument fits one screen */
+.tk-limit { margin: 2px 0 4px; padding: 9px 13px; }
+.tk-thesis { margin: 2px 0 6px; padding: 12px 18px; }
+.tk-grid { margin: 4px 0 8px; }
+.tk-two { margin: 2px 0 6px; }
+#s-takeaway .h2 { margin-bottom: 2px; }
