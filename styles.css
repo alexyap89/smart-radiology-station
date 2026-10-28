@@ -1476,3 +1476,21 @@ button.steps__item.is-live:hover { color: var(--paper); }
 .tk-grid { margin: 4px 0 8px; }
 .tk-two { margin: 2px 0 6px; }
 #s-takeaway .h2 { margin-bottom: 2px; }
+.fork__label {
+  font-family: var(--sans);
+  font-size: 13px;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  fill: var(--paper-faint);
+}
+.fork__label--a { fill: var(--cyan); }
+.fork__label--b { fill: var(--amber); }
+
+/* the fork is a diagram, not an animation: it must be drawn even in a
+   backgrounded tab where CSS animations never tick */
+.fork__branch {
+  stroke-dasharray: none !important;
+  stroke-dashoffset: 0 !important;
+  animation: none !important;
+  opacity: .9;
+}
