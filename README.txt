@@ -41,7 +41,11 @@ screen without being thrown back to the start.
                     claustrophobic patient.
 7  BUILT HERE       pRIMe-MRI launch card (Hokkien tour), DECT BME, Rad-ART,
                     DIXON spine, and three Rad-ART 3D clips playing locally.
-8  TAKEAWAY         Three statements, a one-page printable summary.
+8  TAKEAWAY         The overarching claim: Smart Radiology augments patient care
+                    through new care pathways, validated technology and
+                    clinician-builders. Then one short list per scenario, the
+                    pattern behind both, and a one-page printable summary that
+                    carries the same thesis.
 
 --------------------------------------------------------------------------------
 3. INTERACTION

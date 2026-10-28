@@ -1417,3 +1417,54 @@ button.steps__item.is-live:hover { color: var(--paper); }
   .steps { margin-left: 4px; }
   .topbar { gap: 10px; }
 }
+
+/* =========================================================================
+   Takeaway: three claims, two scenarios, one thesis
+   ========================================================================= */
+.tk-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1px; background: var(--rule); border: 1px solid var(--rule);
+  margin: clamp(6px, 1.2vh, 14px) 0;
+}
+.tk { background: var(--ink); padding: clamp(11px, 1.3vw, 16px); }
+.tk__n {
+  margin: 0 0 6px; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan);
+}
+.tk__b { margin: 0; font-size: clamp(11.5px, .95vw, 14px); line-height: 1.45; color: var(--paper-dim); }
+
+.tk-two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(12px, 2vw, 28px); margin: clamp(4px, 1vh, 10px) 0; }
+.tk-list { margin: 0; padding-left: 18px; }
+.tk-list li { font-size: clamp(11.5px, .92vw, 13.5px); line-height: 1.45; color: var(--paper-dim); margin-bottom: 5px; }
+
+.tk-thesis {
+  margin: clamp(6px, 1.2vh, 14px) 0;
+  padding: 12px 16px;
+  border-left: 2px solid var(--amber);
+  background: rgba(232, 163, 61, .06);
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.5;
+  color: var(--paper);
+  max-width: 82ch;
+}
+.tk-thesis strong { color: var(--amber); }
+
+.sheet__thesis {
+  margin: 0 0 clamp(10px, 1.6vh, 18px);
+  padding: 10px 14px;
+  border-left: 2px solid #8a6100;
+  background: rgba(232, 163, 61, .08);
+  font-size: clamp(12px, 1vw, 15px);
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) { .tk-two { grid-template-columns: 1fr; } }
+
+/* takeaway on a large screen: use the space so it reads from a distance */
+@media (min-width: 1200px) {
+  .tk { padding: clamp(16px, 1.5vw, 22px); }
+  .tk__b { font-size: clamp(13px, 1.05vw, 15.5px); line-height: 1.5; }
+  .tk-list li { font-size: clamp(12.5px, 1vw, 15px); margin-bottom: 7px; }
+  .tk-thesis { font-size: clamp(13.5px, 1.15vw, 17px); padding: 16px 22px; line-height: 1.55; }
+  .tk-n { font-size: 10px; }
+  #s-takeaway .h2 { font-size: clamp(26px, 2.6vw, 40px); }
+}

@@ -366,35 +366,44 @@
     <section class="screen" id="s-takeaway" aria-labelledby="tk-title">
       <div class="col col--wide">
         <p class="stepmark">Takeaway</p>
-        <h2 class="h2 h2--tight" id="tk-title">Three things this night shows.</h2>
+        <h2 class="h2" id="tk-title">Smart Radiology augments patient care in three ways.</h2>
         <p class="verdict verdict--score" id="tkScore" hidden></p>
 
-        <ol class="statements">
-          <li><span>01</span><b>Read the film. Then check the machine.</b></li>
-          <li><span>02</span><b>The radiologist stays in the decision.</b></li>
-          <li><span>03</span><b>Answer the patient's question, not just the referral.</b></li>
-        </ol>
-
-        <div class="diagram">
-          <svg viewBox="0 0 900 190" aria-hidden="true" class="map" id="mapSvg">
-            <path class="map__base" d="M30 95 H240"/>
-            <path class="map__base map__a" d="M240 95 C 330 95, 330 40, 430 40 H860"/>
-            <path class="map__base map__b" d="M240 95 C 330 95, 330 150, 430 150 H860"/>
-            <circle cx="240" cy="95" r="5" class="map__node"/>
-            <circle cx="860" cy="40" r="5" class="map__node map__node--a"/>
-            <circle cx="860" cy="150" r="5" class="map__node map__node--b"/>
-            <text x="30" y="80" class="map__t">03:00 film</text>
-            <text x="430" y="28" class="map__t">A · fracture found → CT → 3D render</text>
-            <text x="430" y="178" class="map__t">B · no fracture → dual-energy CT</text>
-            <text x="700" y="80" class="map__t">Answer, same night</text>
-          </svg>
+        <div class="tk-grid">
+          <article class="tk">
+            <p class="tk__n">01 · new care pathways</p>
+            <p class="tk__b">A film that is negative but still hurts goes to dual-energy CT the same night instead of an admission for cross-sectional imaging. A patient who is frightened of the scanner rehearses it at home, on her own phone, in her own language.</p>
+          </article>
+          <article class="tk">
+            <p class="tk__n">02 · validated technology</p>
+            <p class="tk__b">AI screens every ED extremity radiograph and caught 6 fractures the first reports missed; radiologists caught the 7 it missed. Reconstruction shortens MRI scans by about 37% across 8 musculoskeletal anatomies. Each was measured before it went live.</p>
+          </article>
+          <article class="tk">
+            <p class="tk__n">03 · clinician-builders</p>
+            <p class="tk__b">A radiologist wrote the preparation tool, another wrote the roster planner, radiographers run and build the 3D Lab. New capability inside the clinical role, without a software team or a research budget.</p>
+          </article>
         </div>
 
-        <div class="iconstrip" aria-hidden="true">
-          <img src="assets/pathway-icons.svg" alt="">
+        <div class="tk-two">
+          <div>
+            <p class="minihead">Scenario A · fracture or not</p>
+            <ol class="tk-list">
+              <li>Fracture found: CT, then a render the surgeon plans from.</li>
+              <li>Fracture excluded: dual-energy CT answered it the same night.</li>
+              <li>Both readings were checked against the radiologist, never instead of one.</li>
+            </ol>
+          </div>
+          <div>
+            <p class="minihead">Scenario B · priming and speed</p>
+            <ol class="tk-list">
+              <li>Preparation removed the surprise from a first MRI, in Hokkien.</li>
+              <li>AI reconstruction cut time inside the bore by about 37%.</li>
+              <li>16 of 16 patients rated it positively and would recommend it.</li>
+            </ol>
+          </div>
         </div>
 
-        <p class="body">Smart Radiology combines validated AI, dual-energy CT, 3D planning and patient preparation to move a patient through the night faster, without adding staff.</p>
+        <p class="tk-thesis"><strong>The pattern:</strong> measure the problem, validate the tool on our own patients, keep the radiologist as the final interpreter, and let the people who use the tools build them. That is what makes it repeatable in another hospital without new headcount.</p>
 
         <div class="row">
           <button class="btn btn--primary" id="openTakeaway" type="button">View summary</button>
@@ -424,6 +433,8 @@
       <li><b>Keep the radiologist in the decision.</b> The tool flags; the radiologist interprets. AI caught 6 fractures the initial reports missed; radiologists caught 7 the AI missed.</li>
       <li><b>Answer the patient's question.</b> Dual-energy CT settled an occult fracture the same night, and a 360° preparation experience got an anxious patient through her first MRI.</li>
     </ol>
+
+    <p class="sheet__thesis"><b>In one line:</b> Smart Radiology augments patient care through new care pathways, validated technology, and clinician-builders who write the tools they use.</p>
 
     <dl class="sheet__facts">
       <div><dt>Sensitivity</dt><dd>96.6%</dd></div>
