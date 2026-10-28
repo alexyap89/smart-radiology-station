@@ -771,9 +771,7 @@
       bore: sim.querySelector(".sim__borefill"),
       play: sim.querySelector('[data-sim="play"]'),
       reset: sim.querySelector('[data-sim="reset"]'),
-      out: document.getElementById("simOut"),
-      cmp: document.getElementById("detailCompare"),
-      range: document.getElementById("compareRange")
+      out: document.getElementById("simOut")
     };
     return accel.nodes;
   }
@@ -875,8 +873,6 @@
     if (n.bore) { n.bore.style.width = "0%"; n.bore.classList.remove("is-done"); }
     if (n.play) n.play.textContent = "Run the scan";
     if (n.sim) n.sim.setAttribute("data-state", "idle");
-    if (n.range) { n.range.value = 55; }
-    if (n.cmp) n.cmp.style.setProperty("--split", "55%");
     accelCopy("idle");
   }
 
@@ -897,12 +893,6 @@
     if (!n) return;
     if (n.play) n.play.addEventListener("click", accelPlay);
     if (n.reset) n.reset.addEventListener("click", resetAcceleration);
-    if (n.range && n.cmp) {
-      n.cmp.style.setProperty("--split", n.range.value + "%");
-      n.range.addEventListener("input", function () {
-        n.cmp.style.setProperty("--split", n.range.value + "%");
-      });
-    }
     paintAccel(0);
     accelCopy("idle");
   }
