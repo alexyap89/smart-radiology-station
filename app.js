@@ -69,6 +69,26 @@
       el.classList.toggle("is-live", at > -1 && idx === at);
     });
 
+    var bar = document.getElementById("scenarioBar");
+    if (bar) {
+      var map = {
+        quiz: ["A", "Patient A · a knee that cannot bear weight"],
+        pos:  ["A", "Patient A · the fracture, and what the CT added"],
+        neg:  ["A", "Patient A · the other knee, and no fracture"],
+        two:  ["B", "Patient B · a first MRI, and a frightened patient"],
+        speed:["B", "Patient B · less time inside the scanner"],
+        tools:["", "The tools behind both patients"],
+        takeaway:["", "What the two patients show together"],
+        attract:["", ""]
+      };
+      var entry = map[name] || ["", ""];
+      bar.setAttribute("data-scenario", entry[0] ? entry[0].toLowerCase() : "none");
+      var tag = document.getElementById("scenarioTag");
+      var txt = document.getElementById("scenarioText");
+      if (tag) tag.textContent = entry[0] || "·";
+      if (txt) txt.textContent = entry[1] || "";
+    }
+
     var heading = qs("#s-" + name + " h1, #s-" + name + " h2");
     if (heading) announce(heading.textContent.replace(/\s+/g, " ").trim());
 

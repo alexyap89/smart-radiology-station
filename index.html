@@ -17,18 +17,23 @@
       <span class="brand__org">Department of Radiology</span>
     </div>
     <nav class="steps" aria-label="Progress">
-      <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i>The films</button>
-      <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i>The CT</button>
-      <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i>Dual-energy</button>
-      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i>Priming</button>
-      <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i>Built here</button>
-      <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i>Takeaway</button>
+      <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i><b>A</b> films</button>
+      <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i><b>A</b> CT</button>
+      <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i><b>A</b> DECT</button>
+      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>B</b> priming</button>
+      <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i>tools</button>
+      <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i>summary</button>
     </nav>
     <div class="tools">
       <span class="timer" id="sessionClock" aria-label="Session time">00:00</span>
       <button class="btn btn--ghost btn--sm" id="restartBtn" type="button">Restart</button>
     </div>
   </header>
+
+  <div class="scenario" id="scenarioBar" data-scenario="none" aria-live="polite">
+    <span class="scenario__tag" id="scenarioTag">A</span>
+    <span class="scenario__text" id="scenarioText">Patient A · a knee that cannot bear weight</span>
+  </div>
 
   <main class="main">
 
@@ -186,6 +191,16 @@
             </a>
           </div>
           <p class="micro">AR opens on an iPad or iPhone (Apple Quick Look). On a laptop the model above is the view. Model decimated for on-stand display — not for diagnostic use.</p>
+
+          <div class="flow3d">
+            <p class="flow3d__h">The 3D Lab workflow</p>
+            <ol class="flow3d__list">
+              <li><b>Render</b> — a photorealistic surface model built from the CT that was already acquired.</li>
+              <li><b>Cut-plane</b> — the same model sectioned, so the internal fracture configuration is visible, not just the surface.</li>
+              <li><b>Share, or print</b> — the model is shared securely for discussion and planning; a physical print is used only when handling it adds something the render cannot.</li>
+            </ol>
+            <p class="flow3d__stat">279 complex-fracture candidates over about two years have gone through this digital-first route. Modelled saving for each print avoided: 0.73–1.33 kWh and 0.6–1.3 kg CO₂.</p>
+          </div>
         </div>
       </div>
     </section>

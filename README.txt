@@ -17,6 +17,12 @@ screen without being thrown back to the start.
 --------------------------------------------------------------------------------
 2. THE WALK (about 90 seconds per visitor)
 --------------------------------------------------------------------------------
+PATIENT BANNER     A persistent bar under the header names the patient on every
+                    screen — amber "Patient A" for the fracture scenario, cyan
+                    "Patient B" for the MRI scenario, neutral for tools and
+                    summary. The nav pips carry the same letters (A films · A CT ·
+                    A DECT · B priming).
+
 0  ATTRACT          Two patients. Four films. Is there a fracture?
 1  THE FILMS        Scenario A. Four de-identified knee radiographs, one at a
                     time: the visitor calls fracture / no fracture, the score
