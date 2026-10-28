@@ -1494,3 +1494,20 @@ button.steps__item.is-live:hover { color: var(--paper); }
   animation: none !important;
   opacity: .9;
 }
+
+/* front page: the AI role, stated before the visitor taps anything */
+.ailist {
+  list-style: none; margin: 0 0 clamp(14px, 2vh, 22px); padding: 0;
+  display: grid; gap: 6px;
+}
+.ailist li {
+  font-size: clamp(11.5px, .95vw, 14px);
+  color: var(--paper-dim);
+  padding-left: 16px;
+  position: relative;
+}
+.ailist li::before {
+  content: ""; position: absolute; left: 0; top: .55em;
+  width: 6px; height: 6px; border-radius: 50%; background: var(--cyan);
+}
+.ailist b { color: var(--paper); font-weight: 600; }
