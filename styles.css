@@ -1542,3 +1542,232 @@ button.steps__item.is-live:hover { color: var(--paper); }
 .thumb figcaption { color: var(--paper-dim); letter-spacing: .1em; margin-top: 4px; }
 .reveal__pair { gap: 4px; }
 .reveal { gap: 6px; }
+
+/* =========================================================================
+   Comparison panel — split overlay with A/B acceleration
+   ========================================================================= */
+
+/* Panel frame: 1 px rule, 2 px radius, deep ink, restrained spacing */
+.compare {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: clamp(12px, 1.4vw, 18px);
+  background: var(--ink);
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+/* Stage: aspect-ratio 4/3, relative positioning, hidden overflow */
+.compare__stage {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+/* Images: absolute positioning, full stage, contain fit */
+.compare__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Image A: blur and saturate (only A gets the filter) */
+.compare__img--a {
+  filter: blur(0.7px) saturate(.85);
+}
+
+/* Image B: no blur, only clip-path */
+.compare__img--b {
+  clip-path: inset(0 0 0 var(--split, 55%));
+}
+
+/* Split handle: vertical line at split position */
+.compare__handle {
+  position: absolute;
+  left: var(--split, 55%);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: var(--paper);
+  box-shadow: 0 0 1px rgba(255, 255, 255, 0.3);
+}
+
+/* Tags: small uppercase chips at top corners */
+.compare__tag {
+  position: absolute;
+  top: 6px;
+  left: 10px;
+  padding: 2px 8px;
+  font-size: 8.5px;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--paper-faint);
+  background: var(--paper);
+  border-radius: 2px;
+}
+
+/* Tag placement: A-tagged image shows tag at top-left; B-tagged image shows tag at top-right */
+.compare__tag--a {
+  top: 6px;
+  left: 10px;
+}
+
+.compare__tag--b {
+  top: 6px;
+  right: 10px;
+}
+
+/* Reduced motion: honour prefers-reduced-motion for any transition */
+@media (prefers-reduced-motion: reduce) {
+  .compare,
+  .compare__stage,
+  .compare__img,
+  .compare__img--a,
+  .compare__img--b,
+  .compare__tag,
+  .compare__handle,
+  .compare__label {
+    transition: none !important;
+  }
+}
+
+/* ---------------------------------------------------------------- simulation panel */
+.sim {
+  border: 1px solid var(--rule);
+  border-radius: 2px;
+  background: var(--ink);
+  padding: clamp(12px, 1.4vw, 18px);
+  display: grid;
+  gap: 10px;
+  margin: clamp(6px, 1.2vh, 14px) 0;
+}
+
+.sim__head {
+  display: grid;
+  gap: 2px;
+}
+
+.sim__title {
+  font-family: var(--serif);
+  font-size: clamp(14px, 1.25vw, 18px);
+  color: var(--paper);
+  margin: 0;
+}
+
+.sim__sub {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--paper-faint);
+  margin: 0;
+  max-width: 62ch;
+}
+
+.sim__lane {
+  display: grid;
+  minmax(96px, 120px) minmax(0, 1fr) 44px;
+  align-items: center;
+  gap: 10px;
+}
+
+.sim__k {
+  font-size: 11px;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+
+.sim__track {
+  height: 10px;
+  background: var(--rule);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.sim__fill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--slate);
+  transition: width 120ms linear;
+}
+
+.sim__lane--fast .sim__fill {
+  background: var(--cyan);
+}
+
+.sim__v {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+  color: var(--paper-dim);
+  text-align: right;
+}
+
+.sim__bore {
+  display: grid;
+  gap: 4px;
+}
+
+.sim__borelabel {
+  font-size: 9.5px;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+
+.sim__boretube {
+  height: 12px;
+  background: var(--rule);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.sim__borefill {
+  height: 100%;
+  width: 0;
+  background: rgba(232, 163, 61, 0.6);
+}
+
+.sim__borefill.is-done {
+  background: var(--amber);
+}
+
+.sim__controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.sim__out {
+  margin: 0;
+  font-size: 11.5px;
+  color: var(--paper-dim);
+  flex: 1 1 200px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sim__fill,
+  .sim__borefill {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 620px) {
+  .sim__lane {
+    grid-template-columns: minmax(84px, 96px) minmax(0, 1fr) 38px;
+  }
+  .sim {
+    padding: 10px;
+  }
+}
+
+/* the comparison stage is a viewport, not a poster: cap its height so the
+   simulator and the comparison can share one screen */
+.compare__stage { aspect-ratio: auto; height: clamp(150px, 24vh, 230px); }
+@media (max-height: 830px) and (min-width: 721px) { .compare__stage { height: clamp(130px, 20vh, 190px); } }
+@media (max-width: 720px) { .compare__stage { height: 170px; } }

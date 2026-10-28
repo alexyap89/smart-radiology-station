@@ -88,6 +88,7 @@
         tk.className = "verdict verdict--score" + (n === 2 ? " verdict--clear" : "");
       }
     }
+    if (name !== "speed" && typeof pauseAcceleration === "function") pauseAcceleration();
     if (name === "tools") { playVideos(true); primeLoad(true); }
     else { playVideos(false); primeLoad(false); }
     if (name !== "takeaway") closeOverlay();
@@ -528,6 +529,7 @@
     lastGo = { name: "", at: 0 };
     if (toastEl) toastEl.hidden = true;
     window.clearTimeout(toastTimer);
+    resetAcceleration();
     qsa(".qscore li").forEach(function (li) { li.classList.remove("is-right", "is-wrong"); });
     qsa(".btn--path").forEach(function (b) { b.classList.remove("is-chosen", "is-muted"); });
     var tk = document.getElementById("tkScore");
@@ -753,6 +755,158 @@
     });
   }
 
+  /* ---------------------------------------------------------------- acceleration simulator */
+  var accel = { raf: 0, watchdog: 0, elapsed: 0, last: 0, ticks: 0, running: false, done: false, nodes: null, timed: false };
+
+  function accelNodes() {
+    if (accel.nodes) return accel.nodes;
+    var sim = document.getElementById("scanSim");
+    if (!sim) return null;
+    accel.nodes = {
+      sim: sim,
+      stdFill: sim.querySelector('[data-lane="std"] .sim__fill'),
+      fastFill: sim.querySelector('[data-lane="fast"] .sim__fill'),
+      stdVal: sim.querySelector('[data-val="std"]'),
+      fastVal: sim.querySelector('[data-val="fast"]'),
+      bore: sim.querySelector(".sim__borefill"),
+      play: sim.querySelector('[data-sim="play"]'),
+      reset: sim.querySelector('[data-sim="reset"]'),
+      out: document.getElementById("simOut"),
+      cmp: document.getElementById("detailCompare"),
+      range: document.getElementById("compareRange")
+    };
+    return accel.nodes;
+  }
+
+  function paintAccel(progress) {
+    var n = accelNodes();
+    if (!n) return;
+    var std = Math.round(progress * 100);
+    var fast = Math.round(progress * 63);
+    if (n.stdFill) n.stdFill.style.width = std + "%";
+    if (n.fastFill) n.fastFill.style.width = fast + "%";
+    if (n.stdVal) n.stdVal.textContent = std + "%";
+    if (n.fastVal) n.fastVal.textContent = fast + "%";
+    if (n.bore) n.bore.style.width = std + "%";
+  }
+
+  function accelCopy(state) {
+    var n = accelNodes();
+    if (!n || !n.out) return;
+    n.out.textContent = state === "running"
+      ? "Running — the standard scan is still going."
+      : state === "done"
+        ? "Fast scan finished at 63%. Standard scan continues."
+        : "Not started.";
+  }
+
+  function accelFinish() {
+    var n = accelNodes();
+    accel.running = false;
+    accel.done = true;
+    accel.elapsed = 6000;
+    cancelAnimationFrame(accel.raf);
+    window.clearTimeout(accel.watchdog);
+    paintAccel(1);
+    if (n) {
+      n.sim.setAttribute("data-state", "done");
+      if (n.play) n.play.textContent = "Run again";
+      if (n.bore) n.bore.classList.add("is-done");
+    }
+    accelCopy("done");
+  }
+
+  function accelStep() {
+    accel.ticks += 1;
+    var now = performance.now();
+    if (!accel.last) accel.last = now;
+    accel.elapsed += Math.min(160, now - accel.last);
+    accel.last = now;
+    if (accel.elapsed >= 6000) { accelFinish(); return; }
+    paintAccel(accel.elapsed / 6000);
+    accel.watchdog = window.setTimeout(accelStep, 50);
+  }
+
+  function accelStart() {
+    // timer-driven, so the run completes even when the browser throttles frames
+    // (background tab, kiosk sleep): progress comes from wall-clock time, not frames
+    accel.last = 0;
+    accel.ticks = 0;
+    accel.watchdog = window.setTimeout(accelStep, 50);
+  }
+
+  function accelPlay() {
+    var n = accelNodes();
+    if (!n) return;
+    if (accel.done) resetAcceleration();
+    if (accel.running) {
+      accel.running = false;
+      cancelAnimationFrame(accel.raf);
+      window.clearTimeout(accel.watchdog);
+      if (n.play) n.play.textContent = "Continue";
+      accelCopy("idle");
+      return;
+    }
+    accel.running = true;
+    accel.last = 0;
+    if (n.sim) n.sim.setAttribute("data-state", "running");
+    if (n.play) n.play.textContent = "Pause";
+    accelCopy("running");
+
+    var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) { accelFinish(); return; }
+    accelStart();
+  }
+
+  function resetAcceleration() {
+    var n = accelNodes();
+    accel.running = false;
+    accel.done = false;
+    accel.elapsed = 0;
+    accel.last = 0;
+    accel.timed = false;
+    cancelAnimationFrame(accel.raf);
+    window.clearTimeout(accel.watchdog);
+    if (!n) return;
+    if (n.stdFill) n.stdFill.style.width = "0%";
+    if (n.fastFill) n.fastFill.style.width = "0%";
+    if (n.stdVal) n.stdVal.textContent = "0%";
+    if (n.fastVal) n.fastVal.textContent = "0%";
+    if (n.bore) { n.bore.style.width = "0%"; n.bore.classList.remove("is-done"); }
+    if (n.play) n.play.textContent = "Run the scan";
+    if (n.sim) n.sim.setAttribute("data-state", "idle");
+    if (n.range) { n.range.value = 55; }
+    if (n.cmp) n.cmp.style.setProperty("--split", "55%");
+    accelCopy("idle");
+  }
+
+  function pauseAcceleration() {
+    if (!accel.running) return;
+    var n = accelNodes();
+    accel.running = false;
+    cancelAnimationFrame(accel.raf);
+    window.clearTimeout(accel.watchdog);
+    if (n) {
+      if (n.play) n.play.textContent = "Continue";
+      if (n.sim) n.sim.setAttribute("data-state", "idle");
+    }
+  }
+
+  function wireAcceleration() {
+    var n = accelNodes();
+    if (!n) return;
+    if (n.play) n.play.addEventListener("click", accelPlay);
+    if (n.reset) n.reset.addEventListener("click", resetAcceleration);
+    if (n.range && n.cmp) {
+      n.cmp.style.setProperty("--split", n.range.value + "%");
+      n.range.addEventListener("input", function () {
+        n.cmp.style.setProperty("--split", n.range.value + "%");
+      });
+    }
+    paintAccel(0);
+    accelCopy("idle");
+  }
+
   /* ---------------------------------------------------------------- init */
   window.addEventListener("error", function () {
     toast("info", "Continuing — a display element failed to load.", 2200);
@@ -762,6 +916,7 @@
   initWindows();
   wireVideos();
   wireChips();
+  wireAcceleration();
   wirePrimeFrame();
   show("attract");
 }());

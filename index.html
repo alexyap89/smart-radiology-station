@@ -284,25 +284,58 @@
         <div class="col">
           <p class="stepmark">Scenario B · in the scanner</p>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
-          <figure class="photo photo--wide">
-            <img src="assets/photos/bore-view.jpg" alt="The view from inside the scanner bore: the ceiling projected with a night sky, and a radiographer asking whether everything is all right.">
-            <span class="badge badge--corner">Room footage · inside the bore</span>
-          </figure>
-          <p class="viewer__cap">What the patient actually sees: the sky on the ceiling, and a voice checking in. Every second here is long.</p>
-
           <p class="body">AI reconstruction rebuilds the image from less acquired data. The scan ends sooner, the image stays sharp, and the patient spends less time inside the bore — which is exactly the part that makes a claustrophobic patient want the scan to stop.</p>
 
-          <div class="bars bars--lg">
-            <div class="bar"><span class="bar__k">Standard scan</span><i class="bar__track"><b class="bar__fill bar__fill--full" style="width:100%"></b></i><span class="bar__v">100%</span></div>
-            <div class="bar"><span class="bar__k">With AI reconstruction</span><i class="bar__track"><b class="bar__fill bar__fill--fast" style="width:63%"></b></i><span class="bar__v">63%</span></div>
+          <div class="sim" id="scanSim" data-state="idle" aria-label="Illustrative scan-time comparison">
+            <div class="sim__head">
+              <p class="sim__title">Two scans, one timetable</p>
+              <p class="sim__sub">Illustrative timing, not a measured chart. The ratio is the 63% used in the comparison beside it.</p>
+            </div>
+
+            <div class="sim__lane" data-lane="std">
+              <span class="sim__k">Standard</span>
+              <div class="sim__track"><i class="sim__fill"></i></div>
+              <span class="sim__v" data-val="std">0%</span>
+            </div>
+
+            <div class="sim__lane sim__lane--fast" data-lane="fast">
+              <span class="sim__k">With AI reconstruction</span>
+              <div class="sim__track"><i class="sim__fill"></i></div>
+              <span class="sim__v" data-val="fast">0%</span>
+            </div>
+
+            <div class="sim__bore">
+              <span class="sim__borelabel">Time inside the bore</span>
+              <div class="sim__boretube"><i class="sim__borefill"></i></div>
+            </div>
+
+            <div class="sim__controls">
+              <button class="btn btn--primary btn--sm" type="button" data-sim="play">Run the scan</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-sim="reset">Reset</button>
+              <p class="sim__out" id="simOut" role="status" aria-live="polite">Not started.</p>
+            </div>
           </div>
-          <p class="body body--tight">Median reduction about 37% across 8 musculoskeletal anatomies — an initial evaluation, MSK only. The bars illustrate the ratio, not a timing chart.</p>
+
+          <p class="body body--tight">Median reduction about 37% across 8 musculoskeletal anatomies — an initial evaluation, MSK only. The timeline above illustrates the ratio, not a timing chart.</p>
           <p class="note">Shorter time in the bore is the clinical point: less opportunity for anxiety to turn into an abandoned scan, a repeat, or sedation.</p>
           <button class="btn btn--primary" data-go="tools" type="button">See the tools we built</button>
         </div>
 
         <div class="col col--model">
-          <p class="stepmark">What she noticed</p>
+          <p class="stepmark">Same slice, two reconstructions</p>
+          <div class="compare" id="detailCompare" aria-label="Standard versus AI reconstruction, same slice">
+            <div class="compare__stage">
+              <img class="compare__img compare__img--a" src="assets/cases/pos-ct-coronal.png" alt="Coronal CT, standard reconstruction">
+              <img class="compare__img compare__img--b" src="assets/cases/pos-ct-coronal.png" alt="Coronal CT, AI reconstruction">
+              <span class="compare__tag compare__tag--a">Standard</span>
+              <span class="compare__tag compare__tag--b">AI reconstruction</span>
+              <span class="compare__handle" aria-hidden="true"></span>
+            </div>
+            <label class="compare__ctl" for="compareRange">Drag to compare
+              <input id="compareRange" type="range" min="0" max="100" value="55" aria-label="Comparison position, standard on the left, AI on the right">
+            </label>
+          </div>
+          <p class="minihead">What she noticed</p>
           <div class="teach">
             <p class="teach__h">The room was already familiar.</p>
             <p class="body">She had walked through it on her own phone the night before, so the bore was not a surprise.</p>
