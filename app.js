@@ -84,6 +84,7 @@
       var txt = document.getElementById("scenarioText");
       if (tag) tag.textContent = entry[0] || "·";
       if (txt) txt.textContent = entry[1] || "";
+      bar.hidden = !entry[1];   // no banner on the landing page
     }
 
     var heading = qs("#s-" + name + " h1, #s-" + name + " h2");

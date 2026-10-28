@@ -1928,3 +1928,27 @@ button.steps__item.is-live:hover { color: var(--paper); }
 
 /* B1: the phone mock sits beside the journey, not floating at the top */
 .split--reverse .phone { align-self: center; }
+
+/* landing hero: the pathway, not the hour */
+.display__line {
+  display: block;
+  font-size: clamp(30px, 4.6vw, 68px);
+  line-height: 1.02;
+  letter-spacing: -.015em;
+  color: var(--paper);
+}
+.display__sub {
+  display: block;
+  margin-top: clamp(10px, 1.6vh, 18px);
+  max-width: 30ch;
+  font-family: var(--sans);
+  font-size: clamp(13px, 1.15vw, 17px);
+  line-height: 1.45;
+  letter-spacing: 0;
+  color: var(--paper-dim);
+}
+.attract .lede { max-width: 52ch; }
+@media (max-width: 620px) {
+  .display__line { font-size: clamp(26px, 8vw, 36px); }
+  .display__sub { max-width: none; }
+}
