@@ -17,12 +17,12 @@
       <span class="brand__org">Department of Radiology</span>
     </div>
     <nav class="steps" aria-label="Progress">
-      <span class="steps__item" data-pip="quiz"><i></i>The films</span>
-      <span class="steps__item" data-pip="pos"><i></i>The CT</span>
-      <span class="steps__item" data-pip="neg"><i></i>Dual-energy</span>
-      <span class="steps__item" data-pip="two"><i></i>Priming</span>
-      <span class="steps__item" data-pip="tools"><i></i>Built here</span>
-      <span class="steps__item" data-pip="takeaway"><i></i>Takeaway</span>
+      <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i>The films</button>
+      <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i>The CT</button>
+      <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i>Dual-energy</button>
+      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i>Priming</button>
+      <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i>Built here</button>
+      <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i>Takeaway</button>
     </nav>
     <div class="tools">
       <span class="timer" id="sessionClock" aria-label="Session time">00:00</span>
@@ -120,6 +120,10 @@
             <button class="btn btn--primary" data-go="pos" type="button">See what the CT showed</button>
           </div>
 
+          <div class="row row--tight">
+            <button class="btn btn--ghost btn--sm" data-go="two" type="button">Skip to Scenario B</button>
+            <button class="btn btn--ghost btn--sm" data-go="takeaway" type="button">Skip to the takeaway</button>
+          </div>
           <p class="micro">Tap an answer. The AI overlay is revealed afterwards, never before.</p>
         </div>
       </div>
@@ -344,16 +348,6 @@
         </div>
 
         <div class="media">
-          <div class="media__col">
-            <p class="media__h">pRIMe-MRI · the Hokkien tour</p>
-            <div class="launch">
-              <p class="launch__h">360° preparation, in six languages</p>
-              <p class="launch__d">The live experience opens on the phone: choose 福建話, then 参观MRI检查室 for the 3D scanner room, the breath-hold coaching and the sound the scanner makes.</p>
-              <a class="btn btn--primary" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
-              <p class="micro">Needs a connection. The room mock and breath coach on the previous screen work offline.</p>
-            </div>
-          </div>
-
           <div class="media__col">
             <p class="media__h">Rad-ART · 3D visualisation examples</p>
             <div class="vids">

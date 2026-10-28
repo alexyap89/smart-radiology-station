@@ -74,11 +74,13 @@
 
     if (name === "pos") startModel();
     if (name === "takeaway") {
+      var answered = Object.keys(state.answered).length;
       var case1 = state.answered[0] === true && state.answered[1] === true;
       var case2 = state.answered[2] === true && state.answered[3] === true;
       var n = (case1 ? 1 : 0) + (case2 ? 1 : 0);
       var tk = document.getElementById("tkScore");
-      if (tk) {
+      if (tk && answered < 4) { tk.hidden = true; tk.textContent = ""; }
+      else if (tk) {
         tk.hidden = false;
         tk.textContent = n === 2
           ? "Your calls matched the reporting radiologist on both cases."
