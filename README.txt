@@ -79,7 +79,8 @@ panels, 3:4 cross-sections) so the whole knee is visible in every pane.
 --------------------------------------------------------------------------------
 5. APPROVED FIGURES (the only numbers used anywhere)
 --------------------------------------------------------------------------------
-  1,102 consecutive ED radiographs audited
+  1,102 consecutive ED radiographs audited, with the AI output withheld from
+  the reporting radiologist (blinded audit, per the nomination document)
   96.6% sensitivity · 99.2% negative predictive value
   6 fractures caught that the initial reports missed
   7 fractures missed by the AI that radiologists caught
