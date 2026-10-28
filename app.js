@@ -58,10 +58,7 @@
       sec.setAttribute("aria-hidden", on ? "false" : "true");
     });
 
-    var pipOf = function (screen) {
-      if (screen === "speed") return "two";
-      return screen;
-    };
+    var pipOf = function (screen) { return screen; };
     qsa(".steps__item").forEach(function (el) {
       var idx = ORDER.indexOf(el.getAttribute("data-pip"));
       var at = ORDER.indexOf(pipOf(name));
