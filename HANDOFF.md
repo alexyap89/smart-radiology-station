@@ -97,6 +97,20 @@ No asset is unreferenced, and every referenced path exists — checked mechanica
 
 ---
 
+## 7a. Two incidents that will happen again if you are not careful
+
+**1. A truncated stylesheet broke the live site.** During a refinement pass `styles.css` was overwritten with a 610-byte fragment (from 67 KB) and committed; Pages published it and the station rendered unstyled. Repair: `git checkout HEAD~1 -- styles.css`, then verify every recent rule survived (`vendor__flag`, `journey__list`, `stage > .main`, `.sim__track`, `lbl-short`).
+
+**Because of this, the deploy check must assert asset *sizes*, not just HTTP 200:**
+
+```bash
+curl -sS -o /dev/null -w "%{size_download}
+" https://alexyap89.github.io/smart-radiology-station/styles.css
+# expect ~68 KB, not ~600 bytes
+```
+
+**2. Read-only reviewers edit files anyway.** A reviewer briefed "findings only" wrote to `styles.css`; another overwrote `index.html` with its own app in an earlier build. After every swarm run, do `git status --short` and `git diff --stat` before committing, and revert anything outside the brief.
+
 ## 8. Verification gate — run this before any deploy
 
 Open the app, then check in order:
