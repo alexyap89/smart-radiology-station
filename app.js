@@ -812,7 +812,7 @@
     n.out.textContent = state === "running"
       ? "Running — the standard scan is still going."
       : state === "done"
-        ? "Fast scan finished at 63%. Standard scan continues."
+        ? "Fast scan finished at 63%. Standard scan continues — about a third more time inside the bore."
         : "Not started.";
   }
 

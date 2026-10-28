@@ -1959,3 +1959,10 @@ button.steps__item.is-live:hover { color: var(--paper); }
 .stage > .topbar { grid-row: 1; }
 .stage > .scenario { grid-row: 2; }
 .stage > .main { grid-row: 3; min-height: 0; }
+
+/* vendor attribution as a flag above the image, unmissable at a glance */
+.vendor__flag {
+  margin: 0; padding: 5px 10px;
+  font-size: 9.5px; letter-spacing: .14em; text-transform: uppercase;
+  color: #1a1206; background: var(--amber); font-weight: 600;
+}
