@@ -126,6 +126,8 @@
   function startClock() {
     if (state.running) return;
     state.running = true;
+    document.body.setAttribute("data-started", "1");
+    if (clockEl) clockEl.hidden = false;
     state.startedAt = Date.now();
     window.setInterval(function () {
       var s = Math.floor((Date.now() - state.startedAt) / 1000);
@@ -135,7 +137,8 @@
   function stopClock() {
     state.running = false;
     state.startedAt = 0;
-    clockEl.textContent = "00:00";
+    document.body.removeAttribute("data-started");
+    if (clockEl) { clockEl.textContent = "00:00"; clockEl.hidden = true; }
   }
 
   /* ---------------------------------------------------------------- idle */
