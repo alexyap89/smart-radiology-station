@@ -20,6 +20,7 @@
       <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i><b>A</b><span class="lbl-full">AI-screened films</span><span class="lbl-short">films</span></button>
       <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i><b>A</b><span class="lbl-full">CT + 3D render</span><span class="lbl-short">CT</span></button>
       <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i><b>A</b><span class="lbl-full">DECT oedema map</span><span class="lbl-short">DECT</span></button>
+      <button class="steps__item" type="button" data-pip="temi" data-go="temi"><i></i><b>B</b><span class="lbl-full">TEMI wayfinding</span><span class="lbl-short">TEMI</span></button>
       <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>B</b><span class="lbl-full">pRIMe MRI prep</span><span class="lbl-short">pRIMe</span></button>
       <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>B</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
       <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i><span class="lbl-full">clinician-built tools</span><span class="lbl-short">tools</span></button>
@@ -237,7 +238,7 @@
 
           <p class="body">Dual-energy CT did what it was ordered to do: it excluded an occult fracture the same night, without an MRI slot and without an admission to reach a scanner.</p>
           <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
-          <button class="btn btn--primary" data-go="two" type="button">Next: the patient who was afraid</button>
+          <button class="btn btn--primary" data-go="temi" type="button">Next: the patient who was afraid</button>
         </div>
 
         <div class="col col--model">
@@ -259,6 +260,66 @@
     </section>
 
     <!-- ============ 4a. SCENARIO B — THE ANXIETY ============ -->
+    <!-- ============ 3b. SCENARIO B — FINDING THE WAY ============ -->
+    <section class="screen" id="s-temi" aria-labelledby="temi-title">
+      <div class="split split--reverse">
+        <div class="col">
+          <p class="stepmark">Scenario B · before the scan</p>
+          <h2 class="h2" id="temi-title">Before she can lie still, she has to find the room.</h2>
+          <p class="body">Signage, colour zoning and arrows were already there. They were not enough for elderly and first-time patients, so a PSA left the counter and walked them: 15 to 20 times a day, five to six minutes each.</p>
+
+          <div class="journey">
+            <p class="journey__h">What the department built</p>
+            <ol class="journey__list">
+              <li>
+                <span class="journey__n">1</span>
+                <span class="journey__t"><b>Routes written by the people who walk them.</b> Radiographers and PSAs mapped every imaging area and curated the TEMI sequences themselves.</span>
+              </li>
+              <li>
+                <span class="journey__n">2</span>
+                <span class="journey__t"><b>Calibrated for a real corridor.</b> Route and speed tuning, collision-avoidance testing, and wheelchair and trolley simulations before go-live.</span>
+              </li>
+              <li>
+                <span class="journey__n">3</span>
+                <span class="journey__t"><b>Designed for an elderly patient.</b> A simplified interface and a printed how-to poster, so the first interaction needs no explanation.</span>
+              </li>
+            </ol>
+          </div>
+
+          <div class="metrics metrics--quad">
+            <div class="metric"><p class="metric__n">355</p><p class="metric__l">trips in three weeks</p></div>
+            <div class="metric"><p class="metric__n">27</p><p class="metric__l">trips a day</p></div>
+            <div class="metric"><p class="metric__n">4.35</p><p class="metric__l">rating out of 5 (n = 20)</p></div>
+            <div class="metric"><p class="metric__n">0</p><p class="metric__l">collisions, safety incidents</p></div>
+          </div>
+
+          <p class="note">18 May – 7 June 2026, weekdays only. Escorting had cost about two PSA hours a day, taken from the counter at its busiest hour.</p>
+          <button class="btn btn--primary" data-go="two" type="button">Continue</button>
+        </div>
+
+        <div class="col">
+          <p class="minihead">Why it stayed</p>
+          <div class="teach">
+            <p class="teach__h">Leased, not bought.</p>
+            <p class="body">Robots-as-a-Service put the robot in the corridor before any capital commitment, so the department validated it on its own patients first.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">Owned by the floor.</p>
+            <p class="body">The people who escort patients designed the routes, so the workflow changed at the counter and not only in the corridor.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">Measured every day.</p>
+            <p class="body">A “Rate TEMI” dashboard and daily observation keep the routes and the ratings under review.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">Built to spread.</p>
+            <p class="body">The routes and the lease model are documented, so another department can adopt the same workflow without building a capital case first.</p>
+          </div>
+          <p class="micro">Department project with Robocore Technology and RoboSolutions; leased through China Mobile International.</p>
+        </div>
+      </div>
+    </section>
+
     <section class="screen" id="s-two" aria-labelledby="two-title">
       <div class="split split--reverse">
         <div class="col">
@@ -271,7 +332,7 @@
             <ol class="journey__list">
               <li>
                 <span class="journey__n">1</span>
-                <span class="journey__t"><b>Finding imaging.</b> A Telmi robot in the department walks her to the right door, so the first ten minutes are not spent lost or queuing at a counter.</span>
+                <span class="journey__t"><b>Finding imaging.</b> A TEMI robot in the department walks her to the right door, so the first ten minutes are not spent lost or queuing at a counter.</span>
               </li>
               <li>
                 <span class="journey__n">2</span>
@@ -466,6 +527,7 @@
           <div>
             <p class="minihead">Scenario B · priming and speed</p>
             <ol class="tk-list">
+              <li>A TEMI robot walked her to the right door: 355 trips, 27 a day, no collisions.</li>
               <li>Preparation removed the surprise from a first MRI, in Hokkien.</li>
               <li>AI reconstruction cut time inside the bore by about 37%.</li>
               <li>16 of 16 patients rated it positively and would recommend it.</li>

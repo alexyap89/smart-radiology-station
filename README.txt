@@ -34,6 +34,13 @@ PATIENT BANNER     A persistent bar under the header names the patient on every
                     AR button for iPad/iPhone.
 3  DUAL-ENERGY      Scenario A, case 2. Fusion map with no oedema and a sagittal
                     reformat. A negative film still needs a plan.
+3b WAYFINDING      Scenario B, before the preparation: the TEMI robot that walks
+                    patients to the right imaging area. The problem (PSAs escorting
+                    15-20 patients a day, 5-6 minutes each), what the department
+                    built (routes curated by radiographers and PSAs, corridor and
+                    collision calibration, an interface built for elderly patients),
+                    the numbers (355 trips, 27 a day, 4.35/5 from 20 patients, no
+                    collisions, 18 May - 7 June 2026) and why the lease model stayed.
 4  SCENARIO B       Priming and speed. An anxious Hokkien-speaking patient, the
                     clinician-built 360° preparation, and AI-accelerated MRI
                     reconstruction with a time comparison.

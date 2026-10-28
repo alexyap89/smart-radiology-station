@@ -11,7 +11,7 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "quiz", "pos", "neg", "two", "speed", "tools", "takeaway"];
+  var ORDER = ["attract", "quiz", "pos", "neg", "temi", "two", "speed", "tools", "takeaway"];
 
   var state = {
     screen: "attract",
@@ -72,6 +72,7 @@
         quiz: ["A", "Patient A · a knee that cannot bear weight"],
         pos:  ["A", "Patient A · the fracture, and what the CT added"],
         neg:  ["A", "Patient A · the other knee, and no fracture"],
+        temi: ["B", "Patient B · the way to the scanner"],
         two:  ["B", "Patient B · a first MRI, and a frightened patient"],
         speed:["B", "Patient B · less time inside the scanner"],
         tools:["", "The tools behind both patients"],

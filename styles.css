@@ -2000,3 +2000,23 @@ body[data-started="1"] .timer { display: inline; }
   .timer { font-size: 13px; }
   .scenario__tag { font-size: 14px; }
 }
+
+/* TEMI screen: four numbers in one strip inside a half column */
+.metrics--quad { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1150px) {
+  .metrics--quad { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+/* eight pips now: give the nav room before the labels shorten */
+.steps { min-width: 0; }
+@media (max-width: 1560px) {
+  .steps { gap: clamp(8px, 1vw, 16px); }
+  .steps__item { letter-spacing: .10em; }
+}
+
+/* nav: with eight pips the short labels are the only ones that fit;
+   on a tablet the pips keep the letters and drop the words */
+.steps .lbl-full { display: none; }
+.steps .lbl-short { display: inline; }
+@media (max-width: 1100px) {
+  .steps .lbl-short { display: none; }
+}
