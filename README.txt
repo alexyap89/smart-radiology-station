@@ -42,9 +42,11 @@ screen without being thrown back to the start.
                     resume and reset work; leaving the screen pauses the run.
                     Below it: the ~37% MSK initial evaluation and why shorter
                     time in the bore matters for a claustrophobic patient. The
-                    screen states plainly that paired standard/reconstructed
-                    images are not on the station — the difference is in scan
-                    time, not in a picture.
+                    Beside it, a vendor example of the same liver slice at the
+                    same voxel size (conventional 14 s versus Deep Resolve 7 s),
+                    clearly labelled "vendor example, not our data" with a link
+                    to Siemens Healthineers. Our own paired reconstructions are
+                    not available for display; what we measured is scan time.
 7  BUILT HERE       pRIMe-MRI launch card (Hokkien tour), DECT BME, Rad-ART,
                     DIXON spine, and three Rad-ART 3D clips playing locally.
 8  TAKEAWAY         The overarching claim: Smart Radiology augments patient care
@@ -76,7 +78,10 @@ assets/models/      tibia-fracture.js (decimated mesh for the WebGL viewer),
                     tibia-fracture.usdz (Apple Quick Look AR), ar-glyph.svg
 assets/videos/      three Rad-ART 3D clips plus poster frames
 assets/photos/      room-preparation.jpg and bore-view.jpg — stills from the
-                    department's own 360° preparation video (1,600 px wide).
+                    department's own 360° preparation video (1,600 px wide);
+                    siemens-deepresolve-liver.jpg — vendor marketing image, used
+                    with attribution, carries the vendor's own study-ID watermark
+                    (no patient identifiers).
 assets/*.svg        audio placeholder, pathway icons
 
 Every referenced file exists; the unused illustrative plates from the first

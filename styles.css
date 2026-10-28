@@ -1771,3 +1771,17 @@ button.steps__item.is-live:hover { color: var(--paper); }
 .compare__stage { aspect-ratio: auto; height: clamp(150px, 24vh, 230px); }
 @media (max-height: 830px) and (min-width: 721px) { .compare__stage { height: clamp(130px, 20vh, 190px); } }
 @media (max-width: 720px) { .compare__stage { height: 170px; } }
+
+/* vendor example image: attributed, framed, and never mistaken for our data */
+.vendor { margin: 0; border: 1px solid var(--rule); background: #05080b; }
+.vendor img { width: 100%; height: auto; display: block; }
+.vendor__cap {
+  margin: 0; padding: 8px 10px;
+  font-size: 9.5px; line-height: 1.45;
+  color: var(--paper-faint);
+  border-top: 1px solid var(--rule);
+}
+.vendor__cap b { color: var(--amber); }
+.vendor__cap a { color: var(--paper-dim); text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+.vendor__cap a:hover { color: var(--cyan); border-color: var(--cyan); }
+@media (max-height: 830px) and (min-width: 721px) { .vendor__cap { font-size: 9px; padding: 6px 8px; } }
