@@ -35,10 +35,16 @@ screen without being thrown back to the start.
                     photograph of the actual scanner room taken from the
                     department's own preparation video, the phone breath coach,
                     and the live pRIMe link. Forward control to the next screen.
-6  SCENARIO B (b)   In the scanner: the view from inside the bore (same source),
-                    AI reconstruction, the 100% / 63% bars, the ~37% MSK
-                    evaluation, and why shorter time in the bore matters for a
-                    claustrophobic patient.
+6  SCENARIO B (b)   In the scanner: interactive scan-time simulator (#scanSim).
+                    Press RUN THE SCAN: the standard lane fills to 100% over six
+                    seconds while the AI lane stops at 63%, and the bore tube
+                    fills with the time still spent inside the scanner. Pause,
+                    resume and reset work; leaving the screen pauses the run.
+                    Below it: the ~37% MSK initial evaluation and why shorter
+                    time in the bore matters for a claustrophobic patient. The
+                    screen states plainly that paired standard/reconstructed
+                    images are not on the station — the difference is in scan
+                    time, not in a picture.
 7  BUILT HERE       pRIMe-MRI launch card (Hokkien tour), DECT BME, Rad-ART,
                     DIXON spine, and three Rad-ART 3D clips playing locally.
 8  TAKEAWAY         The overarching claim: Smart Radiology augments patient care
@@ -50,6 +56,9 @@ screen without being thrown back to the start.
 --------------------------------------------------------------------------------
 3. INTERACTION
 --------------------------------------------------------------------------------
+- Simulator: RUN THE SCAN / PAUSE / CONTINUE / RESET. Timer-driven, so the run
+  completes even if the browser throttles frames; it pauses when you leave the
+  screen and resets with RESTART.
 - Films and scans: BRIGHTNESS and CONTRAST sliders, zoom in/out, RESET, drag to
   pan, wheel or pinch to zoom, and on a keyboard: +/- zoom, arrows pan, 0 reset.
   This is display windowing for teaching, not diagnostic workstation software.
