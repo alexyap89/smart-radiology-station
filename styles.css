@@ -1907,3 +1907,24 @@ button.steps__item.is-live:hover { color: var(--paper); }
 /* the vendor image must not grow with the column: cap its height */
 .vendor img { max-height: clamp(150px, 25vh, 290px); object-fit: contain; background: #05080b; }
 @media (max-height: 830px) and (min-width: 721px) { .vendor img { max-height: clamp(130px, 20vh, 210px); } }
+
+/* Patient B's journey: wayfinding (Telmi) → preparation → the room */
+.journey { display: grid; gap: 6px; }
+.journey__h {
+  margin: 0; font-size: 9.5px; letter-spacing: .16em; text-transform: uppercase; color: var(--cyan);
+}
+.journey__list { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; }
+.journey__list li { display: grid; grid-template-columns: 18px minmax(0, 1fr); gap: 8px; align-items: start; }
+.journey__n {
+  font-family: var(--serif); font-size: 10px; line-height: 1.6;
+  width: 18px; height: 18px; border-radius: 50%;
+  display: grid; place-items: center;
+  border: 1px solid var(--rule-strong); color: var(--paper-faint);
+}
+.journey__list li:first-child .journey__n { border-color: var(--cyan); color: var(--cyan); }
+.journey__t { font-size: clamp(10.5px, .9vw, 13px); line-height: 1.42; color: var(--paper-dim); }
+.journey__t b { color: var(--paper); font-weight: 600; }
+@media (max-height: 830px) and (min-width: 721px) { .journey__t { font-size: 10px; } }
+
+/* B1: the phone mock sits beside the journey, not floating at the top */
+.split--reverse .phone { align-self: center; }

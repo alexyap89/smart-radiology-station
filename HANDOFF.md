@@ -29,7 +29,7 @@ The station tells one night in an emergency department twice.
 
 **Patient A — fracture or not (amber).** Four de-identified knee radiographs, one at a time. The visitor calls fracture / no fracture; the RbFracture overlay is revealed afterwards with the radiologist's reading. Then case 1: coronal CT plus the dual-energy marrow-oedema fusion, an interactive 3D model of the same CT, an AR button, and the 3D Lab workflow (render → cut-plane → share or print). Then case 2: fusion with no oedema and a sagittal reformat.
 
-**Patient B — a first MRI (cyan).** An anxious Hokkien-speaking patient, a photograph of the real scanner room taken from the department's own preparation video, a live link to pRIMe-MRI, then an interactive scan-time simulator: press RUN THE SCAN and the standard lane fills to 100 % over six seconds while the AI lane stops at 63 %, with a bore-time tube. Beside it, an attributed Siemens liver-MRI example (conventional 14 s versus Deep Resolve 7 s at the same voxel size).
+**Patient B — a first MRI (cyan).** An anxious Hokkien-speaking patient and her journey before the scanner: a **Telmi robot** walks her to imaging, then pRIMe on her own phone, then a room she has already seen. Also on this screen: a photograph of the real scanner room taken from the department's own preparation video, a live link to pRIMe-MRI, then an interactive scan-time simulator: press RUN THE SCAN and the standard lane fills to 100 % over six seconds while the AI lane stops at 63 %, with a bore-time tube. Beside it, an attributed Siemens liver-MRI example (conventional 14 s versus Deep Resolve 7 s at the same voxel size).
 
 **Close.** An attributed statement: Smart Radiology augments patient care through new care pathways, validated technology, and clinician-builders who write the tools they use. Then the limitation, the pattern, and a one-page printable summary.
 
@@ -112,6 +112,18 @@ Open the app, then check in order:
 9. Missing asset: rename any file in `assets/cases/` and confirm the app shows a labelled overlay and still navigates, then restore it.
 
 ---
+
+## 8a. Telmi — integrated as a placeholder, awaiting departmental detail
+
+Telmi wayfinding robots now appear as step 1 of Patient B's journey on `#s-two` ("A Telmi robot in the department walks her to the right door"). This is deliberately the only claim on the station about Telmi, because it is the only one that is sourced: the department's value-based-innovation deck lists "Telmi robot for wayfinding".
+
+**Fill in when the department supplies it** — each of these is currently absent rather than guessed:
+- how many robots, and where they are deployed (entrance only, or imaging corridor);
+- languages the robot speaks (the patient is Hokkien-speaking; if Telmi cannot speak Hokkien, the copy must not imply continuity);
+- usage figures (patients guided, time saved at the counter);
+- whether it hands over to the department or to a human.
+
+Add them to `.journey__list li:first-child` on `#s-two` and to §3 above, in the same plain register. Do not let this become a vendor-claim paragraph: one sentence, one source.
 
 ## 9. What is not verified (say so rather than assume)
 

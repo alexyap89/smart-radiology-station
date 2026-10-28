@@ -37,7 +37,9 @@ PATIENT BANNER     A persistent bar under the header names the patient on every
 4  SCENARIO B       Priming and speed. An anxious Hokkien-speaking patient, the
                     clinician-built 360° preparation, and AI-accelerated MRI
                     reconstruction with a time comparison.
-5  SCENARIO B (a)   Before the scan: the anxious Hokkien-speaking patient, a
+5  SCENARIO B (a)   Before the scan: the anxious Hokkien-speaking patient and her
+                    journey — Telmi robot wayfinding to imaging, then the phone
+                    preparation, then a room she has already seen — plus a
                     photograph of the actual scanner room taken from the
                     department's own preparation video, the phone breath coach,
                     and the live pRIMe link. Forward control to the next screen.
