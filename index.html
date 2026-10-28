@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Smart Radiology — Is there a fracture?</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="app" class="stage" data-screen="attract">
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand__mark" aria-hidden="true"></span>
+      <span class="brand__name">Smart Radiology</span>
+      <span class="brand__org">Department of Radiology</span>
+    </div>
+    <nav class="steps" aria-label="Progress">
+      <span class="steps__item" data-pip="quiz"><i></i>The films</span>
+      <span class="steps__item" data-pip="pos"><i></i>The CT</span>
+      <span class="steps__item" data-pip="neg"><i></i>Dual-energy</span>
+      <span class="steps__item" data-pip="two"><i></i>Priming</span>
+      <span class="steps__item" data-pip="tools"><i></i>Built here</span>
+      <span class="steps__item" data-pip="takeaway"><i></i>Takeaway</span>
+    </nav>
+    <div class="tools">
+      <span class="timer" id="sessionClock" aria-label="Session time">00:00</span>
+      <button class="btn btn--ghost btn--sm" id="restartBtn" type="button">Restart</button>
+    </div>
+  </header>
+
+  <main class="main">
+
+    <!-- ============ 0. ATTRACT ============ -->
+    <section class="screen screen--attract" id="s-attract" aria-labelledby="attract-title">
+      <div class="attract">
+        <div class="attract__copy">
+          <p class="kicker">Board visit · interactive station</p>
+          <h1 class="display" id="attract-title">
+            <span class="display__time" aria-hidden="true">03:00</span>
+            <span class="display__line">Two patients.<br>Four films.<br>Is there a fracture?</span>
+          </h1>
+          <p class="lede">Read the film, then see what the AI and the scanner said.</p>
+          <button class="btn btn--primary btn--xl" data-go="quiz" type="button">Start experience</button>
+          <p class="micro">90 seconds · touch to begin</p>
+        </div>
+        <figure class="attract__art" aria-hidden="true">
+          <svg viewBox="0 0 520 420" class="fork" role="presentation">
+            <path class="fork__spine" d="M40 210 H180"/>
+            <path class="fork__branch" d="M180 210 C 250 210, 250 120, 330 120 H470"/>
+            <path class="fork__branch fork__branch--b" d="M180 210 C 250 210, 250 300, 330 300 H470"/>
+            <circle class="fork__node" cx="180" cy="210" r="6"/>
+            <circle class="fork__node fork__node--a" cx="470" cy="120" r="6"/>
+            <circle class="fork__node fork__node--b" cx="470" cy="300" r="6"/>
+          </svg>
+          <figcaption class="artlabel">Fracture, or no fracture. Both change the night.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ============ 1. SCENARIO A — THE FILMS ============ -->
+    <section class="screen" id="s-quiz" aria-labelledby="quiz-title">
+      <div class="split split--quiz">
+
+        <figure class="plate plate--film" data-win>
+          <div class="plate__frame">
+            <img id="qImg" src="assets/cases/pos-film-ap.png" alt="De-identified knee radiograph" class="plate__img plate__img--film">
+            <span class="badge">De-identified clinical image</span>
+          </div>
+          <figcaption class="plate__cap" id="qCap">Case 1 · right knee · AP</figcaption>
+          <div class="win__bar">
+            <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
+            <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
+            <div class="win__zoom">
+              <button type="button" data-z="out" aria-label="Zoom out">−</button>
+              <span data-zval>100%</span>
+              <button type="button" data-z="in" aria-label="Zoom in">+</button>
+            </div>
+            <button class="win__reset" type="button" data-z="reset">Reset</button>
+          </div>
+        </figure>
+
+        <div class="col">
+          <div class="qhead">
+            <p class="stepmark" id="qStep">Scenario A · fracture or not · film 1 of 4</p>
+            <ol class="qscore" id="qScoreChips" aria-label="Your calls so far">
+              <li data-chip="0"></li><li data-chip="1"></li><li data-chip="2"></li><li data-chip="3"></li>
+            </ol>
+          </div>
+          <h2 class="h2" id="quiz-title">A man fell and cannot bear weight on his right knee.</h2>
+
+          <div id="qAsk">
+            <p class="choice__q">Is there a fracture?</p>
+            <div class="choice__row">
+              <button class="btn btn--path" type="button" data-answer="yes">
+                <span class="btn__key">A</span><span class="btn__label">Yes — a fracture</span>
+              </button>
+              <button class="btn btn--path" type="button" data-answer="no">
+                <span class="btn__key">B</span><span class="btn__label">No fracture</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="reveal" id="qReveal" hidden>
+            <p class="verdict" id="qVerdict"></p>
+            <div class="reveal__pair">
+              <figure class="thumb">
+                <img id="qAiImg" src="assets/cases/pos-ai-ap.png" alt="AI analysis overlay for the same radiograph">
+                <figcaption id="qAiCap">AI analysis · same view</figcaption>
+              </figure>
+            </div>
+            <p class="body" id="qComment"></p>
+            <button class="btn btn--primary" id="qNext" type="button">View the lateral film</button>
+          </div>
+
+          <div class="reveal" id="qScore" hidden>
+            <p class="verdict">All four films read. Your call matched the reporting radiologist on <span id="qScoreN">0</span> of 2 cases.</p>
+            <p class="body">The AI agreed with the radiologist in both. That agreement is the point: it is checked, not trusted.</p>
+            <button class="btn btn--primary" data-go="pos" type="button">See what the CT showed</button>
+          </div>
+
+          <p class="micro">Tap an answer. The AI overlay is revealed afterwards, never before.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2. SCENARIO A — CASE 1 ============ -->
+    <section class="screen" id="s-pos" aria-labelledby="pos-title">
+      <div class="split">
+        <div class="col">
+          <p class="stepmark">Scenario A · case 1 · fracture</p>
+          <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
+
+          <div class="viewer">
+            <div class="viewer__bar" role="tablist" aria-label="Image set">
+              <button class="tab is-on" type="button" data-view="ct">CT · coronal bone</button>
+              <button class="tab" type="button" data-view="bme">Dual-energy fusion · marrow oedema</button>
+            </div>
+            <figure class="viewer__stage" data-win-stage>
+              <img id="posImg" src="assets/cases/pos-ct-coronal.png" alt="Coronal CT of the knee in bone window">
+              <span class="badge badge--corner">De-identified clinical image</span>
+            </figure>
+            <p class="viewer__cap" id="posCap">Coronal bone window. A coronal split fracture runs through the lateral tibial plateau.</p>
+            <div class="win__bar" data-win-for="posImg">
+              <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
+              <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
+              <div class="win__zoom">
+                <button type="button" data-z="out" aria-label="Zoom out">−</button>
+                <span data-zval>100%</span>
+                <button type="button" data-z="in" aria-label="Zoom in">+</button>
+              </div>
+              <button class="win__reset" type="button" data-z="reset">Reset</button>
+            </div>
+          </div>
+
+          <p class="body">Spectral data from the same acquisition maps bone-marrow oedema — the bruise inside the bone that plain CT cannot show. It is how an occult fracture is confirmed without an MRI slot.</p>
+          <button class="btn btn--primary" data-go="neg" type="button">Next film: the other knee</button>
+        </div>
+
+        <div class="col col--model">
+          <p class="stepmark">Same CT · 3D Lab</p>
+          <h3 class="h3">The surgeon plans from the render, not a print.</h3>
+          <div class="model">
+            <canvas id="glCanvas" aria-label="Interactive 3D model of the fractured tibia. Drag to rotate."></canvas>
+            <div class="model__badge">3D model · drag to rotate</div>
+            <div class="model__fallback" id="glFallback" hidden>
+              <p>3D view needs WebGL. The still render and the AR link below still work.</p>
+            </div>
+          </div>
+          <div class="row row--tight">
+            <button class="btn btn--ghost btn--sm" id="glReset" type="button">Reset view</button>
+            <button class="btn btn--ghost btn--sm" id="glWire" type="button">Wireframe</button>
+            <a class="btn btn--ghost btn--sm" id="arLink" href="assets/models/tibia-fracture.usdz" rel="ar">
+              <img src="assets/models/ar-glyph.svg" alt="" class="ar-glyph"> View in AR
+            </a>
+          </div>
+          <p class="micro">AR opens on an iPad or iPhone (Apple Quick Look). On a laptop the model above is the view. Model decimated for on-stand display — not for diagnostic use.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 3. SCENARIO A — CASE 2 ============ -->
+    <section class="screen" id="s-neg" aria-labelledby="neg-title">
+      <div class="split">
+        <div class="col">
+          <p class="stepmark">Scenario A · case 2 · no fracture</p>
+          <h2 class="h2" id="neg-title">No fracture on the film — and the patient still cannot put weight on it.</h2>
+
+          <div class="viewer">
+            <div class="viewer__bar" role="tablist" aria-label="Image set">
+              <button class="tab is-on" type="button" data-view="bmeneg">Dual-energy fusion · marrow oedema</button>
+              <button class="tab" type="button" data-view="sag">Sagittal · joint space and osteophytes</button>
+            </div>
+            <figure class="viewer__stage" data-win-stage>
+              <img id="negImg" src="assets/cases/neg-bme-fusion.png" alt="Coronal dual-energy fusion of the knee showing no marrow oedema">
+              <span class="badge badge--corner">De-identified clinical image</span>
+            </figure>
+            <p class="viewer__cap" id="negCap">No marrow oedema on the fusion map. Nothing for the spectral data to flag.</p>
+            <div class="win__bar" data-win-for="negImg">
+              <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
+              <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
+              <div class="win__zoom">
+                <button type="button" data-z="out" aria-label="Zoom out">−</button>
+                <span data-zval>100%</span>
+                <button type="button" data-z="in" aria-label="Zoom in">+</button>
+              </div>
+              <button class="win__reset" type="button" data-z="reset">Reset</button>
+            </div>
+          </div>
+
+          <p class="body">Dual-energy CT did what it was ordered to do: it excluded an occult fracture the same night, without an MRI slot and without an admission to reach a scanner.</p>
+          <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
+          <button class="btn btn--primary" data-go="two" type="button">Next: the patient who was afraid</button>
+        </div>
+
+        <div class="col col--model">
+          <p class="stepmark">What this case teaches</p>
+          <div class="teach">
+            <p class="teach__h">A negative AI reading is information, not a dismissal.</p>
+            <p class="body">The tool flagged no fracture, the radiologist agreed, and the patient still could not weight-bear. The next step was a pathway decision, not a second opinion on the same film.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">Degenerative disease is the commonest cause of a painful knee that is not broken.</p>
+            <p class="body">Osteophytes and joint-space loss are visible on the sagittal reformat. The answer to "why does it hurt?" is not always "what did we miss?".</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">The same scan answered both questions.</p>
+            <p class="body">One dual-energy acquisition gave the fracture answer and the marrow answer. That is what replaced admission for cross-sectional imaging.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 4a. SCENARIO B — THE ANXIETY ============ -->
+    <section class="screen" id="s-two" aria-labelledby="two-title">
+      <div class="split split--reverse">
+        <div class="col">
+          <p class="stepmark">Scenario B · before the scan</p>
+          <h2 class="h2" id="two-title">She has just been told she has a liver tumour. Tomorrow is her first MRI.</h2>
+          <p class="body">She is anxious, she is claustrophobic, and she speaks Hokkien. That combination is why scans get abandoned, repeated, or done under sedation.</p>
+
+          <figure class="photo">
+            <img src="assets/photos/room-preparation.jpg" alt="The MRI scanner room, filmed for the preparation video: a radiographer explains the shower cap, the scanner behind her.">
+            <span class="badge badge--corner">Room footage · preparation video</span>
+          </figure>
+          <p class="viewer__cap">The room she will lie in, filmed once so she can walk through it the night before.</p>
+
+          <p class="body">The evening before, she opens a link on her own phone. A clinician built it: the scanner room in 360°, breath-hold practice, and the sound the machine actually makes. No headset, no app to install.</p>
+          <div class="row row--tight">
+            <a class="btn btn--primary" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
+            <button class="btn btn--ghost" data-go="speed" type="button">Continue to what changes</button>
+          </div>
+          <div class="row row--tight">
+            <button class="btn btn--ghost btn--sm" id="skipPano" type="button">Skip the room panorama</button>
+          </div>
+          <p class="micro">The link needs a connection. Everything else on this station runs offline.</p>
+        </div>
+
+        <aside class="phone" aria-label="Phone preview of the preparation experience">
+          <div class="phone__screen">
+            <p class="phone__title">Breathe with the scanner</p>
+            <div class="breath" aria-hidden="true"><span class="breath__ring"></span><span class="breath__core"></span></div>
+            <p class="phone__state" id="breathState">Breathe in</p>
+            <div class="wave" aria-hidden="true">
+              <img src="assets/mri-room-audio-placeholder.svg" alt="" class="wave__img">
+            </div>
+            <p class="phone__note">The room sound plays on the station tablet.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ============ 4b. SCENARIO B — THE ACCELERATION ============ -->
+    <section class="screen" id="s-speed" aria-labelledby="speed-title">
+      <div class="split">
+        <div class="col">
+          <p class="stepmark">Scenario B · in the scanner</p>
+          <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
+          <figure class="photo photo--wide">
+            <img src="assets/photos/bore-view.jpg" alt="The view from inside the scanner bore: the ceiling projected with a night sky, and a radiographer asking whether everything is all right.">
+            <span class="badge badge--corner">Room footage · inside the bore</span>
+          </figure>
+          <p class="viewer__cap">What the patient actually sees: the sky on the ceiling, and a voice checking in. Every second here is long.</p>
+
+          <p class="body">AI reconstruction rebuilds the image from less acquired data. The scan ends sooner, the image stays sharp, and the patient spends less time inside the bore — which is exactly the part that makes a claustrophobic patient want the scan to stop.</p>
+
+          <div class="bars bars--lg">
+            <div class="bar"><span class="bar__k">Standard scan</span><i class="bar__track"><b class="bar__fill bar__fill--full" style="width:100%"></b></i><span class="bar__v">100%</span></div>
+            <div class="bar"><span class="bar__k">With AI reconstruction</span><i class="bar__track"><b class="bar__fill bar__fill--fast" style="width:63%"></b></i><span class="bar__v">63%</span></div>
+          </div>
+          <p class="body body--tight">Median reduction about 37% across 8 musculoskeletal anatomies — an initial evaluation, MSK only. The bars illustrate the ratio, not a timing chart.</p>
+          <p class="note">Shorter time in the bore is the clinical point: less opportunity for anxiety to turn into an abandoned scan, a repeat, or sedation.</p>
+          <button class="btn btn--primary" data-go="tools" type="button">See the tools we built</button>
+        </div>
+
+        <div class="col col--model">
+          <p class="stepmark">What she noticed</p>
+          <div class="teach">
+            <p class="teach__h">The room was already familiar.</p>
+            <p class="body">She had walked through it on her own phone the night before, so the bore was not a surprise.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">The breath-holds were not new.</p>
+            <p class="body">She had practised holding her breath at home. In the scanner she was repeating something known.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">It finished sooner than she expected.</p>
+            <p class="body">AI reconstruction cut the acquisition short. At one month, 16 of 16 patients rated the preparation positively and would recommend it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 5. BUILT HERE ============ -->
+    <section class="screen" id="s-tools" aria-labelledby="tools-title">
+      <div class="col col--wide">
+        <p class="stepmark">Built here, not bought</p>
+        <h2 class="h2 h2--tight" id="tools-title">Four tools a clinician wrote, and the 3D work behind them.</h2>
+
+        <div class="tools-grid">
+          <article class="tool tool--lead">
+            <p class="tool__k">Most used</p>
+            <h3 class="tool__h">pRIMe-MRI</h3>
+            <p class="tool__d">A 360° preparation experience for MRI: an interactive scanner room, guided breath-hold, real scanner audio. Narration in six languages including Hokkien and Cantonese. Phone only, no headset.</p>
+            <p class="tool__m">16 of 16 patients at one month · would recommend</p>
+            <a class="tool__a" href="https://primemri.netlify.app" target="_blank" rel="noopener">primemri.netlify.app ↗</a>
+          </article>
+          <article class="tool">
+            <h3 class="tool__h">DECT BME</h3>
+            <p class="tool__d">Teaching resource on reading bone-marrow oedema with dual-energy CT — the scan that replaced MRI for occult fracture here.</p>
+            <a class="tool__a" href="https://dectbme.netlify.app" target="_blank" rel="noopener">dectbme.netlify.app ↗</a>
+          </article>
+          <article class="tool">
+            <h3 class="tool__h">Rad-ART</h3>
+            <p class="tool__d">Patient-specific 3D models and augmented reality for the consultation. Uses the scan the patient already had; no extra imaging.</p>
+            <a class="tool__a" href="https://radart.netlify.app" target="_blank" rel="noopener">radart.netlify.app ↗</a>
+          </article>
+          <article class="tool">
+            <h3 class="tool__h">DIXON spine</h3>
+            <p class="tool__d">An abbreviated lumbar-spine MRI protocol, with the patient-facing explainer that goes with it: why the scan is shorter, and what it shows.</p>
+            <a class="tool__a" href="https://dixonlspine.netlify.app" target="_blank" rel="noopener">dixonlspine.netlify.app ↗</a>
+          </article>
+        </div>
+
+        <div class="media">
+          <div class="media__col">
+            <p class="media__h">pRIMe-MRI · the Hokkien tour</p>
+            <div class="launch">
+              <p class="launch__h">360° preparation, in six languages</p>
+              <p class="launch__d">The live experience opens on the phone: choose 福建話, then 参观MRI检查室 for the 3D scanner room, the breath-hold coaching and the sound the scanner makes.</p>
+              <a class="btn btn--primary" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
+              <p class="micro">Needs a connection. The room mock and breath coach on the previous screen work offline.</p>
+            </div>
+          </div>
+
+          <div class="media__col">
+            <p class="media__h">Rad-ART · 3D visualisation examples</p>
+            <div class="vids">
+              <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop playsinline preload="none"></video><figcaption>Fracture planning</figcaption></figure>
+              <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop playsinline preload="none"></video><figcaption>Joint anatomy</figcaption></figure>
+              <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop playsinline preload="none"></video><figcaption>Cinematic rendering</figcaption></figure>
+            </div>
+            <p class="micro">Clinical 3D examples from the Rad-ART study, playing locally — no network needed.</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <button class="btn btn--primary" data-go="takeaway" type="button">Continue to the takeaway</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 6. TAKEAWAY ============ -->
+    <section class="screen" id="s-takeaway" aria-labelledby="tk-title">
+      <div class="col col--wide">
+        <p class="stepmark">Takeaway</p>
+        <h2 class="h2 h2--tight" id="tk-title">Three things this night shows.</h2>
+        <p class="verdict verdict--score" id="tkScore" hidden></p>
+
+        <ol class="statements">
+          <li><span>01</span><b>Read the film. Then check the machine.</b></li>
+          <li><span>02</span><b>The radiologist stays in the decision.</b></li>
+          <li><span>03</span><b>Answer the patient's question, not just the referral.</b></li>
+        </ol>
+
+        <div class="diagram">
+          <svg viewBox="0 0 900 190" aria-hidden="true" class="map" id="mapSvg">
+            <path class="map__base" d="M30 95 H240"/>
+            <path class="map__base map__a" d="M240 95 C 330 95, 330 40, 430 40 H860"/>
+            <path class="map__base map__b" d="M240 95 C 330 95, 330 150, 430 150 H860"/>
+            <circle cx="240" cy="95" r="5" class="map__node"/>
+            <circle cx="860" cy="40" r="5" class="map__node map__node--a"/>
+            <circle cx="860" cy="150" r="5" class="map__node map__node--b"/>
+            <text x="30" y="80" class="map__t">03:00 film</text>
+            <text x="430" y="28" class="map__t">A · fracture found → CT → 3D render</text>
+            <text x="430" y="178" class="map__t">B · no fracture → dual-energy CT</text>
+            <text x="700" y="80" class="map__t">Answer, same night</text>
+          </svg>
+        </div>
+
+        <div class="iconstrip" aria-hidden="true">
+          <img src="assets/pathway-icons.svg" alt="">
+        </div>
+
+        <p class="body">Smart Radiology combines validated AI, dual-energy CT, 3D planning and patient preparation to move a patient through the night faster, without adding staff.</p>
+
+        <div class="row">
+          <button class="btn btn--primary" id="openTakeaway" type="button">View summary</button>
+          <button class="btn btn--ghost" data-go="attract" type="button">Start again</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div class="toast" id="toast" hidden>
+    <span class="toast__icon" aria-hidden="true"></span>
+    <span class="toast__text"></span>
+  </div>
+
+  <div class="live" id="live" role="status" aria-live="polite"></div>
+</div>
+
+<!-- summary overlay -->
+<div class="overlay" id="overlay" hidden>
+  <div class="sheet" id="takeawayCard" role="document" aria-labelledby="sheetTitle">
+    <p class="kicker">Smart Radiology · board visit summary</p>
+    <h3 class="sheet__title" id="sheetTitle">What changed, and what it rests on</h3>
+
+    <ol class="sheet__points">
+      <li><b>Validate before deployment.</b> 1,102 consecutive ED radiographs were audited with the AI output withheld from the reporting radiologist.</li>
+      <li><b>Keep the radiologist in the decision.</b> The tool flags; the radiologist interprets. AI caught 6 fractures the initial reports missed; radiologists caught 7 the AI missed.</li>
+      <li><b>Answer the patient's question.</b> Dual-energy CT settled an occult fracture the same night, and a 360° preparation experience got an anxious patient through her first MRI.</li>
+    </ol>
+
+    <dl class="sheet__facts">
+      <div><dt>Sensitivity</dt><dd>96.6%</dd></div>
+      <div><dt>Negative predictive value</dt><dd>99.2%</dd></div>
+      <div><dt>False positives</dt><dd>26 studies (2.4%)</dd></div>
+      <div><dt>Turnaround before deployment</dt><dd>22 min office hours · 80 min overnight</dd></div>
+      <div><dt>MRI AI reconstruction</dt><dd>about 37% shorter, 8 musculoskeletal anatomies</dd></div>
+      <div><dt>MRI preparation experience</dt><dd>16 of 16 patients positive at one month</dd></div>
+    </dl>
+
+    <p class="caution caution--sheet"><strong>Limitation.</strong> Studies negative on both AI and the report were not independently re-read, so sensitivity is likely to be overestimated.</p>
+    <p class="micro">Clinical images on the station are de-identified and used for teaching. Not for diagnostic use.</p>
+
+    <div class="sheet__actions noprint">
+      <button class="btn btn--ghost" id="printTakeaway" type="button">Print this page</button>
+      <button class="btn btn--primary" id="closeTakeaway" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<script src="assets/models/tibia-fracture.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

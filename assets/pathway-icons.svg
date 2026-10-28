@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 200" width="800" height="200">
+<rect width="800" height="200" fill="none"/>
+
+  <g transform="translate(17 60)">
+    <rect x="10" y="4" width="60" height="72" rx="4" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M58 4 L70 16" stroke="#5fd0d8" stroke-width="2"/>
+    <path d="M28 22 L28 58 M44 22 L44 58" stroke="#f4efe6" stroke-opacity=".55" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(131 60)">
+    <rect x="24" y="24" width="34" height="34" rx="4" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <circle cx="41" cy="41" r="5" fill="#5fd0d8"/>
+    <path d="M14 20 A 32 32 0 0 1 14 62" fill="none" stroke="#5fd0d8" stroke-width="2" stroke-linecap="round"/>
+    <path d="M68 20 A 32 32 0 0 0 68 62" fill="none" stroke="#5fd0d8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(245 60)">
+    <circle cx="40" cy="28" r="14" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M14 76 C 14 52, 66 52, 66 76" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2" stroke-linecap="round"/>
+    <path d="M33 24 L47 24" stroke="#5fd0d8" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(359 60)">
+    <rect x="22" y="12" width="40" height="60" rx="8" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <circle cx="42" cy="42" r="14" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M6 42 L22 42" stroke="#5fd0d8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(473 60)">
+    <path d="M42 8 L72 24 L72 58 L42 74 L12 58 L12 24 Z" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M12 24 L42 40 L72 24 M42 40 L42 74" fill="none" stroke="#f4efe6" stroke-opacity=".55" stroke-width="2"/>
+    <path d="M42 40 L50 36" stroke="#5fd0d8" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(587 60)">
+    <circle cx="42" cy="42" r="30" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <circle cx="42" cy="42" r="18" fill="none" stroke="#f4efe6" stroke-opacity=".55" stroke-width="2"/>
+    <circle cx="42" cy="42" r="7" fill="none" stroke="#5fd0d8" stroke-width="2"/>
+    <path d="M4 42 L12 42" stroke="#5fd0d8" stroke-width="2" stroke-linecap="round"/>
+  </g>
+
+  <g transform="translate(701 60)">
+    <rect x="20" y="4" width="44" height="74" rx="7" fill="none" stroke="#f4efe6" stroke-opacity=".85" stroke-width="2"/>
+    <path d="M36 28 L52 41 L36 54 Z" fill="none" stroke="#5fd0d8" stroke-width="2" stroke-linejoin="round"/>
+    <path d="M34 70 L50 70" stroke="#f4efe6" stroke-opacity=".55" stroke-width="2" stroke-linecap="round"/>
+  </g>
+<rect x=".5" y=".5" width="799" height="199" fill="none" stroke="#f4efe6" stroke-opacity=".06"/>
+</svg>
