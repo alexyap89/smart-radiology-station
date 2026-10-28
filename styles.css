@@ -1349,8 +1349,8 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 }
 
 /* the film is the thing a board member is asked to read: give it the room */
-.split--quiz { grid-template-columns: minmax(300px, 1.02fr) minmax(320px, 1fr); }
-.plate--film .plate__frame { max-height: clamp(260px, 62vh, 560px); }
+@media (min-width: 901px) { .split--quiz { grid-template-columns: minmax(300px, 1.02fr) minmax(320px, 1fr); } }
+@media (min-width: 901px) { .plate--film .plate__frame { max-height: clamp(260px, 62vh, 560px); } }
 @media (max-width: 1100px) { .plate--film .plate__frame { max-height: clamp(220px, 46vh, 420px); } }
 @media (max-height: 830px) and (min-width: 721px) { .plate--film .plate__frame { max-height: clamp(200px, 44vh, 360px); } }
 
@@ -1381,4 +1381,39 @@ button.steps__item.is-live:hover { color: var(--paper); }
   .steps__item i { width: 14px; }
   .steps__item.is-live i { width: 20px; }
   .brand__org { display: none; }
+}
+
+/* phone safety net: nothing may exceed the viewport width */
+@media (max-width: 900px) {
+  .split, .split--quiz, .split--reverse, .split-2 { grid-template-columns: minmax(0, 1fr); }
+  .col, .plate, .viewer, .media, .media__col, .tools-grid, .tool, .sheet { min-width: 0; max-width: 100%; }
+  .bar { grid-template-columns: minmax(76px, 96px) minmax(0, 1fr) 34px; }
+  .statements b, .verdict, .body, .sheet__points li { overflow-wrap: anywhere; }
+  .map, .iconstrip img { max-width: 100%; }
+}
+
+/* phones: compact dot navigation, and a top bar that cannot overflow */
+@media (max-width: 900px) {
+  .topbar {
+    display: flex; align-items: center; gap: 8px;
+    flex-wrap: nowrap; overflow: hidden;
+  }
+  .brand { flex: 1 1 auto; min-width: 0; }
+  .brand__name { font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .tools { flex: 0 0 auto; }
+  .timer { display: none; }
+  .steps { flex: 0 0 auto; display: flex; gap: 6px; margin-left: auto; }
+  button.steps__item { font-size: 0; line-height: 0; padding: 12px 0; letter-spacing: 0; }
+  button.steps__item i { width: 18px; height: 3px; border-radius: 2px; }
+  button.steps__item.is-live i { width: 26px; }
+  .plate--film .plate__frame { max-height: 44vh; padding: 8px; }
+  .plate--film .plate__frame .badge { font-size: 8px; }
+}
+
+/* very narrow phones: the wordmark is the first thing to go */
+@media (max-width: 520px) {
+  .brand__name { display: none; }
+  .brand { flex: 0 0 auto; }
+  .steps { margin-left: 4px; }
+  .topbar { gap: 10px; }
 }
