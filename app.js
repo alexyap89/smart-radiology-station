@@ -80,7 +80,7 @@
         neg:  ["1", "RbFracture · the case that stopped at CT"],
         lab:  ["2", "3D + 4D Lab · what the scan becomes"],
         render: ["2", "3D + 4D Lab · static, or a movie"],
-        see:  ["2", "3D + 4D Lab · the dose that buys the fourth dimension"],
+        see:  ["2", "AI denoising · the dose it buys"],
         move: ["2", "3D + 4D Lab · the joint in motion"],
         speed:["3", "MRI acceleration · less time in the scanner"],
         two:  ["4", "pRIMe · the scan starts the night before"],

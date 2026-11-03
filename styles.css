@@ -2704,3 +2704,9 @@ body.has-full { overflow: hidden; }
 #s-pos .col--model .model { width: 100%; max-height: min(38vh, 380px); aspect-ratio: 1 / 1; }
 #s-pos .col--model .model canvas { width: 100%; height: 100%; }
 #s-pos .h2 { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.16; }
+
+/* the cropped clips are 4:5, so the row can fill the height instead of a strip */
+#s-render .vids--big { flex: 1 1 auto; min-height: 0; align-items: stretch; }
+#s-render .vids--big .vid video { height: 100%; width: 100%; aspect-ratio: auto; object-fit: contain; flex: 1 1 auto; min-height: 0; }
+/* the emphasis word carries the point of the screen */
+#s-see .seepage__h b { color: var(--cyan); font-weight: 600; }
