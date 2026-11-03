@@ -2663,3 +2663,38 @@ body.has-full { overflow: hidden; }
 /* centre the short text column so it does not hang off the top of a tall screen */
 #s-neg .col--model, #s-pos .col--model { justify-content: center; }
 #s-neg .viewer, #s-pos .viewer { justify-content: flex-start; }
+
+/* ---------- denoise page: the vendor figure is the page ---------- */
+#s-see { align-content: stretch; }
+#s-see .seepage { height: 100%; min-height: 0; max-width: none; display: flex; flex-direction: column; gap: 7px; }
+#s-see .seepage__h { margin: 0; font-size: clamp(18px, 1.6vw, 24px); line-height: 1.16; }
+#s-see .seepage__lede { margin: 0; max-width: 96ch; }
+#s-see .vendor--hero { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; margin: 0; }
+#s-see .vendor--hero img { flex: 1 1 auto; min-height: 0; width: 100%; height: 100%; object-fit: contain; }
+#s-see .vendor__bar { display: flex; align-items: center; gap: 14px; border-top: 1px solid var(--rule); padding: 8px 10px; flex: 0 0 auto; }
+#s-see .vendor__bar .vendor__cap { flex: 1 1 auto; margin: 0; border: 0; padding: 0; }
+#s-see .vendor__bar .btn { flex: 0 0 auto; }
+#s-see .note { flex: 0 0 auto; margin: 0; }
+.plate__frame img, .viewer__stage img { will-change: transform; }
+
+/* ---------- a thinner header still: vertical only ---------- */
+.topbar { padding-top: 0; padding-bottom: 2px; row-gap: 0; }
+.brand__name { font-size: 13px; line-height: 1.1; }
+.brand { min-height: 0; }
+.steps { line-height: 1; }
+.steps__item { font-size: 9px; line-height: 1; }
+.steps__item i { margin: 0 3px 0 0; }
+.scenario { padding: 1px 0; min-height: 0; line-height: 1.2; }
+.scenario__tag { width: 15px; height: 15px; font-size: 8.5px; line-height: 15px; }
+.scenario__text { font-size: 10px; line-height: 1.25; }
+.tools .btn, #restartBtn { padding: 3px 8px; font-size: 10px; }
+
+/* the vendor figure must fill its box, not hug the picture's aspect */
+#s-see .vendor--hero img { flex: 1 1 auto; min-height: 0; height: auto; width: 100%; object-fit: contain; align-self: stretch; }
+#s-see .vendor--hero { gap: 0; }
+/* the figure is a grid so the picture gets a definite, full-height row */
+#s-see .vendor--hero { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+#s-see .vendor--hero img { width: 100%; height: 100%; min-height: 0; object-fit: contain; display: block; }
+/* an earlier max-height rule for vendor images was clamping the hero figure */
+#s-see .vendor--hero img, #s-see .vendor._selector img { max-height: none; }
+#s-see .vendor--hero img { max-height: none !important; }

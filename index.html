@@ -22,7 +22,7 @@
       <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i><b>1</b><span class="lbl-full">DECT oedema map</span><span class="lbl-short">DECT</span></button>
       <button class="steps__item" type="button" data-pip="lab" data-go="lab"><i></i><b>2</b><span class="lbl-full">3D + 4D Lab</span><span class="lbl-short">3D</span></button>
       <button class="steps__item" type="button" data-pip="render" data-go="render"><i></i><b>2</b><span class="lbl-full">render · movie</span><span class="lbl-short">movie</span></button>
-      <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">dose</span></button>
+      <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">denoise</span></button>
       <button class="steps__item" type="button" data-pip="move" data-go="move"><i></i><b>2</b><span class="lbl-full">4D dynamic CT</span><span class="lbl-short">4D</span></button>
       <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
       <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">prep</span></button>
@@ -301,52 +301,23 @@
       </div>
     </section>
 
-    <!-- ============ 2b. 3D + 4D — THE DOSE THAT BUYS THE FOURTH DIMENSION ============ -->
+    <!-- ============ 2b. 3D + 4D — THE DENOISER ============ -->
     <section class="screen" id="s-see" aria-labelledby="see-title">
-      <div class="split">
-        <div class="col">
-          <p class="stepmark">3D + 4D · less dose</p>
-          <h2 class="h2" id="see-title">Turn the denoiser up, and the dose comes down.</h2>
-          <p class="body">A deep-learning denoiser rebuilds the image from the same raw data, and its strength is a setting — so a scan can be acquired at lower dose and still read. That dose is the currency: it is what pays for new dimensions of CT, like a joint imaged repeatedly in motion.</p>
+      <div class="col col--wide seepage">
+        <p class="stepmark">3D + 4D · denoising</p>
+        <h2 class="h2 seepage__h" id="see-title">Turn the denoiser up, and the dose comes down.</h2>
+        <p class="body seepage__lede">A denoiser rebuilds the image from the same raw data, and its strength is a setting — so a scan can be acquired at lower dose and still read. That dose pays for new dimensions of CT, like a joint imaged repeatedly in motion.</p>
 
-          <div class="dose" id="doseLadder" data-tier="t0">
-            <div class="dose__head">
-              <p class="dose__title">The dose ladder</p>
-              <p class="dose__sub">Drag the dose down. The gate decides where the ladder stops.</p>
-            </div>
-            <input class="dose__range" id="doseRange" type="range" min="0" max="40" step="5" value="0" aria-label="Dose reduction from baseline, per cent">
-            <div class="dose__read">
-              <div class="dose__stat"><span class="dose__k">CTDIvol vs baseline</span><b class="dose__v" id="doseCtdi">100%</b></div>
-              <div class="dose__stat"><span class="dose__k">Image noise vs baseline</span><b class="dose__v" id="doseNoise">100%</b></div>
-              <div class="dose__stat"><span class="dose__k">Gate</span><b class="dose__v" id="doseGate">baseline</b></div>
-            </div>
-            <div class="dose__ladder" aria-hidden="true">
-              <span class="dose__rung" data-rung="20"><b>−20%</b><i>Tier 1</i></span>
-              <span class="dose__rung" data-rung="30"><b>−30%</b><i>Tier 2</i></span>
-              <span class="dose__rung" data-rung="40"><b>−40%</b><i>ceiling</i></span>
-            </div>
-            <p class="dose__out" id="doseOut" role="status" aria-live="polite">Baseline. Nothing has moved yet.</p>
-            <p class="dose__fine">Rungs and gate are the department's own pre-committed rules. The curve is a model of them, not measured data.</p>
+        <figure class="vendor vendor--hero">
+          <p class="vendor__flag">Vendor example — not our data</p>
+          <img src="assets/photos/ge-truefidelity.jpg" alt="Three coronal CT reformats of the same patient: noisy FBP, ASiR-V at 50 percent, and TrueFidelity, progressively cleaner from left to right.">
+          <div class="vendor__bar">
+            <figcaption class="vendor__cap">The same acquisition, three reconstructions at 0.625 mm — FBP, ASiR-V 50%, TrueFidelity — for a patient with a BMI of 62. <a href="https://www.gehealthcare.com/en/products/ct/revolution-apex" target="_blank" rel="noopener">GE HealthCare ↗</a></figcaption>
+            <button class="btn btn--primary btn--sm" data-go="move" type="button">Next: watch the joint move</button>
           </div>
+        </figure>
 
-          <button class="btn btn--primary" data-go="move" type="button">Next: watch the joint move</button>
-        </div>
-
-        <div class="col">
-          <figure class="vendor">
-            <p class="vendor__flag">Vendor example — not our data</p>
-            <img src="assets/photos/ge-truefidelity.jpg" alt="Three coronal CT reformats of the same patient: noisy FBP, ASiR-V at 50 percent, and TrueFidelity, progressively cleaner from left to right.">
-            <figcaption class="vendor__cap">
-              The same acquisition, three reconstructions at 0.625 mm — FBP, ASiR-V 50%, TrueFidelity — for a patient with a BMI of 62.
-              <a href="https://www.gehealthcare.com/en/products/ct/revolution-apex" target="_blank" rel="noopener">GE HealthCare ↗</a>
-            </figcaption>
-          </figure>
-          <div class="teach">
-            <p class="teach__h">One scan, three reconstructions.</p>
-            <p class="body">Nothing extra was scanned. The strength of the denoiser is the variable — that is the setting the ladder spends.</p>
-          </div>
-          <p class="note">A dose target with a quality floor, reported tier by tier — not a saving we have already banked. What it buys is the headroom for 4D.</p>
-        </div>
+        <p class="note">One scan, three reconstructions: nothing extra was taken. A dose target with a quality floor, reported tier by tier — not a saving we have banked.</p>
       </div>
     </section>
 

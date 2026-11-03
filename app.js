@@ -598,72 +598,6 @@
     });
   }
 
-  /* ---------------------------------------------------------------- see: the dose ladder */
-  // The rungs and the noise gate are the department's own pre-committed rules.
-  // The curve below models that rule; it is not measured patient data, and the
-  // screen says so in .dose__fine.
-  var DOSE_GATE = 115;        // per cent of baseline noise, the QI plan's pass line
-  var DOSE_TF = 0.0014;       // reconstruction-level compensation applied per per-cent of dose removed
-
-  function doseNoisePct(r) {
-    return 100 / Math.sqrt(1 - r / 100) * (1 - DOSE_TF * r);
-  }
-
-  function doseNodes() {
-    return {
-      root: document.getElementById("doseLadder"),
-      range: document.getElementById("doseRange"),
-      ctdi: document.getElementById("doseCtdi"),
-      noise: document.getElementById("doseNoise"),
-      gate: document.getElementById("doseGate"),
-      out: document.getElementById("doseOut"),
-      rungs: qsa(".dose__rung")
-    };
-  }
-
-  function doseCopy(r) {
-    if (r === 0) return "Baseline. Nothing has moved yet.";
-    if (r > 0 && r <= 20) return "Tier 1 \u00b7 \u221220% CTDIvol. The gate wants median CTDIvol at or below 80% of baseline with image noise at or below 115%, assessed over 30 cases before the next rung opens.";
-    if (r > 20 && r < 30) return "The ladder only moves in committed steps: \u221220%, then \u221230%. There is no rung at \u2212" + r + "%.";
-    if (r === 30) return "Tier 2 \u00b7 \u221230% cumulative. The same noise gate, the same 30-case assessment. This is where the default ladder stops unless the margin is wide.";
-    if (r > 30 && r < 40) return "No rung between \u221230% and the ceiling. The ladder is stepped on purpose.";
-    return "The ceiling. Noise breaches the 115% gate here. Reconstruction reduces noise; it cannot create information, so the quality floor wins and the dose goes back up.";
-  }
-
-  function paintDose(r) {
-    var n = doseNodes();
-    if (!n.root) return;
-    var noise = doseNoisePct(r);
-    var pass = noise <= DOSE_GATE;
-    var onRung = r === 0 || r === 20 || r === 30 || r === 40;
-    var tier = r === 0 ? "t0" : (r < 30 ? "t1" : (r < 40 ? "t2" : "fail"));
-    var gate = r === 0 ? "baseline" : (!onRung ? "no rung here" : (pass ? "passes" : "fails"));
-
-    if (n.ctdi) n.ctdi.textContent = (100 - r) + "%";
-    if (n.noise) n.noise.textContent = Math.round(noise) + "%";
-    if (n.gate) n.gate.textContent = gate;
-    if (n.out) n.out.textContent = doseCopy(r);
-    n.root.setAttribute("data-tier", tier);
-
-    n.rungs.forEach(function (el) {
-      var at = Number(el.getAttribute("data-rung"));
-      el.classList.toggle("is-on", r >= at && doseNoisePct(at) <= DOSE_GATE);
-    });
-  }
-
-  function resetDose() {
-    var n = doseNodes();
-    if (n.range) n.range.value = "0";
-    paintDose(0);
-  }
-
-  function wireDose() {
-    var n = doseNodes();
-    if (!n.range) return;
-    n.range.addEventListener("input", function () { paintDose(Number(n.range.value) || 0); });
-    paintDose(Number(n.range.value) || 0);
-  }
-
   /* ---------------------------------------------------------------- lab: the render gallery */
   var LAB_CASES = {
     foot: {
@@ -834,7 +768,6 @@
     if (toastEl) toastEl.hidden = true;
     window.clearTimeout(toastTimer);
     resetAcceleration();
-    resetDose();
     resetLab();
     resetCine();
     qsa(".qscore li").forEach(function (li) { li.classList.remove("is-right", "is-wrong"); });
@@ -958,10 +891,23 @@
       var cSlider = bar && bar.querySelector('[data-w="c"]');
       var zLabel = bar && bar.querySelector("[data-zval]");
 
+      // The picture is drawn with object-fit: contain, so at 100% it usually
+      // fills one axis and leaves slack on the other. Panning is allowed across
+      // that slack as well as the overflow created by zoom, which is what makes
+      // a drag feel like moving the film rather than nothing at all.
+      function painted() {
+        var fw = frame.clientWidth, fh = frame.clientHeight;
+        var nw = img.naturalWidth || fw, nh = img.naturalHeight || fh;
+        var s = Math.min(fw / nw, fh / nh);
+        return { w: nw * s, h: nh * s, fw: fw, fh: fh };
+      }
       function clampPan() {
-        var w = frame.clientWidth, h = frame.clientHeight;
-        var maxX = Math.max(0, (v.z - 1) * w / 2);
-        var maxY = Math.max(0, (v.z - 1) * h / 2);
+        var p = painted();
+        var slackX = Math.max(0, (p.fw - p.w) / 2);
+        var slackY = Math.max(0, (p.fh - p.h) / 2);
+        var zoomX = Math.max(0, (p.w * v.z - p.fw) / 2);
+        var zoomY = Math.max(0, (p.h * v.z - p.fh) / 2);
+        var maxX = slackX + zoomX, maxY = slackY + zoomY;
         v.x = Math.max(-maxX, Math.min(maxX, v.x));
         v.y = Math.max(-maxY, Math.min(maxY, v.y));
       }
@@ -1016,7 +962,8 @@
         }
         var dx = e.clientX - p.x, dy = e.clientY - p.y;
         p.x = e.clientX; p.y = e.clientY;
-        if (v.z > 1) { v.x += dx; v.y += dy; paint(); }
+        v.x += dx; v.y += dy;
+        paint();
       });
       ["pointerup", "pointercancel", "pointerleave"].forEach(function (ev) {
         frame.addEventListener(ev, function (e) { delete v.pointers[e.pointerId]; });
@@ -1230,7 +1177,6 @@
   wireVideos();
   wireChips();
   wireAcceleration();
-  wireDose();
   wireGallery();
   wireCine();
   wirePrimeFrame();
