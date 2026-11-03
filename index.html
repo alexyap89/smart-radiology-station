@@ -192,11 +192,13 @@
             </div>
           </div>
           <div class="row row--tight">
+            <button class="btn btn--ghost btn--sm" id="glFull" type="button" aria-pressed="false">Full screen</button>
             <button class="btn btn--ghost btn--sm" id="glReset" type="button">Reset view</button>
             <a class="btn btn--ghost btn--sm" id="arLink" href="assets/models/tibia-fracture.usdz" rel="ar">
               <img src="assets/models/ar-glyph.svg" alt="" class="ar-glyph"> View in AR
             </a>
           </div>
+          <label class="cut">Cut plane<input id="glCut" type="range" min="0" max="90" step="1" value="0" aria-label="Cut plane through the model"></label>
           <p class="micro">AR opens in Apple Quick Look. Model decimated — not for diagnostic use.</p>
 
           <p class="body">Spectral data maps the bruise inside the bone that plain CT cannot show.</p>
@@ -242,9 +244,9 @@
             <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman, awake and alert, phone in hand.">
             <p class="patient__meta"><b>Patient B</b> · she walked in on it · left knee · the film that was negative</p>
           </div>
-          <h2 class="h2" id="neg-title">No fracture on the film — and the knee still hurts.</h2>
-          <p class="body">Dual-energy CT excluded an occult fracture the same night — no MRI slot, no admission.</p>
-          <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
+          <h2 class="h2" id="neg-title">No fracture on the film.</h2>
+          <p class="body">Dual-energy CT excluded an occult fracture the same night: <b>no admission</b>, and <b>no wait for an MRI slot</b>.</p>
+          <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, home — and the pain settled.</p>
           <button class="btn btn--primary" data-go="lab" type="button">Next: cases the lab has already done</button>
         </div>
       </div>

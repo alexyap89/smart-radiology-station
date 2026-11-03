@@ -377,11 +377,12 @@
   function scale(s) { return new Float32Array([s,0,0,0, 0,s,0,0, 0,0,s,0, 0,0,0,1]); }
 
   var VS = "attribute vec3 aPos; attribute vec3 aNor; uniform mat4 uProj; uniform mat4 uView;" +
-    "varying vec3 vNor; varying vec3 vEye;" +
-    "void main(){ vec4 eye = uView * vec4(aPos,1.0); vEye = -eye.xyz; vNor = mat3(uView) * aNor;" +
+    "varying vec3 vNor; varying vec3 vEye; varying float vY;" +
+    "uniform float uCut;" +
+    "void main(){ vec4 eye = uView * vec4(aPos,1.0); vEye = -eye.xyz; vNor = mat3(uView) * aNor; vY = aPos.y;" +
     "gl_Position = uProj * eye; }";
-  var FS = "precision mediump float; varying vec3 vNor; varying vec3 vEye; uniform vec3 uColor; uniform float uWire;" +
-    "void main(){ if(uWire > 0.5){ gl_FragColor = vec4(0.37,0.82,0.85,0.55); return; }" +
+  var FS = "precision mediump float; varying vec3 vNor; varying vec3 vEye; varying float vY; uniform vec3 uColor; uniform float uWire; uniform float uCut;" +
+    "void main(){ if(vY > uCut){ discard; } if(uWire > 0.5){ gl_FragColor = vec4(0.37,0.82,0.85,0.55); return; }" +
     "vec3 n = normalize(vNor); vec3 v = normalize(vEye);" +
     "float key = max(dot(n, normalize(vec3(-0.4,0.7,0.6))), 0.0);" +
     "float fill = max(dot(n, normalize(vec3(0.7,0.1,0.4))), 0.0) * 0.35;" +
@@ -442,6 +443,7 @@
     var uView = ctx.getUniformLocation(prog, "uView");
     var uColor = ctx.getUniformLocation(prog, "uColor");
     var uWire = ctx.getUniformLocation(prog, "uWire");
+    var uCut = ctx.getUniformLocation(prog, "uCut");
 
     var lineIdx = null;
     function buildLines() {
@@ -456,6 +458,16 @@
       }
       return new Uint32Array(out);
     }
+
+    var pos = data.pos || null;
+    if (pos) {
+      var lo = Infinity, hi = -Infinity;
+      for (var iy = 1; iy < pos.length; iy += 3) {
+        if (pos[iy] < lo) lo = pos[iy];
+        if (pos[iy] > hi) hi = pos[iy];
+      }
+      gl.minY = lo; gl.maxY = hi;
+    } else { gl.minY = -1; gl.maxY = 1; }
 
     function resize() {
       var r = canvas.getBoundingClientRect();
@@ -485,6 +497,7 @@
       ctx.uniformMatrix4fv(uView, false, view);
       ctx.uniform3f(uColor, 0.94, 0.91, 0.85);
       ctx.uniform1f(uWire, gl.wire ? 1 : 0);
+      if (uCut) ctx.uniform1f(uCut, gl.cut === undefined ? 99 : gl.cut);
 
       ctx.bindBuffer(ctx.ARRAY_BUFFER, posBuf);
       ctx.enableVertexAttribArray(aPos);
@@ -537,7 +550,33 @@
     var reset = document.getElementById("glReset");
     if (reset) reset.addEventListener("click", function () {
       mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.35; mv.spin = true;
+      gl.cut = 99;
+      if (cut) cut.value = "0";
     });
+
+    /* a movable cut plane through the same mesh: the internal fracture
+       configuration, which the surface alone does not show */
+    var cut = document.getElementById("glCut");
+    if (cut) {
+      cut.addEventListener("input", function () {
+        var p = Number(cut.value);
+        // 0 = no cut; dragging right moves the plane down through the mesh
+        gl.cut = p <= 0 ? 99 : (gl.minY + (gl.maxY - gl.minY) * (1 - p / 100));
+      });
+    }
+
+    var modelFull = document.getElementById("glFull");
+    var modelBox = document.querySelector("#s-pos .model");
+    if (modelFull && modelBox) {
+      modelFull.addEventListener("click", function () {
+        var on = !modelBox.classList.contains("is-full");
+        modelBox.classList.toggle("is-full", on);
+        document.body.classList.toggle("has-full", on);
+        modelFull.textContent = on ? "Exit full screen" : "Full screen";
+        modelFull.setAttribute("aria-pressed", on ? "true" : "false");
+        window.setTimeout(resize, 60);
+      });
+    }
   }
 
   /* ---------------------------------------------------------------- media */
@@ -943,9 +982,13 @@
       }
 
       /* drag to pan, wheel to zoom, two-finger pinch */
+      frame.addEventListener("dragstart", function (e) { e.preventDefault(); });
+
       frame.addEventListener("pointerdown", function (e) {
         v.pointers[e.pointerId] = { x: e.clientX, y: e.clientY };
+        v.drag = true;
         frame.setPointerCapture && frame.setPointerCapture(e.pointerId);
+        if (e.preventDefault) e.preventDefault();
       });
       frame.addEventListener("pointermove", function (e) {
         var p = v.pointers[e.pointerId];
@@ -964,8 +1007,11 @@
         v.x += dx; v.y += dy;
         paint();
       });
-      ["pointerup", "pointercancel", "pointerleave"].forEach(function (ev) {
-        frame.addEventListener(ev, function (e) { delete v.pointers[e.pointerId]; });
+      ["pointerup", "pointercancel"].forEach(function (ev) {
+        frame.addEventListener(ev, function (e) { delete v.pointers[e.pointerId]; v.drag = false; });
+      });
+      frame.addEventListener("pointerleave", function (e) {
+        if (!v.drag) delete v.pointers[e.pointerId];
       });
       frame.addEventListener("wheel", function (e) {
         if (Math.abs(e.deltaY) < 1) return;
