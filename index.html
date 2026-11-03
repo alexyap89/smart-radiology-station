@@ -64,11 +64,11 @@
           <div class="pair">
             <figure class="pair__fig">
               <img src="assets/img/patient-a.jpg" alt="Illustration: a man in an emergency department bay, his right leg splinted, waiting for the film to be read.">
-              <figcaption><b>1</b> A knee that cannot bear weight</figcaption>
+              <figcaption><b>A</b> A knee that cannot bear weight</figcaption>
             </figure>
             <figure class="pair__fig">
               <img src="assets/img/patient-b.jpg" alt="Illustration: an elderly woman at home in the evening, holding a phone showing the scanner room.">
-              <figcaption><b>4</b> A first MRI, rehearsed at home</figcaption>
+              <figcaption><b>B</b> A first MRI, rehearsed at home</figcaption>
             </figure>
           </div>
           <figcaption class="pair__note">Illustrations, not real patients. The clinical images on this station are de-identified.</figcaption>
@@ -104,6 +104,10 @@
             <ol class="qscore" id="qScoreChips" aria-label="Your calls so far">
               <li data-chip="0"></li><li data-chip="1"></li><li data-chip="2"></li><li data-chip="3"></li>
             </ol>
+          </div>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-a.jpg" alt="Illustration of the patient: a man in his fifties, right knee braced, sitting in an emergency bay.">
+            <p class="patient__meta"><b>Patient A</b> · 52 · fell at home, cannot bear weight · right knee</p>
           </div>
           <h2 class="h2" id="quiz-title">A man fell and cannot bear weight on his right knee.</h2>
 
@@ -402,6 +406,10 @@
       <div class="split split--reverse">
         <div class="col">
           <p class="stepmark">4 · pRIMe · before the scan</p>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-b.jpg" alt="Illustration of the patient: an elderly woman at home in the evening, rehearsing the scan on her phone.">
+            <p class="patient__meta"><b>Patient B</b> · 74 · first MRI, claustrophobic, speaks Hokkien</p>
+          </div>
           <h2 class="h2" id="two-title">She has just been told she has a liver tumour. Tomorrow is her first MRI.</h2>
           <p class="body">She is anxious, she is claustrophobic, and she speaks Hokkien. That combination is why scans get abandoned, repeated, or done under sedation.</p>
 
@@ -452,8 +460,12 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">3 · MRI acceleration · in the scanner</p>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-a-mri.jpg" alt="Illustration of the patient in the scanner: the same man, knee brace under a blanket, sliding into the MRI bore.">
+            <p class="patient__meta"><b>Patient A</b> · in the scanner · his MRI after the fracture was fixed</p>
+          </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
-          <p class="body">AI reconstruction rebuilds the image from less acquired data. The scan ends sooner, the image stays sharp, and the patient spends less time inside the bore — which is exactly the part that makes a claustrophobic patient want the scan to stop.</p>
+          <p class="body">The same man, four weeks after the fracture was fixed, now needs an MRI to answer what the CT could not: the meniscus and the ligaments. AI reconstruction rebuilds the image from less acquired data, so the scan ends sooner and the image stays sharp — less time inside a bore he has never been in before.</p>
 
           <div class="sim" id="scanSim" data-state="idle" aria-label="Illustrative scan-time comparison">
             <div class="sim__head">
@@ -486,8 +498,8 @@
           </div>
 
           <p class="body body--tight">Median reduction about 37% across 8 musculoskeletal anatomies — an initial evaluation, MSK only. The timeline above illustrates the ratio, not a timing chart.</p>
-          <p class="note">Shorter time in the bore is the clinical point: less opportunity for anxiety to turn into an abandoned scan, a repeat, or sedation. Our own paired standard and reconstructed images are not on this station; the example opposite is the vendor's. What we measured here is scan time.</p>
-          <button class="btn btn--primary" data-go="two" type="button">Next: the patient who was afraid</button>
+          <p class="note">Shorter time in the bore is the clinical point: less opportunity for anxiety to turn into an abandoned scan, a repeat, or sedation.</p>
+          <button class="btn btn--primary" data-go="two" type="button">Next: a patient who is afraid of the scanner</button>
         </div>
 
         <div class="col col--model">
@@ -501,18 +513,18 @@
             </figcaption>
           </figure>
 
-          <p class="minihead">What she noticed</p>
+          <p class="minihead">What this rests on</p>
           <div class="teach">
-            <p class="teach__h">The room was already familiar.</p>
-            <p class="body">She had walked through it on her own phone the night before, so the bore was not a surprise.</p>
+            <p class="teach__h">An initial evaluation, musculoskeletal only.</p>
+            <p class="body">About 37% shorter across 8 musculoskeletal anatomies. Not every protocol, and not every patient — the figure does not travel beyond that.</p>
           </div>
           <div class="teach">
-            <p class="teach__h">The breath-holds were not new.</p>
-            <p class="body">She had practised holding her breath at home. In the scanner she was repeating something known.</p>
+            <p class="teach__h">Our own paired images are not on this station.</p>
+            <p class="body">What we measured here is scan time. The image comparison beside it is the vendor's, at the same voxel size, and it is labelled as theirs.</p>
           </div>
           <div class="teach">
-            <p class="teach__h">It finished sooner than she expected.</p>
-            <p class="body">AI reconstruction cut the acquisition short. At one month, 16 of 16 patients rated the preparation positively and would recommend it.</p>
+            <p class="teach__h">Shorter is the patient-facing half.</p>
+            <p class="body">Time inside the bore is the part a patient has to endure. Less of it is less to endure, less to abandon, less to repeat — and the image is what the radiologist reports from either way.</p>
           </div>
         </div>
       </div>

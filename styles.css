@@ -2245,3 +2245,44 @@ body[data-started="1"] .timer { display: inline; }
 .tk-list { font-size: clamp(10.5px, .76vw, 12px); line-height: 1.34; }
 .tk-thesis, .caution.tk-limit { font-size: clamp(10.5px, .78vw, 12.5px); }
 .col--model .model { max-height: min(38vh, 380px); }
+
+/* ---------- the patient beside the first slide of a case ---------- */
+.patient { display: flex; align-items: center; gap: 10px; margin: 0 0 2px; }
+.patient__img {
+  width: clamp(44px, 3.6vw, 62px); height: clamp(44px, 3.6vw, 62px);
+  object-fit: cover; object-position: 50% 16%; border: 1px solid var(--rule-strong);
+  flex: 0 0 auto;
+}
+.patient__meta {
+  margin: 0; font-size: clamp(10px, .78vw, 12px); line-height: 1.35;
+  letter-spacing: .02em; color: var(--paper-faint);
+}
+.patient__meta b { color: var(--paper); letter-spacing: .08em; text-transform: uppercase; }
+
+/* #s-speed carries the patient row now: give it back the 18px it lost */
+#s-speed .h2 { font-size: clamp(19px, 1.85vw, 26px); }
+#s-speed .sim { gap: 7px; }
+#s-speed .sim__lane { padding: 3px 0; }
+#s-speed .note, #s-speed .body--tight { font-size: clamp(10.5px, .8vw, 12.5px); line-height: 1.4; }
+
+/* #s-speed: the patient row cost more than the column had */
+#s-speed .sim__bore { margin-top: 2px; }
+#s-speed .sim__out, #s-speed .sim__controls { margin-top: 0; }
+#s-speed .row--tight { margin-top: 2px; }
+#s-speed .split { align-content: start; }
+
+/* #s-speed: trim the simulator itself rather than the type */
+.sim { gap: 6px; padding: clamp(9px, 1vw, 13px); }
+.sim__head .sim__title { font-size: clamp(13px, 1.05vw, 16px); }
+.sim__head .sim__sub { font-size: clamp(9.5px, .72vw, 11px); line-height: 1.35; }
+.sim__lane { gap: 8px; }
+.sim__track { height: 8px; }
+.sim__boretube { height: 10px; }
+.sim__controls { gap: 8px; }
+#s-speed .col { gap: clamp(4px, .7vh, 8px); }
+
+/* a missing portrait must not reflow the copy */
+.patient__img { background: #05080b; overflow: hidden; }
+#s-speed .body { font-size: clamp(11px, .82vw, 12.5px); line-height: 1.42; }
+#s-speed .h2 { margin-bottom: 0; }
+#s-speed .note { margin-top: 0; }

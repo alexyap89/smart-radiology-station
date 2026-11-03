@@ -41,6 +41,8 @@ A persistent bar under the header names the programme on every screen, and the n
 3. **MRI acceleration** (`#s-speed`) — unchanged: the scan simulator, the ~37% MSK evaluation, the labelled vendor example.
 4. **pRIMe** (`#s-two`) — unchanged apart from the removal of the Telmi journey step.
 
+**Who is on screen.** Two patients, deliberately. **Patient A** — the man with the tibial-plateau fracture — carries domains 1, 2 and 3: the ED film, the CT/DECT, the 3D render, the 4D motion, and later the MRI four weeks after fixation. **Patient B** — the anxious, claustrophobic, Hokkien-speaking woman — carries domain 4 (pRIMe), because the preparation evidence (16/16 at one month) is hers and the language is the point. The MRI-acceleration figure is **musculoskeletal only**, so the patient shown in the bore is the MSK patient, not the oncology patient. Each case's first slide carries a small portrait with one line of context; the attract screen carries the two faces side by side, labelled "Illustrations, not real patients".
+
 **Removed:** the entire `#s-temi` screen and every Telmi reference (nav pip, journey step, takeaway line). The wayfinding pilot is no longer on the station.
 
 ## 3. Approved evidence — the only numbers allowed
@@ -86,7 +88,7 @@ assets/cases/   12 de-identified clinical images (films, AI panels, CT, fusion, 
 assets/photos/  two room stills from the video + the Siemens example
 assets/models/  tibia-fracture.js (decimated mesh, 76k verts), tibia-fracture.usdz (AR), ar-glyph.svg
 assets/cine/    three cinematic render stills (foot, scapula, ribs) from the 3D Lab case PDF
-assets/img/     four generated patient illustrations (NOT real patients) — a-ed, a-ct, b-home, b-mri
+assets/img/     three generated patient illustrations (NOT real patients) — patient-a, patient-a-mri, patient-b
 assets/videos/  three Rad-ART clips + posters, and four 4D clips: 4d-knee, 4d-surface, 4d-shoulder, 4d-hindfoot
 assets/*.svg    audio placeholder, pathway icons
 ```
@@ -161,7 +163,7 @@ Open the app, then check in order:
 - **Legibility at 1.5 m on the mirrored 55-inch display.** Type sizes were raised for large screens; the distance needs a human eye at the venue.
 - **Touch gestures on hardware.** Drag, pinch and wheel were exercised by pointer emulation, not by a finger.
 - **Pixel appearance in Safari on the stand device.** Screenshots in the test harness were unreliable; every claim above is a DOM/state assertion plus geometry measurements.
-- **The generated patient illustrations.** Produced locally with FLUX.2 klein from text prompts; they are illustrative composites, not portraits of the department's patients, and the cover says so. The MRI image's scanner reads as a generic gantry rather than this department's bore — check it looks acceptable at the venue, and regenerate if not.
+- **The generated patient illustrations.** Produced locally with FLUX.2 klein from text prompts; illustrative composites, not portraits of the department's patients, labelled as such on the cover. The MRI frame (seed 51) shows a wide-bore magnet, a knee brace on the patient and a sky-painted ceiling; it is close to the department's room but is not a photograph of it, and it must not be described as one.
 - **Whether the four 4D clips read as motion from 1.5 m away.** They were cropped, trimmed and sped up (1.8–2.5×) for legibility on a screen; verify at the stand.
 - **The 4D clips' provenance wording.** They are captures of a workstation during the pilot's test cases; confirm with the lead that showing them on a board stand is acceptable before the event.
 
