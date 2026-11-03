@@ -98,7 +98,7 @@ assets/photos/  two room stills from the video + the Siemens example
 assets/models/  tibia-fracture.js (decimated mesh, 76k verts), tibia-fracture.usdz (AR), ar-glyph.svg
 assets/cine/    three cinematic render stills (foot, scapula, ribs) from the 3D Lab case PDF
 assets/img/     patient-a.jpg (supplied photograph, mirrored so the bandaged knee reads right), patient-a-mri.jpg and patient-b.jpg (generated illustrations), patient-b-mri.jpg (generated)
-assets/videos/  three Rad-ART clips + posters, and four 4D clips: 4d-knee, 4d-surface, 4d-shoulder, 4d-hindfoot
+assets/videos/  three Rad-ART clips + posters, and three 4D clips: 4d-knee, 4d-surface, 4d-full (the whole 1920x1080 workstation recording, uncropped, 13.5 MB)
 assets/*.svg    audio placeholder, pathway icons
 ```
 
