@@ -3137,3 +3137,15 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
   color: var(--paper); line-height: 1.05;
 }
 .brand__mark { width: 10px; height: 10px; }
+
+/* the chip reads as one unit: portrait beside its line, aligned right */
+#s-quiz .patient, #s-pos .patient, #s-neg .patient, #s-speed .patient {
+  flex-direction: row-reverse; align-items: center; gap: 8px;
+  align-self: flex-end; max-width: 62%; width: auto;
+}
+#s-quiz .patient__meta, #s-pos .patient__meta, #s-neg .patient__meta, #s-speed .patient__meta {
+  text-align: right; white-space: normal;
+}
+/* portrait first, then the line, both flush right as one chip */
+#s-quiz .patient, #s-pos .patient, #s-neg .patient, #s-speed .patient { flex-direction: row; }
+#s-quiz .patient__meta, #s-pos .patient__meta, #s-neg .patient__meta, #s-speed .patient__meta { text-align: left; }
