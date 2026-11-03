@@ -2911,3 +2911,22 @@ body.has-full { overflow: hidden; }
 #s-neg .col--model .btn--primary { align-self: flex-start; margin-top: auto; }
 /* the forward control belongs with the text above it, not pinned to the floor */
 #s-neg .col--model .btn--primary { margin-top: 4px; }
+
+/* one control row, so the film itself can take the freed height */
+.win__bar { flex-wrap: nowrap; }
+.win__ctl input[type="range"] { width: clamp(56px, 4.4vw, 84px); }
+#s-quiz .win__ctl { gap: 5px; }
+#s-quiz .win__zoom button, #s-quiz .win__reset { min-width: 24px; height: 24px; }
+#s-quiz .win__full { height: 24px; padding: 0 7px; }
+#s-quiz .win__group { gap: 8px; }
+#s-quiz .win__group + .win__group { padding-left: 8px; }
+
+/* and the film grows into it */
+#s-quiz .plate { width: 100%; max-width: none; }
+#s-quiz .plate__frame { height: clamp(340px, 62vh, 640px); width: 100%; aspect-ratio: auto; }
+#s-quiz .plate__frame img { width: 100%; height: 100%; object-fit: contain; }
+
+/* the bar wraps into two tidy rows; the film gives back the 40px it took */
+#s-quiz .win__bar { flex-wrap: wrap; row-gap: 6px; }
+#s-quiz .plate__frame { height: clamp(300px, 54vh, 580px); }
+#s-quiz .win__ctl input[type="range"] { width: clamp(64px, 5vw, 96px); }

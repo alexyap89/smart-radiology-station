@@ -11,7 +11,7 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "render", "see", "move", "speed", "two", "tools", "takeaway"];
+  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "render", "see", "move", "two", "speed", "tools", "takeaway"];
 
   var state = {
     screen: "attract",
@@ -116,7 +116,7 @@
         tk.className = "verdict verdict--score" + (n === 2 ? " verdict--clear" : "");
       }
     }
-    if (name !== "move") cineLeave();
+    if (name === "move") cinePlay(); else cineLeave();
     playVideos(name === "render");
     primeLoad(name === "tools");
     if (name !== "takeaway") closeOverlay();
@@ -411,12 +411,21 @@
     function shader(type, src) {
       var s = ctx.createShader(type);
       ctx.shaderSource(s, src); ctx.compileShader(s);
+      if (!ctx.getShaderParameter(s, ctx.COMPILE_STATUS)) {
+        window.__glLog = (window.__glLog || "") + "compile: " + ctx.getShaderInfoLog(s) + "\n" + src + "\n";
+      }
       return s;
     }
     var prog = ctx.createProgram();
     ctx.attachShader(prog, shader(ctx.VERTEX_SHADER, VS));
     ctx.attachShader(prog, shader(ctx.FRAGMENT_SHADER, FS));
     ctx.linkProgram(prog);
+    if (!ctx.getProgramParameter(prog, ctx.LINK_STATUS)) {
+      window.__glLog = (window.__glLog || "") + "link: " + ctx.getProgramInfoLog(prog) + "\n";
+      if (fallback) fallback.hidden = false;
+      canvas.style.display = "none";
+      return;
+    }
     ctx.useProgram(prog);
 
     var data = decodeMesh(mesh);
@@ -683,7 +692,8 @@
   /* ---------------------------------------------------------------- move: the 4D cine */
   var CINE_CASES = {
     knee: { cap: "Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase." },
-    ankle: { cap: "Ankle and hindfoot. Volume render, one acquisition stepped through the arc." },
+    surface: { cap: "Hindfoot, rendered surface. One acquisition, stepped through the arc." },
+    ankle: { cap: "Ankle and hindfoot. Volume render and reformats, one acquisition through the arc." },
     shoulder: { cap: "Shoulder. Volume render through the arc, with surgical clips and vessels in view." }
   };
 
@@ -724,6 +734,7 @@
     var c = CINE_CASES[key];
     var n = cineNodes();
     if (!c || !n || !n.video) return;
+    var wasPlaying = document.getElementById("s-move").classList.contains("is-active");
     cineStop();
     n.root.setAttribute("data-case", key);
     n.video.setAttribute("data-src", "assets/videos/4d-" + key + ".mp4");
@@ -734,6 +745,7 @@
       b.classList.toggle("is-on", on);
       b.setAttribute("aria-pressed", on ? "true" : "false");
     });
+    if (wasPlaying) cinePlay();
   }
 
   function cinePlay() {

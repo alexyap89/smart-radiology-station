@@ -24,8 +24,8 @@
       <button class="steps__item" type="button" data-pip="render" data-go="render"><i></i><b>2</b><span class="lbl-full">render · movie</span><span class="lbl-short">movie</span></button>
       <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">denoise</span></button>
       <button class="steps__item" type="button" data-pip="move" data-go="move"><i></i><b>2</b><span class="lbl-full">4D dynamic CT</span><span class="lbl-short">4D</span></button>
-      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
       <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">prep</span></button>
+      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
       <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i><span class="lbl-full">clinician-built tools</span><span class="lbl-short">tools</span></button>
       <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i><span class="lbl-full">summary</span><span class="lbl-short">sum</span></button>
     </nav>
@@ -332,19 +332,16 @@
         <div class="cine" id="moveCine" data-state="idle" data-case="knee">
           <div class="cine__tabs" role="tablist" aria-label="Dynamic studies">
             <button class="cine__tab is-on" type="button" data-case="knee" aria-pressed="true">Knee · flexion</button>
+            <button class="cine__tab" type="button" data-case="surface" aria-pressed="false">Hindfoot · surface</button>
             <button class="cine__tab" type="button" data-case="ankle" aria-pressed="false">Ankle · render</button>
             <button class="cine__tab" type="button" data-case="shoulder" aria-pressed="false">Shoulder · arc</button>
           </div>
           <figure class="cine__lane">
-            <video id="cineVideo" data-src="assets/videos/4d-knee.mp4" poster="assets/videos/4d-knee.jpg" muted loop playsinline preload="none"></video>
+            <video id="cineVideo" data-src="assets/videos/4d-knee.mp4" poster="assets/videos/4d-knee.jpg" muted loop autoplay playsinline preload="auto"></video>
             <figcaption id="cineCap">Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase.</figcaption>
           </figure>
           <div class="cine__bar">
-            <button class="btn btn--ghost btn--sm" type="button" data-cine="play">Play the motion</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-cine="pause">Pause</button>
-            <button class="btn btn--ghost btn--sm" type="button" data-cine="reset">Reset</button>
-            <p class="cine__phase"><span id="cinePhase">phase 1</span> of 12</p>
-            <button class="btn btn--primary btn--sm" data-go="speed" type="button">Next: less time in the scanner</button>
+            <button class="btn btn--primary btn--sm" data-go="two" type="button">Next: the scan starts the night before</button>
           </div>
           <p class="micro">Pilot · feasibility and workflow · no outcome data yet · no additional patient charge.</p>
         </div>
@@ -382,7 +379,7 @@
           </figure>
           
                     <div class="row row--tight">
-            <button class="btn btn--primary" data-go="tools" type="button">Continue to the tools</button>
+            <button class="btn btn--primary" data-go="speed" type="button">Next: less time in the scanner</button>
             <a class="btn btn--ghost" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
           </div>
           <p class="micro">The link needs a connection. Everything else on this station runs offline.</p>
@@ -416,7 +413,7 @@
 
           <p class="body body--tight">About 37% shorter across 8 musculoskeletal anatomies — an initial evaluation, MSK only.</p>
           <p class="note">Less time in the bore is the clinical point: less to abandon, less to repeat, less to sedate.</p>
-          <button class="btn btn--primary" data-go="two" type="button">Next: a patient who is afraid of the scanner</button>
+          <button class="btn btn--primary" data-go="tools" type="button">Continue to the tools</button>
         </div>
 
         <div class="col col--model">
