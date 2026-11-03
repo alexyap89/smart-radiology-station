@@ -2419,3 +2419,19 @@ body[data-started="1"] .timer { display: inline; }
 #s-lab .lab__top .gallery__stage { height: clamp(180px, 23vh, 270px); }
 #s-lab .lab__spot .vid video { height: clamp(130px, 17vh, 220px); width: 100%; object-fit: cover; }
 #s-lab .lab { gap: 8px; }
+
+/* the cover copy was squeezed into a narrow column */
+.attract { grid-template-columns: minmax(380px, 1.28fr) minmax(300px, .9fr); gap: clamp(24px, 3.4vw, 56px); }
+.attract .lede { max-width: 62ch; }
+.display__sub { max-width: 44ch; }
+.pair__fig { height: clamp(210px, 40vh, 380px); }
+
+/* ten pips: the last two keep short words instead of a bare tick */
+@media (max-width: 1600px) {
+  .steps__item[data-pip="tools"] .lbl-short,
+  .steps__item[data-pip="takeaway"] .lbl-short { display: inline; }
+  .steps { gap: clamp(5px, .62vw, 11px); }
+  .steps__item { letter-spacing: .06em; }
+}
+.attract { grid-template-columns: minmax(400px, 1.18fr) minmax(330px, .95fr); }
+@media (max-width: 1600px) { .steps { gap: clamp(4px, .55vw, 10px); } }

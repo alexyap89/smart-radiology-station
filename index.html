@@ -23,10 +23,10 @@
       <button class="steps__item" type="button" data-pip="lab" data-go="lab"><i></i><b>2</b><span class="lbl-full">3D + 4D Lab</span><span class="lbl-short">3D Lab</span></button>
       <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">denoise</span></button>
       <button class="steps__item" type="button" data-pip="move" data-go="move"><i></i><b>2</b><span class="lbl-full">4D dynamic CT</span><span class="lbl-short">4D</span></button>
-      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">MRI speed</span></button>
+      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
       <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">pRIMe</span></button>
       <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i><span class="lbl-full">clinician-built tools</span><span class="lbl-short">tools</span></button>
-      <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i><span class="lbl-full">summary</span><span class="lbl-short">summary</span></button>
+      <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i><span class="lbl-full">summary</span><span class="lbl-short">sum</span></button>
     </nav>
     <div class="tools">
       <span class="timer" id="sessionClock" aria-label="Session time" hidden>00:00</span>
@@ -47,15 +47,15 @@
         <div class="attract__copy">
           <p class="kicker">Department of Radiology · interactive</p>
           <h1 class="display" id="attract-title">
-            <span class="display__line">Four things one department built.</span>
+            <span class="display__line">Four innovations, deployed and in service.</span>
             <span class="display__sub">A fracture copilot in the emergency department, a 3D and 4D lab, reconstruction that shortens the scan, and a preparation experience that starts the night before.</span>
           </h1>
-          <p class="lede">One patient's knee from the first film to the operating list, then a second patient whose first MRI is already halfway dealt with before she arrives. Every claim on this station is labelled: what we validated, what is a live service, and what is still a pilot.</p>
+          <p class="lede">Two patients carry the story. The first: a knee from the first film to the operating list. The second: a woman whose first MRI is already half dealt with before she arrives. Each innovation here is labelled for what it can prove today — validated, live service, or pilot — including the ones we did not build ourselves.</p>
           <ul class="ailist">
             <li><b>RbFracture</b> screens every ED extremity film</li>
-            <li><b>3D + 4D</b> visualisation, and printing, from the scan already acquired</li>
-            <li><b>AI reconstruction</b> shortens MRI and buys dose back on CT</li>
-            <li><b>pRIMe</b> lets the patient rehearse the scan at home</li>
+            <li><b>3D + 4D</b>: visualisation, and printing, from the scan already acquired</li>
+            <li><b>AI reconstruction</b>: a shorter MRI, and dose back on CT</li>
+            <li><b>pRIMe</b>: the patient rehearses the scan at home</li>
           </ul>
           <button class="btn btn--primary btn--xl" data-go="quiz" type="button">Start experience</button>
           <p class="micro">90 seconds · four programmes · touch to begin</p>
@@ -63,12 +63,12 @@
         <figure class="attract__art attract__art--pair">
           <div class="pair">
             <figure class="pair__fig">
-              <img src="assets/img/patient-a.jpg" alt="An elderly man sitting up in a hospital bed, his right knee bandaged, talking to a clinician.">
-              <figcaption><b>A</b> A knee that cannot bear weight</figcaption>
+              <img src="assets/img/patient-a.jpg" alt="A man in his seventies sits up in a hospital bed, his right knee bandaged, explaining it to the radiographer.">
+              <figcaption><b>A</b> Three in the morning, a knee he cannot stand on</figcaption>
             </figure>
             <figure class="pair__fig">
-              <img src="assets/img/patient-b.jpg" alt="Illustration: an elderly woman at home in the evening, holding a phone showing the scanner room.">
-              <figcaption><b>B</b> A first MRI, of the liver, rehearsed at home</figcaption>
+              <img src="assets/img/patient-b.jpg" alt="An elderly woman on a sofa at night, phone held in both hands, walking through the scanner room in Hokkien.">
+              <figcaption><b>B</b> A first MRI, rehearsed at home in Hokkien</figcaption>
             </figure>
           </div>
           <figcaption class="pair__note">Portraits are illustrative, not patients of this department. The clinical images on this station are de-identified.</figcaption>
@@ -105,8 +105,8 @@
             </ol>
           </div>
           <div class="patient">
-            <img class="patient__img" id="qPatientImg" src="assets/img/patient-a.jpg" alt="The patient: an elderly man sitting up in a hospital bed, his right knee bandaged, talking to a clinician.">
-            <p class="patient__meta" id="qPatientMeta"><b>Patient A</b> · fell at home · cannot bear weight · right knee</p>
+            <img class="patient__img" id="qPatientImg" src="assets/img/patient-a.jpg" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
+            <p class="patient__meta" id="qPatientMeta"><b>Patient A</b> · cannot put weight on it · right knee</p>
           </div>
           <h2 class="h2" id="quiz-title">A man fell and cannot bear weight on his right knee.</h2>
 
@@ -155,7 +155,7 @@
         <div class="col">
           <p class="stepmark">1 · RbFracture · case 1 · fracture</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-a.jpg" alt="The patient: an elderly man in a hospital bed, right knee bandaged.">
+            <img class="patient__img" src="assets/img/patient-a.jpg" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
             <p class="patient__meta"><b>Patient A</b> · the fracture that went to CT</p>
           </div>
           <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
@@ -219,8 +219,8 @@
         <div class="col">
           <p class="stepmark">1 · RbFracture · case 2 · no fracture</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman, awake and alert, holding her phone.">
-            <p class="patient__meta"><b>Patient B</b> · fell but could walk · left knee · the film that was negative</p>
+            <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman, awake and alert, phone in hand.">
+            <p class="patient__meta"><b>Patient B</b> · she walked in on it · left knee · the film that was negative</p>
           </div>
           <h2 class="h2" id="neg-title">No fracture on the film — and the knee still hurts.</h2>
 
@@ -310,34 +310,55 @@
 
     <!-- ============ 2b. 3D + 4D — THE DOSE THAT BUYS THE FOURTH DIMENSION ============ -->
     <section class="screen" id="s-see" aria-labelledby="see-title">
-      <div class="col col--wide">
-        <p class="stepmark">3D + 4D · less dose</p>
-        <h2 class="h2" id="see-title">The image got quieter, so the scan could get smaller.</h2>
-        <p class="body">Deep-learning reconstruction rebuilds a CT image from the same raw data with the noise of a much larger dose. On the Apex that headroom is spent on dose in committed steps — tier by tier, on single-energy bone-read protocols, with the quality floor agreed before the first patient.</p>
+      <div class="split">
+        <div class="col">
+          <p class="stepmark">3D + 4D · less dose</p>
+          <h2 class="h2" id="see-title">The image got quieter, so the scan could get smaller.</h2>
+          <p class="body">Deep-learning reconstruction rebuilds a CT image from the same raw data with the noise of a much larger dose. On the Apex that headroom is spent on dose in committed steps — tier by tier, on single-energy bone-read protocols, with the quality floor agreed before the first patient.</p>
 
-        <div class="dose" id="doseLadder" data-tier="t0">
-          <div class="dose__head">
-            <p class="dose__title">The dose ladder</p>
-            <p class="dose__sub">Drag the dose down. The gate decides where the ladder stops.</p>
+          <div class="dose" id="doseLadder" data-tier="t0">
+            <div class="dose__head">
+              <p class="dose__title">The dose ladder</p>
+              <p class="dose__sub">Drag the dose down. The gate decides where the ladder stops.</p>
+            </div>
+            <input class="dose__range" id="doseRange" type="range" min="0" max="40" step="5" value="0" aria-label="Dose reduction from baseline, per cent">
+            <div class="dose__read">
+              <div class="dose__stat"><span class="dose__k">CTDIvol vs baseline</span><b class="dose__v" id="doseCtdi">100%</b></div>
+              <div class="dose__stat"><span class="dose__k">Image noise vs baseline</span><b class="dose__v" id="doseNoise">100%</b></div>
+              <div class="dose__stat"><span class="dose__k">Gate</span><b class="dose__v" id="doseGate">baseline</b></div>
+            </div>
+            <div class="dose__ladder" aria-hidden="true">
+              <span class="dose__rung" data-rung="20"><b>−20%</b><i>Tier 1</i></span>
+              <span class="dose__rung" data-rung="30"><b>−30%</b><i>Tier 2</i></span>
+              <span class="dose__rung" data-rung="40"><b>−40%</b><i>ceiling</i></span>
+            </div>
+            <p class="dose__out" id="doseOut" role="status" aria-live="polite">Baseline. Nothing has moved yet.</p>
+            <p class="dose__fine">The rungs and the noise gate are the department's own pre-committed rules. The noise curve is a model of that rule — not measured patient data.</p>
           </div>
-          <input class="dose__range" id="doseRange" type="range" min="0" max="40" step="5" value="0" aria-label="Dose reduction from baseline, per cent">
-          <div class="dose__read">
-            <div class="dose__stat"><span class="dose__k">CTDIvol vs baseline</span><b class="dose__v" id="doseCtdi">100%</b></div>
-            <div class="dose__stat"><span class="dose__k">Image noise vs baseline</span><b class="dose__v" id="doseNoise">100%</b></div>
-            <div class="dose__stat"><span class="dose__k">Gate</span><b class="dose__v" id="doseGate">baseline</b></div>
-          </div>
-          <div class="dose__ladder" aria-hidden="true">
-            <span class="dose__rung" data-rung="20"><b>−20%</b><i>Tier 1</i></span>
-            <span class="dose__rung" data-rung="30"><b>−30%</b><i>Tier 2</i></span>
-            <span class="dose__rung" data-rung="40"><b>−40%</b><i>ceiling</i></span>
-          </div>
-          <p class="dose__out" id="doseOut" role="status" aria-live="polite">Baseline. Nothing has moved yet.</p>
-          <p class="dose__fine">The rungs and the noise gate are the department's own pre-committed rules. The noise curve is a model of that rule — not measured patient data.</p>
+
+          <p class="body body--tight">Noise is the whole argument. Reconstruction reduces noise; it cannot create information. Every rung has to pass the same gate before the next one opens, and the ladder has a ceiling.</p>
+          <button class="btn btn--primary" data-go="move" type="button">Next: watch the joint move</button>
         </div>
 
-        <p class="body body--tight">Noise is the whole argument. Reconstruction reduces noise; it cannot create information. Every rung has to pass the same gate before the next one opens, and the ladder has a ceiling.</p>
-        <p class="note">What this is: a service change with a dose target, measured and reported tier by tier. What it is not: a completed dose saving.</p>
-        <button class="btn btn--primary" data-go="move" type="button">Next: watch the joint move</button>
+        <div class="col">
+          <figure class="vendor">
+            <p class="vendor__flag">Vendor example — not our data</p>
+            <img src="assets/photos/ge-truefidelity.jpg" alt="Three coronal CT reformats of the same patient: noisy FBP, ASiR-V at 50 percent, and TrueFidelity, progressively cleaner from left to right.">
+            <figcaption class="vendor__cap">
+              The same acquisition, three reconstructions at 0.625 mm — FBP, ASiR-V 50%, TrueFidelity — for a patient with a BMI of 62.
+              <a href="https://www.gehealthcare.com/en/products/ct/revolution-apex" target="_blank" rel="noopener">GE HealthCare ↗</a>
+            </figcaption>
+          </figure>
+          <div class="teach">
+            <p class="teach__h">Reconstruction is the lever, not the acquisition.</p>
+            <p class="body">All three images come from the same raw data. Nothing extra was scanned to make the right-hand image — that is the lever the ladder spends.</p>
+          </div>
+          <div class="teach">
+            <p class="teach__h">This figure is about noise, not a dose saving.</p>
+            <p class="body">It is the vendor's own illustration of how the image looks when the noise is handed to a network. What we are measuring, tier by tier, is what happens when that noise room is traded for less dose.</p>
+          </div>
+          <p class="note">What this is: a service change with a dose target, measured and reported tier by tier. What it is not: a completed dose saving.</p>
+        </div>
       </div>
     </section>
 
@@ -403,7 +424,7 @@
           <p class="stepmark">4 · pRIMe · before the scan</p>
           <div class="patient">
             <img class="patient__img" src="assets/img/patient-b.jpg" alt="Illustration of the patient: an elderly woman at home in the evening, rehearsing the scan on her phone.">
-            <p class="patient__meta"><b>Patient B</b> · 74 · fell but could walk · now liver MRI · claustrophobic, speaks Hokkien</p>
+            <p class="patient__meta"><b>Patient B</b> · 74 · first MRI · claustrophobic · speaks Hokkien</p>
           </div>
           <h2 class="h2" id="two-title">She has abdominal pain, and an MRI of her liver is booked. Tomorrow is her first MRI.</h2>
           <p class="body">She is anxious, she is claustrophobic, and she speaks Hokkien. She has never been inside a scanner. That combination is why scans get abandoned, repeated, or done under sedation.</p>
@@ -456,7 +477,7 @@
         <div class="col">
           <p class="stepmark">3 · MRI acceleration · in the scanner</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b-mri.jpg" alt="Illustration of the patient in the scanner: an elderly woman with a head coil, sliding into the MRI bore.">
+            <img class="patient__img" src="assets/img/patient-b-mri.jpg" alt="The patient on the scanner table, a head coil over her face, sliding into the MRI bore.">
             <p class="patient__meta"><b>Patient B</b> · in the scanner · the MRI of her liver</p>
           </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>

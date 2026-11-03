@@ -169,8 +169,8 @@
       img: "assets/cases/pos-film-ap.png", ai: "assets/cases/pos-ai-ap.png",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 4", truth: "yes",
       pimg: "assets/img/patient-a.jpg",
-      palt: "The patient: an elderly man in a hospital bed, right knee bandaged.",
-      pmeta: "<b>Patient A</b> · fell at home · cannot bear weight · right knee",
+      palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
+      pmeta: "<b>Patient A</b> · cannot put weight on it · right knee",
       verdict: "Fracture detected.",
       comment: "RbFracture marked a lucent line across the lateral tibial plateau. The reporting radiologist agreed. Two independent reads, same answer.",
       nextLabel: "View the lateral film"
@@ -180,8 +180,8 @@
       img: "assets/cases/pos-film-lat.png", ai: "assets/cases/pos-ai-lat.png",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 4", truth: "yes",
       pimg: "assets/img/patient-a.jpg",
-      palt: "The patient: an elderly man in a hospital bed, right knee bandaged.",
-      pmeta: "<b>Patient A</b> · fell at home · cannot bear weight · right knee",
+      palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
+      pmeta: "<b>Patient A</b> · cannot put weight on it · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
       comment: "On the lateral view the AI also marks the effusion and a fat–blood level. In a knee that cannot bear weight, that is an intra-articular fracture until proven otherwise.",
       nextLabel: "Next case · a different knee"
@@ -191,8 +191,8 @@
       img: "assets/cases/neg-film-ap.png", ai: "assets/cases/neg-ai-ap.png",
       cap: "Case 2 · left knee · AP", step: "Film 3 of 4", truth: "no",
       pimg: "assets/img/patient-b.jpg",
-      palt: "The patient: an elderly woman, awake and alert, holding her phone.",
-      pmeta: "<b>Patient B</b> · fell but could walk · left knee · no fracture",
+      palt: "The patient: an elderly woman, awake and alert, phone in hand.",
+      pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected.",
       comment: "Nothing flagged. The radiologist agreed: degenerative change, no acute fracture line.",
       nextLabel: "View the lateral film"
@@ -202,8 +202,8 @@
       img: "assets/cases/neg-film-lat.png", ai: "assets/cases/neg-ai-lat.png",
       cap: "Case 2 · left knee · lateral", step: "Film 4 of 4", truth: "no",
       pimg: "assets/img/patient-b.jpg",
-      palt: "The patient: an elderly woman, awake and alert, holding her phone.",
-      pmeta: "<b>Patient B</b> · fell but could walk · left knee · no fracture",
+      palt: "The patient: an elderly woman, awake and alert, phone in hand.",
+      pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected. An effusion is.",
       comment: "Still no fracture — but the AI does mark an effusion, and it is right. A knee that cannot bear weight with fluid in it needs the next test, not a second opinion on the same film.",
       nextLabel: "See what the scans showed"
