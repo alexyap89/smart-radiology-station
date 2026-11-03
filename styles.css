@@ -2780,3 +2780,19 @@ body.has-full { overflow: hidden; }
 #s-takeaway .tk { justify-content: center; }
 #s-two .photo img { height: clamp(150px, 30vh, 300px); }
 #s-two .col { gap: clamp(6px, 1vh, 11px); }
+
+/* ---------- takeaway cards get a picture and bigger type ---------- */
+#s-takeaway .tk { flex-direction: row; align-items: stretch; gap: clamp(10px, 1.1vw, 16px); justify-content: flex-start; padding: clamp(10px, 1.1vw, 15px); }
+#s-takeaway .tk__img {
+  flex: 0 0 clamp(120px, 15vw, 200px); width: clamp(120px, 15vw, 200px);
+  height: auto; align-self: stretch; object-fit: contain; background: #05080b;
+  border: 1px solid var(--rule);
+}
+#s-takeaway .tk__text { display: flex; flex-direction: column; justify-content: center; gap: 6px; min-width: 0; }
+#s-takeaway .tk__n { font-size: clamp(10.5px, .82vw, 12.5px); }
+#s-takeaway .tk__b { font-size: clamp(14px, 1.08vw, 17px); line-height: 1.45; }
+#s-takeaway .tk-limit, #s-takeaway .tk-thesis { font-size: clamp(12px, .92vw, 14.5px); line-height: 1.45; }
+/* the picture is a thumbnail, not a column: fixed height keeps the grid inside the frame */
+#s-takeaway .tk { align-items: center; }
+#s-takeaway .tk__img { flex: 0 0 auto; height: clamp(96px, 16vh, 152px); width: clamp(120px, 14vw, 190px); align-self: center; }
+#s-takeaway .tk-grid--four { grid-template-rows: auto auto; align-content: center; }
