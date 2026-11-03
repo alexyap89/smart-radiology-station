@@ -2930,3 +2930,44 @@ body.has-full { overflow: hidden; }
 #s-quiz .win__bar { flex-wrap: wrap; row-gap: 6px; }
 #s-quiz .plate__frame { height: clamp(300px, 54vh, 580px); }
 #s-quiz .win__ctl input[type="range"] { width: clamp(64px, 5vw, 96px); }
+
+/* the tool cards carry the thing each tool actually shows */
+#s-tools .tool { flex-direction: row; align-items: center; gap: clamp(10px, 1.2vw, 18px); }
+#s-tools .tool__img {
+  flex: 0 0 clamp(130px, 13vw, 200px);
+  width: clamp(130px, 13vw, 200px);
+  height: clamp(96px, 15vh, 150px);
+  object-fit: contain; background: #05080b; border: 1px solid var(--rule);
+}
+#s-tools .tool__h, #s-tools .tool__d, #s-tools .tool__m, #s-tools .tool__a, #s-tools .tool__k { align-self: flex-start; }
+
+/* tool cards: image, then one text column that can actually breathe */
+#s-tools .tool__text { display: flex; flex-direction: column; gap: 5px; min-width: 0; flex: 1 1 auto; }
+#s-tools .tool__d { max-width: 40ch; }
+#s-tools .tool__a { margin-top: 4px; }
+#s-tools .tool--lead .tool__d { max-width: 46ch; }
+/* the emphasis word, same treatment as the denoise screen */
+#s-takeaway .tk__b b { color: var(--cyan); font-weight: 600; }
+
+/* =========================================================================
+   The manipulation panel, rebuilt as a two-row grid: window controls across
+   the top, zoom and actions underneath. Nothing wraps into a sliver.
+   ========================================================================= */
+.win__bar {
+  display: grid !important;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: center;
+  gap: 7px 12px;
+  padding: 8px 10px;
+  border: 1px solid var(--rule);
+  background: var(--ink-2);
+  flex-wrap: nowrap !important;
+}
+.win__bar > .win__group:first-child { grid-column: 1 / -1; }
+.win__group { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.win__group + .win__group { border-left: 0; padding-left: 0; }
+.win__group--end { justify-content: flex-end; margin-left: 0; }
+.win__ctl { display: flex; align-items: center; gap: 7px; flex: 1 1 0; min-width: 0; white-space: nowrap; }
+.win__ctl input[type="range"] { flex: 1 1 auto; width: auto; min-width: 40px; }
+.win__zoom button, .win__reset { min-width: 26px; height: 26px; }
+.win__full { height: 26px; }
