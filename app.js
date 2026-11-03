@@ -404,9 +404,23 @@
       return;
     }
 
-    var ctx = canvas.getContext("webgl", { antialias: true, alpha: true, preserveDrawingBuffer: false });
-    if (!ctx) { if (fallback) fallback.hidden = false; canvas.style.display = "none"; return; }
-    var ext32 = ctx.getExtension("OES_element_index_uint");
+    // WebGL2 first: 32-bit indices are core there, and a device can offer
+    // WebGL2 while reporting no OES_element_index_uint on a WebGL1 context.
+    var opts = { antialias: true, alpha: true, preserveDrawingBuffer: false };
+    var ctx = canvas.getContext("webgl2", opts) ||
+              canvas.getContext("webgl", opts) ||
+              canvas.getContext("experimental-webgl", opts);
+    function bail(why) {
+      if (fallback) {
+        var p = fallback.querySelector("p");
+        if (p) p.textContent = "3D view unavailable on this device (" + why + "). The CT above and the AR link still work.";
+        fallback.hidden = false;
+      }
+      canvas.style.display = "none";
+    }
+    if (!ctx) { bail("no WebGL context"); return; }
+    var isGL2 = !!(window.WebGL2RenderingContext && ctx instanceof window.WebGL2RenderingContext);
+    var ext32 = isGL2 ? true : ctx.getExtension("OES_element_index_uint");
 
     function shader(type, src) {
       var s = ctx.createShader(type);
@@ -431,9 +445,7 @@
     var data = decodeMesh(mesh);
     var use32 = !(data.idx instanceof Uint16Array);
     if (use32 && !ext32) {
-      // 32-bit indices unsupported: show the message rather than a blank canvas
-      if (fallback) { fallback.hidden = false; }
-      canvas.style.display = "none";
+      bail("this browser has no 32-bit index support");
       return;
     }
     function buffer(target, arr) {

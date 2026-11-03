@@ -2971,3 +2971,12 @@ body.has-full { overflow: hidden; }
 .win__ctl input[type="range"] { flex: 1 1 auto; width: auto; min-width: 40px; }
 .win__zoom button, .win__reset { min-width: 26px; height: 26px; }
 .win__full { height: 26px; }
+
+/* DECT: give the scan more width, and anchor the forward control to the floor
+   so the column ends deliberately instead of trailing off */
+#s-neg .split { grid-template-columns: minmax(0, 1.22fr) minmax(270px, .92fr); }
+#s-neg .col--model .btn--primary { margin-top: auto; }
+#s-neg .col--model .note { margin-bottom: 2px; }
+#s-neg .viewer__cap { font-size: clamp(13px, .98vw, 15px); }
+#s-neg .col--model .patient { margin-bottom: 2px; }
+#s-see .seepage__lede b { color: var(--cyan); font-weight: 600; }
