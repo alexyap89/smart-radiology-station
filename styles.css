@@ -3092,3 +3092,48 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-two .phone { height: clamp(150px, 22vh, 210px); }
 #s-two .phone__note { font-size: clamp(8.5px, .64vw, 10px); }
 #s-tools .tool__img { flex: 0 0 clamp(150px, 15vw, 215px); width: clamp(150px, 15vw, 215px); height: clamp(110px, 17vh, 170px); }
+
+/* with the two footers gone the four cards own the screen */
+#s-takeaway .tk-grid--four { flex: 1 1 auto; min-height: 0; grid-template-rows: 1fr 1fr; align-content: stretch; }
+#s-takeaway .tk { align-items: center; }
+#s-takeaway .tk__img { height: clamp(120px, 22vh, 220px); width: clamp(150px, 16vw, 240px); }
+#s-takeaway .tk__b { font-size: clamp(15px, 1.12vw, 18px); }
+#s-takeaway .col--wide { justify-content: flex-start; }
+
+/* =========================================================================
+   The patient chip moves to the top right of its column, with a bigger
+   portrait, so the eye finds it before the film.
+   ========================================================================= */
+#s-quiz .col, #s-pos .col, #s-neg .col, #s-speed .col { position: relative; }
+#s-quiz .patient, #s-pos .patient, #s-neg .patient, #s-speed .patient {
+  position: absolute; top: -4px; right: 0; z-index: 3;
+  flex-direction: column; align-items: flex-end; gap: 4px; margin: 0;
+  max-width: 46%;
+}
+#s-quiz .patient__img, #s-pos .patient__img, #s-neg .patient__img, #s-speed .patient__img {
+  width: clamp(52px, 5.2vw, 76px); height: clamp(52px, 5.2vw, 76px); order: -1;
+  border-color: var(--rule-strong);
+}
+#s-quiz .patient__meta, #s-pos .patient__meta, #s-neg .patient__meta, #s-speed .patient__meta {
+  text-align: right; font-size: clamp(10px, .74vw, 11.5px); line-height: 1.35;
+}
+/* keep the stepmark clear of the chip */
+#s-quiz .stepmark, #s-pos .stepmark, #s-neg .stepmark, #s-speed .stepmark { padding-right: 30%; }
+/* the forward control should not stretch across the column */
+#s-pos .col--model > .btn--primary { align-self: flex-start; }
+#s-neg .col--model > .btn--primary { align-self: flex-start; }
+
+/* the chip sits at the top of its column, right-aligned, in the flow: no overlap */
+#s-quiz .patient, #s-pos .patient, #s-neg .patient, #s-speed .patient {
+  position: static; align-self: flex-end; max-width: 60%;
+}
+#s-quiz .stepmark, #s-pos .stepmark, #s-neg .stepmark, #s-speed .stepmark { padding-right: 0; }
+#s-pos .patient { margin-bottom: -2px; }
+
+/* the masthead carries the department's name: set it like one */
+.brand { align-items: center; gap: 10px; }
+.brand__name {
+  font-size: clamp(17px, 1.4vw, 22px); font-weight: 600; letter-spacing: -.01em;
+  color: var(--paper); line-height: 1.05;
+}
+.brand__mark { width: 10px; height: 10px; }

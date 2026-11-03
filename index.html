@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smart Radiology — Is there a fracture?</title>
-<link rel="stylesheet" href="styles.css?v=20261103120205">
+<link rel="stylesheet" href="styles.css?v=20261103120458">
 </head>
 <body>
 
@@ -189,6 +189,10 @@
 
         <div class="col col--model">
           <p class="stepmark">1 · RbFracture · the same CT</p>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-a.jpg" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
+            <p class="patient__meta"><b>Patient A</b> · cannot put weight on it · right knee</p>
+          </div>
           <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
           <div class="model">
             <canvas id="glCanvas" aria-label="Interactive 3D model of the fractured tibia. Drag to rotate."></canvas>
@@ -530,12 +534,6 @@
           </article>
         </div>
 
-        <div class="tk-notes">
-        <p class="caution tk-limit"><strong>What this does not claim.</strong> Studies negative on both AI and the report were not re-read, so sensitivity is likely an overestimate. The 37% is musculoskeletal only. The CT dose target and the 4D pilot are targets, not results. The manuscript is in preparation.</p>
-
-        <p class="tk-thesis"><strong>The pattern:</strong> measure the problem, validate on our own patients, keep the radiologist as final interpreter, and let the people who use the tools build them.</p>
-        </div>
-
         <div class="row">
           <button class="btn btn--primary" id="openTakeaway" type="button">View summary</button>
           <button class="btn btn--ghost" data-go="attract" type="button">Start again</button>
@@ -590,6 +588,6 @@
 </div>
 
 <script src="assets/models/tibia-fracture.js"></script>
-<script src="app.js?v=20261103120205"></script>
+<script src="app.js?v=20261103120458"></script>
 </body>
 </html>

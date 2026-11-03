@@ -333,7 +333,7 @@
 
   /* ---------------------------------------------------------------- 3D model */
   var gl = { ready: false, started: false, raf: 0, wire: false };
-  var mv = { yaw: -0.55, pitch: 0.18, dist: 1.35, drag: null, last: 0, spin: true };
+  var mv = { yaw: -0.55, pitch: 0.18, dist: 1.75, drag: null, last: 0, spin: true };
 
   function decodeMesh(src) {
     function b64ToBytes(s) {
@@ -567,7 +567,7 @@
 
     var reset = document.getElementById("glReset");
     if (reset) reset.addEventListener("click", function () {
-      mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.35; mv.spin = true;
+      mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.75; mv.spin = true;
     });
 
     var modelFull = document.getElementById("glFull");
