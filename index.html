@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smart Radiology — Is there a fracture?</title>
-<link rel="stylesheet" href="styles.css?v=20261103120801">
+<link rel="stylesheet" href="styles.css?v=20261103121241">
 </head>
 <body>
 
@@ -24,8 +24,8 @@
       <button class="steps__item" type="button" data-pip="render" data-go="render"><i></i><b>2</b><span class="lbl-full">render · movie</span><span class="lbl-short">movie</span></button>
       <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">denoise</span></button>
       <button class="steps__item" type="button" data-pip="move" data-go="move"><i></i><b>2</b><span class="lbl-full">4D dynamic CT</span><span class="lbl-short">4D</span></button>
-      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">prep</span></button>
-      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
+      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>3</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">prep</span></button>
+      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>4</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
       <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i><span class="lbl-full">summary</span><span class="lbl-short">sum</span></button>
       <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i><span class="lbl-full">also: the tools</span><span class="lbl-short">tools</span></button>
     </nav>
@@ -335,6 +335,7 @@
           <div class="cine__tabs" role="tablist" aria-label="Dynamic studies">
             <button class="cine__tab is-on" type="button" data-case="knee" aria-pressed="true">Knee · flexion</button>
             <button class="cine__tab" type="button" data-case="surface" aria-pressed="false">Hindfoot · surface</button>
+            <button class="cine__tab" type="button" data-case="ankle" aria-pressed="false">Ankle · render</button>
             <button class="cine__tab" type="button" data-case="full" aria-pressed="false">Ankle · full study</button>
           </div>
           <figure class="cine__lane">
@@ -412,7 +413,7 @@
         <div class="col">
           <p class="stepmark">3 · MRI acceleration · in the scanner</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b-mri.jpg" alt="The patient on the scanner table, a head coil over her face, sliding into the MRI bore.">
+            <img class="patient__img" src="assets/img/patient-b-waiting.jpg" alt="The patient in the waiting area, being shown the scanner room on a phone.">
             <p class="patient__meta"><b>Patient B</b> · in the scanner · the MRI of her liver</p>
           </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
@@ -508,7 +509,7 @@
             </div>
           </article>
           <article class="tk">
-            <img class="tk__img" src="assets/img/patient-b-mri.jpg" alt="The patient on the scanner table, a head coil over her face.">
+            <img class="tk__img" src="assets/photos/siemens-deepresolve-liver.jpg" alt="Two axial liver slices: conventional acquisition at 14 seconds, Deep Resolve at 7 seconds.">
             <div class="tk__text">
               <p class="tk__n">03 · MRI acceleration</p>
               <p class="tk__b">About 37% shorter across 8 musculoskeletal anatomies. Less time in the bore is the part the patient feels.</p>
@@ -578,6 +579,6 @@
 </div>
 
 <script src="assets/models/tibia-fracture.js"></script>
-<script src="app.js?v=20261103120801"></script>
+<script src="app.js?v=20261103121241"></script>
 </body>
 </html>

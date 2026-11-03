@@ -691,7 +691,8 @@
   var CINE_CASES = {
     knee: { cap: "Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase." },
     surface: { cap: "Hindfoot, rendered surface. One acquisition, stepped through the arc." },
-    full: { cap: "Ankle and hindfoot, as it comes off the scanner: the volume renders and the reformats side by side, stepped through the arc." }
+    ankle: { cap: "Ankle and hindfoot. The volume render on its own, stepped through the arc." },
+    full: { cap: "The same study as it comes off the workstation: two volume renders above, two reformats below." }
   };
 
   function cineNodes() {
