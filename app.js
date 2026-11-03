@@ -11,7 +11,7 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "quiz", "pos", "neg", "temi", "two", "speed", "tools", "takeaway"];
+  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "see", "move", "speed", "two", "tools", "takeaway"];
 
   var state = {
     screen: "attract",
@@ -69,14 +69,16 @@
     var bar = document.getElementById("scenarioBar");
     if (bar) {
       var map = {
-        quiz: ["A", "Patient A · a knee that cannot bear weight"],
-        pos:  ["A", "Patient A · the fracture, and what the CT added"],
-        neg:  ["A", "Patient A · the other knee, and no fracture"],
-        temi: ["B", "Patient B · the way to the scanner"],
-        two:  ["B", "Patient B · a first MRI, and a frightened patient"],
-        speed:["B", "Patient B · less time inside the scanner"],
-        tools:["", "The tools behind both patients"],
-        takeaway:["", "What the two patients show together"],
+        quiz: ["1", "RbFracture · the fracture copilot, on four emergency films"],
+        pos:  ["1", "RbFracture · the case that went to CT"],
+        neg:  ["1", "RbFracture · the case that stopped at CT"],
+        lab:  ["2", "3D + 4D Lab · what the scan becomes"],
+        see:  ["2", "3D + 4D Lab · the dose that buys the fourth dimension"],
+        move: ["2", "3D + 4D Lab · the joint in motion"],
+        speed:["3", "MRI acceleration · less time in the scanner"],
+        two:  ["4", "pRIMe · the scan starts the night before"],
+        tools:["", "The tools behind all four programmes"],
+        takeaway:["", "What the four programmes can prove"],
         attract:["", ""]
       };
       var entry = map[name] || ["", ""];
@@ -108,8 +110,9 @@
       }
     }
     if (name !== "speed" && typeof pauseAcceleration === "function") pauseAcceleration();
-    if (name === "tools") { playVideos(true); primeLoad(true); }
-    else { playVideos(false); primeLoad(false); }
+    if (name !== "move") cineLeave();
+    playVideos(name === "lab");
+    primeLoad(name === "tools");
     if (name !== "takeaway") closeOverlay();
     resetIdle();
   }
@@ -200,7 +203,7 @@
     qs("#qImg").src = f.img;
     qs("#qImg").alt = "De-identified knee radiograph, " + f.cap;
     qs("#qCap").textContent = f.cap;
-    qs("#qStep").textContent = "Scenario A · fracture or not · film " + (state.qIndex + 1) + " of 4";
+    qs("#qStep").textContent = "1 · RbFracture · film " + (state.qIndex + 1) + " of 4";
     var title = document.getElementById("quiz-title");
     if (title && f.title) title.textContent = f.title;
     qs("#qAsk").hidden = false;
@@ -458,8 +461,10 @@
     });
     canvas.addEventListener("pointermove", function (e) {
       if (!mv.drag) return;
-      mv.yaw += (e.clientX - mv.drag.x) * 0.01;
-      mv.pitch += (e.clientY - mv.drag.y) * 0.01;
+      // direct manipulation: the surface follows the finger, so a rightward drag
+      // turns the near face right and a downward drag tips the top towards you.
+      mv.yaw -= (e.clientX - mv.drag.x) * 0.01;
+      mv.pitch -= (e.clientY - mv.drag.y) * 0.01;
       mv.pitch = Math.max(-1.3, Math.min(1.3, mv.pitch));
       mv.drag = { x: e.clientX, y: e.clientY };
     });
@@ -540,6 +545,231 @@
     });
   }
 
+  /* ---------------------------------------------------------------- see: the dose ladder */
+  // The rungs and the noise gate are the department's own pre-committed rules.
+  // The curve below models that rule; it is not measured patient data, and the
+  // screen says so in .dose__fine.
+  var DOSE_GATE = 115;        // per cent of baseline noise, the QI plan's pass line
+  var DOSE_TF = 0.0014;       // reconstruction-level compensation applied per per-cent of dose removed
+
+  function doseNoisePct(r) {
+    return 100 / Math.sqrt(1 - r / 100) * (1 - DOSE_TF * r);
+  }
+
+  function doseNodes() {
+    return {
+      root: document.getElementById("doseLadder"),
+      range: document.getElementById("doseRange"),
+      ctdi: document.getElementById("doseCtdi"),
+      noise: document.getElementById("doseNoise"),
+      gate: document.getElementById("doseGate"),
+      out: document.getElementById("doseOut"),
+      rungs: qsa(".dose__rung")
+    };
+  }
+
+  function doseCopy(r) {
+    if (r === 0) return "Baseline. Nothing has moved yet.";
+    if (r > 0 && r <= 20) return "Tier 1 \u00b7 \u221220% CTDIvol. The gate wants median CTDIvol at or below 80% of baseline with image noise at or below 115%, assessed over 30 cases before the next rung opens.";
+    if (r > 20 && r < 30) return "The ladder only moves in committed steps: \u221220%, then \u221230%. There is no rung at \u2212" + r + "%.";
+    if (r === 30) return "Tier 2 \u00b7 \u221230% cumulative. The same noise gate, the same 30-case assessment. This is where the default ladder stops unless the margin is wide.";
+    if (r > 30 && r < 40) return "No rung between \u221230% and the ceiling. The ladder is stepped on purpose.";
+    return "The ceiling. Noise breaches the 115% gate here. Reconstruction reduces noise; it cannot create information, so the quality floor wins and the dose goes back up.";
+  }
+
+  function paintDose(r) {
+    var n = doseNodes();
+    if (!n.root) return;
+    var noise = doseNoisePct(r);
+    var pass = noise <= DOSE_GATE;
+    var onRung = r === 0 || r === 20 || r === 30 || r === 40;
+    var tier = r === 0 ? "t0" : (r < 30 ? "t1" : (r < 40 ? "t2" : "fail"));
+    var gate = r === 0 ? "baseline" : (!onRung ? "no rung here" : (pass ? "passes" : "fails"));
+
+    if (n.ctdi) n.ctdi.textContent = (100 - r) + "%";
+    if (n.noise) n.noise.textContent = Math.round(noise) + "%";
+    if (n.gate) n.gate.textContent = gate;
+    if (n.out) n.out.textContent = doseCopy(r);
+    n.root.setAttribute("data-tier", tier);
+
+    n.rungs.forEach(function (el) {
+      var at = Number(el.getAttribute("data-rung"));
+      el.classList.toggle("is-on", r >= at && doseNoisePct(at) <= DOSE_GATE);
+    });
+  }
+
+  function resetDose() {
+    var n = doseNodes();
+    if (n.range) n.range.value = "0";
+    paintDose(0);
+  }
+
+  function wireDose() {
+    var n = doseNodes();
+    if (!n.range) return;
+    n.range.addEventListener("input", function () { paintDose(Number(n.range.value) || 0); });
+    paintDose(Number(n.range.value) || 0);
+  }
+
+  /* ---------------------------------------------------------------- lab: the render gallery */
+  var LAB_CASES = {
+    foot: {
+      src: "assets/cine/foot.jpg",
+      cap: "Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.",
+      alt: "Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia."
+    },
+    scapula: {
+      src: "assets/cine/scapula.jpg",
+      cap: "Traumatic structural isolation of the scapula, with a comminuted scapular fracture and a displaced clavicle.",
+      alt: "Cinematic rendering of a fractured scapula with a displaced clavicle and rib fractures."
+    },
+    ribs: {
+      src: "assets/cine/ribs.jpg",
+      cap: "Traumatic right rib fractures, rendered with the chest drain in place — the drain and the fractures in one view.",
+      alt: "Cinematic rendering of traumatic right rib fractures with a chest drain in situ."
+    }
+  };
+
+  function labSelect(key) {
+    var c = LAB_CASES[key];
+    if (!c) return;
+    var img = document.getElementById("labImg");
+    var cap = document.getElementById("labCap");
+    var root = document.getElementById("labGallery");
+    if (img) { img.src = c.src; img.alt = c.alt; }
+    if (cap) cap.textContent = c.cap;
+    if (root) root.setAttribute("data-case", key);
+    qsa(".gallery__tab").forEach(function (b) {
+      var on = b.getAttribute("data-case") === key;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  function resetLab() { labSelect("foot"); }
+
+  function wireGallery() {
+    qsa(".gallery__tab").forEach(function (b) {
+      b.addEventListener("click", function () { labSelect(b.getAttribute("data-case")); });
+    });
+  }
+
+  /* ---------------------------------------------------------------- move: the 4D cine */
+  var CINE_CASES = {
+    knee: { cap: "Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase." },
+    surface: { cap: "Hindfoot, rendered surface. One acquisition, stepped through the arc." },
+    shoulder: { cap: "Shoulder. Volume render through the arc, with surgical clips and vessels in view." },
+    hindfoot: { cap: "Hindfoot, coronal reformat. The phases of one acquisition scrolled in sequence." }
+  };
+
+  function cineNodes() {
+    var root = document.getElementById("moveCine");
+    if (!root) return null;
+    return {
+      root: root,
+      video: document.getElementById("cineVideo"),
+      cap: document.getElementById("cineCap"),
+      phase: document.getElementById("cinePhase"),
+      tabs: qsa(".cine__tab", root)
+    };
+  }
+
+  function cinePhaseOf(v) {
+    if (!v || !isFinite(v.duration) || v.duration <= 0) return 1;
+    return Math.min(12, Math.floor((v.currentTime / v.duration) * 12) + 1);
+  }
+
+  function cinePaintPhase() {
+    var n = cineNodes();
+    if (!n || !n.video || !n.phase) return;
+    n.phase.textContent = "phase " + cinePhaseOf(n.video);
+  }
+
+  function cineStop() {
+    var n = cineNodes();
+    if (!n || !n.video) return;
+    if (n.video.pause) n.video.pause();
+    if (n.video.removeAttribute) n.video.removeAttribute("src");
+    if (n.video.load) n.video.load();
+    n.root.setAttribute("data-state", "idle");
+    if (n.phase) n.phase.textContent = "phase 1";
+  }
+
+  function cineSelect(key) {
+    var c = CINE_CASES[key];
+    var n = cineNodes();
+    if (!c || !n || !n.video) return;
+    cineStop();
+    n.root.setAttribute("data-case", key);
+    n.video.setAttribute("data-src", "assets/videos/4d-" + key + ".mp4");
+    n.video.setAttribute("poster", "assets/videos/4d-" + key + ".jpg");
+    if (n.cap) n.cap.textContent = c.cap;
+    n.tabs.forEach(function (b) {
+      var on = b.getAttribute("data-case") === key;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  function cinePlay() {
+    var n = cineNodes();
+    if (!n || !n.video) return;
+    var v = n.video;
+    if (!v.getAttribute("src")) {
+      var src = v.getAttribute("data-src");
+      if (src) v.setAttribute("src", src);
+    }
+    var p = v.play();
+    if (p && p.catch) p.catch(function () {});
+    n.root.setAttribute("data-state", "playing");
+  }
+
+  function cinePause() {
+    var n = cineNodes();
+    if (!n || !n.video) return;
+    if (n.video.pause) n.video.pause();
+    n.root.setAttribute("data-state", "paused");
+  }
+
+  function cineReset() {
+    var n = cineNodes();
+    if (!n || !n.video) return;
+    if (n.video.pause) n.video.pause();
+    if (n.video.currentTime !== undefined) n.video.currentTime = 0;
+    n.root.setAttribute("data-state", "idle");
+    if (n.phase) n.phase.textContent = "phase 1";
+  }
+
+  function cineLeave() {
+    var n = cineNodes();
+    if (!n || !n.video || n.root.getAttribute("data-state") !== "playing") return;
+    cineStop();
+  }
+
+  function resetCine() { cineSelect("knee"); }
+
+  function wireCine() {
+    var n = cineNodes();
+    if (!n || !n.video) return;
+    n.video.addEventListener("timeupdate", cinePaintPhase);
+    n.video.addEventListener("play", function () { n.root.setAttribute("data-state", "playing"); });
+    n.video.addEventListener("pause", function () {
+      if (n.root.getAttribute("data-state") !== "idle") n.root.setAttribute("data-state", "paused");
+    });
+    qsa("[data-cine]").forEach(function (b) {
+      var act = b.getAttribute("data-cine");
+      b.addEventListener("click", function () {
+        if (act === "play") cinePlay();
+        else if (act === "pause") cinePause();
+        else if (act === "reset") cineReset();
+      });
+    });
+    n.tabs.forEach(function (b) {
+      b.addEventListener("click", function () { cineSelect(b.getAttribute("data-case")); });
+    });
+    cineSelect("knee");
+  }
+
   /* ---------------------------------------------------------------- reset */
   function resetAll() {
     state.qIndex = 0;
@@ -552,6 +782,9 @@
     if (toastEl) toastEl.hidden = true;
     window.clearTimeout(toastTimer);
     resetAcceleration();
+    resetDose();
+    resetLab();
+    resetCine();
     qsa(".qscore li").forEach(function (li) { li.classList.remove("is-right", "is-wrong"); });
     qsa(".btn--path").forEach(function (b) { b.classList.remove("is-chosen", "is-muted"); });
     var tk = document.getElementById("tkScore");
@@ -929,6 +1162,9 @@
   wireVideos();
   wireChips();
   wireAcceleration();
+  wireDose();
+  wireGallery();
+  wireCine();
   wirePrimeFrame();
   show("attract");
 }());

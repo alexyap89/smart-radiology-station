@@ -14,7 +14,7 @@ A single-page, offline-capable interactive exhibit for a hospital board visit. E
 | Local folder | `/Users/alexyap/My Drive/20_Projects/Radiology/01-Active/Workforce Transformation/smart-radiology-station-app` |
 | GitHub | `https://github.com/alexyap89/smart-radiology-station` (public, branch `main`) |
 | Live | `https://alexyap89.github.io/smart-radiology-station/` (GitHub Pages, branch `main`, path `/`) |
-| Size | ~34 MB, of which 13 MB is the AR asset and 3.3 MB the decimated 3D mesh |
+| Size | ~38 MB, of which 13 MB is the AR asset, 3.3 MB the decimated 3D mesh and ~3.5 MB the new 4D clips |
 | Stack | plain HTML + CSS + JS. No framework, no build step, no dependencies, no network at runtime |
 
 Run it by opening `index.html` from disk. Deploy by `git add -A && git commit && git push` — Pages rebuilds in about a minute.
@@ -27,21 +27,37 @@ Run it by opening `index.html` from disk. Deploy by `git add -A && git commit &&
 
 The station tells one night in an emergency department twice.
 
-**Patient A — fracture or not (amber).** Four de-identified knee radiographs, one at a time. The visitor calls fracture / no fracture; the RbFracture overlay is revealed afterwards with the radiologist's reading. Then case 1: coronal CT plus the dual-energy marrow-oedema fusion, an interactive 3D model of the same CT, an AR button, and the 3D Lab workflow (render → cut-plane → share or print). Then case 2: fusion with no oedema and a sagittal reformat.
-
-**Patient B — finding the way, then a first MRI (cyan).** Before the preparation, one screen covers the department's TEMI wayfinding pilot: PSAs were escorting 15–20 patients a day at 5–6 minutes each; radiographers and PSAs wrote the robot routes, tested collision avoidance with wheelchairs and trolleys, and built an elderly-first interface. Results were 355 trips over three weeks (27 a day), 4.35/5 from 20 patients, and no collisions. The screen also states the Robots-as-a-Service lease model: the robot went into the corridor before any capital commitment. Numbers come from the TEMI Improvement Award poster; add nothing beyond them.
-
-**Patient B — a first MRI (cyan).** An anxious Hokkien-speaking patient and her journey before the scanner: a **Telmi robot** walks her to imaging, then pRIMe on her own phone, then a room she has already seen. Also on this screen: a photograph of the real scanner room taken from the department's own preparation video, a live link to pRIMe-MRI, then an interactive scan-time simulator: press RUN THE SCAN and the standard lane fills to 100 % over six seconds while the AI lane stops at 63 %, with a bore-time tube. Beside it, an attributed Siemens liver-MRI example (conventional 14 s versus Deep Resolve 7 s at the same voxel size).
-
 **Close.** An attributed statement: Smart Radiology augments patient care through new care pathways, validated technology, and clinician-builders who write the tools they use. Then the limitation, the pattern, and a one-page printable summary.
 
-A persistent bar under the header names the patient on every screen (amber A, cyan B, neutral for tools/summary), and the nav pips carry the same letters: `A films · A CT · A DECT · B pRIME · B SPEED · tools · summary`.
+A persistent bar under the header names the programme on every screen, and the nav pips carry the same numbers: `1 films · 1 CT · 1 DECT · 2 3D Lab · 2 denoise · 2 4D · 3 MRI speed · 4 pRIMe · tools · summary`.
 
----
+**v2 storyboard — four programmes (2026-11-03).** The station now shows four things the department has built, in the order the board plan prescribes (RbFracture owns the evidence budget, then breadth):
+
+1. **RbFracture** (`#s-quiz`, `#s-pos`, `#s-neg`) — the fracture copilot for emergency radiology. Four ED films, then the CT that showed the fracture and the dual-energy case that excluded one. The 3D model on `#s-pos` is now presented as the lab's output, with a pointer to the lab rather than the old inline workflow block.
+2. **3D + 4D Lab** (`#s-lab`, `#s-see`, `#s-move`) —
+   - `#s-lab`: a cinematic-render gallery (foot, scapula, ribs), the three Rad-ART clinical clips playing on the screen, the digital-first triage rule, the volume/cost/carbon numbers, and one line telling the visitor that the **printed models are on the table beside the station** (they are brought physically; there are deliberately no photographs of them).
+   - `#s-see`: the dose ladder. Drag the dose down; CT noise rises against the pre-committed 115% gate. Tier 1 (−20%) and Tier 2 (−30%) pass, the −40% ceiling breaches the gate and the widget refuses to move. **The rungs and the gate are real; the noise curve is a model of them and the screen says so.**
+   - `#s-move`: three de-identified 4D captures with a phase readout, plus the pilot block (dose targets, phases, added time, utility gates) — every figure a pre-committed target.
+3. **MRI acceleration** (`#s-speed`) — unchanged: the scan simulator, the ~37% MSK evaluation, the labelled vendor example.
+4. **pRIMe** (`#s-two`) — unchanged apart from the removal of the Telmi journey step.
+
+**Removed:** the entire `#s-temi` screen and every Telmi reference (nav pip, journey step, takeaway line). The wayfinding pilot is no longer on the station.
 
 ## 3. Approved evidence — the only numbers allowed
 
 1,102 consecutive ED radiographs audited (AI output withheld from the reporting radiologist during the audit) · sensitivity 96.6 % · NPV 99.2 % · 6 fractures caught that the initial reports missed · 7 missed by AI but caught by radiologists · 26 false positives (2.4 %) · turnaround 22 min office hours and 80 min overnight · dual-energy CT replaced MRI as first-line for occult fracture · MRI AI reconstruction about 37 % shorter across 8 musculoskeletal anatomies, **initial evaluation, MSK only** · preparation experience 16 of 16 patients positive at one month · limitation: double-negative studies were not re-read, so sensitivity is likely an overestimate.
+
+### v2 additions — how each new claim is labelled
+
+| Programme | Allowed | Never say |
+|---|---|---|
+| CT denoising (GE TrueFidelity on the Apex) | "service change with a pre-committed dose target": −20 % CTDIvol at Tier 1, −30 % cumulative at Tier 2, ceiling −40 % not entered by default, gate = median ROI noise ≤ 115 % of baseline, ≥30 cases per tier | "20–30 % dose saving", "we cut dose by 20 %", any past tense that implies a result |
+| 3D Lab / cinematic rendering | Live service. Tier 0–5 spectrum; recon S$82–S$299; prints S$560–S$1,020; FY27 50–65 prints against a 100-unit target; ~80 % FDM / 20 % SLA; ortho ≈60 % of volume; 279 candidates; 0.73–1.33 kWh and 0.6–1.3 kg CO₂ avoided per print | "saves theatre time" unless measured |
+| 4D dynamic CT | Pilot: feasibility and workflow, no outcome data yet, no additional patient charge. Dose targets wrist ≤0.1, elbow ≤1.0, ankle ≤0.1, shoulder ≤1.5 mSv; 10–15 phases; added workflow ≤20 min; ≥80 % diagnostic motion capture; added information ≥60 %; management impact ≥30 % — **all targets** | "replaces MRI", "replaces fluoroscopy", any result |
+
+Sources: `~/apex-tf-dose-qip/00-PROJECT-PLAN.md`, `01-Active/4D CT Pilot WH/00-4DCT-PROJECT-PLAN.md`, `01-Active/3D Lab/3D_Lab_Service_Spectrum_and_Triage.md`, `03-QI-and-Clinical-Services/3D Cinematic Rendering/`.
+
+The two illustrated patient portraits on the attract screen are **generated images, not real patients** and the screen says so. Do not present them as photographs of the department's patients.
 
 **Do not add** cost figures, length-of-stay claims, workforce savings, patient quotations or published-outcome language. The manuscript is in preparation, not published.
 
@@ -62,14 +78,16 @@ A reviewer once flagged "AI output withheld from the reporting radiologist" as u
 ## 5. Files
 
 ```
-index.html      all eight screens, the takeaway sheet, the print layout
-styles.css      ~1,800 lines, many appended blocks — see §7
-app.js          one IIFE: screens, quiz, windowing, 3D viewer, simulator, reset
+index.html      eleven screens (attract + ten), the takeaway sheet, the print layout
+styles.css      ~2,270 lines, many appended blocks — see §7
+app.js          one IIFE: screens, quiz, windowing, 3D viewer, simulator, dose ladder, render gallery, 4D cine, reset
 README.txt      operator-facing: how to run, what each screen does, the figure list
 assets/cases/   12 de-identified clinical images (films, AI panels, CT, fusion, sagittal)
 assets/photos/  two room stills from the video + the Siemens example
 assets/models/  tibia-fracture.js (decimated mesh, 76k verts), tibia-fracture.usdz (AR), ar-glyph.svg
-assets/videos/  three Rad-ART clips + poster frames
+assets/cine/    three cinematic render stills (foot, scapula, ribs) from the 3D Lab case PDF
+assets/img/     four generated patient illustrations (NOT real patients) — a-ed, a-ct, b-home, b-mri
+assets/videos/  three Rad-ART clips + posters, and four 4D clips: 4d-knee, 4d-surface, 4d-shoulder, 4d-hindfoot
 assets/*.svg    audio placeholder, pathway icons
 ```
 
@@ -82,6 +100,10 @@ No asset is unreferenced, and every referenced path exists — checked mechanica
 - **Screens** are absolutely positioned `.screen` elements; `#app[data-screen]` plus `.is-active` controls visibility. `visibility` and `opacity` are deliberately **not** transitioned — in a backgrounded tab transitions never tick and the screen would stay invisible. Only an 8 px rise animates.
 - **Idle reset** is 180 s of no input *or scroll*, skipped on the takeaway and while the summary sheet is open. It was 30 s and threw visitors back to the start while reading.
 - **Navigation** is a per-target double-tap guard (`lastGo`), not a global lock — a global lock swallowed legitimate fast clicks.
+- **The dose ladder** is a number widget, not an image demo: no noisy/clean pair exists in the department, so nothing is faked. The curve is a model (`100 / sqrt(1 - r/100) * (1 - 0.0014r)`) checked against the 115 % gate; the rungs and the gate come from the QI plan. Reset returns it to baseline.
+- **The 4D cine** plays on demand only. Each case sets `data-src` then `src` on first play (no preload), the phase readout is `currentTime / duration × 12`, and leaving `#s-move` pauses it. It is wired separately from `playVideos()`, which still belongs to the Rad-ART clips on `#s-lab`.
+- **The Rad-ART clips** now live on `#s-lab` and autoplay there (`show("lab")` starts them); `#s-tools` no longer carries video.
+- **The 3D model drag is direct-manipulation**: a rightward drag turns the near face right (`mv.yaw -= dx * 0.01`). It was inverted before 2026-11-03; do not flip it back.
 - **The simulator** is timer-driven (50 ms), not `requestAnimationFrame`, because rAF is throttled in background tabs and stalled the run at 17 %. It pauses when you leave the screen and zeroes on RESTART.
 - **Windowing** on films and scans: brightness, contrast, zoom, pan, reset. Keyboard: `+ - 0` and arrows once the pane has focus.
 - **The 3D viewer** is hand-rolled WebGL (no library). It needs `OES_element_index_uint` for a mesh this size; without it the app shows a labelled fallback instead of a blank canvas.
@@ -117,29 +139,21 @@ curl -sS -o /dev/null -w "%{size_download}
 
 Open the app, then check in order:
 
-1. All eight screens activate; no console errors on a fresh load.
+1. All eleven screens activate from the pips and the forward buttons; no console errors on a fresh load. The chain is `quiz → pos → neg → lab → see → move → speed → two → tools → takeaway`.
 2. Quiz: four films, right and wrong answers both reveal the AI panel and always offer a forward control; score reads "of 2 cases".
-3. `#s-pos`: CT ↔ fusion tabs switch; windowing sliders and zoom work; 3D model renders and orbits; AR link carries `rel="ar"`.
-4. `#s-speed`: RUN THE SCAN reaches 100 % / 63 % and `data-state="done"`; pause holds the value; reset zeroes; leaving the screen pauses it.
-5. `#s-two`: chips toggle with `aria-pressed`.
-6. TAKEAWAY → View summary → Print: one A4 landscape page.
-7. RESTART clears score, windowing, simulator and clock.
-8. Widths 1440×900, 1024×768, 390×844: no horizontal scroll; vertical overflow 0 on desktop, acceptable on phone.
-9. Missing asset: rename any file in `assets/cases/` and confirm the app shows a labelled overlay and still navigates, then restore it.
+3. `#s-pos`: CT ↔ fusion tabs switch; windowing sliders and zoom work; 3D model renders and drags **with the surface following the finger**; AR link carries `rel="ar"`.
+4. `#s-lab`: all three render tabs swap image, alt text and caption; the three Rad-ART clips play on entry; the metrics read 279 / 50–65 / 0.73–1.33.
+5. `#s-see`: slider 0 → 20 → 30 → 40 sets the panel to `t0/t1/t2/fail`, noise reads 100/109/115/122 %, the gate reads baseline/passes/passes/fails, and 25 % reads "no rung here". Reset returns to 0.
+6. `#s-move`: play loads and runs the clip, the phase readout climbs 1→12, pause holds, reset zeroes, each of the four tabs swaps clip and caption, leaving the screen pauses.
+7. `#s-speed`: RUN THE SCAN reaches 100 % / 63 % and `data-state="done"`; pause holds the value; reset zeroes; leaving the screen pauses it.
+8. `#s-two`: chips toggle with `aria-pressed`.
+9. TAKEAWAY → View summary → Print: one A4 landscape page; the sheet carries eight fact rows.
+10. RESTART clears score, windowing, simulator, dose ladder, gallery and cine.
+11. Widths 1440×900, 1024×768, 390×844: no horizontal scroll; vertical overflow 0 on desktop, acceptable on phone.
+12. Missing asset: rename any file in `assets/cases/` and confirm the app shows a labelled overlay and still navigates, then restore it.
+13. `grep -rin "temi" index.html app.js styles.css README.txt` returns nothing except this file's own history notes.
 
 ---
-
-## 8a. Telmi — integrated as a placeholder, awaiting departmental detail
-
-Telmi wayfinding robots now appear as step 1 of Patient B's journey on `#s-two` ("A Telmi robot in the department walks her to the right door"). This is deliberately the only claim on the station about Telmi, because it is the only one that is sourced: the department's value-based-innovation deck lists "Telmi robot for wayfinding".
-
-**Fill in when the department supplies it** — each of these is currently absent rather than guessed:
-- how many robots, and where they are deployed (entrance only, or imaging corridor);
-- languages the robot speaks (the patient is Hokkien-speaking; if Telmi cannot speak Hokkien, the copy must not imply continuity);
-- usage figures (patients guided, time saved at the counter);
-- whether it hands over to the department or to a human.
-
-Add them to `.journey__list li:first-child` on `#s-two` and to §3 above, in the same plain register. Do not let this become a vendor-claim paragraph: one sentence, one source.
 
 ## 9. What is not verified (say so rather than assume)
 
@@ -147,12 +161,15 @@ Add them to `.journey__list li:first-child` on `#s-two` and to §3 above, in the
 - **Legibility at 1.5 m on the mirrored 55-inch display.** Type sizes were raised for large screens; the distance needs a human eye at the venue.
 - **Touch gestures on hardware.** Drag, pinch and wheel were exercised by pointer emulation, not by a finger.
 - **Pixel appearance in Safari on the stand device.** Screenshots in the test harness were unreliable; every claim above is a DOM/state assertion plus geometry measurements.
+- **The generated patient illustrations.** Produced locally with FLUX.2 klein from text prompts; they are illustrative composites, not portraits of the department's patients, and the cover says so. The MRI image's scanner reads as a generic gantry rather than this department's bore — check it looks acceptable at the venue, and regenerate if not.
+- **Whether the four 4D clips read as motion from 1.5 m away.** They were cropped, trimmed and sped up (1.8–2.5×) for legibility on a screen; verify at the stand.
+- **The 4D clips' provenance wording.** They are captures of a workstation during the pilot's test cases; confirm with the lead that showing them on a board stand is acceptable before the event.
 
 ---
 
 ## 10. If you have two hours
 
-1. Consolidate `styles.css` (dedupe the appended blocks, one rule per selector) with the §8 gate after each step.
-2. Fix the residual 0–6 px overflow by trimming the media caps, not the type.
+1. Consolidate `styles.css` (dedupe the appended blocks, one rule per selector) with the §8 gate after each step. It is now ~2,270 lines with three override layers from the v2 rework; the last occurrence of a selector still wins.
+2. Delete `.metrics--quad`, `.flow3d__list`, `.flow3d__stat`, `.media__col` and the `.fork*` rules if nothing references them after the Telmi and Rad-ART moves.
 3. Put the three Rad-ART clips behind a single "play" control instead of autoplay, so the stand is silent until touched.
 4. Add a one-line "how to present" card for the two presenters (COO opens, radiologist owns the evidence) — the division is in `Smart Radiology station - board showcase plan.md` §6 in this folder's parent.

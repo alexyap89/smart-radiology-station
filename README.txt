@@ -17,58 +17,56 @@ screen without being thrown back to the start.
 --------------------------------------------------------------------------------
 2. THE WALK (about 90 seconds per visitor)
 --------------------------------------------------------------------------------
-PATIENT BANNER     A persistent bar under the header names the patient on every
-                    screen — amber "Patient A" for the fracture scenario, cyan
-                    "Patient B" for the MRI scenario, neutral for tools and
-                    summary. The nav pips carry the same letters (A films · A CT ·
-                    A DECT · B priming).
+DOMAIN BANNER      A persistent bar under the header names the programme on every
+                   screen: 1 RbFracture, 2 the 3D + 4D Lab, 3 MRI acceleration,
+                   4 pRIMe, and neutral for the tools and the summary. The nav
+                   pips carry the same numbers.
 
-0  ATTRACT          Two patients. Four films. Is there a fracture?
-1  THE FILMS        Scenario A. Four de-identified knee radiographs, one at a
+0  ATTRACT          Four programmes. Two illustrated patients: the man with a knee
+                    that cannot bear weight, and the woman rehearsing her first MRI.
+1  THE FILMS        RbFracture. Four de-identified knee radiographs, one at a
                     time: the visitor calls fracture / no fracture, the score
                     chips fill, and the AI overlay is revealed afterwards with
                     the radiologist's reading.
-2  THE CT           Scenario A, case 1. Coronal CT and the dual-energy
+2  THE CT           RbFracture, case 1. Coronal CT and the dual-energy
                     marrow-oedema fusion (tab switch), each windowable and
                     zoomable, plus an interactive 3D model of the same CT and an
-                    AR button for iPad/iPhone.
-3  DUAL-ENERGY      Scenario A, case 2. Fusion map with no oedema and a sagittal
+                    AR button for iPad/iPhone. The model is built from the CT on
+                    the same screen; the lab is the next programme.
+3  DUAL-ENERGY      RbFracture, case 2. Fusion map with no oedema and a sagittal
                     reformat. A negative film still needs a plan.
-3b WAYFINDING      Scenario B, before the preparation: the TEMI robot that walks
-                    patients to the right imaging area. The problem (PSAs escorting
-                    15-20 patients a day, 5-6 minutes each), what the department
-                    built (routes curated by radiographers and PSAs, corridor and
-                    collision calibration, an interface built for elderly patients),
-                    the numbers (355 trips, 27 a day, 4.35/5 from 20 patients, no
-                    collisions, 18 May - 7 June 2026) and why the lease model stayed.
-4  SCENARIO B       Priming and speed. An anxious Hokkien-speaking patient, the
-                    clinician-built 360° preparation, and AI-accelerated MRI
-                    reconstruction with a time comparison.
-5  SCENARIO B (a)   Before the scan: the anxious Hokkien-speaking patient and her
-                    journey — Telmi robot wayfinding to imaging, then the phone
-                    preparation, then a room she has already seen — plus a
-                    photograph of the actual scanner room taken from the
-                    department's own preparation video, the phone breath coach,
-                    and the live pRIMe link. Forward control to the next screen.
-6  SCENARIO B (b)   In the scanner: interactive scan-time simulator (#scanSim).
-                    Press RUN THE SCAN: the standard lane fills to 100% over six
-                    seconds while the AI lane stops at 63%, and the bore tube
-                    fills with the time still spent inside the scanner. Pause,
-                    resume and reset work; leaving the screen pauses the run.
-                    Below it: the ~37% MSK initial evaluation and why shorter
-                    time in the bore matters for a claustrophobic patient. The
-                    Beside it, a vendor example of the same liver slice at the
-                    same voxel size (conventional 14 s versus Deep Resolve 7 s),
-                    clearly labelled "vendor example, not our data" with a link
-                    to Siemens Healthineers. Our own paired reconstructions are
-                    not available for display; what we measured is scan time.
-7  BUILT HERE       pRIMe-MRI launch card (Hokkien tour), DECT BME, Rad-ART,
-                    DIXON spine, and three Rad-ART 3D clips playing locally.
-8  TAKEAWAY         The overarching claim: Smart Radiology augments patient care
-                    through new care pathways, validated technology and
-                    clinician-builders. Then one short list per scenario, the
-                    pattern behind both, and a one-page printable summary that
-                    carries the same thesis.
+4  3D + 4D LAB      The lab in four parts: a gallery of cinematic volume renders
+                    (foot, scapula, ribs) that switch on tap; the Rad-ART 3D
+                    clinical clips playing locally; the digital-first triage rule
+                    with the volume, cost and carbon numbers; and the note that
+                    the printed models are on the table beside the station.
+5  DOSE LADDER      Why a fourth dimension is affordable: drag the dose slider and
+                    the CT noise rises against the 115% gate. Tier 1 (-20%) and
+                    Tier 2 (-30%) pass, -40% breaches the gate and the ladder
+                    refuses to move. The rungs and the gate are the department's
+                    pre-committed rules; the curve is a model of them, labelled as
+                    such, not measured patient data.
+6  4D DYNAMIC CT     Three de-identified motion captures (knee flexion, hindfoot
+                    surface, shoulder arc, hindfoot phases) that play on demand,
+                    with a phase readout, and the pilot block: dose targets,
+                    phases, added workflow time and the four utility gates, every
+                    one labelled a pre-committed target.
+7  MRI ACCELERATION  In the scanner: the interactive scan-time simulator
+                    (#scanSim). RUN THE SCAN fills the standard lane to 100% over
+                    six seconds while the AI lane stops at 63%, and the bore tube
+                    shows the time still spent inside the scanner. Below it the
+                    ~37% MSK initial evaluation, and a vendor example of the same
+                    liver slice at the same voxel size (conventional 14 s versus
+                    Deep Resolve 7 s), labelled "vendor example, not our data".
+8  pRIMe             Before the scan: the anxious Hokkien-speaking patient, the
+                    phone preparation, a room she has already seen, the real
+                    scanner-room photograph from the department's own video, the
+                    breath coach and the live pRIMe link.
+9  BUILT HERE       pRIMe-MRI launch card, DECT BME, Rad-ART, DIXON spine.
+10 TAKEAWAY         Four programmes, each card carrying the label it has earned:
+                    validated, live service, initial evaluation, validated
+                    in-house. Then what each one rests on, what we do not claim,
+                    the limitation, and a one-page printable summary.
 
 --------------------------------------------------------------------------------
 3. INTERACTION

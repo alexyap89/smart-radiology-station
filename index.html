@@ -17,12 +17,14 @@
       <span class="brand__org">Department of Radiology</span>
     </div>
     <nav class="steps" aria-label="Progress">
-      <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i><b>A</b><span class="lbl-full">AI-screened films</span><span class="lbl-short">films</span></button>
-      <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i><b>A</b><span class="lbl-full">CT + 3D render</span><span class="lbl-short">CT</span></button>
-      <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i><b>A</b><span class="lbl-full">DECT oedema map</span><span class="lbl-short">DECT</span></button>
-      <button class="steps__item" type="button" data-pip="temi" data-go="temi"><i></i><b>B</b><span class="lbl-full">TEMI wayfinding</span><span class="lbl-short">TEMI</span></button>
-      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>B</b><span class="lbl-full">pRIMe MRI prep</span><span class="lbl-short">pRIMe</span></button>
-      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>B</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
+      <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i><b>1</b><span class="lbl-full">RbFracture films</span><span class="lbl-short">films</span></button>
+      <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i><b>1</b><span class="lbl-full">CT + 3D model</span><span class="lbl-short">CT</span></button>
+      <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i><b>1</b><span class="lbl-full">DECT oedema map</span><span class="lbl-short">DECT</span></button>
+      <button class="steps__item" type="button" data-pip="lab" data-go="lab"><i></i><b>2</b><span class="lbl-full">3D + 4D Lab</span><span class="lbl-short">3D Lab</span></button>
+      <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">denoise</span></button>
+      <button class="steps__item" type="button" data-pip="move" data-go="move"><i></i><b>2</b><span class="lbl-full">4D dynamic CT</span><span class="lbl-short">4D</span></button>
+      <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">MRI speed</span></button>
+      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">pRIMe</span></button>
       <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i><span class="lbl-full">clinician-built tools</span><span class="lbl-short">tools</span></button>
       <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i><span class="lbl-full">summary</span><span class="lbl-short">summary</span></button>
     </nav>
@@ -45,29 +47,31 @@
         <div class="attract__copy">
           <p class="kicker">Department of Radiology · interactive</p>
           <h1 class="display" id="attract-title">
-            <span class="display__line">Care across the imaging pathway.</span>
-            <span class="display__sub">From the emergency film screened before a radiologist reads it, to the patient prepared for her first MRI.</span>
+            <span class="display__line">Four things one department built.</span>
+            <span class="display__sub">A fracture copilot in the emergency department, a 3D and 4D lab, reconstruction that shortens the scan, and a preparation experience that starts the night before.</span>
           </h1>
-          <p class="lede">Two patients, and everything between the request and the report: AI screening each emergency film before a radiologist opens it, dual-energy CT instead of a wait for MRI, a 3D model the surgeon can turn, and a preparation tool a clinician wrote for a frightened patient.</p>
+          <p class="lede">One patient's knee from the first film to the operating list, then a second patient whose first MRI is already halfway dealt with before she arrives. Every claim on this station is labelled: what we validated, what is a live service, and what is still a pilot.</p>
           <ul class="ailist">
-            <li><b>AI</b> screens every ED extremity film</li>
-            <li><b>AI</b> rebuilds MRI about 37% faster across 8 musculoskeletal anatomies</li>
-            <li><b>Clinicians</b> build the tools themselves</li>
+            <li><b>RbFracture</b> screens every ED extremity film</li>
+            <li><b>3D + 4D</b> visualisation, and printing, from the scan already acquired</li>
+            <li><b>AI reconstruction</b> shortens MRI and buys dose back on CT</li>
+            <li><b>pRIMe</b> lets the patient rehearse the scan at home</li>
           </ul>
           <button class="btn btn--primary btn--xl" data-go="quiz" type="button">Start experience</button>
-          <p class="micro">90 seconds · two scenarios · touch to begin</p>
+          <p class="micro">90 seconds · four programmes · touch to begin</p>
         </div>
-        <figure class="attract__art" aria-hidden="true">
-          <svg viewBox="0 0 520 420" class="fork" role="presentation">
-            <path class="fork__spine" d="M40 210 H180"/>
-            <path class="fork__branch" d="M180 210 C 250 210, 250 120, 330 120 H470"/>
-            <path class="fork__branch fork__branch--b" d="M180 210 C 250 210, 250 300, 330 300 H470"/>
-            <circle class="fork__node" cx="180" cy="210" r="6"/>
-            <circle class="fork__node fork__node--a" cx="470" cy="120" r="6"/>
-            <circle class="fork__node fork__node--b" cx="470" cy="300" r="6"/>
-            <text class="fork__label fork__label--a" x="330" y="104">A · the film</text>
-            <text class="fork__label fork__label--b" x="330" y="330">B · the preparation</text>
-          </svg>
+        <figure class="attract__art attract__art--pair">
+          <div class="pair">
+            <figure class="pair__fig">
+              <img src="assets/img/patient-a.jpg" alt="Illustration: a man in an emergency department bay, his right leg splinted, waiting for the film to be read.">
+              <figcaption><b>1</b> A knee that cannot bear weight</figcaption>
+            </figure>
+            <figure class="pair__fig">
+              <img src="assets/img/patient-b.jpg" alt="Illustration: an elderly woman at home in the evening, holding a phone showing the scanner room.">
+              <figcaption><b>4</b> A first MRI, rehearsed at home</figcaption>
+            </figure>
+          </div>
+          <figcaption class="pair__note">Illustrations, not real patients. The clinical images on this station are de-identified.</figcaption>
         </figure>
       </div>
     </section>
@@ -96,7 +100,7 @@
 
         <div class="col">
           <div class="qhead">
-            <p class="stepmark" id="qStep">Scenario A · fracture or not · film 1 of 4</p>
+            <p class="stepmark" id="qStep">1 · RbFracture · film 1 of 4</p>
             <ol class="qscore" id="qScoreChips" aria-label="Your calls so far">
               <li data-chip="0"></li><li data-chip="1"></li><li data-chip="2"></li><li data-chip="3"></li>
             </ol>
@@ -134,7 +138,7 @@
           </div>
 
           <div class="row row--tight">
-            <button class="btn btn--ghost btn--sm" data-go="two" type="button">Skip to Scenario B</button>
+            <button class="btn btn--ghost btn--sm" data-go="speed" type="button">Skip to the MRI programmes</button>
             <button class="btn btn--ghost btn--sm" data-go="takeaway" type="button">Skip to the takeaway</button>
           </div>
           <p class="micro">Tap an answer. The AI overlay is revealed afterwards, never before.</p>
@@ -146,7 +150,7 @@
     <section class="screen" id="s-pos" aria-labelledby="pos-title">
       <div class="split">
         <div class="col">
-          <p class="stepmark">Scenario A · case 1 · fracture</p>
+          <p class="stepmark">1 · RbFracture · case 1 · fracture</p>
           <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
 
           <div class="viewer">
@@ -176,7 +180,7 @@
         </div>
 
         <div class="col col--model">
-          <p class="stepmark">Same CT · 3D Lab</p>
+          <p class="stepmark">1 · RbFracture · the same CT</p>
           <h3 class="h3">The surgeon plans from the render, not a print.</h3>
           <div class="model">
             <canvas id="glCanvas" aria-label="Interactive 3D model of the fractured tibia. Drag to rotate."></canvas>
@@ -194,14 +198,10 @@
           </div>
           <p class="micro">AR opens on an iPad or iPhone (Apple Quick Look). On a laptop the model above is the view. Model decimated for on-stand display — not for diagnostic use.</p>
 
-          <div class="flow3d">
-            <p class="flow3d__h">The 3D Lab workflow</p>
-            <ol class="flow3d__list">
-              <li><b>Render</b> — a photorealistic surface model built from the CT that was already acquired.</li>
-              <li><b>Cut-plane</b> — the same model sectioned, so the internal fracture configuration is visible, not just the surface.</li>
-              <li><b>Share, or print</b> — the model is shared securely for discussion and planning; a physical print is used only when handling it adds something the render cannot.</li>
-            </ol>
-            <p class="flow3d__stat">279 complex-fracture candidates over about two years have gone through this digital-first route. Modelled saving for each print avoided: 0.73–1.33 kWh and 0.6–1.3 kg CO₂.</p>
+          <div class="flow3d flow3d--pointer">
+            <p class="flow3d__h">The 3D Lab</p>
+            <p class="body">The model above is the lab's output: built from the CT on this screen, no second acquisition. The lab's own service — what it renders, and what it prints — is next.</p>
+            <button class="btn btn--ghost btn--sm" data-go="lab" type="button">See the 3D + 4D Lab</button>
           </div>
         </div>
       </div>
@@ -211,7 +211,7 @@
     <section class="screen" id="s-neg" aria-labelledby="neg-title">
       <div class="split">
         <div class="col">
-          <p class="stepmark">Scenario A · case 2 · no fracture</p>
+          <p class="stepmark">1 · RbFracture · case 2 · no fracture</p>
           <h2 class="h2" id="neg-title">No fracture on the film — and the patient still cannot put weight on it.</h2>
 
           <div class="viewer">
@@ -238,7 +238,7 @@
 
           <p class="body">Dual-energy CT did what it was ordered to do: it excluded an occult fracture the same night, without an MRI slot and without an admission to reach a scanner.</p>
           <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
-          <button class="btn btn--primary" data-go="temi" type="button">Next: the patient who was afraid</button>
+          <button class="btn btn--primary" data-go="lab" type="button">Next: what the lab did with the same scan</button>
         </div>
 
         <div class="col col--model">
@@ -259,63 +259,141 @@
       </div>
     </section>
 
-    <!-- ============ 4a. SCENARIO B — THE ANXIETY ============ -->
-    <!-- ============ 3b. SCENARIO B — FINDING THE WAY ============ -->
-    <section class="screen" id="s-temi" aria-labelledby="temi-title">
+    <!-- ============ 2. 3D + 4D — THE LAB ============ -->
+    <section class="screen" id="s-lab" aria-labelledby="lab-title">
       <div class="split split--reverse">
         <div class="col">
-          <p class="stepmark">Scenario B · before the scan</p>
-          <h2 class="h2" id="temi-title">Before she can lie still, she has to find the room.</h2>
-          <p class="body">Signage, colour zoning and arrows were already there. They were not enough for elderly and first-time patients, so a PSA left the counter and walked them: 15 to 20 times a day, five to six minutes each.</p>
+          <p class="stepmark">3D + 4D · the lab</p>
+          <h2 class="h2" id="lab-title">A photorealistic model, from the scan she already had.</h2>
+          <p class="body">Cinematic volume rendering returns a surface a surgeon reads at a glance — bone, soft tissue and the way they relate, in one image. No second acquisition and no additional dose: the lab works from the CT that was already in the PACS.</p>
 
-          <div class="journey">
-            <p class="journey__h">What the department built</p>
-            <ol class="journey__list">
-              <li>
-                <span class="journey__n">1</span>
-                <span class="journey__t"><b>Routes written by the people who walk them.</b> Radiographers and PSAs mapped every imaging area and curated the TEMI sequences themselves.</span>
-              </li>
-              <li>
-                <span class="journey__n">2</span>
-                <span class="journey__t"><b>Calibrated for a real corridor.</b> Route and speed tuning, collision-avoidance testing, and wheelchair and trolley simulations before go-live.</span>
-              </li>
-              <li>
-                <span class="journey__n">3</span>
-                <span class="journey__t"><b>Designed for an elderly patient.</b> A simplified interface and a printed how-to poster, so the first interaction needs no explanation.</span>
-              </li>
-            </ol>
+          <div class="gallery" id="labGallery" data-case="foot">
+            <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
+              <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
+              <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
+              <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
+            </div>
+            <figure class="gallery__stage" data-win-stage>
+              <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
+              <span class="badge badge--corner">De-identified clinical image</span>
+            </figure>
+            <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.</p>
           </div>
-
-          <div class="metrics metrics--quad">
-            <div class="metric"><p class="metric__n">355</p><p class="metric__l">trips in three weeks</p></div>
-            <div class="metric"><p class="metric__n">27</p><p class="metric__l">trips a day</p></div>
-            <div class="metric"><p class="metric__n">4.35</p><p class="metric__l">rating out of 5 (n = 20)</p></div>
-            <div class="metric"><p class="metric__n">0</p><p class="metric__l">collisions, safety incidents</p></div>
-          </div>
-
-          <p class="note">18 May – 7 June 2026, weekdays only. Escorting had cost about two PSA hours a day, taken from the counter at its busiest hour.</p>
-          <button class="btn btn--primary" data-go="two" type="button">Continue</button>
+          <p class="micro">Cinematic rendering, department cases. Rendered for visualisation and teaching; not for measurement.</p>
+          <button class="btn btn--primary" data-go="see" type="button">Next: what made the 4D possible</button>
         </div>
 
         <div class="col">
-          <p class="minihead">Why it stayed</p>
+          <div class="spotlight">
+            <p class="minihead">Rad-ART · 3D visualisation, in use</p>
+            <div class="vids">
+              <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
+              <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
+              <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
+            </div>
+            <p class="micro">Clinical 3D examples from the Rad-ART study, playing locally — no network needed.</p>
+          </div>
+
           <div class="teach">
-            <p class="teach__h">Leased, not bought.</p>
-            <p class="body">Robots-as-a-Service put the robot in the corridor before any capital commitment, so the department validated it on its own patients first.</p>
+            <p class="teach__h">Tier 0 is the default, and printing is arriving.</p>
+            <p class="body">The cheapest modality that answers the clinical question wins, so most complex fractures stop at digital reconstruction. A print has to earn its place — it exists because handling the fracture changes the plan or the conversation. The models on the table are the printed end of that spectrum.</p>
+          </div>
+
+          <div class="metrics metrics--triple">
+            <div class="metric"><p class="metric__n">279</p><p class="metric__l">complex-fracture candidates over about two years</p></div>
+            <div class="metric"><p class="metric__n">50–65</p><p class="metric__l">prints planned this year, against a 100-unit target</p></div>
+            <div class="metric"><p class="metric__n">0.73–1.33</p><p class="metric__l">kWh avoided per print not made</p></div>
+          </div>
+          <p class="note">Live clinical service. Reconstruction S$82–S$299; printed models S$560–S$1,020 depending on tier. A print avoided also avoids 0.6–1.3 kg CO₂.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 2b. 3D + 4D — THE DOSE THAT BUYS THE FOURTH DIMENSION ============ -->
+    <section class="screen" id="s-see" aria-labelledby="see-title">
+      <div class="col col--wide">
+        <p class="stepmark">3D + 4D · less dose</p>
+        <h2 class="h2" id="see-title">The image got quieter, so the scan could get smaller.</h2>
+        <p class="body">Deep-learning reconstruction rebuilds a CT image from the same raw data with the noise of a much larger dose. On the Apex that headroom is spent on dose in committed steps — tier by tier, on single-energy bone-read protocols, with the quality floor agreed before the first patient.</p>
+
+        <div class="dose" id="doseLadder" data-tier="t0">
+          <div class="dose__head">
+            <p class="dose__title">The dose ladder</p>
+            <p class="dose__sub">Drag the dose down. The gate decides where the ladder stops.</p>
+          </div>
+          <input class="dose__range" id="doseRange" type="range" min="0" max="40" step="5" value="0" aria-label="Dose reduction from baseline, per cent">
+          <div class="dose__read">
+            <div class="dose__stat"><span class="dose__k">CTDIvol vs baseline</span><b class="dose__v" id="doseCtdi">100%</b></div>
+            <div class="dose__stat"><span class="dose__k">Image noise vs baseline</span><b class="dose__v" id="doseNoise">100%</b></div>
+            <div class="dose__stat"><span class="dose__k">Gate</span><b class="dose__v" id="doseGate">baseline</b></div>
+          </div>
+          <div class="dose__ladder" aria-hidden="true">
+            <span class="dose__rung" data-rung="20"><b>−20%</b><i>Tier 1</i></span>
+            <span class="dose__rung" data-rung="30"><b>−30%</b><i>Tier 2</i></span>
+            <span class="dose__rung" data-rung="40"><b>−40%</b><i>ceiling</i></span>
+          </div>
+          <p class="dose__out" id="doseOut" role="status" aria-live="polite">Baseline. Nothing has moved yet.</p>
+          <p class="dose__fine">The rungs and the noise gate are the department's own pre-committed rules. The noise curve is a model of that rule — not measured patient data.</p>
+        </div>
+
+        <p class="body body--tight">Noise is the whole argument. Reconstruction reduces noise; it cannot create information. Every rung has to pass the same gate before the next one opens, and the ladder has a ceiling.</p>
+        <p class="note">What this is: a service change with a dose target, measured and reported tier by tier. What it is not: a completed dose saving.</p>
+        <button class="btn btn--primary" data-go="move" type="button">Next: watch the joint move</button>
+      </div>
+    </section>
+
+    <!-- ============ 2c. 3D + 4D — THE JOINT IN MOTION ============ -->
+    <section class="screen" id="s-move" aria-labelledby="move-title">
+      <div class="split">
+        <div class="col">
+          <p class="stepmark">3D + 4D · the joint in motion</p>
+          <h2 class="h2" id="move-title">A static scan shows the joint. This shows what it does.</h2>
+          <p class="body">The detector covers 160 mm in one rotation, so the same joint can be acquired repeatedly through a coached arc of motion and reconstructed into phases. For a wrist that clicks, an elbow that locks or a shoulder that dislocates, the diagnosis is the thing static imaging cannot show.</p>
+
+          <div class="cine" id="moveCine" data-state="idle" data-case="knee">
+            <div class="cine__tabs" role="tablist" aria-label="Dynamic studies">
+              <button class="cine__tab is-on" type="button" data-case="knee" aria-pressed="true">Knee · flexion</button>
+              <button class="cine__tab" type="button" data-case="surface" aria-pressed="false">Hindfoot · surface</button>
+              <button class="cine__tab" type="button" data-case="shoulder" aria-pressed="false">Shoulder · arc</button>
+              <button class="cine__tab" type="button" data-case="hindfoot" aria-pressed="false">Hindfoot · phases</button>
+            </div>
+            <figure class="cine__lane">
+              <video id="cineVideo" data-src="assets/videos/4d-knee.mp4" poster="assets/videos/4d-knee.jpg" muted loop playsinline preload="none"></video>
+              <figcaption id="cineCap">Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase.</figcaption>
+            </figure>
+            <div class="cine__bar">
+              <button class="btn btn--primary btn--sm" type="button" data-cine="play">Play the motion</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-cine="pause">Pause</button>
+              <button class="btn btn--ghost btn--sm" type="button" data-cine="reset">Reset</button>
+              <p class="cine__phase"><span id="cinePhase">phase 1</span> of 12</p>
+            </div>
+          </div>
+          <p class="micro">De-identified captures from the pilot. Each clip is one acquisition, stepped through the motion arc.</p>
+          <button class="btn btn--primary" data-go="speed" type="button">Next: less time in the scanner</button>
+        </div>
+
+        <div class="col">
+          <p class="minihead">The pilot, labelled</p>
+          <div class="pilot">
+            <p class="pilot__flag">Pilot · feasibility and workflow · no outcome data yet · no additional patient charge</p>
+            <dl class="pilot__rows">
+              <div><dt>Whole-study dose target</dt><dd>wrist ≤0.1 mSv · elbow ≤1.0 mSv · ankle ≤0.1 mSv · shoulder ≤1.5 mSv</dd></div>
+              <div><dt>Phases per study</dt><dd>10–15</dd></div>
+              <div><dt>Added workflow, imaging to report</dt><dd>≤20 min</dd></div>
+              <div><dt>Diagnostic-quality motion capture</dt><dd>≥80% of studies</dd></div>
+              <div><dt>Referrer reports added information</dt><dd>≥60%</dd></div>
+              <div><dt>Referrer reports management impact</dt><dd>≥30%</dd></div>
+            </dl>
+            <p class="pilot__fine">Every figure above is a pre-committed target written before the first case. 4D is an adjunct dataset: it does not replace MRI or fluoroscopy, and it does not change who reports the scan.</p>
           </div>
           <div class="teach">
-            <p class="teach__h">Owned by the floor.</p>
-            <p class="body">The people who escort patients designed the routes, so the workflow changed at the counter and not only in the corridor.</p>
+            <p class="teach__h">Why it needs the lab.</p>
+            <p class="body">4D CT without post-processing is a cine loop. Acquisition, reconstruction and 3D visualisation are one pipeline, so they are one proof.</p>
           </div>
           <div class="teach">
-            <p class="teach__h">Measured every day.</p>
-            <p class="body">A “Rate TEMI” dashboard and daily observation keep the routes and the ratings under review.</p>
+            <p class="teach__h">The real constraint is people.</p>
+            <p class="body">Patient coaching runs at one and a half to two times a standard CT, and the motion analysis lands on the 3D Lab. The limit is preparation time and post-processing skill, not the scanner.</p>
           </div>
-          <div class="teach">
-            <p class="teach__h">Built to spread.</p>
-            <p class="body">The routes and the lease model are documented, so another department can adopt the same workflow without building a capital case first.</p>
-          </div>
-          <p class="micro">Department project with Robocore Technology and RoboSolutions; leased through China Mobile International.</p>
         </div>
       </div>
     </section>
@@ -323,7 +401,7 @@
     <section class="screen" id="s-two" aria-labelledby="two-title">
       <div class="split split--reverse">
         <div class="col">
-          <p class="stepmark">Scenario B · before the scan</p>
+          <p class="stepmark">4 · pRIMe · before the scan</p>
           <h2 class="h2" id="two-title">She has just been told she has a liver tumour. Tomorrow is her first MRI.</h2>
           <p class="body">She is anxious, she is claustrophobic, and she speaks Hokkien. That combination is why scans get abandoned, repeated, or done under sedation.</p>
 
@@ -332,14 +410,10 @@
             <ol class="journey__list">
               <li>
                 <span class="journey__n">1</span>
-                <span class="journey__t"><b>Finding imaging.</b> A TEMI robot in the department walks her to the right door, so the first ten minutes are not spent lost or queuing at a counter.</span>
-              </li>
-              <li>
-                <span class="journey__n">2</span>
                 <span class="journey__t"><b>Waiting.</b> She opens pRIMe on her own phone — the room, the breath-hold, the sound — in Hokkien.</span>
               </li>
               <li>
-                <span class="journey__n">3</span>
+                <span class="journey__n">2</span>
                 <span class="journey__t"><b>In the room.</b> Nothing she meets is new: the camera moves the same way she rehearsed.</span>
               </li>
             </ol>
@@ -353,7 +427,7 @@
 
           <p class="body">It was built in this department, by a clinician. No headset, no app to install: a link, her own phone, her own language.</p>
           <div class="row row--tight">
-            <button class="btn btn--primary" data-go="speed" type="button">Continue</button>
+            <button class="btn btn--primary" data-go="tools" type="button">Continue to the tools</button>
             <a class="btn btn--ghost" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
           </div>
           <p class="micro">The link needs a connection. Everything else on this station runs offline.</p>
@@ -377,7 +451,7 @@
     <section class="screen" id="s-speed" aria-labelledby="speed-title">
       <div class="split">
         <div class="col">
-          <p class="stepmark">Scenario B · in the scanner</p>
+          <p class="stepmark">3 · MRI acceleration · in the scanner</p>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
           <p class="body">AI reconstruction rebuilds the image from less acquired data. The scan ends sooner, the image stays sharp, and the patient spends less time inside the bore — which is exactly the part that makes a claustrophobic patient want the scan to stop.</p>
 
@@ -413,7 +487,7 @@
 
           <p class="body body--tight">Median reduction about 37% across 8 musculoskeletal anatomies — an initial evaluation, MSK only. The timeline above illustrates the ratio, not a timing chart.</p>
           <p class="note">Shorter time in the bore is the clinical point: less opportunity for anxiety to turn into an abandoned scan, a repeat, or sedation. Our own paired standard and reconstructed images are not on this station; the example opposite is the vendor's. What we measured here is scan time.</p>
-          <button class="btn btn--primary" data-go="tools" type="button">See the tools we built</button>
+          <button class="btn btn--primary" data-go="two" type="button">Next: the patient who was afraid</button>
         </div>
 
         <div class="col col--model">
@@ -475,18 +549,6 @@
           </article>
         </div>
 
-        <div class="media">
-          <div class="media__col">
-            <p class="media__h">Rad-ART · 3D visualisation examples</p>
-            <div class="vids">
-              <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop playsinline preload="none"></video><figcaption>Fracture planning</figcaption></figure>
-              <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop playsinline preload="none"></video><figcaption>Joint anatomy</figcaption></figure>
-              <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop playsinline preload="none"></video><figcaption>Cinematic rendering</figcaption></figure>
-            </div>
-            <p class="micro">Clinical 3D examples from the Rad-ART study, playing locally — no network needed.</p>
-          </div>
-        </div>
-
         <div class="row">
           <button class="btn btn--primary" data-go="takeaway" type="button">Continue to the takeaway</button>
         </div>
@@ -497,45 +559,50 @@
     <section class="screen" id="s-takeaway" aria-labelledby="tk-title">
       <div class="col col--wide">
         <p class="stepmark">Takeaway</p>
-        <h2 class="h2" id="tk-title">Smart Radiology augments patient care in three ways.</h2>
+        <h2 class="h2" id="tk-title">Four programmes, and exactly what each one can prove.</h2>
         <p class="verdict verdict--score" id="tkScore" hidden></p>
 
-        <div class="tk-grid">
+        <div class="tk-grid tk-grid--four">
           <article class="tk">
-            <p class="tk__n">01 · new care pathways</p>
-            <p class="tk__b">A film that is negative but still hurts goes to dual-energy CT the same night, where the usual alternative is admission for cross-sectional imaging. A patient who is frightened of the scanner rehearses it at home, on her own phone, in her own language.</p>
+            <p class="tk__n">01 · RbFracture · validated</p>
+            <p class="tk__b">The fracture copilot for emergency radiology. In 1,102 consecutive radiographs it caught 6 fractures the first reports missed; radiologists caught the 7 it missed. 96.6% sensitivity, 99.2% negative predictive value.</p>
           </article>
           <article class="tk">
-            <p class="tk__n">02 · validated technology</p>
-            <p class="tk__b">AI screens every ED extremity radiograph; in the audit it caught 6 fractures the first reports missed, and radiologists caught the 7 it missed. Reconstruction shortened MRI scans by about 37% across 8 musculoskeletal anatomies in an initial evaluation.</p>
+            <p class="tk__n">02 · 3D + 4D · service and pilot</p>
+            <p class="tk__b">Cinematic rendering, and printing, from the scan already acquired — digital-first, so most cases never reach a printer. The 4D pilot is building a diagnosis static imaging cannot make: labelled a pilot, no outcome data yet.</p>
           </article>
           <article class="tk">
-            <p class="tk__n">03 · clinician-builders</p>
-            <p class="tk__b">A radiologist wrote pRIMe-MRI, the preparation tool; another wrote the roster planner; radiographers run and build the 3D Lab. That capability now sits inside the clinical role, without a software team or a research budget.</p>
+            <p class="tk__n">03 · MRI acceleration · initial evaluation</p>
+            <p class="tk__b">AI reconstruction shortened MRI scans by about 37% across 8 musculoskeletal anatomies. Less time inside the bore is the patient-facing half: less to endure, less to abandon, less to repeat.</p>
+          </article>
+          <article class="tk">
+            <p class="tk__n">04 · pRIMe · validated in-house</p>
+            <p class="tk__b">A preparation experience a clinician wrote: the room, the breath-hold and the sound, in the patient's own language. 16 of 16 patients rated it positively at one month and would recommend it.</p>
           </article>
         </div>
 
         <div class="tk-two">
           <div>
-            <p class="minihead">Scenario A · fracture or not</p>
+            <p class="minihead">What each one rests on</p>
             <ol class="tk-list">
-              <li>Fracture found: CT, then a 3D render used for surgical planning.</li>
-              <li>Fracture excluded: dual-energy CT answered it the same night.</li>
-              <li>Both readings were checked against the radiologist, never instead of one.</li>
+              <li><b>RbFracture</b> — a blinded audit of 1,102 consecutive studies; manuscript in preparation.</li>
+              <li><b>3D + 4D</b> — a live service with its own cost and carbon data; the 4D arm is a pre-committed pilot protocol.</li>
+              <li><b>MRI acceleration</b> — an initial evaluation, musculoskeletal only.</li>
+              <li><b>pRIMe</b> — one department, 16 patients, one month.</li>
             </ol>
           </div>
           <div>
-            <p class="minihead">Scenario B · priming and speed</p>
+            <p class="minihead">What we do not claim</p>
             <ol class="tk-list">
-              <li>A TEMI robot walked her to the right door: 355 trips, 27 a day, no collisions.</li>
-              <li>Preparation removed the surprise from a first MRI, in Hokkien.</li>
-              <li>AI reconstruction cut time inside the bore by about 37%.</li>
-              <li>16 of 16 patients rated it positively and would recommend it.</li>
+              <li>No published outcome language: the manuscript is not published.</li>
+              <li>No achieved dose saving on CT — the ladder states targets, tier by tier.</li>
+              <li>No 4D result of any kind yet; the figures are the protocol's gates.</li>
+              <li>No theatre-time or cost saving for the 3D Lab until it is measured.</li>
             </ol>
           </div>
         </div>
 
-        <p class="caution tk-limit"><strong>What this does not claim.</strong> Studies negative on both AI and the report were not independently re-read, so sensitivity is likely an overestimate. The 37% applies to musculoskeletal protocols, not to every scan. The manuscript is in preparation, not published.</p>
+        <p class="caution tk-limit"><strong>What this does not claim.</strong> Studies negative on both AI and the report were not independently re-read, so sensitivity is likely an overestimate. The 37% applies to musculoskeletal protocols, not to every scan. The dose ladder and the 4D pilot are labelled targets, not measured outcomes. The manuscript is in preparation, not published.</p>
 
         <p class="tk-thesis"><strong>The pattern:</strong> measure the problem, validate the tool on our own patients, keep the radiologist as the final interpreter, and let the people who use the tools build them. That is what makes it a model other hospitals could adopt.</p>
 
@@ -568,7 +635,7 @@
       <li><b>Answer the patient's question.</b> Dual-energy CT settled an occult fracture the same night, and a 360° preparation experience got an anxious patient through her first MRI.</li>
     </ol>
 
-    <p class="sheet__thesis"><b>In one line:</b> Smart Radiology augments patient care through new care pathways, validated technology, and clinician-builders who write the tools they use.</p>
+    <p class="sheet__thesis"><b>In one line:</b> four programmes, each labelled for what it can currently prove — a validated fracture copilot, a live 3D and 4D lab, an initial evaluation on MRI acceleration, and a clinician-written preparation tool.</p>
 
     <dl class="sheet__facts">
       <div><dt>Sensitivity</dt><dd>96.6%</dd></div>
@@ -577,6 +644,9 @@
       <div><dt>Turnaround before deployment</dt><dd>22 min office hours · 80 min overnight</dd></div>
       <div><dt>MRI AI reconstruction</dt><dd>about 37% shorter in an initial evaluation, 8 musculoskeletal anatomies</dd></div>
       <div><dt>MRI preparation experience</dt><dd>16 of 16 patients positive at one month</dd></div>
+      <div><dt>CT denoising</dt><dd>dose target: −20% CTDIvol at Tier 1, −30% cumulative at Tier 2, gated on noise ≤115% of baseline</dd></div>
+      <div><dt>4D dynamic CT</dt><dd>pilot, no outcome data yet · target ≤0.1 mSv wrist, ≤1.0 mSv elbow</dd></div>
+      <div><dt>3D Lab</dt><dd>reconstruction S$82–S$299 · prints S$560–S$1,020 · 50–65 prints planned this year against a 100-unit target</dd></div>
     </dl>
 
     <p class="caution caution--sheet"><strong>Limitation.</strong> Studies negative on both AI and the report were not independently re-read, so sensitivity is likely to be overestimated.</p>
