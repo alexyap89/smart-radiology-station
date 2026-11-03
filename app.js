@@ -523,11 +523,6 @@
     if (reset) reset.addEventListener("click", function () {
       mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.35; mv.spin = true;
     });
-    var wire = document.getElementById("glWire");
-    if (wire) wire.addEventListener("click", function () {
-      gl.wire = !gl.wire;
-      wire.textContent = gl.wire ? "Solid" : "Wireframe";
-    });
   }
 
   /* ---------------------------------------------------------------- media */

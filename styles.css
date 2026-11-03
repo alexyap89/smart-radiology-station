@@ -2435,3 +2435,41 @@ body[data-started="1"] .timer { display: inline; }
 }
 .attract { grid-template-columns: minmax(400px, 1.18fr) minmax(330px, .95fr); }
 @media (max-width: 1600px) { .steps { gap: clamp(4px, .55vw, 10px); } }
+
+/* ---------- CT and DECT: a real viewer, not a thumbnail ---------- */
+#s-pos .split, #s-neg .split { grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr); align-items: start; }
+#s-pos .col, #s-neg .col { min-height: 0; }
+#s-pos .viewer, #s-neg .viewer { display: flex; flex-direction: column; gap: 9px; margin-top: 6px; }
+#s-pos .viewer__stage, #s-neg .viewer__stage {
+  width: 100%; height: clamp(240px, 44vh, 460px);
+  aspect-ratio: auto; flex: 0 0 auto; margin: 0;
+}
+#s-pos .viewer__stage img, #s-neg .viewer__stage img { width: 100%; height: 100%; object-fit: contain; }
+#s-pos .viewer__bar, #s-neg .viewer__bar { margin: 0; }
+#s-pos .viewer__cap, #s-neg .viewer__cap { max-width: none; margin: 0; line-height: 1.45; }
+#s-pos .win__bar, #s-neg .win__bar { flex-wrap: nowrap; gap: 12px; margin: 0; max-width: none; }
+#s-pos .win__ctl, #s-neg .win__ctl { flex: 0 1 auto; gap: 6px; }
+#s-pos .win__ctl input[type="range"], #s-neg .win__ctl input[type="range"] { width: clamp(70px, 6vw, 110px); }
+#s-pos .win__bar .win__zoom, #s-neg .win__bar .win__zoom { margin-left: auto; }
+
+/* the viewer owns its column; the copy moved beside it */
+#s-pos .split, #s-neg .split { grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: clamp(18px, 2vw, 34px); }
+#s-pos .viewer, #s-neg .viewer { margin-top: 0; gap: 8px; }
+#s-pos .viewer__stage, #s-neg .viewer__stage {
+  width: auto; aspect-ratio: var(--ar, .75); height: clamp(260px, 46vh, 480px); flex: 0 0 auto;
+}
+#s-pos .win__bar, #s-neg .win__bar { flex-wrap: wrap; row-gap: 6px; max-width: 380px; }
+#s-pos .viewer__cap, #s-neg .viewer__cap { max-width: 38ch; }
+
+/* a narrower control bar so the viewer column can be as wide as the picture */
+#s-pos .win__ctl, #s-neg .win__ctl { font-size: 9px; letter-spacing: .05em; gap: 5px; }
+#s-pos .win__ctl input[type="range"], #s-neg .win__ctl input[type="range"] { width: clamp(56px, 5vw, 84px); }
+#s-pos .win__zoom span, #s-neg .win__zoom span { font-size: 10px; }
+#s-pos .win__bar, #s-neg .win__bar { gap: 9px; max-width: none; flex-wrap: wrap; row-gap: 5px; }
+#s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(280px, 48vh, 500px); }
+#s-pos .viewer__cap, #s-neg .viewer__cap { max-width: 36ch; }
+#s-pos .col--model .model { max-height: min(26vh, 230px); }
+#s-pos .flow3d--pointer { border-top: 0; padding-top: 0; }
+#s-pos .col--model .model { max-height: min(22vh, 200px); }
+#s-pos .h2 { font-size: clamp(19px, 1.75vw, 26px); line-height: 1.18; }
+#s-pos .col--model { gap: clamp(5px, .9vh, 10px); }

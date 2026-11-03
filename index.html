@@ -154,11 +154,6 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">1 · RbFracture · case 1 · fracture</p>
-          <div class="patient">
-            <img class="patient__img" src="assets/img/patient-a.jpg" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
-            <p class="patient__meta"><b>Patient A</b> · the fracture that went to CT</p>
-          </div>
-          <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
 
           <div class="viewer">
             <div class="viewer__bar" role="tablist" aria-label="Image set">
@@ -181,12 +176,15 @@
             </div>
           </div>
 
-          <button class="btn btn--primary" data-go="neg" type="button">Next film: the other knee</button>
         </div>
 
         <div class="col col--model">
           <p class="stepmark">1 · RbFracture · the same CT</p>
-          <h3 class="h3">The surgeon plans from the render, not a print.</h3>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-a.jpg" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
+            <p class="patient__meta"><b>Patient A</b> · the fracture that went to CT</p>
+          </div>
+          <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
           <div class="model">
             <canvas id="glCanvas" aria-label="Interactive 3D model of the fractured tibia. Drag to rotate."></canvas>
             <div class="model__badge">3D model · drag to rotate</div>
@@ -196,19 +194,17 @@
           </div>
           <div class="row row--tight">
             <button class="btn btn--ghost btn--sm" id="glReset" type="button">Reset view</button>
-            <button class="btn btn--ghost btn--sm" id="glWire" type="button">Wireframe</button>
             <a class="btn btn--ghost btn--sm" id="arLink" href="assets/models/tibia-fracture.usdz" rel="ar">
               <img src="assets/models/ar-glyph.svg" alt="" class="ar-glyph"> View in AR
             </a>
           </div>
-          <p class="micro">AR opens in Apple Quick Look on an iPad or iPhone. Model decimated for on-stand display — not for diagnostic use.</p>
+          <p class="micro">AR opens in Apple Quick Look. Model decimated — not for diagnostic use.</p>
 
-          <p class="body">Spectral data from the same acquisition maps bone-marrow oedema — the bruise inside the bone that plain CT cannot show. It is how an occult fracture is confirmed without an MRI slot.</p>
+          <p class="body">Spectral data from the same acquisition maps marrow oedema — the bruise inside the bone plain CT cannot show.</p>
           <div class="flow3d flow3d--pointer">
-            <p class="flow3d__h">The 3D Lab</p>
-            <p class="body">Built from this CT, no second acquisition. The lab's own service is next.</p>
             <button class="btn btn--ghost btn--sm" data-go="lab" type="button">See the 3D + 4D Lab</button>
           </div>
+          <button class="btn btn--primary" data-go="neg" type="button">Next film: the other knee</button>
         </div>
       </div>
     </section>
@@ -218,11 +214,6 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">1 · RbFracture · case 2 · no fracture</p>
-          <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman, awake and alert, phone in hand.">
-            <p class="patient__meta"><b>Patient B</b> · she walked in on it · left knee · the film that was negative</p>
-          </div>
-          <h2 class="h2" id="neg-title">No fracture on the film — and the knee still hurts.</h2>
 
           <div class="viewer">
             <div class="viewer__bar" role="tablist" aria-label="Image set">
@@ -245,11 +236,15 @@
             </div>
           </div>
 
-          <button class="btn btn--primary" data-go="lab" type="button">Next: what the lab did with the same scan</button>
         </div>
 
         <div class="col col--model">
           <p class="stepmark">What this case teaches</p>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman, awake and alert, phone in hand.">
+            <p class="patient__meta"><b>Patient B</b> · she walked in on it · left knee · the film that was negative</p>
+          </div>
+          <h2 class="h2" id="neg-title">No fracture on the film — and the knee still hurts.</h2>
           <p class="body">Patient B walked in with this knee, and dual-energy CT did what it was ordered to do: it excluded an occult fracture the same night, without an MRI slot and without an admission to reach a scanner.</p>
           <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
           <div class="teach">
@@ -260,6 +255,7 @@
             <p class="teach__h">Degenerative disease is the commonest cause of a painful knee that is not broken.</p>
             <p class="body">Osteophytes and joint-space loss are visible on the sagittal reformat. She walked in, and nothing is broken — the answer to "why does it hurt?" is not always "what did we miss?".</p>
           </div>
+          <button class="btn btn--primary" data-go="lab" type="button">Next: what the lab did with the same scan</button>
         </div>
       </div>
     </section>
