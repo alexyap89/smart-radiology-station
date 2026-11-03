@@ -20,11 +20,12 @@
       <button class="steps__item" type="button" data-pip="quiz" data-go="quiz"><i></i><b>1</b><span class="lbl-full">RbFracture films</span><span class="lbl-short">films</span></button>
       <button class="steps__item" type="button" data-pip="pos" data-go="pos"><i></i><b>1</b><span class="lbl-full">CT + 3D model</span><span class="lbl-short">CT</span></button>
       <button class="steps__item" type="button" data-pip="neg" data-go="neg"><i></i><b>1</b><span class="lbl-full">DECT oedema map</span><span class="lbl-short">DECT</span></button>
-      <button class="steps__item" type="button" data-pip="lab" data-go="lab"><i></i><b>2</b><span class="lbl-full">3D + 4D Lab</span><span class="lbl-short">3D Lab</span></button>
-      <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">denoise</span></button>
+      <button class="steps__item" type="button" data-pip="lab" data-go="lab"><i></i><b>2</b><span class="lbl-full">3D + 4D Lab</span><span class="lbl-short">3D</span></button>
+      <button class="steps__item" type="button" data-pip="render" data-go="render"><i></i><b>2</b><span class="lbl-full">render · movie</span><span class="lbl-short">movie</span></button>
+      <button class="steps__item" type="button" data-pip="see" data-go="see"><i></i><b>2</b><span class="lbl-full">AI denoising</span><span class="lbl-short">dose</span></button>
       <button class="steps__item" type="button" data-pip="move" data-go="move"><i></i><b>2</b><span class="lbl-full">4D dynamic CT</span><span class="lbl-short">4D</span></button>
       <button class="steps__item" type="button" data-pip="speed" data-go="speed"><i></i><b>3</b><span class="lbl-full">AI-accelerated MRI</span><span class="lbl-short">speed</span></button>
-      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">pRIMe</span></button>
+      <button class="steps__item" type="button" data-pip="two" data-go="two"><i></i><b>4</b><span class="lbl-full">pRIMe preparation</span><span class="lbl-short">prep</span></button>
       <button class="steps__item" type="button" data-pip="tools" data-go="tools"><i></i><span class="lbl-full">clinician-built tools</span><span class="lbl-short">tools</span></button>
       <button class="steps__item" type="button" data-pip="takeaway" data-go="takeaway"><i></i><span class="lbl-full">summary</span><span class="lbl-short">sum</span></button>
     </nav>
@@ -94,6 +95,8 @@
               <button type="button" data-z="in" aria-label="Zoom in">+</button>
             </div>
             <button class="win__reset" type="button" data-z="reset">Reset</button>
+            <button class="win__full" type="button" data-z="full" aria-pressed="false">Full screen</button>
+            <span class="win__hint">drag to pan</span>
           </div>
         </figure>
 
@@ -173,6 +176,8 @@
                 <button type="button" data-z="in" aria-label="Zoom in">+</button>
               </div>
               <button class="win__reset" type="button" data-z="reset">Reset</button>
+            <button class="win__full" type="button" data-z="full" aria-pressed="false">Full screen</button>
+            <span class="win__hint">drag to pan</span>
             </div>
           </div>
 
@@ -233,6 +238,8 @@
                 <button type="button" data-z="in" aria-label="Zoom in">+</button>
               </div>
               <button class="win__reset" type="button" data-z="reset">Reset</button>
+            <button class="win__full" type="button" data-z="full" aria-pressed="false">Full screen</button>
+            <span class="win__hint">drag to pan</span>
             </div>
           </div>
 
@@ -260,36 +267,45 @@
       </div>
     </section>
 
-    <!-- ============ 2. 3D + 4D — THE LAB ============ -->
+    <!-- ============ 2. 3D + 4D — RENDERING ============ -->
     <section class="screen" id="s-lab" aria-labelledby="lab-title">
-      <div class="lab">
-        <div class="lab__hero">
-          <p class="stepmark">3D + 4D · the lab</p>
-          <h2 class="h2 lab__h" id="lab-title">Photorealistic rendering, from the scan already acquired.</h2>
+      <div class="col col--wide renderpage">
+        <p class="stepmark">3D + 4D · the lab</p>
+        <h2 class="h2 renderpage__h" id="lab-title">Photorealistic rendering, from the scan already acquired.</h2>
 
-          <div class="gallery" id="labGallery" data-case="foot">
-            <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
-              <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
-              <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
-              <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
-            </div>
-            <figure class="gallery__stage" data-win-stage>
-              <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
-            </figure>
-            <div class="gallery__foot">
-              <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome articulating with the midfoot instead of the tibia.</p>
-              <button class="btn btn--ghost btn--sm lab__next" data-go="see" type="button">Next: what made the 4D possible</button>
-            </div>
+        <div class="gallery gallery--hero" id="labGallery" data-case="foot">
+          <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
+            <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
+            <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
+            <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
+          </div>
+          <figure class="gallery__stage" data-win-stage>
+            <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
+          </figure>
+          <div class="gallery__foot">
+            <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome articulating with the midfoot instead of the tibia.</p>
+            <button class="btn btn--ghost btn--sm lab__next" data-go="render" type="button">Next: the same idea, in motion</button>
           </div>
         </div>
+      </div>
+    </section>
 
-        <aside class="lab__rail">
-          <p class="minihead">Rad-ART · 3D visualisation, in use</p>
+    <!-- ============ 2a. 3D + 4D — STATIC OR MOVIE ============ -->
+    <section class="screen" id="s-render" aria-labelledby="render-title">
+      <div class="col col--wide renderpage">
+        <p class="stepmark">3D + 4D · static, or a movie</p>
+        <h2 class="h2 renderpage__h" id="render-title">The same model renders still, or as a movie.</h2>
+
+        <div class="vids vids--big">
           <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
           <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
           <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
-          <p class="micro lab__facts">Reconstruction S$82–S$299 · print S$560–S$1,020. The printed models are on the table beside this station.</p>
-        </aside>
+        </div>
+
+        <div class="gallery__foot">
+          <p class="micro">Rad-ART · clinical 3D from the scan already taken. Playing locally, no network.</p>
+          <button class="btn btn--ghost btn--sm" data-go="see" type="button">Next: what made the 4D possible</button>
+        </div>
       </div>
     </section>
 
@@ -497,30 +513,30 @@
     <!-- ============ 5. BUILT HERE ============ -->
     <section class="screen" id="s-tools" aria-labelledby="tools-title">
       <div class="col col--wide">
-        <p class="stepmark">Built here, not bought</p>
-        <h2 class="h2 h2--tight" id="tools-title">Four tools a clinician wrote, and the 3D work behind them.</h2>
+        <p class="stepmark">Built here</p>
+        <h2 class="h2 h2--tight" id="tools-title">Four tools a clinician wrote.</h2>
 
         <div class="tools-grid">
           <article class="tool tool--lead">
             <p class="tool__k">Most used</p>
             <h3 class="tool__h">pRIMe-MRI</h3>
-            <p class="tool__d">A 360° preparation experience for MRI: an interactive scanner room, guided breath-hold, real scanner audio. Narration in six languages including Hokkien and Cantonese. Phone only, no headset.</p>
-            <p class="tool__m">16 of 16 patients at one month · would recommend</p>
+            <p class="tool__d">Rehearse the scanner on your own phone: the room, the breath-hold, the sound. Six languages, no headset.</p>
+            <p class="tool__m">16 of 16 patients at one month</p>
             <a class="tool__a" href="https://primemri.netlify.app" target="_blank" rel="noopener">primemri.netlify.app ↗</a>
           </article>
           <article class="tool">
             <h3 class="tool__h">DECT BME</h3>
-            <p class="tool__d">Teaching resource on reading bone-marrow oedema with dual-energy CT — the scan that replaced MRI for occult fracture here.</p>
+            <p class="tool__d">How to read bone-marrow oedema on dual-energy CT.</p>
             <a class="tool__a" href="https://dectbme.netlify.app" target="_blank" rel="noopener">dectbme.netlify.app ↗</a>
           </article>
           <article class="tool">
             <h3 class="tool__h">Rad-ART</h3>
-            <p class="tool__d">Patient-specific 3D models and augmented reality for the consultation. Uses the scan the patient already had; no extra imaging.</p>
+            <p class="tool__d">Patient-specific 3D and AR for the consultation, from the scan already taken.</p>
             <a class="tool__a" href="https://radart.netlify.app" target="_blank" rel="noopener">radart.netlify.app ↗</a>
           </article>
           <article class="tool">
             <h3 class="tool__h">DIXON spine</h3>
-            <p class="tool__d">An abbreviated lumbar-spine MRI protocol, with the patient-facing explainer that goes with it: why the scan is shorter, and what it shows.</p>
+            <p class="tool__d">An abbreviated lumbar-spine MRI, with the patient explainer beside it.</p>
             <a class="tool__a" href="https://dixonlspine.netlify.app" target="_blank" rel="noopener">dixonlspine.netlify.app ↗</a>
           </article>
         </div>
@@ -535,52 +551,33 @@
     <section class="screen" id="s-takeaway" aria-labelledby="tk-title">
       <div class="col col--wide">
         <p class="stepmark">Takeaway</p>
-        <h2 class="h2" id="tk-title">Four programmes, and exactly what each one can prove.</h2>
+        <h2 class="h2" id="tk-title">Four programmes, and what each one can prove.</h2>
         <p class="verdict verdict--score" id="tkScore" hidden></p>
 
         <div class="tk-grid tk-grid--four">
           <article class="tk">
             <p class="tk__n">01 · RbFracture · validated</p>
-            <p class="tk__b">The fracture copilot for emergency radiology. In 1,102 consecutive radiographs it caught 6 fractures the first reports missed; radiologists caught the 7 it missed. 96.6% sensitivity, 99.2% negative predictive value.</p>
+            <p class="tk__b">A fracture copilot in the emergency department. 1,102 consecutive radiographs; 6 fractures caught that the first reports missed.</p>
           </article>
           <article class="tk">
             <p class="tk__n">02 · 3D + 4D · service and pilot</p>
-            <p class="tk__b">Cinematic rendering, and printing, from the scan already acquired — digital-first, so most cases never reach a printer. The 4D pilot is building a diagnosis static imaging cannot make: labelled a pilot, no outcome data yet.</p>
+            <p class="tk__b">Photorealistic models from the scan already taken, digital-first so most cases never reach a printer. The 4D pilot is still a pilot.</p>
           </article>
           <article class="tk">
-            <p class="tk__n">03 · MRI acceleration · initial evaluation</p>
-            <p class="tk__b">AI reconstruction shortened MRI scans by about 37% across 8 musculoskeletal anatomies. Less time inside the bore is the patient-facing half: less to endure, less to abandon, less to repeat.</p>
+            <p class="tk__n">03 · MRI acceleration · evaluation</p>
+            <p class="tk__b">About 37% shorter across 8 musculoskeletal anatomies. Less time in the bore is the part the patient feels.</p>
           </article>
           <article class="tk">
-            <p class="tk__n">04 · pRIMe · validated in-house</p>
-            <p class="tk__b">A preparation experience a clinician wrote: the room, the breath-hold and the sound, in the patient's own language. 16 of 16 patients rated it positively at one month and would recommend it.</p>
+            <p class="tk__n">04 · pRIMe · in-house</p>
+            <p class="tk__b">The scanner rehearsed at home, in the patient's own language. 16 of 16 positive at one month.</p>
           </article>
         </div>
 
-        <div class="tk-two">
-          <div>
-            <p class="minihead">What each one rests on</p>
-            <ol class="tk-list">
-              <li><b>RbFracture</b> — a blinded audit of 1,102 consecutive studies; manuscript in preparation.</li>
-              <li><b>3D + 4D</b> — a live service with its own cost and carbon data; the 4D arm is a pre-committed pilot protocol.</li>
-              <li><b>MRI acceleration</b> — an initial evaluation, musculoskeletal only.</li>
-              <li><b>pRIMe</b> — one department, 16 patients, one month.</li>
-            </ol>
-          </div>
-          <div>
-            <p class="minihead">What we do not claim</p>
-            <ol class="tk-list">
-              <li>No published outcome language: the manuscript is not published.</li>
-              <li>No achieved dose saving on CT — the ladder states targets, tier by tier.</li>
-              <li>No 4D result of any kind yet; the figures are the protocol's gates.</li>
-              <li>No theatre-time or cost saving for the 3D Lab until it is measured.</li>
-            </ol>
-          </div>
+        <div class="tk-notes">
+        <p class="caution tk-limit"><strong>What this does not claim.</strong> Studies negative on both AI and the report were not re-read, so sensitivity is likely an overestimate. The 37% is musculoskeletal only. The dose ladder and the 4D pilot are targets, not results. The manuscript is in preparation.</p>
+
+        <p class="tk-thesis"><strong>The pattern:</strong> measure the problem, validate on our own patients, keep the radiologist as final interpreter, and let the people who use the tools build them.</p>
         </div>
-
-        <p class="caution tk-limit"><strong>What this does not claim.</strong> Studies negative on both AI and the report were not independently re-read, so sensitivity is likely an overestimate. The 37% applies to musculoskeletal protocols, not to every scan. The dose ladder and the 4D pilot are labelled targets, not measured outcomes. The manuscript is in preparation, not published.</p>
-
-        <p class="tk-thesis"><strong>The pattern:</strong> measure the problem, validate the tool on our own patients, keep the radiologist as the final interpreter, and let the people who use the tools build them. That is what makes it a model other hospitals could adopt.</p>
 
         <div class="row">
           <button class="btn btn--primary" id="openTakeaway" type="button">View summary</button>

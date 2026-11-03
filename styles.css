@@ -2525,3 +2525,118 @@ body[data-started="1"] .timer { display: inline; }
 #s-move .cine__bar .cine__phase { margin-left: 6px; }
 #s-move .cine__bar .btn--primary { margin-left: auto; }
 #s-move .cinepage__h { font-size: clamp(17px, 1.5vw, 22px); }
+
+/* ---------- full screen viewing for the films and scans ---------- */
+.win__full {
+  font: inherit; font-size: 10px; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--paper-dim); background: transparent; border: 1px solid var(--rule);
+  padding: 5px 9px; cursor: pointer; transition: color var(--dur), border-color var(--dur);
+}
+.win__full:hover { color: var(--paper); border-color: var(--rule-strong); }
+.plate.is-full, .viewer.is-full {
+  position: fixed; inset: 0; z-index: 400; margin: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  padding: clamp(10px, 1.4vw, 20px); background: var(--ink);
+}
+.plate.is-full .plate__frame, .viewer.is-full .viewer__stage {
+  flex: 1 1 auto; height: auto; max-height: none; width: 100%;
+  aspect-ratio: auto; margin: 0; border: 0;
+}
+.plate.is-full .plate__frame img, .viewer.is-full .viewer__stage img {
+  width: 100%; height: 100%; object-fit: contain;
+}
+.plate.is-full .plate__cap, .viewer.is-full .viewer__cap { order: -1; margin: 0; max-width: none; }
+.plate.is-full .win__bar, .viewer.is-full .win__bar { flex: 0 0 auto; justify-content: center; max-width: none; }
+.plate.is-full .viewer__bar, .viewer.is-full .viewer__bar { order: -2; }
+body.has-full { overflow: hidden; }
+/* the plate carries an inline --w from fitFrame: full screen must override it */
+.plate.is-full, .viewer.is-full { width: auto; max-width: none; height: auto; }
+.plate__frame, .viewer__stage { cursor: grab; touch-action: none; }
+.plate__frame:active, .viewer__stage:active { cursor: grabbing; }
+.win__hint { font-size: 9px; letter-spacing: .07em; text-transform: uppercase; color: var(--paper-faint); margin-left: auto; }
+@media (max-width: 1100px) { .win__hint { display: none; } }
+/* an id-scoped max-width was clamping the overlay to the column */
+#s-quiz .plate.is-full, #s-pos .viewer.is-full, #s-neg .viewer.is-full {
+  width: auto; max-width: none; height: auto; min-width: 0;
+}
+#s-quiz .plate.is-full .plate__frame, #s-pos .viewer.is-full .viewer__stage, #s-neg .viewer.is-full .viewer__stage {
+  width: auto; max-width: none;
+}
+/* full screen must beat every id-scoped column rule underneath */
+.plate.is-full, .viewer.is-full {
+  width: auto !important;
+  max-width: none !important;
+  height: 100vh !important;
+  aspect-ratio: auto !important;
+}
+.plate.is-full .plate__frame, .viewer.is-full .viewer__stage {
+  aspect-ratio: auto !important;
+  width: 100% !important;
+  height: auto !important;
+  flex: 1 1 auto !important;
+  max-height: none !important;
+}
+
+/* ---------- takeaway: use the screen, not a third of it ---------- */
+#s-takeaway .col--wide { height: 100%; max-width: none; display: flex; flex-direction: column; gap: clamp(8px, 1.4vh, 16px); }
+#s-takeaway .tk-grid--four {
+  flex: 1 1 auto; min-height: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 14px);
+}
+#s-takeaway .tk { padding: clamp(12px, 1.4vw, 20px); display: flex; flex-direction: column; gap: 6px; justify-content: flex-start; }
+#s-takeaway .tk__n { font-size: clamp(9.5px, .74vw, 11.5px); }
+#s-takeaway .tk__b { font-size: clamp(12.5px, .95vw, 15px); line-height: 1.45; }
+#s-takeaway .tk-notes { display: grid; grid-template-columns: 1.15fr 1fr; gap: clamp(10px, 1.4vw, 18px); flex: 0 0 auto; }
+#s-takeaway .tk-notes > p { margin: 0; max-width: none; }
+#s-takeaway .tk-limit, #s-takeaway .tk-thesis { font-size: clamp(10.5px, .8vw, 12.5px); line-height: 1.45; }
+#s-takeaway .row { flex: 0 0 auto; margin-top: 2px; }
+#s-takeaway .h2 { margin: 0; }
+@media (max-width: 1100px) {
+  #s-takeaway .tk-grid--four { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; }
+  #s-takeaway .tk-notes { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* both closing screens fill the frame instead of floating in it */
+#s-takeaway .screen, #s-tools .screen, #s-takeaway, #s-tools { align-content: stretch; }
+#s-tools .col--wide { height: 100%; max-width: none; display: flex; flex-direction: column; gap: clamp(8px, 1.3vh, 14px); }
+#s-tools .tools-grid {
+  flex: 1 1 auto; min-height: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: clamp(8px, 1vw, 14px);
+}
+#s-tools .tool { padding: clamp(12px, 1.4vw, 20px); display: flex; flex-direction: column; gap: 6px; }
+#s-tools .tool__h { font-size: clamp(17px, 1.5vw, 24px); }
+#s-tools .tool__d { font-size: clamp(12px, .92vw, 14px); line-height: 1.5; }
+#s-tools .tool__a { margin-top: auto; }
+#s-tools .row { flex: 0 0 auto; }
+@media (max-width: 1100px) { #s-tools .tools-grid { grid-template-columns: minmax(0, 1fr); grid-template-rows: none; } }
+
+/* ---------- render screens: one page each, picture first ---------- */
+#s-lab .renderpage, #s-render .renderpage { height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 8px; max-width: none; }
+#s-lab .renderpage__h, #s-render .renderpage__h { margin: 0; font-size: clamp(18px, 1.6vw, 24px); line-height: 1.16; }
+#s-lab .gallery--hero { flex: 1 1 auto; min-height: 0; max-width: none; }
+#s-lab .gallery--hero .gallery__stage { flex: 1 1 auto; min-height: 0; height: auto; }
+#s-lab .gallery--hero .gallery__stage img { width: 100%; height: 100%; object-fit: contain; }
+#s-render .vids--big { flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+#s-render .vids--big .vid { display: flex; flex-direction: column; margin: 0; min-height: 0; }
+#s-render .vids--big video {
+  width: 100%; height: 100%; flex: 1 1 auto; min-height: 0;
+  object-fit: contain; background: #05080b; border: 1px solid var(--rule); display: block;
+}
+#s-render .vids--big figcaption { flex: 0 0 auto; margin-top: 5px; }
+#s-render .gallery__foot, #s-lab .gallery__foot { flex: 0 0 auto; }
+/* the render screens must stretch, not float */
+#s-lab, #s-render { align-content: stretch; }
+@media (max-width: 1600px) {
+  .steps { gap: 4px; }
+  .steps__item { font-size: 9.5px; letter-spacing: .04em; }
+  .steps__item i { width: 10px; }
+  .steps__item.is-live i { width: 22px; }
+}
+#s-pos .col--model .model { max-height: min(20vh, 180px); }
+/* the clips are 16:9: let the tiles be 16:9 instead of a tall box of black */
+#s-render .vids--big { flex: 0 0 auto; align-items: start; }
+#s-render .vids--big video { height: auto; aspect-ratio: 16 / 9; flex: 0 0 auto; }

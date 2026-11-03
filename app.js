@@ -11,7 +11,7 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "see", "move", "speed", "two", "tools", "takeaway"];
+  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "render", "see", "move", "speed", "two", "tools", "takeaway"];
 
   var state = {
     screen: "attract",
@@ -49,6 +49,12 @@
   /* ---------------------------------------------------------------- screens */
   function show(name) {
     if (ORDER.indexOf(name) === -1) return;
+    // an enlarged film belongs to the screen it came from
+    var fullEl = document.querySelector(".is-full");
+    if (fullEl) {
+      var fb = fullEl.querySelector('[data-z="full"]');
+      if (fb) fb.click();
+    }
     state.screen = name;
     app.setAttribute("data-screen", name);
 
@@ -73,6 +79,7 @@
         pos:  ["1", "RbFracture · the case that went to CT"],
         neg:  ["1", "RbFracture · the case that stopped at CT"],
         lab:  ["2", "3D + 4D Lab · what the scan becomes"],
+        render: ["2", "3D + 4D Lab · static, or a movie"],
         see:  ["2", "3D + 4D Lab · the dose that buys the fourth dimension"],
         move: ["2", "3D + 4D Lab · the joint in motion"],
         speed:["3", "MRI acceleration · less time in the scanner"],
@@ -111,11 +118,19 @@
     }
     if (name !== "speed" && typeof pauseAcceleration === "function") pauseAcceleration();
     if (name !== "move") cineLeave();
-    playVideos(name === "lab");
+    playVideos(name === "render");
     primeLoad(name === "tools");
     if (name !== "takeaway") closeOverlay();
     resetIdle();
   }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key !== "Escape") return;
+    var full = document.querySelector(".is-full");
+    if (!full) return;
+    var btn = full.querySelector('[data-z="full"]');
+    if (btn) btn.click();
+  });
 
   var lastGo = { name: "", at: 0 };
   function go(name) {
@@ -923,6 +938,21 @@
     function makeViewer(img, frame, bar) {
       if (!img || !frame) return null;
       var v = { img: img, frame: frame, b: 100, c: 100, z: 1, x: 0, y: 0, pointers: {} };
+      var shell = frame.closest(".plate, .viewer");
+
+      // Full screen is a CSS overlay, not the Fullscreen API: iOS Safari only
+      // grants requestFullscreen to video, and this station runs on an iPad.
+      function setFull(on) {
+        if (!shell) return;
+        shell.classList.toggle("is-full", on);
+        document.body.classList.toggle("has-full", on);
+        var btn = bar && bar.querySelector('[data-z="full"]');
+        if (btn) {
+          btn.textContent = on ? "Exit full screen" : "Full screen";
+          btn.setAttribute("aria-pressed", on ? "true" : "false");
+        }
+        paint();
+      }
 
       var bSlider = bar && bar.querySelector('[data-w="b"]');
       var cSlider = bar && bar.querySelector('[data-w="c"]');
@@ -963,6 +993,7 @@
           if (act === "in") zoomAt(1.25);
           if (act === "out") zoomAt(1 / 1.25);
           if (act === "reset") reset();
+          if (act === "full") setFull(!shell.classList.contains("is-full"));
         });
       }
 
