@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smart Radiology — Is there a fracture?</title>
-<link rel="stylesheet" href="styles.css?v=20261103121929">
+<link rel="stylesheet" href="styles.css?v=20261103135931">
 </head>
 <body>
 
@@ -197,6 +197,7 @@
           <div class="model">
             <canvas id="glCanvas" aria-label="Interactive 3D model of the fractured tibia. Drag to rotate."></canvas>
             <div class="model__badge">3D model · drag to rotate</div>
+            <button class="model__close" id="glClose" type="button" aria-label="Exit full screen">Exit full screen</button>
             <div class="model__fallback" id="glFallback" hidden>
               <p>3D view needs WebGL. The still render and the AR link below still work.</p>
             </div>
@@ -209,7 +210,7 @@
             </a>
           </div>
 
-          <p class="body">Spectral data maps the bruise inside the bone that plain CT cannot show.</p>
+          <p class="body"><b>What it adds:</b> the surgeon plans the fixation from the fracture configuration in three dimensions, on the scan already taken — not from a mental reconstruction of axial slices.</p>
           <button class="btn btn--primary" data-go="neg" type="button">Next film: the other knee</button>
         </div>
       </div>
@@ -578,6 +579,6 @@
 </div>
 
 <script src="assets/models/tibia-fracture.js"></script>
-<script src="app.js?v=20261103121929"></script>
+<script src="app.js?v=20261103135931"></script>
 </body>
 </html>

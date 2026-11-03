@@ -128,7 +128,8 @@
     var full = document.querySelector(".is-full");
     if (!full) return;
     var btn = full.querySelector('[data-z="full"]');
-    if (btn) btn.click();
+    if (btn) { btn.click(); return; }
+    if (typeof window.__modelExit === "function") window.__modelExit();
   });
 
   var lastGo = { name: "", at: 0 };
@@ -333,7 +334,7 @@
 
   /* ---------------------------------------------------------------- 3D model */
   var gl = { ready: false, started: false, raf: 0, wire: false };
-  var mv = { yaw: -0.55, pitch: 0.18, dist: 1.75, drag: null, last: 0, spin: true };
+  var mv = { yaw: -0.55, pitch: 0.18, dist: 1.42, drag: null, last: 0, spin: true };
 
   function decodeMesh(src) {
     function b64ToBytes(s) {
@@ -569,21 +570,31 @@
 
     var reset = document.getElementById("glReset");
     if (reset) reset.addEventListener("click", function () {
-      mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.75; mv.spin = true;
+      mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.42; mv.spin = true;
     });
 
     var modelFull = document.getElementById("glFull");
+    var modelClose = document.getElementById("glClose");
     var modelBox = document.querySelector("#s-pos .model");
-    if (modelFull && modelBox) {
-      modelFull.addEventListener("click", function () {
-        var on = !modelBox.classList.contains("is-full");
-        modelBox.classList.toggle("is-full", on);
-        document.body.classList.toggle("has-full", on);
+    function setModelFull(on) {
+      if (!modelBox) return;
+      modelBox.classList.toggle("is-full", on);
+      document.body.classList.toggle("has-full", on);
+      if (modelFull) {
         modelFull.textContent = on ? "Exit full screen" : "Full screen";
         modelFull.setAttribute("aria-pressed", on ? "true" : "false");
-        window.setTimeout(resize, 60);
+      }
+      window.setTimeout(resize, 60);
+    }
+    if (modelFull && modelBox) {
+      modelFull.addEventListener("click", function () {
+        setModelFull(!modelBox.classList.contains("is-full"));
       });
     }
+    if (modelClose) {
+      modelClose.addEventListener("click", function () { setModelFull(false); });
+    }
+    window.__modelExit = function () { if (modelBox && modelBox.classList.contains("is-full")) setModelFull(false); };
   }
 
   /* ---------------------------------------------------------------- media */

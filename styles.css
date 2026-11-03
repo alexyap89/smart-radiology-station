@@ -3157,3 +3157,13 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-neg .viewer__stage, #s-pos .viewer__stage { height: clamp(300px, 56vh, 545px); }
 #s-neg .viewer__stage, #s-pos .viewer__stage { height: clamp(280px, 46vh, 460px); }
 #s-neg .viewer__cap { font-size: clamp(12px, .86vw, 13.5px); }
+
+/* the way out of a full-screen model */
+.model__close { display: none; }
+#s-pos .model.is-full .model__close {
+  display: inline-flex; align-items: center; position: absolute; top: 14px; right: 16px; z-index: 5;
+  font: inherit; font-size: 11px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink); background: var(--paper); border: 0; padding: 8px 13px; cursor: pointer;
+}
+#s-pos .model.is-full .model__badge { display: none; }
+#s-pos .col--model .body b { color: var(--cyan); font-weight: 600; }
