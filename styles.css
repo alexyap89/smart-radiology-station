@@ -2473,3 +2473,38 @@ body[data-started="1"] .timer { display: inline; }
 #s-pos .col--model .model { max-height: min(22vh, 200px); }
 #s-pos .h2 { font-size: clamp(19px, 1.75vw, 26px); line-height: 1.18; }
 #s-pos .col--model { gap: clamp(5px, .9vh, 10px); }
+
+/* =========================================================================
+   Lab, third pass: the render is the screen. Hero on the left, the Rad-ART
+   clips stacked beside it, nothing cropped, almost no prose.
+   ========================================================================= */
+#s-lab .lab {
+  display: grid; grid-template-columns: minmax(0, 1fr) clamp(240px, 22vw, 320px);
+  gap: clamp(14px, 1.8vw, 26px); height: 100%; min-height: 0; align-items: stretch;
+}
+#s-lab .lab__hero { display: flex; flex-direction: column; gap: 8px; min-height: 0; min-width: 0; }
+#s-lab .lab__h { font-size: clamp(18px, 1.6vw, 24px); line-height: 1.16; margin: 0; }
+#s-lab .lab__next { align-self: flex-start; margin-top: 2px; }
+
+#s-lab .gallery { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 7px; }
+#s-lab .gallery__stage { flex: 1 1 auto; min-height: 0; height: auto; border: 1px solid var(--rule); }
+#s-lab .gallery__stage img { width: 100%; height: 100%; object-fit: contain; }
+#s-lab .gallery__cap { flex: 0 0 auto; max-width: 92ch; }
+
+#s-lab .lab__rail { display: flex; flex-direction: column; gap: 8px; min-height: 0; }
+#s-lab .lab__rail .vid { margin: 0; }
+#s-lab .lab__rail .vid video {
+  width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain;
+  background: #05080b; border: 1px solid var(--rule); display: block;
+}
+#s-lab .lab__rail .vid figcaption { margin-top: 3px; }
+#s-lab .lab__facts { margin-top: auto; font-size: clamp(8.5px, .64vw, 10px); line-height: 1.35; }
+#s-lab .gallery { max-width: none; }
+#s-lab .lab { grid-template-columns: minmax(0, 1fr) clamp(230px, 20vw, 290px); }
+#s-lab .gallery__cap { max-width: none; font-size: clamp(10px, .78vw, 12px); }
+#s-lab .gallery__foot { display: flex; align-items: center; gap: 14px; flex: 0 0 auto; }
+#s-lab .gallery__foot .gallery__cap { flex: 1 1 auto; margin: 0; }
+#s-lab .lab__next { flex: 0 0 auto; }
+#s-see .vendor__cap { font-size: clamp(10px, .78vw, 12px); line-height: 1.4; padding: 9px 11px; color: var(--paper-dim); }
+#s-see .vendor img { max-height: clamp(170px, 30vh, 340px); }
+#s-see .col { gap: clamp(8px, 1.3vh, 14px); }

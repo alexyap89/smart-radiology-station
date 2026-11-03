@@ -262,45 +262,34 @@
 
     <!-- ============ 2. 3D + 4D — THE LAB ============ -->
     <section class="screen" id="s-lab" aria-labelledby="lab-title">
-      <div class="col col--wide lab">
-        <div class="lab__top">
-          <div class="col">
-            <p class="stepmark">3D + 4D · the lab</p>
-            <h2 class="h2" id="lab-title">A photorealistic model, from the scan she already had.</h2>
-            <p class="micro">Cinematic volume rendering: bone, soft tissue and the way they relate, in one image. No second acquisition, no additional dose.</p>
+      <div class="lab">
+        <div class="lab__hero">
+          <p class="stepmark">3D + 4D · the lab</p>
+          <h2 class="h2 lab__h" id="lab-title">Photorealistic rendering, from the scan already acquired.</h2>
 
-            <div class="gallery" id="labGallery" data-case="foot">
-              <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
-                <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
-                <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
-                <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
-              </div>
-              <figure class="gallery__stage" data-win-stage>
-                <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
-              </figure>
-              <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.</p>
+          <div class="gallery" id="labGallery" data-case="foot">
+            <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
+              <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
+              <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
+              <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
             </div>
-          </div>
-
-          <div class="col">
-            <div class="teach">
-              <p class="teach__h">Tier 0 is the default, and printing is arriving.</p>
-              <p class="body">The cheapest modality that answers the clinical question wins, so most complex fractures stop at digital reconstruction. A print has to earn its place — it exists because handling the fracture changes the plan or the conversation. The models on the table are the printed end of that spectrum.</p>
+            <figure class="gallery__stage" data-win-stage>
+              <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
+            </figure>
+            <div class="gallery__foot">
+              <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome articulating with the midfoot instead of the tibia.</p>
+              <button class="btn btn--ghost btn--sm lab__next" data-go="see" type="button">Next: what made the 4D possible</button>
             </div>
-            <p class="note">Live clinical service. Reconstruction S$82–S$299; printed models S$560–S$1,020 depending on tier. 279 complex-fracture candidates in about two years; 50–65 prints planned this year against a 100-unit target, and each print not made avoids 0.73–1.33 kWh and 0.6–1.3 kg CO₂.</p>
-            <button class="btn btn--primary" data-go="see" type="button">Next: what made the 4D possible</button>
           </div>
         </div>
 
-        <div class="spotlight lab__spot">
+        <aside class="lab__rail">
           <p class="minihead">Rad-ART · 3D visualisation, in use</p>
-          <div class="vids">
-            <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
-            <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
-            <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
-          </div>
-          <p class="micro">Clinical 3D examples from the Rad-ART study, playing locally — no network needed.</p>
-        </div>
+          <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
+          <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
+          <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
+          <p class="micro lab__facts">Reconstruction S$82–S$299 · print S$560–S$1,020. The printed models are on the table beside this station.</p>
+        </aside>
       </div>
     </section>
 
@@ -309,8 +298,8 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">3D + 4D · less dose</p>
-          <h2 class="h2" id="see-title">The image got quieter, so the scan could get smaller.</h2>
-          <p class="body">Deep-learning reconstruction rebuilds a CT image from the same raw data with the noise of a much larger dose. On the Apex that headroom is spent on dose in committed steps — tier by tier, on single-energy bone-read protocols, with the quality floor agreed before the first patient.</p>
+          <h2 class="h2" id="see-title">Less dose, one committed rung at a time.</h2>
+          <p class="body">Deep-learning reconstruction rebuilds the image from the same raw data with the noise of a much larger dose. That headroom is spent on dose in steps — with the quality floor agreed before the first patient.</p>
 
           <div class="dose" id="doseLadder" data-tier="t0">
             <div class="dose__head">
@@ -329,10 +318,9 @@
               <span class="dose__rung" data-rung="40"><b>−40%</b><i>ceiling</i></span>
             </div>
             <p class="dose__out" id="doseOut" role="status" aria-live="polite">Baseline. Nothing has moved yet.</p>
-            <p class="dose__fine">The rungs and the noise gate are the department's own pre-committed rules. The noise curve is a model of that rule — not measured patient data.</p>
+            <p class="dose__fine">Rungs and gate are the department's own pre-committed rules. The curve is a model of them, not measured data.</p>
           </div>
 
-          <p class="body body--tight">Noise is the whole argument. Reconstruction reduces noise; it cannot create information. Every rung has to pass the same gate before the next one opens, and the ladder has a ceiling.</p>
           <button class="btn btn--primary" data-go="move" type="button">Next: watch the joint move</button>
         </div>
 
@@ -346,14 +334,10 @@
             </figcaption>
           </figure>
           <div class="teach">
-            <p class="teach__h">Reconstruction is the lever, not the acquisition.</p>
-            <p class="body">All three images come from the same raw data. Nothing extra was scanned to make the right-hand image — that is the lever the ladder spends.</p>
+            <p class="teach__h">One scan, three reconstructions.</p>
+            <p class="body">Nothing extra was scanned. The vendor is showing what the network does to noise — not a dose saving.</p>
           </div>
-          <div class="teach">
-            <p class="teach__h">This figure is about noise, not a dose saving.</p>
-            <p class="body">It is the vendor's own illustration of how the image looks when the noise is handed to a network. What we are measuring, tier by tier, is what happens when that noise room is traded for less dose.</p>
-          </div>
-          <p class="note">What this is: a service change with a dose target, measured and reported tier by tier. What it is not: a completed dose saving.</p>
+          <p class="note">A dose target, reported tier by tier. Not a dose saving we have already banked.</p>
         </div>
       </div>
     </section>
