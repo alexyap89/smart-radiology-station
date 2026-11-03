@@ -11,7 +11,7 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "render", "see", "move", "two", "speed", "tools", "takeaway"];
+  var ORDER = ["attract", "quiz", "pos", "neg", "lab", "render", "see", "move", "two", "speed", "takeaway", "tools"];
 
   var state = {
     screen: "attract",
@@ -205,8 +205,8 @@
       title: "Patient B fell too, but she could walk it off. This is her knee.",
       img: "assets/cases/neg-film-ap.png", ai: "assets/cases/neg-ai-ap.png",
       cap: "Case 2 · left knee · AP", step: "Film 3 of 4", truth: "no",
-      pimg: "assets/img/patient-b.jpg",
-      palt: "The patient: an elderly woman, awake and alert, phone in hand.",
+      pimg: "assets/img/patient-b-waiting.jpg",
+      palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected.",
       comment: "Nothing flagged. The radiologist agreed: degenerative change, no acute fracture line.",
@@ -216,8 +216,8 @@
       title: "Patient B, lateral view. She walked in, but the pain has not settled.",
       img: "assets/cases/neg-film-lat.png", ai: "assets/cases/neg-ai-lat.png",
       cap: "Case 2 · left knee · lateral", step: "Film 4 of 4", truth: "no",
-      pimg: "assets/img/patient-b.jpg",
-      palt: "The patient: an elderly woman, awake and alert, phone in hand.",
+      pimg: "assets/img/patient-b-waiting.jpg",
+      palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected. An effusion is.",
       comment: "Still no fracture — but the AI does mark an effusion, and it is right. A knee that cannot bear weight with fluid in it needs the next test, not a second opinion on the same film.",
