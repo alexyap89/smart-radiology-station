@@ -164,9 +164,10 @@
   var idleTimer = null;
   function resetIdle() {
     if (idleTimer) window.clearTimeout(idleTimer);
-    if (state.screen === "takeaway" || !overlay.hidden) return;
+    // a visitor reading a film full screen must not be thrown back to the cover
+    if (state.screen === "takeaway" || !overlay.hidden || document.querySelector(".is-full")) return;
     idleTimer = window.setTimeout(function () {
-      if (state.screen === "takeaway" || !overlay.hidden) return;
+      if (state.screen === "takeaway" || !overlay.hidden || document.querySelector(".is-full")) return;
       toast("info", "Resetting for the next visitor.", 1200);
       window.setTimeout(resetAll, 900);
     }, IDLE_MS);
