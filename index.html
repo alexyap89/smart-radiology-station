@@ -83,7 +83,6 @@
         <figure class="plate plate--film" data-win>
           <div class="plate__frame">
             <img id="qImg" src="assets/cases/pos-film-ap.png" alt="De-identified knee radiograph" class="plate__img plate__img--film">
-            <span class="badge">De-identified clinical image</span>
           </div>
           <figcaption class="plate__cap" id="qCap">Case 1 · right knee · AP</figcaption>
           <div class="win__bar">
@@ -168,7 +167,6 @@
             </div>
             <figure class="viewer__stage" data-win-stage>
               <img id="posImg" src="assets/cases/pos-ct-coronal.png" alt="Coronal CT of the knee in bone window">
-              <span class="badge badge--corner">De-identified clinical image</span>
             </figure>
             <p class="viewer__cap" id="posCap">Coronal bone window. A coronal split fracture runs through the lateral tibial plateau.</p>
             <div class="win__bar" data-win-for="posImg">
@@ -233,7 +231,6 @@
             </div>
             <figure class="viewer__stage" data-win-stage>
               <img id="negImg" src="assets/cases/neg-bme-fusion.png" alt="Coronal dual-energy fusion of the knee showing no marrow oedema">
-              <span class="badge badge--corner">De-identified clinical image</span>
             </figure>
             <p class="viewer__cap" id="negCap">No marrow oedema on the fusion map. Nothing for the spectral data to flag.</p>
             <div class="win__bar" data-win-for="negImg">
@@ -269,50 +266,44 @@
 
     <!-- ============ 2. 3D + 4D — THE LAB ============ -->
     <section class="screen" id="s-lab" aria-labelledby="lab-title">
-      <div class="split split--reverse">
-        <div class="col">
-          <p class="stepmark">3D + 4D · the lab</p>
-          <h2 class="h2" id="lab-title">A photorealistic model, from the scan she already had.</h2>
-          <p class="body">Cinematic volume rendering returns a surface a surgeon reads at a glance — bone, soft tissue and the way they relate, in one image. No second acquisition and no additional dose: the lab works from the CT that was already in the PACS.</p>
+      <div class="col col--wide lab">
+        <div class="lab__top">
+          <div class="col">
+            <p class="stepmark">3D + 4D · the lab</p>
+            <h2 class="h2" id="lab-title">A photorealistic model, from the scan she already had.</h2>
+            <p class="micro">Cinematic volume rendering: bone, soft tissue and the way they relate, in one image. No second acquisition, no additional dose.</p>
 
-          <div class="gallery" id="labGallery" data-case="foot">
-            <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
-              <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
-              <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
-              <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
+            <div class="gallery" id="labGallery" data-case="foot">
+              <div class="gallery__tabs" role="tablist" aria-label="Cinematic rendering cases">
+                <button class="gallery__tab is-on" type="button" data-case="foot" aria-pressed="true">Foot · Charcot</button>
+                <button class="gallery__tab" type="button" data-case="scapula" aria-pressed="false">Scapula · trauma</button>
+                <button class="gallery__tab" type="button" data-case="ribs" aria-pressed="false">Ribs · trauma</button>
+              </div>
+              <figure class="gallery__stage" data-win-stage>
+                <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
+              </figure>
+              <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.</p>
             </div>
-            <figure class="gallery__stage" data-win-stage>
-              <img id="labImg" src="assets/cine/foot.jpg" alt="Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia.">
-              <span class="badge badge--corner">De-identified clinical image</span>
-            </figure>
-            <p class="gallery__cap" id="labCap">Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.</p>
           </div>
-          <p class="micro">Cinematic rendering, department cases. Rendered for visualisation and teaching; not for measurement.</p>
-          <button class="btn btn--primary" data-go="see" type="button">Next: what made the 4D possible</button>
+
+          <div class="col">
+            <div class="teach">
+              <p class="teach__h">Tier 0 is the default, and printing is arriving.</p>
+              <p class="body">The cheapest modality that answers the clinical question wins, so most complex fractures stop at digital reconstruction. A print has to earn its place — it exists because handling the fracture changes the plan or the conversation. The models on the table are the printed end of that spectrum.</p>
+            </div>
+            <p class="note">Live clinical service. Reconstruction S$82–S$299; printed models S$560–S$1,020 depending on tier. 279 complex-fracture candidates in about two years; 50–65 prints planned this year against a 100-unit target, and each print not made avoids 0.73–1.33 kWh and 0.6–1.3 kg CO₂.</p>
+            <button class="btn btn--primary" data-go="see" type="button">Next: what made the 4D possible</button>
+          </div>
         </div>
 
-        <div class="col">
-          <div class="spotlight">
-            <p class="minihead">Rad-ART · 3D visualisation, in use</p>
-            <div class="vids">
-              <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
-              <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
-              <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
-            </div>
-            <p class="micro">Clinical 3D examples from the Rad-ART study, playing locally — no network needed.</p>
+        <div class="spotlight lab__spot">
+          <p class="minihead">Rad-ART · 3D visualisation, in use</p>
+          <div class="vids">
+            <figure class="vid"><video data-src="assets/videos/radart-1.mp4" poster="assets/videos/poster-1.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
+            <figure class="vid"><video data-src="assets/videos/radart-2.mp4" poster="assets/videos/poster-2.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
+            <figure class="vid"><video data-src="assets/videos/radart-3.mp4" poster="assets/videos/poster-3.jpg" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
           </div>
-
-          <div class="teach">
-            <p class="teach__h">Tier 0 is the default, and printing is arriving.</p>
-            <p class="body">The cheapest modality that answers the clinical question wins, so most complex fractures stop at digital reconstruction. A print has to earn its place — it exists because handling the fracture changes the plan or the conversation. The models on the table are the printed end of that spectrum.</p>
-          </div>
-
-          <div class="metrics metrics--triple">
-            <div class="metric"><p class="metric__n">279</p><p class="metric__l">complex-fracture candidates over about two years</p></div>
-            <div class="metric"><p class="metric__n">50–65</p><p class="metric__l">prints planned this year, against a 100-unit target</p></div>
-            <div class="metric"><p class="metric__n">0.73–1.33</p><p class="metric__l">kWh avoided per print not made</p></div>
-          </div>
-          <p class="note">Live clinical service. Reconstruction S$82–S$299; printed models S$560–S$1,020 depending on tier. A print avoided also avoids 0.6–1.3 kg CO₂.</p>
+          <p class="micro">Clinical 3D examples from the Rad-ART study, playing locally — no network needed.</p>
         </div>
       </div>
     </section>
