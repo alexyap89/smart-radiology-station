@@ -3149,3 +3149,11 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* portrait first, then the line, both flush right as one chip */
 #s-quiz .patient, #s-pos .patient, #s-neg .patient, #s-speed .patient { flex-direction: row; }
 #s-quiz .patient__meta, #s-pos .patient__meta, #s-neg .patient__meta, #s-speed .patient__meta { text-align: left; }
+
+/* the text column starts at the top, level with the tabs, not floating mid-screen */
+#s-neg .col--model, #s-pos .col--model { justify-content: flex-start; }
+#s-neg .patient, #s-pos .patient { margin-bottom: 2px; }
+/* and the scan gets the height the column can spare */
+#s-neg .viewer__stage, #s-pos .viewer__stage { height: clamp(300px, 56vh, 545px); }
+#s-neg .viewer__stage, #s-pos .viewer__stage { height: clamp(280px, 46vh, 460px); }
+#s-neg .viewer__cap { font-size: clamp(12px, .86vw, 13.5px); }
