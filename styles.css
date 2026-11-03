@@ -3174,3 +3174,9 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 .qr figcaption { font-size: clamp(8.5px, .66vw, 10px); letter-spacing: .08em; text-transform: uppercase; color: var(--paper-faint); }
 #s-two .row--tight { align-items: flex-end; }
 #s-takeaway .tk__qr { width: clamp(52px, 4vw, 72px); height: auto; background: #fff; padding: 3px; border-radius: 2px; }
+
+/* ---------- 4D: three studies side by side ---------- */
+#s-move .cine--row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 20px); flex: 1 1 auto; min-height: 0; }
+#s-move .cine__tile { margin: 0; display: flex; flex-direction: column; min-height: 0; gap: 6px; }
+#s-move .cine__tile video { flex: 1 1 auto; min-height: 0; width: 100%; object-fit: contain; background: #05080b; border: 1px solid var(--rule); display: block; }
+#s-move .cine__tile figcaption { flex: 0 0 auto; }

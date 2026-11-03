@@ -116,7 +116,7 @@
         tk.className = "verdict verdict--score" + (n === 2 ? " verdict--clear" : "");
       }
     }
-    if (name === "move") cinePlay(); else cineLeave();
+    moveVideos(name === "move");
     playVideos(name === "render");
     primeLoad(name === "tools");
     if (name !== "takeaway") closeOverlay();
@@ -182,9 +182,9 @@
   var FILMS = [
     {
       title: "A man fell and cannot bear weight on his right knee.",
-      img: "assets/cases/pos-film-ap.png", ai: "assets/cases/pos-ai-ap.png",
+      img: "assets/cases/pos-film-ap.png?v=20261103160020", ai: "assets/cases/pos-ai-ap.png?v=20261103160020",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 4", truth: "yes",
-      pimg: "assets/img/patient-a.jpg",
+      pimg: "assets/img/patient-a.jpg?v=20261103160020",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Patient A</b> · cannot put weight on it · right knee",
       verdict: "Fracture detected.",
@@ -193,9 +193,9 @@
     },
     {
       title: "Same man, lateral view. The joint is swollen.",
-      img: "assets/cases/pos-film-lat.png", ai: "assets/cases/pos-ai-lat.png",
+      img: "assets/cases/pos-film-lat.png?v=20261103160020", ai: "assets/cases/pos-ai-lat.png?v=20261103160020",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 4", truth: "yes",
-      pimg: "assets/img/patient-a.jpg",
+      pimg: "assets/img/patient-a.jpg?v=20261103160020",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Patient A</b> · cannot put weight on it · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
@@ -204,9 +204,9 @@
     },
     {
       title: "Patient B fell too, but she could walk it off. This is her knee.",
-      img: "assets/cases/neg-film-ap.png", ai: "assets/cases/neg-ai-ap.png",
+      img: "assets/cases/neg-film-ap.png?v=20261103160020", ai: "assets/cases/neg-ai-ap.png?v=20261103160020",
       cap: "Case 2 · left knee · AP", step: "Film 3 of 4", truth: "no",
-      pimg: "assets/img/patient-b-waiting.jpg",
+      pimg: "assets/img/patient-b-waiting.jpg?v=20261103160020",
       palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected.",
@@ -215,9 +215,9 @@
     },
     {
       title: "Patient B, lateral view. She walked in, but the pain has not settled.",
-      img: "assets/cases/neg-film-lat.png", ai: "assets/cases/neg-ai-lat.png",
+      img: "assets/cases/neg-film-lat.png?v=20261103160020", ai: "assets/cases/neg-ai-lat.png?v=20261103160020",
       cap: "Case 2 · left knee · lateral", step: "Film 4 of 4", truth: "no",
-      pimg: "assets/img/patient-b-waiting.jpg",
+      pimg: "assets/img/patient-b-waiting.jpg?v=20261103160020",
       palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected. An effusion is.",
@@ -292,10 +292,10 @@
 
   /* ---------------------------------------------------------------- image tabs */
   var VIEWS = {
-    ct:     { src: "assets/cases/pos-ct-coronal.png", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
-    bme:    { src: "assets/cases/pos-bme-fusion.png", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
-    bmeneg: { src: "assets/cases/neg-bme-fusion.png", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
-    sag:    { src: "assets/cases/neg-sag.png", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
+    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261103160020", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
+    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261103160020", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
+    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261103160020", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
+    sag:    { src: "assets/cases/neg-sag.png?v=20261103160020", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
   };
 
   // A frame should be the image, not a letterbox around it: every plate and
@@ -658,17 +658,17 @@
   /* ---------------------------------------------------------------- lab: the render gallery */
   var LAB_CASES = {
     foot: {
-      src: "assets/cine/foot.jpg",
+      src: "assets/cine/foot.jpg?v=20261103160020",
       cap: "Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.",
       alt: "Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia."
     },
     scapula: {
-      src: "assets/cine/scapula.jpg",
+      src: "assets/cine/scapula.jpg?v=20261103160020",
       cap: "Traumatic structural isolation of the scapula, with a comminuted scapular fracture and a displaced clavicle.",
       alt: "Cinematic rendering of a fractured scapula with a displaced clavicle and rib fractures."
     },
     ribs: {
-      src: "assets/cine/ribs.jpg",
+      src: "assets/cine/ribs.jpg?v=20261103160020",
       cap: "Traumatic right rib fractures, rendered with the chest drain in place — the drain and the fractures in one view.",
       alt: "Cinematic rendering of traumatic right rib fractures with a chest drain in situ."
     }
@@ -822,6 +822,16 @@
       b.addEventListener("click", function () { cineSelect(b.getAttribute("data-case")); });
     });
     cineSelect("knee");
+  }
+
+  /* ---------------------------------------------------------------- move: three clips */
+  function moveVideos(on) {
+    qsa("#s-move video").forEach(function (v) {
+      if (on) {
+        if (!v.getAttribute("src") && v.getAttribute("data-src")) v.setAttribute("src", v.getAttribute("data-src"));
+        if (v.play) v.play().catch(function () {});
+      } else if (v.pause) { v.pause(); }
+    });
   }
 
   /* ---------------------------------------------------------------- reset */
