@@ -3167,3 +3167,10 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 }
 #s-pos .model.is-full .model__badge { display: none; }
 #s-pos .col--model .body b { color: var(--cyan); font-weight: 600; }
+
+/* the pRIMe QR: scannable at arm's length, sitting with the link it replaces */
+.qr { margin: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; flex: 0 0 auto; }
+.qr img { width: clamp(64px, 5.4vw, 92px); height: auto; background: #fff; padding: 4px; border-radius: 2px; display: block; }
+.qr figcaption { font-size: clamp(8.5px, .66vw, 10px); letter-spacing: .08em; text-transform: uppercase; color: var(--paper-faint); }
+#s-two .row--tight { align-items: flex-end; }
+#s-takeaway .tk__qr { width: clamp(52px, 4vw, 72px); height: auto; background: #fff; padding: 3px; border-radius: 2px; }
