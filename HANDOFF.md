@@ -41,7 +41,14 @@ A persistent bar under the header names the programme on every screen, and the n
 3. **MRI acceleration** (`#s-speed`) — unchanged: the scan simulator, the ~37% MSK evaluation, the labelled vendor example.
 4. **pRIMe** (`#s-two`) — unchanged apart from the removal of the Telmi journey step.
 
-**Who is on screen.** Two patients, deliberately. **Patient A** — the man with the tibial-plateau fracture — carries domains 1, 2 and 3: the ED film, the CT/DECT, the 3D render, the 4D motion, and later the MRI four weeks after fixation. **Patient B** — the anxious, claustrophobic, Hokkien-speaking woman — carries domain 4 (pRIMe), because the preparation evidence (16/16 at one month) is hers and the language is the point. The MRI-acceleration figure is **musculoskeletal only**, so the patient shown in the bore is the MSK patient, not the oncology patient. Each case's first slide carries a small portrait with one line of context; the attract screen carries the two faces side by side, labelled "Illustrations, not real patients".
+**Who is on screen.** Two patients, and their stories are continuous.
+
+- **Patient A** — the man who fell and could not bear weight — carries domains 1 and 2: his ED film (fracture), the CT, the dual-energy marrow map, the 3D render and the 4D motion. His portrait is a **supplied photograph**, mirrored so the bandaged knee reads as the right knee the films show.
+- **Patient B** — the woman who fell, could walk, and whose knee film was the **negative** case — carries domains 3 and 4. Weeks later she returns with abdominal pain and a liver MRI; that scan is the acceleration demonstration, and her preparation (16/16 at one month, Hokkien, claustrophobia) is pRIMe.
+
+The acceleration figure is **musculoskeletal only**; her scan is a liver, so the screen states that the 37% does not travel to her protocol, and the vendor comparison beside it is a liver example labelled as the vendor's. Each case's first slide carries a small portrait with one line of context, and the portrait switches with the patient: on `#s-quiz` the row is per-film (`#qPatientImg` / `#qPatientMeta`, set from the `FILMS` entries), so films 1–2 show Patient A and films 3–4 show Patient B. The attract screen carries the two faces side by side, captioned "Portraits are illustrative, not patients of this department."
+
+Film 3 and 4 are the **left** knee — that is how the assets were originally labelled. Do not relabel them as her right knee.
 
 **Removed:** the entire `#s-temi` screen and every Telmi reference (nav pip, journey step, takeaway line). The wayfinding pilot is no longer on the station.
 
@@ -88,7 +95,7 @@ assets/cases/   12 de-identified clinical images (films, AI panels, CT, fusion, 
 assets/photos/  two room stills from the video + the Siemens example
 assets/models/  tibia-fracture.js (decimated mesh, 76k verts), tibia-fracture.usdz (AR), ar-glyph.svg
 assets/cine/    three cinematic render stills (foot, scapula, ribs) from the 3D Lab case PDF
-assets/img/     three generated patient illustrations (NOT real patients) — patient-a, patient-a-mri, patient-b
+assets/img/     patient-a.jpg (supplied photograph, mirrored so the bandaged knee reads right), patient-a-mri.jpg and patient-b.jpg (generated illustrations), patient-b-mri.jpg (generated)
 assets/videos/  three Rad-ART clips + posters, and four 4D clips: 4d-knee, 4d-surface, 4d-shoulder, 4d-hindfoot
 assets/*.svg    audio placeholder, pathway icons
 ```

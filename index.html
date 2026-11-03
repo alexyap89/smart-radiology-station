@@ -63,15 +63,15 @@
         <figure class="attract__art attract__art--pair">
           <div class="pair">
             <figure class="pair__fig">
-              <img src="assets/img/patient-a.jpg" alt="Illustration: a man in an emergency department bay, his right leg splinted, waiting for the film to be read.">
+              <img src="assets/img/patient-a.jpg" alt="An elderly man sitting up in a hospital bed, his right knee bandaged, talking to a clinician.">
               <figcaption><b>A</b> A knee that cannot bear weight</figcaption>
             </figure>
             <figure class="pair__fig">
               <img src="assets/img/patient-b.jpg" alt="Illustration: an elderly woman at home in the evening, holding a phone showing the scanner room.">
-              <figcaption><b>B</b> A first MRI, rehearsed at home</figcaption>
+              <figcaption><b>B</b> A first MRI, of the liver, rehearsed at home</figcaption>
             </figure>
           </div>
-          <figcaption class="pair__note">Illustrations, not real patients. The clinical images on this station are de-identified.</figcaption>
+          <figcaption class="pair__note">Portraits are illustrative, not patients of this department. The clinical images on this station are de-identified.</figcaption>
         </figure>
       </div>
     </section>
@@ -106,8 +106,8 @@
             </ol>
           </div>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-a.jpg" alt="Illustration of the patient: a man in his fifties, right knee braced, sitting in an emergency bay.">
-            <p class="patient__meta"><b>Patient A</b> · 52 · fell at home, cannot bear weight · right knee</p>
+            <img class="patient__img" id="qPatientImg" src="assets/img/patient-a.jpg" alt="The patient: an elderly man sitting up in a hospital bed, his right knee bandaged, talking to a clinician.">
+            <p class="patient__meta" id="qPatientMeta"><b>Patient A</b> · fell at home · cannot bear weight · right knee</p>
           </div>
           <h2 class="h2" id="quiz-title">A man fell and cannot bear weight on his right knee.</h2>
 
@@ -155,6 +155,10 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">1 · RbFracture · case 1 · fracture</p>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-a.jpg" alt="The patient: an elderly man in a hospital bed, right knee bandaged.">
+            <p class="patient__meta"><b>Patient A</b> · the fracture that went to CT</p>
+          </div>
           <h2 class="h2" id="pos-title">The CT showed the fracture. Dual-energy CT showed it had bruised the bone.</h2>
 
           <div class="viewer">
@@ -179,7 +183,6 @@
             </div>
           </div>
 
-          <p class="body">Spectral data from the same acquisition maps bone-marrow oedema — the bruise inside the bone that plain CT cannot show. It is how an occult fracture is confirmed without an MRI slot.</p>
           <button class="btn btn--primary" data-go="neg" type="button">Next film: the other knee</button>
         </div>
 
@@ -200,11 +203,12 @@
               <img src="assets/models/ar-glyph.svg" alt="" class="ar-glyph"> View in AR
             </a>
           </div>
-          <p class="micro">AR opens on an iPad or iPhone (Apple Quick Look). On a laptop the model above is the view. Model decimated for on-stand display — not for diagnostic use.</p>
+          <p class="micro">AR opens in Apple Quick Look on an iPad or iPhone. Model decimated for on-stand display — not for diagnostic use.</p>
 
+          <p class="body">Spectral data from the same acquisition maps bone-marrow oedema — the bruise inside the bone that plain CT cannot show. It is how an occult fracture is confirmed without an MRI slot.</p>
           <div class="flow3d flow3d--pointer">
             <p class="flow3d__h">The 3D Lab</p>
-            <p class="body">The model above is the lab's output: built from the CT on this screen, no second acquisition. The lab's own service — what it renders, and what it prints — is next.</p>
+            <p class="body">Built from this CT, no second acquisition. The lab's own service is next.</p>
             <button class="btn btn--ghost btn--sm" data-go="lab" type="button">See the 3D + 4D Lab</button>
           </div>
         </div>
@@ -216,7 +220,11 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">1 · RbFracture · case 2 · no fracture</p>
-          <h2 class="h2" id="neg-title">No fracture on the film — and the patient still cannot put weight on it.</h2>
+          <div class="patient">
+            <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman, awake and alert, holding her phone.">
+            <p class="patient__meta"><b>Patient B</b> · fell but could walk · left knee · the film that was negative</p>
+          </div>
+          <h2 class="h2" id="neg-title">No fracture on the film — and the knee still hurts.</h2>
 
           <div class="viewer">
             <div class="viewer__bar" role="tablist" aria-label="Image set">
@@ -240,24 +248,20 @@
             </div>
           </div>
 
-          <p class="body">Dual-energy CT did what it was ordered to do: it excluded an occult fracture the same night, without an MRI slot and without an admission to reach a scanner.</p>
-          <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
           <button class="btn btn--primary" data-go="lab" type="button">Next: what the lab did with the same scan</button>
         </div>
 
         <div class="col col--model">
           <p class="stepmark">What this case teaches</p>
+          <p class="body">Patient B walked in with this knee, and dual-energy CT did what it was ordered to do: it excluded an occult fracture the same night, without an MRI slot and without an admission to reach a scanner.</p>
+          <p class="note">No fracture. Degenerative change explains the pain. Analgesia, physiotherapy, and home.</p>
           <div class="teach">
             <p class="teach__h">A negative AI reading is information, not a dismissal.</p>
-            <p class="body">The tool flagged no fracture, the radiologist agreed, and the patient still could not weight-bear. The next step was a pathway decision, not a second opinion on the same film.</p>
+            <p class="body">The tool flagged no fracture, the radiologist agreed, and her knee still hurt. The next step was a pathway decision, not a second opinion on the same film.</p>
           </div>
           <div class="teach">
             <p class="teach__h">Degenerative disease is the commonest cause of a painful knee that is not broken.</p>
-            <p class="body">Osteophytes and joint-space loss are visible on the sagittal reformat. The answer to "why does it hurt?" is not always "what did we miss?".</p>
-          </div>
-          <div class="teach">
-            <p class="teach__h">The same scan answered both questions.</p>
-            <p class="body">One dual-energy acquisition gave the fracture answer and the marrow answer. That is what replaced admission for cross-sectional imaging.</p>
+            <p class="body">Osteophytes and joint-space loss are visible on the sagittal reformat. She walked in, and nothing is broken — the answer to "why does it hurt?" is not always "what did we miss?".</p>
           </div>
         </div>
       </div>
@@ -408,10 +412,10 @@
           <p class="stepmark">4 · pRIMe · before the scan</p>
           <div class="patient">
             <img class="patient__img" src="assets/img/patient-b.jpg" alt="Illustration of the patient: an elderly woman at home in the evening, rehearsing the scan on her phone.">
-            <p class="patient__meta"><b>Patient B</b> · 74 · first MRI, claustrophobic, speaks Hokkien</p>
+            <p class="patient__meta"><b>Patient B</b> · 74 · fell but could walk · now liver MRI · claustrophobic, speaks Hokkien</p>
           </div>
-          <h2 class="h2" id="two-title">She has just been told she has a liver tumour. Tomorrow is her first MRI.</h2>
-          <p class="body">She is anxious, she is claustrophobic, and she speaks Hokkien. That combination is why scans get abandoned, repeated, or done under sedation.</p>
+          <h2 class="h2" id="two-title">She has abdominal pain, and an MRI of her liver is booked. Tomorrow is her first MRI.</h2>
+          <p class="body">She is anxious, she is claustrophobic, and she speaks Hokkien. She has never been inside a scanner. That combination is why scans get abandoned, repeated, or done under sedation.</p>
 
           <div class="journey">
             <p class="journey__h">The journey starts before the scanner</p>
@@ -461,11 +465,11 @@
         <div class="col">
           <p class="stepmark">3 · MRI acceleration · in the scanner</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-a-mri.jpg" alt="Illustration of the patient in the scanner: the same man, knee brace under a blanket, sliding into the MRI bore.">
-            <p class="patient__meta"><b>Patient A</b> · in the scanner · his MRI after the fracture was fixed</p>
+            <img class="patient__img" src="assets/img/patient-b-mri.jpg" alt="Illustration of the patient in the scanner: an elderly woman with a head coil, sliding into the MRI bore.">
+            <p class="patient__meta"><b>Patient B</b> · in the scanner · the MRI of her liver</p>
           </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
-          <p class="body">The same man, four weeks after the fracture was fixed, now needs an MRI to answer what the CT could not: the meniscus and the ligaments. AI reconstruction rebuilds the image from less acquired data, so the scan ends sooner and the image stays sharp — less time inside a bore he has never been in before.</p>
+          <p class="body">Weeks later she is back, this time with abdominal pain and a liver that needs an MRI. AI reconstruction rebuilds the image from less acquired data, so the scan ends sooner and the image stays sharp — less time inside a bore she is frightened of.</p>
 
           <div class="sim" id="scanSim" data-state="idle" aria-label="Illustrative scan-time comparison">
             <div class="sim__head">

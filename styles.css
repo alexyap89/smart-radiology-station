@@ -2286,3 +2286,109 @@ body[data-started="1"] .timer { display: inline; }
 #s-speed .body { font-size: clamp(11px, .82vw, 12.5px); line-height: 1.42; }
 #s-speed .h2 { margin-bottom: 0; }
 #s-speed .note { margin-top: 0; }
+
+/* the film frame should be the film, not a square box around it */
+#s-quiz .split--quiz { grid-template-columns: auto minmax(0, 1fr); column-gap: clamp(16px, 2.2vw, 36px); }
+#s-quiz .plate { width: max-content; max-width: 100%; justify-self: start; }
+#s-quiz .plate__frame {
+  aspect-ratio: auto; max-height: none; width: max-content; max-width: 100%;
+  height: clamp(320px, 62vh, 600px);
+}
+#s-quiz .plate__frame img { height: 100%; width: auto; max-width: 100%; }
+#s-quiz .win__bar { width: 100%; }
+/* CT and DECT: give the image the column it needs instead of a wide letterbox */
+#s-pos .split, #s-neg .split { grid-template-columns: minmax(0, .98fr) minmax(0, 1fr); column-gap: clamp(16px, 2vw, 32px); }
+
+/* the frame takes the picture's aspect ratio, so there is no letterbox and no gap */
+.plate__frame {
+  aspect-ratio: var(--ar, .8); width: auto; max-width: 100%;
+  height: clamp(320px, 60vh, 600px); max-height: none;
+}
+.plate__frame img { width: 100%; height: 100%; object-fit: contain; }
+.plate { width: max-content; max-width: 100%; }
+.win__bar { flex-wrap: wrap; row-gap: 5px; }
+.viewer__stage {
+  aspect-ratio: var(--ar, .75); width: auto; max-width: 100%; margin-inline: auto;
+  height: clamp(200px, 36vh, 380px);
+}
+.viewer__stage img { width: 100%; height: 100%; object-fit: contain; }
+.plate { width: var(--w, max-content); max-width: 100%; }
+
+/* =========================================================================
+   Layout v2 — one media height, and every media column sized by its frame.
+   `auto` columns hug the picture, so no screen carries dead space beside an
+   image, and the media height is capped in pixels so a taller window does not
+   push a screen past the fold.
+   ========================================================================= */
+.stage { --media-h: clamp(250px, 40vh, 470px); }
+
+#s-pos .viewer__stage, #s-neg .viewer__stage,
+#s-lab .gallery__stage, #s-move .cine__lane { height: var(--media-h); }
+
+#s-quiz .plate__frame { height: clamp(300px, 52vh, 560px); }
+
+#s-pos .split, #s-neg .split, #s-lab .split, #s-move .split {
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: clamp(18px, 2vw, 34px);
+}
+
+#s-lab .gallery, #s-move .cine { max-width: min(100%, 620px); }
+#s-move .cine__lane { max-width: 100%; }
+#s-quiz .plate { max-width: min(100%, 520px); }
+.win__bar { max-width: 430px; }
+.viewer__cap { max-width: 46ch; }
+#s-pos .viewer, #s-neg .viewer { min-width: 0; }
+
+@media (max-width: 1150px) {
+  #s-pos .split, #s-neg .split, #s-lab .split, #s-move .split { grid-template-columns: minmax(0, 1fr); }
+  .win__bar { max-width: 100%; }
+}
+
+/* the viewer stack needs the column width: fr columns for CT and DECT */
+#s-pos .split, #s-neg .split { grid-template-columns: minmax(0, .92fr) minmax(0, 1fr); }
+#s-pos .win__bar, #s-neg .win__bar { max-width: none; }
+.stage { --media-h: clamp(240px, 36vh, 430px); }
+#s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(210px, 34vh, 400px); }
+#s-move .cine__lane, #s-lab .gallery__stage { height: clamp(230px, 34vh, 420px); }
+
+/* with the copy out of the way the CT and DECT get the column height */
+#s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(260px, 48vh, 520px); }
+#s-pos .split, #s-neg .split { grid-template-columns: minmax(0, .85fr) minmax(0, 1fr); }
+#s-neg .col--model .teach:first-of-type { margin-top: 2px; }
+
+/* the model shares the screen with a bigger CT now */
+#s-pos .col--model .model { max-height: min(34vh, 330px); }
+#s-pos .col--model .h3 { font-size: clamp(14px, 1.15vw, 18px); }
+#s-two .patient__meta { font-size: clamp(9.5px, .72vw, 11px); }
+#s-move .pilot__fine { font-size: clamp(8.5px, .66vw, 10px); }
+
+/* the viewer stage takes whatever height is left, instead of a vh guess */
+#s-pos .screen, #s-neg .screen { align-content: stretch; }
+#s-pos .split, #s-neg .split { height: 100%; min-height: 0; align-items: stretch; }
+#s-pos .col, #s-neg .col { min-height: 0; }
+#s-pos .viewer, #s-neg .viewer { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+#s-pos .viewer__stage, #s-neg .viewer__stage {
+  flex: 1 1 auto; min-height: 140px; height: auto; align-self: center; margin-inline: 0;
+}
+#s-pos .col--model, #s-neg .col--model { min-height: 0; overflow: hidden; }
+#s-pos .viewer__bar, #s-neg .viewer__bar, #s-pos .win__bar, #s-neg .win__bar { flex: 0 0 auto; }
+#s-pos .col--model .model { max-height: min(28vh, 268px); }
+.pair__fig img { object-position: 50% 42%; }
+#s-two .photo img { max-height: clamp(120px, 20vh, 190px); }
+#s-two .phone__screen { max-height: none; }
+#s-move .cine__bar { margin-top: 0; }
+
+/* both cover portraits the same height, whatever their source aspect */
+.pair { align-items: stretch; }
+.pair__fig { height: clamp(210px, 42vh, 400px); display: flex; }
+.pair__fig img { height: 100%; width: 100%; object-fit: cover; }
+.pair__fig:first-child img { object-position: 52% 46%; }
+.pair__fig:last-child img { object-position: 50% 40%; }
+
+/* pRIMe column: 14px over */
+#s-two .photo img { max-height: clamp(110px, 17vh, 160px); }
+#s-two .journey__t { font-size: clamp(10.5px, .78vw, 12px); }
+#s-two .body { font-size: clamp(10.5px, .8vw, 12.5px); }
+#s-move .cine__lane { height: clamp(220px, 31vh, 400px); }
+#s-speed .note { margin-bottom: 0; }
+#s-speed .col { gap: clamp(3px, .6vh, 7px); }

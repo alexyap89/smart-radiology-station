@@ -168,6 +168,9 @@
       title: "A man fell and cannot bear weight on his right knee.",
       img: "assets/cases/pos-film-ap.png", ai: "assets/cases/pos-ai-ap.png",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 4", truth: "yes",
+      pimg: "assets/img/patient-a.jpg",
+      palt: "The patient: an elderly man in a hospital bed, right knee bandaged.",
+      pmeta: "<b>Patient A</b> · fell at home · cannot bear weight · right knee",
       verdict: "Fracture detected.",
       comment: "RbFracture marked a lucent line across the lateral tibial plateau. The reporting radiologist agreed. Two independent reads, same answer.",
       nextLabel: "View the lateral film"
@@ -176,22 +179,31 @@
       title: "Same man, lateral view. The joint is swollen.",
       img: "assets/cases/pos-film-lat.png", ai: "assets/cases/pos-ai-lat.png",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 4", truth: "yes",
+      pimg: "assets/img/patient-a.jpg",
+      palt: "The patient: an elderly man in a hospital bed, right knee bandaged.",
+      pmeta: "<b>Patient A</b> · fell at home · cannot bear weight · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
       comment: "On the lateral view the AI also marks the effusion and a fat–blood level. In a knee that cannot bear weight, that is an intra-articular fracture until proven otherwise.",
       nextLabel: "Next case · a different knee"
     },
     {
-      title: "A second patient fell. This knee is a different one.",
+      title: "Patient B fell too, but she could walk it off. This is her knee.",
       img: "assets/cases/neg-film-ap.png", ai: "assets/cases/neg-ai-ap.png",
       cap: "Case 2 · left knee · AP", step: "Film 3 of 4", truth: "no",
+      pimg: "assets/img/patient-b.jpg",
+      palt: "The patient: an elderly woman, awake and alert, holding her phone.",
+      pmeta: "<b>Patient B</b> · fell but could walk · left knee · no fracture",
       verdict: "No fracture detected.",
       comment: "Nothing flagged. The radiologist agreed: degenerative change, no acute fracture line.",
       nextLabel: "View the lateral film"
     },
     {
-      title: "Same second patient, lateral view. Still cannot bear weight.",
+      title: "Patient B, lateral view. She walked in, but the pain has not settled.",
       img: "assets/cases/neg-film-lat.png", ai: "assets/cases/neg-ai-lat.png",
       cap: "Case 2 · left knee · lateral", step: "Film 4 of 4", truth: "no",
+      pimg: "assets/img/patient-b.jpg",
+      palt: "The patient: an elderly woman, awake and alert, holding her phone.",
+      pmeta: "<b>Patient B</b> · fell but could walk · left knee · no fracture",
       verdict: "No fracture detected. An effusion is.",
       comment: "Still no fracture — but the AI does mark an effusion, and it is right. A knee that cannot bear weight with fluid in it needs the next test, not a second opinion on the same film.",
       nextLabel: "See what the scans showed"
@@ -200,7 +212,14 @@
 
   function renderFilm() {
     var f = FILMS[state.qIndex];
-    qs("#qImg").src = f.img;
+    var qImg = qs("#qImg");
+    qImg.src = f.img;
+    fitFrame(qImg);
+
+    var pImg = qs("#qPatientImg");
+    var pMeta = qs("#qPatientMeta");
+    if (pImg && f.pimg) { pImg.src = f.pimg; pImg.alt = f.palt || ""; }
+    if (pMeta && f.pmeta) { pMeta.innerHTML = f.pmeta; }
     qs("#qImg").alt = "De-identified knee radiograph, " + f.cap;
     qs("#qCap").textContent = f.cap;
     qs("#qStep").textContent = "1 · RbFracture · film " + (state.qIndex + 1) + " of 4";
@@ -263,10 +282,34 @@
     sag:    { src: "assets/cases/neg-sag.png", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
   };
 
+  // A frame should be the image, not a letterbox around it: every plate and
+  // viewer stage reports its picture's aspect ratio as --ar, and the CSS sizes
+  // the frame from that plus a fixed height.
+  function fitFrame(imgEl) {
+    if (!imgEl || !imgEl.parentNode) return;
+    var box = imgEl.closest(".plate__frame, .viewer__stage");
+    if (!box) return;
+    var apply = function () {
+      if (!imgEl.naturalWidth || !imgEl.naturalHeight) return;
+      box.style.setProperty("--ar", (imgEl.naturalWidth / imgEl.naturalHeight).toFixed(4));
+      // the plate's control bar is wider than a portrait film: pin the wrapper to
+      // the frame so the column does not carry dead space beside the picture
+      var plate = box.closest(".plate");
+      if (plate) {
+        window.requestAnimationFrame(function () {
+          plate.style.setProperty("--w", Math.round(box.getBoundingClientRect().width) + "px");
+        });
+      }
+    };
+    if (imgEl.complete && imgEl.naturalWidth) apply();
+    else imgEl.addEventListener("load", apply, { once: true });
+  }
+
   function setView(key, imgEl, capEl, barEl) {
     var v = VIEWS[key];
     if (!v) return;
     imgEl.src = v.src;
+    fitFrame(imgEl);
     capEl.textContent = v.cap;
     qsa(".tab", barEl).forEach(function (t) {
       t.classList.toggle("is-on", t.getAttribute("data-view") === key);
