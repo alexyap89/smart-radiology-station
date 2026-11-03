@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smart Radiology — Is there a fracture?</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="styles.css?v=20261103c">
 </head>
 <body>
 
@@ -85,16 +85,19 @@
           </div>
           <figcaption class="plate__cap" id="qCap">Case 1 · right knee · AP</figcaption>
           <div class="win__bar">
-            <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
-            <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
-            <div class="win__zoom">
+            <div class="win__group">
+              <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
+              <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
+            </div>
+            <div class="win__group win__zoom">
               <button type="button" data-z="out" aria-label="Zoom out">−</button>
               <span data-zval>100%</span>
               <button type="button" data-z="in" aria-label="Zoom in">+</button>
             </div>
-            <button class="win__reset" type="button" data-z="reset">Reset</button>
-            <button class="win__full" type="button" data-z="full" aria-pressed="false">Full screen</button>
-            <span class="win__hint">drag to pan</span>
+            <div class="win__group win__group--end">
+              <button class="win__reset" type="button" data-z="reset">Reset</button>
+              <button class="win__full" type="button" data-z="full" aria-pressed="false"><span class="win__ico" aria-hidden="true">⤢</span><span class="win__lbl">Full screen</span></button>
+            </div>
           </div>
         </figure>
 
@@ -166,16 +169,19 @@
             </figure>
             <p class="viewer__cap" id="posCap">Coronal bone window. A coronal split fracture runs through the lateral tibial plateau.</p>
             <div class="win__bar" data-win-for="posImg">
-              <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
-              <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
-              <div class="win__zoom">
+              <div class="win__group">
+                <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
+                <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
+              </div>
+              <div class="win__group win__zoom">
                 <button type="button" data-z="out" aria-label="Zoom out">−</button>
                 <span data-zval>100%</span>
                 <button type="button" data-z="in" aria-label="Zoom in">+</button>
               </div>
-              <button class="win__reset" type="button" data-z="reset">Reset</button>
-            <button class="win__full" type="button" data-z="full" aria-pressed="false">Full screen</button>
-            <span class="win__hint">drag to pan</span>
+              <div class="win__group win__group--end">
+                <button class="win__reset" type="button" data-z="reset">Reset</button>
+                <button class="win__full" type="button" data-z="full" aria-pressed="false"><span class="win__ico" aria-hidden="true">⤢</span><span class="win__lbl">Full screen</span></button>
+              </div>
             </div>
           </div>
 
@@ -223,16 +229,19 @@
             </figure>
             <p class="viewer__cap" id="negCap">No marrow oedema on the fusion map. Nothing for the spectral data to flag.</p>
             <div class="win__bar" data-win-for="negImg">
-              <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
-              <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
-              <div class="win__zoom">
+              <div class="win__group">
+                <label class="win__ctl">Brightness<input type="range" data-w="b" min="55" max="165" value="100" aria-label="Brightness"></label>
+                <label class="win__ctl">Contrast<input type="range" data-w="c" min="55" max="190" value="100" aria-label="Contrast"></label>
+              </div>
+              <div class="win__group win__zoom">
                 <button type="button" data-z="out" aria-label="Zoom out">−</button>
                 <span data-zval>100%</span>
                 <button type="button" data-z="in" aria-label="Zoom in">+</button>
               </div>
-              <button class="win__reset" type="button" data-z="reset">Reset</button>
-            <button class="win__full" type="button" data-z="full" aria-pressed="false">Full screen</button>
-            <span class="win__hint">drag to pan</span>
+              <div class="win__group win__group--end">
+                <button class="win__reset" type="button" data-z="reset">Reset</button>
+                <button class="win__full" type="button" data-z="full" aria-pressed="false"><span class="win__ico" aria-hidden="true">⤢</span><span class="win__lbl">Full screen</span></button>
+              </div>
             </div>
           </div>
 
@@ -310,7 +319,7 @@
           </div>
         </figure>
 
-        <p class="note">One scan, three reconstructions: nothing extra was taken. A dose target with a quality floor, reported tier by tier — not a saving we have banked.</p>
+        
       </div>
     </section>
 
@@ -569,6 +578,6 @@
 </div>
 
 <script src="assets/models/tibia-fracture.js"></script>
-<script src="app.js"></script>
+<script src="app.js?v=20261103c"></script>
 </body>
 </html>

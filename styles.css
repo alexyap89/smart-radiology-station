@@ -2835,3 +2835,79 @@ body.has-full { overflow: hidden; }
   aspect-ratio: auto !important; max-height: none !important; margin: 0; border: 0; background: var(--ink);
 }
 #s-pos .model.is-full canvas { width: 100%; height: 100%; }
+
+/* the model fills the whole right column: no square cap, no fixed width */
+#s-pos .col--model .model {
+  width: 100%; aspect-ratio: auto; flex: 1 1 auto; min-height: 260px; max-height: none;
+}
+#s-pos .col--model .model canvas { width: 100%; height: 100%; }
+#s-pos .col--model .h2 { font-size: clamp(18px, 1.55vw, 23px); line-height: 1.15; }
+
+/* =========================================================================
+   Control bar: three labelled clusters on one line, and a full-screen
+   control that reads as a toggle rather than another word in a row.
+   ========================================================================= */
+.win__bar {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap; row-gap: 6px;
+  padding: 7px 9px; border: 1px solid var(--rule); background: var(--ink-2);
+}
+.win__group { display: flex; align-items: center; gap: 10px; min-width: 0; }
+.win__group + .win__group { border-left: 1px solid var(--rule); padding-left: 10px; }
+.win__group--end { margin-left: auto; }
+.win__ctl { font-size: 9px; letter-spacing: .1em; text-transform: uppercase; color: var(--paper-faint); }
+.win__ctl input[type="range"] { width: clamp(70px, 6vw, 110px); accent-color: var(--paper); }
+.win__zoom button, .win__reset {
+  min-width: 26px; height: 26px; display: inline-flex; align-items: center; justify-content: center;
+  font: inherit; font-size: 12px; color: var(--paper-dim); background: transparent;
+  border: 1px solid var(--rule); cursor: pointer;
+}
+.win__zoom button:hover, .win__reset:hover { color: var(--paper); border-color: var(--rule-strong); }
+.win__zoom span { font-size: 10px; letter-spacing: .06em; color: var(--paper-dim); min-width: 34px; text-align: center; }
+.win__full {
+  display: inline-flex; align-items: center; gap: 6px; height: 26px; padding: 0 9px;
+  font: inherit; font-size: 9px; letter-spacing: .09em; text-transform: uppercase;
+  color: var(--paper); background: rgba(244,239,230,.06); border: 1px solid var(--rule-strong);
+  cursor: pointer;
+}
+.win__full:hover { background: rgba(244,239,230,.12); }
+.win__full[aria-pressed="true"] { background: var(--cyan); border-color: var(--cyan); color: var(--ink); }
+.win__ico { font-size: 13px; line-height: 1; }
+.win__hint { display: none; }
+
+/* in full screen the bar sits at the bottom and the exit control stays visible */
+.plate.is-full .win__bar, .viewer.is-full .win__bar { justify-content: center; }
+
+/* =========================================================================
+   Type scale for a stand: this is read at 1.5 m on a 55" mirror, and the
+   body copy was sitting at 11–13px. Everything content-bearing moves up.
+   ========================================================================= */
+.body { font-size: clamp(14px, 1.05vw, 16.5px); line-height: 1.5; }
+.note { font-size: clamp(13px, .95vw, 15px); line-height: 1.45; }
+.micro { font-size: clamp(11px, .82vw, 13px); letter-spacing: .06em; line-height: 1.4; }
+.stepmark { font-size: clamp(11px, .82vw, 12.5px); letter-spacing: .14em; }
+.viewer__cap, .gallery__cap { font-size: clamp(13px, .95vw, 15px); line-height: 1.45; }
+.minihead { font-size: clamp(11px, .82vw, 12.5px); }
+.patient__meta { font-size: clamp(11.5px, .86vw, 13px); }
+.journey__t { font-size: clamp(13px, .95vw, 15px); line-height: 1.45; }
+.journey__n { font-size: clamp(12px, .88vw, 14px); }
+.tool__d { font-size: clamp(14px, 1vw, 16px); line-height: 1.5; }
+.tool__h { font-size: clamp(18px, 1.5vw, 24px); }
+.tk__b { font-size: clamp(14px, 1.05vw, 16.5px); }
+.vendor__cap { font-size: clamp(12px, .88vw, 13.5px); }
+.dose__fine, .pilot__fine { font-size: clamp(11px, .8vw, 12.5px); }
+
+/* the quiz column now fills its half, so the two answer buttons carry the space */
+#s-quiz .split > .col:last-child { justify-content: center; gap: clamp(9px, 1.5vh, 18px); }
+#s-quiz .btn--path { padding-top: clamp(12px, 1.8vh, 22px); padding-bottom: clamp(12px, 1.8vh, 22px); }
+#s-quiz .h2 { font-size: clamp(22px, 1.9vw, 30px); line-height: 1.2; }
+
+/* the right column was spreading its four blocks with space-between: that is
+   the "random spacing". Tighten it, and give the scan the column's height. */
+#s-neg .col--model, #s-pos .col--model { justify-content: flex-start; }
+#s-neg .col--model { gap: clamp(8px, 1.3vh, 14px); }
+#s-neg .h2 { font-size: clamp(19px, 1.6vw, 25px); line-height: 1.18; margin: 0; }
+#s-neg .viewer__stage, #s-pos .viewer__stage { height: clamp(260px, 50vh, 520px); }
+#s-neg .viewer__cap { margin: 0; }
+#s-neg .col--model .btn--primary { align-self: flex-start; margin-top: auto; }
+/* the forward control belongs with the text above it, not pinned to the floor */
+#s-neg .col--model .btn--primary { margin-top: 4px; }

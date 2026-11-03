@@ -19,6 +19,8 @@ A single-page, offline-capable interactive exhibit for a hospital board visit. E
 
 Run it by opening `index.html` from disk. Deploy by `git add -A && git commit && git push` — Pages rebuilds in about a minute.
 
+**Cache trap, round two (2026-11-03).** `index.html` now links `styles.css?v=<stamp>` and `app.js?v=<stamp>`. Bump `20261103c` to a new stamp on every deploy, or the tablet will run the previous stylesheet against the new markup — which looks like a CSS bug and wasted several passes today. The old advice (hard reload) still applies, but versioning removes the trap for the stand.
+
 **Cache trap:** after a push, the browser may keep serving the old `app.js`. A hard reload (or a `?v=` query on `index.html`) shows the new build immediately. This has bitten the stand twice; if the tablet looks stale, it is cache, not the deploy.
 
 ---
