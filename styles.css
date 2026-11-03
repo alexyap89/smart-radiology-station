@@ -2640,3 +2640,26 @@ body.has-full { overflow: hidden; }
 /* the clips are 16:9: let the tiles be 16:9 instead of a tall box of black */
 #s-render .vids--big { flex: 0 0 auto; align-items: start; }
 #s-render .vids--big video { height: auto; aspect-ratio: 16 / 9; flex: 0 0 auto; }
+
+/* ---------- a slimmer header: the screens need the pixels ---------- */
+.topbar { padding-top: 2px; padding-bottom: 4px; gap: clamp(10px, 1.4vw, 22px); }
+.brand { gap: 8px; align-items: center; flex-wrap: nowrap; }
+.brand__name { font-size: clamp(14px, 1.05vw, 17px); letter-spacing: .01em; }
+.brand__org { display: none; }
+.brand__mark { width: 8px; height: 8px; }
+.steps { gap: 4px; }
+.steps__item { font-size: 9.5px; letter-spacing: .04em; padding: 0; }
+.steps__item b { font-size: 9.5px; }
+.steps__item i { width: 9px; height: 1px; }
+.scenario { padding: 3px 0; gap: 8px; }
+.scenario__tag { width: 18px; height: 18px; font-size: 9.5px; }
+.scenario__text { font-size: clamp(10px, .76vw, 11.5px); }
+.tools { gap: 8px; }
+.timer { font-size: 10px; }
+#restartBtn, .btn--sm { padding: 4px 9px; }
+/* cards with one line of text should not float at the top of a tall box */
+#s-takeaway .tk { justify-content: center; }
+#s-takeaway .tk-grid--four { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+/* centre the short text column so it does not hang off the top of a tall screen */
+#s-neg .col--model, #s-pos .col--model { justify-content: center; }
+#s-neg .viewer, #s-pos .viewer { justify-content: flex-start; }
