@@ -298,8 +298,8 @@
       <div class="split">
         <div class="col">
           <p class="stepmark">3D + 4D · less dose</p>
-          <h2 class="h2" id="see-title">Less dose, one committed rung at a time.</h2>
-          <p class="body">Deep-learning reconstruction rebuilds the image from the same raw data with the noise of a much larger dose. That headroom is spent on dose in steps — with the quality floor agreed before the first patient.</p>
+          <h2 class="h2" id="see-title">Turn the denoiser up, and the dose comes down.</h2>
+          <p class="body">A deep-learning denoiser rebuilds the image from the same raw data, and its strength is a setting — so a scan can be acquired at lower dose and still read. That dose is the currency: it is what pays for new dimensions of CT, like a joint imaged repeatedly in motion.</p>
 
           <div class="dose" id="doseLadder" data-tier="t0">
             <div class="dose__head">
@@ -335,65 +335,37 @@
           </figure>
           <div class="teach">
             <p class="teach__h">One scan, three reconstructions.</p>
-            <p class="body">Nothing extra was scanned. The vendor is showing what the network does to noise — not a dose saving.</p>
+            <p class="body">Nothing extra was scanned. The strength of the denoiser is the variable — that is the setting the ladder spends.</p>
           </div>
-          <p class="note">A dose target, reported tier by tier. Not a dose saving we have already banked.</p>
+          <p class="note">A dose target with a quality floor, reported tier by tier — not a saving we have already banked. What it buys is the headroom for 4D.</p>
         </div>
       </div>
     </section>
 
     <!-- ============ 2c. 3D + 4D — THE JOINT IN MOTION ============ -->
     <section class="screen" id="s-move" aria-labelledby="move-title">
-      <div class="split">
-        <div class="col">
-          <p class="stepmark">3D + 4D · the joint in motion</p>
-          <h2 class="h2" id="move-title">A static scan shows the joint. This shows what it does.</h2>
-          <p class="body">The detector covers 160 mm in one rotation, so the same joint can be acquired repeatedly through a coached arc of motion and reconstructed into phases. For a wrist that clicks, an elbow that locks or a shoulder that dislocates, the diagnosis is the thing static imaging cannot show.</p>
+      <div class="col col--wide cinepage">
+        <p class="stepmark">3D + 4D · the joint in motion</p>
+        <h2 class="h2 cinepage__h" id="move-title">A static scan shows the joint. This shows what it does.</h2>
 
-          <div class="cine" id="moveCine" data-state="idle" data-case="knee">
-            <div class="cine__tabs" role="tablist" aria-label="Dynamic studies">
-              <button class="cine__tab is-on" type="button" data-case="knee" aria-pressed="true">Knee · flexion</button>
-              <button class="cine__tab" type="button" data-case="surface" aria-pressed="false">Hindfoot · surface</button>
-              <button class="cine__tab" type="button" data-case="shoulder" aria-pressed="false">Shoulder · arc</button>
-              <button class="cine__tab" type="button" data-case="hindfoot" aria-pressed="false">Hindfoot · phases</button>
-            </div>
-            <figure class="cine__lane">
-              <video id="cineVideo" data-src="assets/videos/4d-knee.mp4" poster="assets/videos/4d-knee.jpg" muted loop playsinline preload="none"></video>
-              <figcaption id="cineCap">Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase.</figcaption>
-            </figure>
-            <div class="cine__bar">
-              <button class="btn btn--primary btn--sm" type="button" data-cine="play">Play the motion</button>
-              <button class="btn btn--ghost btn--sm" type="button" data-cine="pause">Pause</button>
-              <button class="btn btn--ghost btn--sm" type="button" data-cine="reset">Reset</button>
-              <p class="cine__phase"><span id="cinePhase">phase 1</span> of 12</p>
-            </div>
+        <div class="cine" id="moveCine" data-state="idle" data-case="knee">
+          <div class="cine__tabs" role="tablist" aria-label="Dynamic studies">
+            <button class="cine__tab is-on" type="button" data-case="knee" aria-pressed="true">Knee · flexion</button>
+            <button class="cine__tab" type="button" data-case="surface" aria-pressed="false">Hindfoot · surface</button>
+            <button class="cine__tab" type="button" data-case="shoulder" aria-pressed="false">Shoulder · arc</button>
           </div>
-          <p class="micro">De-identified captures from the pilot. Each clip is one acquisition, stepped through the motion arc.</p>
-          <button class="btn btn--primary" data-go="speed" type="button">Next: less time in the scanner</button>
-        </div>
-
-        <div class="col">
-          <p class="minihead">The pilot, labelled</p>
-          <div class="pilot">
-            <p class="pilot__flag">Pilot · feasibility and workflow · no outcome data yet · no additional patient charge</p>
-            <dl class="pilot__rows">
-              <div><dt>Whole-study dose target</dt><dd>wrist ≤0.1 mSv · elbow ≤1.0 mSv · ankle ≤0.1 mSv · shoulder ≤1.5 mSv</dd></div>
-              <div><dt>Phases per study</dt><dd>10–15</dd></div>
-              <div><dt>Added workflow, imaging to report</dt><dd>≤20 min</dd></div>
-              <div><dt>Diagnostic-quality motion capture</dt><dd>≥80% of studies</dd></div>
-              <div><dt>Referrer reports added information</dt><dd>≥60%</dd></div>
-              <div><dt>Referrer reports management impact</dt><dd>≥30%</dd></div>
-            </dl>
-            <p class="pilot__fine">Every figure above is a pre-committed target written before the first case. 4D is an adjunct dataset: it does not replace MRI or fluoroscopy, and it does not change who reports the scan.</p>
+          <figure class="cine__lane">
+            <video id="cineVideo" data-src="assets/videos/4d-knee.mp4" poster="assets/videos/4d-knee.jpg" muted loop playsinline preload="none"></video>
+            <figcaption id="cineCap">Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase.</figcaption>
+          </figure>
+          <div class="cine__bar">
+            <button class="btn btn--ghost btn--sm" type="button" data-cine="play">Play the motion</button>
+            <button class="btn btn--ghost btn--sm" type="button" data-cine="pause">Pause</button>
+            <button class="btn btn--ghost btn--sm" type="button" data-cine="reset">Reset</button>
+            <p class="cine__phase"><span id="cinePhase">phase 1</span> of 12</p>
+            <button class="btn btn--primary btn--sm" data-go="speed" type="button">Next: less time in the scanner</button>
           </div>
-          <div class="teach">
-            <p class="teach__h">Why it needs the lab.</p>
-            <p class="body">4D CT without post-processing is a cine loop. Acquisition, reconstruction and 3D visualisation are one pipeline, so they are one proof.</p>
-          </div>
-          <div class="teach">
-            <p class="teach__h">The real constraint is people.</p>
-            <p class="body">Patient coaching runs at one and a half to two times a standard CT, and the motion analysis lands on the 3D Lab. The limit is preparation time and post-processing skill, not the scanner.</p>
-          </div>
+          <p class="micro">Pilot · feasibility and workflow · no outcome data yet · no additional patient charge.</p>
         </div>
       </div>
     </section>
@@ -461,12 +433,12 @@
             <p class="patient__meta"><b>Patient B</b> · in the scanner · the MRI of her liver</p>
           </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
-          <p class="body">Weeks later she is back, this time with abdominal pain and a liver that needs an MRI. AI reconstruction rebuilds the image from less acquired data, so the scan ends sooner and the image stays sharp — less time inside a bore she is frightened of.</p>
+          <p class="body">Weeks later she needs an MRI of her liver. Reconstruction rebuilds the image from less data, so the scan ends sooner.</p>
 
           <div class="sim" id="scanSim" data-state="idle" aria-label="Illustrative scan-time comparison">
             <div class="sim__head">
               <p class="sim__title">Two scans, one timetable</p>
-              <p class="sim__sub">Illustrative timing, not a measured chart. The ratio is the 63% used in the comparison beside it.</p>
+              <p class="sim__sub">Illustrative timing, not a measured chart.</p>
             </div>
 
             <div class="sim__lane" data-lane="std">
@@ -493,8 +465,8 @@
             </div>
           </div>
 
-          <p class="body body--tight">Median reduction about 37% across 8 musculoskeletal anatomies — an initial evaluation, MSK only. The timeline above illustrates the ratio, not a timing chart.</p>
-          <p class="note">Shorter time in the bore is the clinical point: less opportunity for anxiety to turn into an abandoned scan, a repeat, or sedation.</p>
+          <p class="body body--tight">About 37% shorter across 8 musculoskeletal anatomies — an initial evaluation, MSK only.</p>
+          <p class="note">Less time in the bore is the clinical point: less to abandon, less to repeat, less to sedate.</p>
           <button class="btn btn--primary" data-go="two" type="button">Next: a patient who is afraid of the scanner</button>
         </div>
 
@@ -512,15 +484,11 @@
           <p class="minihead">What this rests on</p>
           <div class="teach">
             <p class="teach__h">An initial evaluation, musculoskeletal only.</p>
-            <p class="body">About 37% shorter across 8 musculoskeletal anatomies. Not every protocol, and not every patient — the figure does not travel beyond that.</p>
+            <p class="body">Not every protocol, and not every patient.</p>
           </div>
           <div class="teach">
-            <p class="teach__h">Our own paired images are not on this station.</p>
-            <p class="body">What we measured here is scan time. The image comparison beside it is the vendor's, at the same voxel size, and it is labelled as theirs.</p>
-          </div>
-          <div class="teach">
-            <p class="teach__h">Shorter is the patient-facing half.</p>
-            <p class="body">Time inside the bore is the part a patient has to endure. Less of it is less to endure, less to abandon, less to repeat — and the image is what the radiologist reports from either way.</p>
+            <p class="teach__h">Our paired images are not on this station.</p>
+            <p class="body">We measured scan time. The comparison beside it is the vendor's, and labelled as theirs.</p>
           </div>
         </div>
       </div>

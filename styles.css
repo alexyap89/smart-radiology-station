@@ -2508,3 +2508,20 @@ body[data-started="1"] .timer { display: inline; }
 #s-see .vendor__cap { font-size: clamp(10px, .78vw, 12px); line-height: 1.4; padding: 9px 11px; color: var(--paper-dim); }
 #s-see .vendor img { max-height: clamp(170px, 30vh, 340px); }
 #s-see .col { gap: clamp(8px, 1.3vh, 14px); }
+
+/* ---------- 4D page: the motion is the page ---------- */
+#s-move .cinepage { height: 100%; min-height: 0; display: flex; flex-direction: column; gap: 8px; max-width: none; }
+#s-move .cinepage__h { margin: 0; font-size: clamp(18px, 1.6vw, 24px); line-height: 1.16; }
+#s-move .cine { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; gap: 7px; max-width: none; }
+#s-move .cine__lane {
+  flex: 1 1 auto; min-height: 0; height: auto; max-width: none; width: 100%;
+  display: flex; align-items: center; justify-content: center;
+}
+#s-move .cine__lane video { max-width: 100%; max-height: 100%; width: auto; height: 100%; object-fit: contain; }
+#s-move .cine__bar { flex: 0 0 auto; }
+#s-move .micro { flex: 0 0 auto; margin: 0; }
+#s-move .cinepage__next { align-self: flex-start; flex: 0 0 auto; }
+#s-move .cine__bar { justify-content: flex-start; }
+#s-move .cine__bar .cine__phase { margin-left: 6px; }
+#s-move .cine__bar .btn--primary { margin-left: auto; }
+#s-move .cinepage__h { font-size: clamp(17px, 1.5vw, 22px); }

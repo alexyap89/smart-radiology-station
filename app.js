@@ -696,8 +696,7 @@
   var CINE_CASES = {
     knee: { cap: "Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase." },
     surface: { cap: "Hindfoot, rendered surface. One acquisition, stepped through the arc." },
-    shoulder: { cap: "Shoulder. Volume render through the arc, with surgical clips and vessels in view." },
-    hindfoot: { cap: "Hindfoot, coronal reformat. The phases of one acquisition scrolled in sequence." }
+    shoulder: { cap: "Shoulder. Volume render through the arc, with surgical clips and vessels in view." }
   };
 
   function cineNodes() {
