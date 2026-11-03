@@ -552,8 +552,10 @@
       if (!mv.drag) return;
       // direct manipulation: the surface follows the finger, so a rightward drag
       // turns the near face right and a downward drag tips the top towards you.
-      mv.yaw -= (e.clientX - mv.drag.x) * 0.01;
-      mv.pitch -= (e.clientY - mv.drag.y) * 0.01;
+      // direct manipulation: with this matrix, +yaw turns the near face right
+      // and +pitch tips it towards the viewer, so the drag sign is positive.
+      mv.yaw += (e.clientX - mv.drag.x) * 0.01;
+      mv.pitch += (e.clientY - mv.drag.y) * 0.01;
       mv.pitch = Math.max(-1.3, Math.min(1.3, mv.pitch));
       mv.drag = { x: e.clientX, y: e.clientY };
     });
