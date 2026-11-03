@@ -321,7 +321,7 @@
         <div class="cine" id="moveCine" data-state="idle" data-case="knee">
           <div class="cine__tabs" role="tablist" aria-label="Dynamic studies">
             <button class="cine__tab is-on" type="button" data-case="knee" aria-pressed="true">Knee · flexion</button>
-            <button class="cine__tab" type="button" data-case="surface" aria-pressed="false">Hindfoot · surface</button>
+            <button class="cine__tab" type="button" data-case="ankle" aria-pressed="false">Ankle · render</button>
             <button class="cine__tab" type="button" data-case="shoulder" aria-pressed="false">Shoulder · arc</button>
           </div>
           <figure class="cine__lane">
@@ -369,10 +369,8 @@
             <img src="assets/photos/room-preparation.jpg" alt="The MRI scanner room, filmed for the preparation video: a radiographer explains the shower cap, the scanner behind her.">
             <span class="badge badge--corner">Room footage · preparation video</span>
           </figure>
-          <p class="viewer__cap">The room she will lie in, filmed once.</p>
-
-          <p class="body">Built here, by a clinician. A link, her own phone, her own language.</p>
-          <div class="row row--tight">
+          
+                    <div class="row row--tight">
             <button class="btn btn--primary" data-go="tools" type="button">Continue to the tools</button>
             <a class="btn btn--ghost" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
           </div>
@@ -404,36 +402,6 @@
           </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
           <p class="body">Weeks later she needs an MRI of her liver. Reconstruction rebuilds the image from less data, so the scan ends sooner.</p>
-
-          <div class="sim" id="scanSim" data-state="idle" aria-label="Illustrative scan-time comparison">
-            <div class="sim__head">
-              <p class="sim__title">Two scans, one timetable</p>
-              <p class="sim__sub">Illustrative timing, not a measured chart.</p>
-            </div>
-
-            <div class="sim__lane" data-lane="std">
-              <span class="sim__k">Standard</span>
-              <div class="sim__track"><i class="sim__fill"></i></div>
-              <span class="sim__v" data-val="std">0%</span>
-            </div>
-
-            <div class="sim__lane sim__lane--fast" data-lane="fast">
-              <span class="sim__k">With AI reconstruction</span>
-              <div class="sim__track"><i class="sim__fill"></i></div>
-              <span class="sim__v" data-val="fast">0%</span>
-            </div>
-
-            <div class="sim__bore">
-              <span class="sim__borelabel">Time inside the bore</span>
-              <div class="sim__boretube"><i class="sim__borefill"></i></div>
-            </div>
-
-            <div class="sim__controls">
-              <button class="btn btn--primary btn--sm" type="button" data-sim="play">Run the scan</button>
-              <button class="btn btn--ghost btn--sm" type="button" data-sim="reset">Reset</button>
-              <p class="sim__out" id="simOut" role="status" aria-live="polite">Not started.</p>
-            </div>
-          </div>
 
           <p class="body body--tight">About 37% shorter across 8 musculoskeletal anatomies — an initial evaluation, MSK only.</p>
           <p class="note">Less time in the bore is the clinical point: less to abandon, less to repeat, less to sedate.</p>
@@ -467,8 +435,8 @@
     <!-- ============ 5. BUILT HERE ============ -->
     <section class="screen" id="s-tools" aria-labelledby="tools-title">
       <div class="col col--wide">
-        <p class="stepmark">Built here</p>
-        <h2 class="h2 h2--tight" id="tools-title">Four tools a clinician wrote.</h2>
+        <p class="stepmark">The tools</p>
+        <h2 class="h2 h2--tight" id="tools-title">Four tools, and where to find them.</h2>
 
         <div class="tools-grid">
           <article class="tool tool--lead">
