@@ -377,12 +377,11 @@
   function scale(s) { return new Float32Array([s,0,0,0, 0,s,0,0, 0,0,s,0, 0,0,0,1]); }
 
   var VS = "attribute vec3 aPos; attribute vec3 aNor; uniform mat4 uProj; uniform mat4 uView;" +
-    "varying vec3 vNor; varying vec3 vEye; varying float vY;" +
-    "uniform float uCut;" +
-    "void main(){ vec4 eye = uView * vec4(aPos,1.0); vEye = -eye.xyz; vNor = mat3(uView) * aNor; vY = aPos.y;" +
+    "varying vec3 vNor; varying vec3 vEye;" +
+    "void main(){ vec4 eye = uView * vec4(aPos,1.0); vEye = -eye.xyz; vNor = mat3(uView) * aNor;" +
     "gl_Position = uProj * eye; }";
-  var FS = "precision mediump float; varying vec3 vNor; varying vec3 vEye; varying float vY; uniform vec3 uColor; uniform float uWire; uniform float uCut;" +
-    "void main(){ if(vY > uCut){ discard; } if(uWire > 0.5){ gl_FragColor = vec4(0.37,0.82,0.85,0.55); return; }" +
+  var FS = "precision mediump float; varying vec3 vNor; varying vec3 vEye; uniform vec3 uColor; uniform float uWire;" +
+    "void main(){ if(uWire > 0.5){ gl_FragColor = vec4(0.37,0.82,0.85,0.55); return; }" +
     "vec3 n = normalize(vNor); vec3 v = normalize(vEye);" +
     "float key = max(dot(n, normalize(vec3(-0.4,0.7,0.6))), 0.0);" +
     "float fill = max(dot(n, normalize(vec3(0.7,0.1,0.4))), 0.0) * 0.35;" +
@@ -464,7 +463,6 @@
     var uView = ctx.getUniformLocation(prog, "uView");
     var uColor = ctx.getUniformLocation(prog, "uColor");
     var uWire = ctx.getUniformLocation(prog, "uWire");
-    var uCut = ctx.getUniformLocation(prog, "uCut");
 
     var lineIdx = null;
     function buildLines() {
@@ -518,7 +516,6 @@
       ctx.uniformMatrix4fv(uView, false, view);
       ctx.uniform3f(uColor, 0.94, 0.91, 0.85);
       ctx.uniform1f(uWire, gl.wire ? 1 : 0);
-      if (uCut) ctx.uniform1f(uCut, gl.cut === undefined ? 99 : gl.cut);
 
       ctx.bindBuffer(ctx.ARRAY_BUFFER, posBuf);
       ctx.enableVertexAttribArray(aPos);
@@ -571,20 +568,7 @@
     var reset = document.getElementById("glReset");
     if (reset) reset.addEventListener("click", function () {
       mv.yaw = -0.55; mv.pitch = 0.18; mv.dist = 1.35; mv.spin = true;
-      gl.cut = 99;
-      if (cut) cut.value = "0";
     });
-
-    /* a movable cut plane through the same mesh: the internal fracture
-       configuration, which the surface alone does not show */
-    var cut = document.getElementById("glCut");
-    if (cut) {
-      cut.addEventListener("input", function () {
-        var p = Number(cut.value);
-        // 0 = no cut; dragging right moves the plane down through the mesh
-        gl.cut = p <= 0 ? 99 : (gl.minY + (gl.maxY - gl.minY) * (1 - p / 100));
-      });
-    }
 
     var modelFull = document.getElementById("glFull");
     var modelBox = document.querySelector("#s-pos .model");
@@ -800,6 +784,14 @@
     var n = cineNodes();
     if (!n || !n.video) return;
     n.video.addEventListener("timeupdate", cinePaintPhase);
+    // a big clip takes a moment to buffer: start it as soon as it can play,
+    // and say so if the file is missing rather than showing a dead frame
+    n.video.addEventListener("loadeddata", function () {
+      if (document.getElementById("s-move").classList.contains("is-active") && n.video.paused) cinePlay();
+    });
+    n.video.addEventListener("error", function () {
+      if (n.phase) n.phase.textContent = "clip unavailable";
+    });
     n.video.addEventListener("play", function () { n.root.setAttribute("data-state", "playing"); });
     n.video.addEventListener("pause", function () {
       if (n.root.getAttribute("data-state") !== "idle") n.root.setAttribute("data-state", "paused");

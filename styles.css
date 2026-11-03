@@ -2980,3 +2980,86 @@ body.has-full { overflow: hidden; }
 #s-neg .viewer__cap { font-size: clamp(13px, .98vw, 15px); }
 #s-neg .col--model .patient { margin-bottom: 2px; }
 #s-see .seepage__lede b { color: var(--cyan); font-weight: 600; }
+
+/* the cover's list was set at label size; it is the content of the page */
+.attract .ailist { gap: clamp(6px, 1vh, 12px); }
+.attract .ailist li { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.45; }
+.attract .ailist b { font-size: inherit; }
+.attract .kicker { font-size: clamp(11px, .84vw, 13px); }
+.attract .micro { font-size: clamp(11.5px, .86vw, 13.5px); }
+.attract .display__line { font-size: clamp(30px, 3.1vw, 52px); line-height: 1.06; }
+
+/* the cover captions were label-sized */
+.pair__fig figcaption { font-size: clamp(12px, .9vw, 14px); line-height: 1.35; padding: 26px 12px 10px; }
+.pair__note { font-size: clamp(11px, .82vw, 12.5px); }
+
+/* DECT: the three lines on this screen carry the argument, so set them large */
+#s-neg .h2 { font-size: clamp(24px, 2.1vw, 34px); line-height: 1.16; }
+#s-neg .body { font-size: clamp(15px, 1.15vw, 18px); line-height: 1.5; }
+#s-neg .note { font-size: clamp(14px, 1.02vw, 16.5px); line-height: 1.45; }
+#s-neg .viewer__cap { font-size: clamp(13.5px, 1vw, 15.5px); }
+#s-neg .col--model { gap: clamp(10px, 1.6vh, 18px); }
+
+/* =========================================================================
+   Paragraph pass, station-wide: balanced headings, pretty paragraphs, a
+   sensible measure, and no column left hanging.
+   ========================================================================= */
+h1, h2, h3, .display__line, .h2, .h3, .teach__h, .tk__b, .tool__h { text-wrap: balance; }
+p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h, .tk__b, .tool__d, .journey__t { text-wrap: pretty; }
+
+.body { max-width: 66ch; }
+.note { max-width: 70ch; }
+.viewer__cap, .gallery__cap { max-width: 56ch; }
+.teach .body { max-width: 52ch; }
+.journey__t { max-width: 54ch; }
+
+/* nothing hangs off the bottom of a column: centre it or let it sit tight */
+#s-neg .col--model { justify-content: center; }
+#s-neg .col--model .btn--primary { margin-top: 6px; }
+#s-pos .col--model .btn--primary { margin-top: 4px; }
+#s-two .col:first-child { justify-content: center; }
+#s-speed .col:first-child { justify-content: center; }
+
+/* pRIMe: her face carries the anxiety, the phone mock shows the tool */
+#s-two .split { grid-template-columns: minmax(0, 1.1fr) minmax(260px, .9fr); }
+#s-two .col--face { display: flex; flex-direction: column; gap: clamp(8px, 1.2vh, 14px); min-height: 0; }
+#s-two .face { margin: 0; position: relative; flex: 1 1 auto; min-height: 0; border: 1px solid var(--rule); overflow: hidden; background: #05080b; }
+#s-two .face img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 32%; display: block; }
+#s-two .face figcaption {
+  position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 12px 10px;
+  font-size: clamp(11px, .82vw, 12.5px); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--paper); background: linear-gradient(to top, rgba(5,8,11,.94), rgba(5,8,11,0));
+}
+#s-two .phone { flex: 0 0 auto; align-self: center; }
+#s-two .photo { flex: 0 0 auto; }
+
+/* her portrait takes the top of the column; the phone sits under it, in frame */
+#s-two .col--face { min-height: 0; overflow: hidden; }
+#s-two .face { flex: 0 1 auto; height: auto; max-height: 60%; }
+#s-two .phone { flex: 0 0 auto; margin-top: 2px; }
+#s-two .phone { height: clamp(170px, 26vh, 240px); }
+#s-two .phone__screen { height: 100%; }
+
+/* pRIMe: the portrait absorbs whatever the phone leaves, so nothing is cut */
+#s-two .face { flex: 1 1 auto; min-height: 0; max-height: none; }
+#s-two .face img { height: 100%; }
+#s-two .phone { height: clamp(160px, 24vh, 220px); }
+#s-two .col:first-child { gap: clamp(6px, 1vh, 11px); }
+
+/* MRI acceleration: the copy is the screen now, so set it at reading size */
+#s-speed .h2 { font-size: clamp(24px, 2vw, 32px); line-height: 1.16; }
+#s-speed .body { font-size: clamp(15px, 1.12vw, 17.5px); line-height: 1.5; }
+#s-speed .body--tight { font-size: clamp(14px, 1vw, 16px); line-height: 1.5; }
+#s-speed .note { font-size: clamp(13.5px, .98vw, 15.5px); line-height: 1.45; }
+#s-speed .teach__h { font-size: clamp(12px, .9vw, 14px); }
+#s-speed .teach .body { font-size: clamp(12.5px, .92vw, 14.5px); }
+#s-speed .col { gap: clamp(8px, 1.4vh, 16px); }
+
+/* the portrait fills its box absolutely, so it cannot dictate the column height */
+#s-two .face { position: relative; overflow: hidden; }
+#s-two .face img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 30%; }
+#s-two .col--face { height: 100%; }
+
+/* the MRI column reads top to bottom, heading at the top, control at the base */
+#s-speed .col:first-child { justify-content: space-between; gap: clamp(8px, 1.4vh, 16px); }
+#s-speed .col:first-child > .patient { align-self: flex-start; }
