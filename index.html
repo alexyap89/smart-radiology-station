@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smart Radiology — Is there a fracture?</title>
-<link rel="stylesheet" href="styles.css?v=20261103115439">
+<link rel="stylesheet" href="styles.css?v=20261103115737">
 </head>
 <body>
 
@@ -54,7 +54,7 @@
             <li><b>RbFracture</b> screens every ED extremity film</li>
             <li><b>3D + 4D</b>: visualisation, and printing, from the scan already acquired</li>
             <li><b>AI reconstruction</b>: a shorter MRI, and dose back on CT</li>
-            <li><b>pRIMe</b>: the patient rehearses the scan at home</li>
+            <li><b>pRIMe</b>: the patient rehearses the scan before she goes in</li>
           </ul>
           <button class="btn btn--primary btn--xl" data-go="quiz" type="button">Start experience</button>
           <p class="micro">90 seconds · touch to begin</p>
@@ -62,12 +62,12 @@
         <figure class="attract__art attract__art--pair">
           <div class="pair">
             <figure class="pair__fig">
-              <img src="assets/img/patient-a.jpg" alt="A man in his seventies sits up in a hospital bed, his right knee bandaged, explaining it to the radiographer.">
-              <figcaption><b>A</b> Three in the morning, a knee he cannot stand on</figcaption>
+              <img src="assets/img/patient-a.jpg" alt="Patient A: a man in his seventies sits up in a hospital bed, his right knee bandaged, explaining it to the radiographer.">
+              <figcaption><b>Patient A</b>Fell at home at three in the morning. He cannot stand on his right knee.</figcaption>
             </figure>
             <figure class="pair__fig">
-              <img src="assets/img/patient-b.jpg" alt="An elderly woman on a sofa at night, phone held in both hands, walking through the scanner room in Hokkien.">
-              <figcaption><b>B</b> A first MRI, rehearsed at home in Hokkien</figcaption>
+              <img src="assets/img/patient-b.jpg" alt="Patient B: an elderly woman on a sofa at night, phone held in both hands, walking through the scanner room in Hokkien.">
+              <figcaption><b>Patient B</b>Fell, and walked it off. Weeks later: abdominal pain, and her first MRI.</figcaption>
             </figure>
           </div>
           <figcaption class="pair__note">Portraits are illustrative, not patients of this department. The clinical images on this station are de-identified.</figcaption>
@@ -338,7 +338,7 @@
             <figcaption id="cineCap">Knee, through flexion. The volume render rebuilt from the same acquisition, phase by phase.</figcaption>
           </figure>
           <div class="cine__bar">
-            <button class="btn btn--primary btn--sm" data-go="two" type="button">Next: the scan starts the night before</button>
+            <button class="btn btn--primary btn--sm" data-go="two" type="button">Next: the scan starts in the waiting room</button>
           </div>
           <p class="micro">Pilot · feasibility and workflow · no outcome data yet · no additional patient charge.</p>
         </div>
@@ -350,10 +350,10 @@
         <div class="col">
           <p class="stepmark">4 · pRIMe · before the scan</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b.jpg" alt="Illustration of the patient: an elderly woman at home in the evening, rehearsing the scan on her phone.">
+            <img class="patient__img" src="assets/img/patient-b.jpg" alt="The patient: an elderly woman on her phone, rehearsing the scan before she goes in.">
             <p class="patient__meta"><b>Patient B</b> · 74 · first MRI · claustrophobic · speaks Hokkien</p>
           </div>
-          <h2 class="h2" id="two-title">She has abdominal pain, and an MRI of her liver is booked. Tomorrow is her first MRI.</h2>
+          <h2 class="h2" id="two-title">She has abdominal pain and an MRI of her liver booked. It is her first, and she is next.</h2>
           <p class="body">She is anxious, claustrophobic, and speaks Hokkien. She has never been inside a scanner.</p>
 
           <div class="journey">
@@ -361,7 +361,7 @@
             <ol class="journey__list">
               <li>
                 <span class="journey__n">1</span>
-                <span class="journey__t"><b>Waiting.</b> She opens pRIMe on her own phone — the room, the breath-hold, the sound — in Hokkien.</span>
+                <span class="journey__t"><b>Waiting.</b> In the waiting room she opens pRIMe on her own phone — the room, the breath-hold, the sound — in Hokkien.</span>
               </li>
               <li>
                 <span class="journey__n">2</span>
@@ -384,8 +384,8 @@
 
         <div class="col col--face">
           <figure class="face">
-            <img src="assets/img/patient-b.jpg" alt="The patient at home in the evening, phone in both hands, anxious.">
-            <figcaption>Patient B · the night before</figcaption>
+            <img src="assets/img/patient-b.jpg" alt="The patient, phone in both hands, anxious.">
+            <figcaption>Patient B · her own phone, her own language</figcaption>
           </figure>
         <aside class="phone" aria-label="Phone preview of the preparation experience">
           <div class="phone__screen">
@@ -522,10 +522,10 @@
             </div>
           </article>
           <article class="tk">
-            <img class="tk__img" src="assets/img/patient-b.jpg" alt="An elderly woman at home, phone in hand, rehearsing the scan.">
+            <img class="tk__img" src="assets/img/patient-b.jpg" alt="An elderly woman on her phone, rehearsing the scan.">
             <div class="tk__text">
               <p class="tk__n">04 · pRIMe</p>
-              <p class="tk__b">The scanner rehearsed at home, in the patient's own language. 16 of 16 positive at one month.</p>
+              <p class="tk__b">The scanner rehearsed in the waiting room, in the patient's own language. 16 of 16 positive at one month.</p>
             </div>
           </article>
         </div>
@@ -590,6 +590,6 @@
 </div>
 
 <script src="assets/models/tibia-fracture.js"></script>
-<script src="app.js?v=20261103115439"></script>
+<script src="app.js?v=20261103115737"></script>
 </body>
 </html>

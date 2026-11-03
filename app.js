@@ -83,7 +83,7 @@
         see:  ["2", "AI denoising · the dose it buys"],
         move: ["2", "3D + 4D Lab · the joint in motion"],
         speed:["3", "MRI acceleration · less time in the scanner"],
-        two:  ["4", "pRIMe · the scan starts the night before"],
+        two:  ["4", "pRIMe · the scan starts in the waiting room"],
         tools:["", "The tools behind all four programmes"],
         takeaway:["", "What the four programmes can prove"],
         attract:["", ""]

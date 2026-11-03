@@ -3063,3 +3063,31 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* the MRI column reads top to bottom, heading at the top, control at the base */
 #s-speed .col:first-child { justify-content: space-between; gap: clamp(8px, 1.4vh, 16px); }
 #s-speed .col:first-child > .patient { align-self: flex-start; }
+
+/* the two patients get the space, and a proper introduction */
+.attract { grid-template-columns: minmax(340px, .98fr) minmax(420px, 1.06fr); }
+.pair__fig { height: clamp(280px, 46vh, 430px); }
+.pair__fig figcaption {
+  font-size: clamp(12.5px, .92vw, 14.5px); line-height: 1.35; padding: 30px 13px 12px;
+}
+.pair__fig figcaption b {
+  display: block; margin-bottom: 3px; font-size: clamp(10px, .74vw, 11.5px);
+  letter-spacing: .14em; text-transform: uppercase; color: var(--cyan);
+}
+.pair__note { font-size: clamp(11px, .82vw, 12.5px); max-width: 60ch; }
+
+/* the caption sits under the portrait, not on top of it, and the list breathes */
+.pair__fig { display: flex; flex-direction: column; overflow: hidden; }
+.pair__fig img { flex: 1 1 auto; min-height: 0; width: 100%; object-fit: cover; }
+.pair__fig figcaption {
+  position: static; flex: 0 0 auto; padding: 9px 11px 11px; background: var(--ink-2);
+  border-top: 1px solid var(--rule); background-image: none;
+}
+.pair { gap: 14px; }
+.attract .ailist { margin-top: clamp(12px, 1.8vh, 20px); gap: clamp(8px, 1.3vh, 14px); }
+.attract .ailist li { font-size: clamp(14px, 1.02vw, 16.5px); }
+.attract .display__line { font-size: clamp(32px, 3.3vw, 54px); }
+.attract { grid-template-columns: minmax(320px, .92fr) minmax(440px, 1.12fr); }
+.pair__fig { height: clamp(300px, 52vh, 470px); }
+#s-two .phone { height: clamp(150px, 22vh, 210px); }
+#s-two .phone__note { font-size: clamp(8.5px, .64vw, 10px); }
