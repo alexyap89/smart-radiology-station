@@ -3091,3 +3091,4 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 .pair__fig { height: clamp(300px, 52vh, 470px); }
 #s-two .phone { height: clamp(150px, 22vh, 210px); }
 #s-two .phone__note { font-size: clamp(8.5px, .64vw, 10px); }
+#s-tools .tool__img { flex: 0 0 clamp(150px, 15vw, 215px); width: clamp(150px, 15vw, 215px); height: clamp(110px, 17vh, 170px); }
