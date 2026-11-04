@@ -3180,3 +3180,12 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-move .cine__tile { margin: 0; display: flex; flex-direction: column; min-height: 0; gap: 6px; }
 #s-move .cine__tile video { flex: 1 1 auto; min-height: 0; width: 100%; object-fit: contain; background: #05080b; border: 1px solid var(--rule); display: block; }
 #s-move .cine__tile figcaption { flex: 0 0 auto; }
+#s-see .gallery__foot .vendor__flag { margin: 0 0 2px; }
+#s-see .gallery__foot { flex-wrap: wrap; }
+
+/* the denoise comparison fills its page, like the render gallery */
+#s-see .gallery--hero { flex: 1 1 auto; min-height: 0; max-width: none; }
+#s-see .gallery--hero .gallery__stage { flex: 1 1 auto; min-height: 0; height: auto; }
+#s-see .gallery--hero .gallery__stage img { width: 100%; height: 100%; object-fit: contain; }
+#s-see .gallery__foot { align-items: center; }
+#s-see .seepage__lede { margin-bottom: 2px; }

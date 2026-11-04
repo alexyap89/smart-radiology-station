@@ -182,9 +182,9 @@
   var FILMS = [
     {
       title: "A man fell and cannot bear weight on his right knee.",
-      img: "assets/cases/pos-film-ap.png?v=20261103160020", ai: "assets/cases/pos-ai-ap.png?v=20261103160020",
+      img: "assets/cases/pos-film-ap.png?v=20261104172759", ai: "assets/cases/pos-ai-ap.png?v=20261104172759",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 4", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261103160020",
+      pimg: "assets/img/patient-a.jpg?v=20261104172759",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Patient A</b> · cannot put weight on it · right knee",
       verdict: "Fracture detected.",
@@ -193,9 +193,9 @@
     },
     {
       title: "Same man, lateral view. The joint is swollen.",
-      img: "assets/cases/pos-film-lat.png?v=20261103160020", ai: "assets/cases/pos-ai-lat.png?v=20261103160020",
+      img: "assets/cases/pos-film-lat.png?v=20261104172759", ai: "assets/cases/pos-ai-lat.png?v=20261104172759",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 4", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261103160020",
+      pimg: "assets/img/patient-a.jpg?v=20261104172759",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Patient A</b> · cannot put weight on it · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
@@ -204,9 +204,9 @@
     },
     {
       title: "Patient B fell too, but she could walk it off. This is her knee.",
-      img: "assets/cases/neg-film-ap.png?v=20261103160020", ai: "assets/cases/neg-ai-ap.png?v=20261103160020",
+      img: "assets/cases/neg-film-ap.png?v=20261104172759", ai: "assets/cases/neg-ai-ap.png?v=20261104172759",
       cap: "Case 2 · left knee · AP", step: "Film 3 of 4", truth: "no",
-      pimg: "assets/img/patient-b-waiting.jpg?v=20261103160020",
+      pimg: "assets/img/patient-b-waiting.jpg?v=20261104172759",
       palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected.",
@@ -215,9 +215,9 @@
     },
     {
       title: "Patient B, lateral view. She walked in, but the pain has not settled.",
-      img: "assets/cases/neg-film-lat.png?v=20261103160020", ai: "assets/cases/neg-ai-lat.png?v=20261103160020",
+      img: "assets/cases/neg-film-lat.png?v=20261104172759", ai: "assets/cases/neg-ai-lat.png?v=20261104172759",
       cap: "Case 2 · left knee · lateral", step: "Film 4 of 4", truth: "no",
-      pimg: "assets/img/patient-b-waiting.jpg?v=20261103160020",
+      pimg: "assets/img/patient-b-waiting.jpg?v=20261104172759",
       palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Patient B</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected. An effusion is.",
@@ -292,10 +292,10 @@
 
   /* ---------------------------------------------------------------- image tabs */
   var VIEWS = {
-    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261103160020", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
-    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261103160020", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
-    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261103160020", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
-    sag:    { src: "assets/cases/neg-sag.png?v=20261103160020", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
+    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261104172759", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
+    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261104172759", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
+    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261104172759", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
+    sag:    { src: "assets/cases/neg-sag.png?v=20261104172759", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
   };
 
   // A frame should be the image, not a letterbox around it: every plate and
@@ -658,17 +658,17 @@
   /* ---------------------------------------------------------------- lab: the render gallery */
   var LAB_CASES = {
     foot: {
-      src: "assets/cine/foot.jpg?v=20261103160020",
+      src: "assets/cine/foot.jpg?v=20261104172759",
       cap: "Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.",
       alt: "Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia."
     },
     scapula: {
-      src: "assets/cine/scapula.jpg?v=20261103160020",
+      src: "assets/cine/scapula.jpg?v=20261104172759",
       cap: "Traumatic structural isolation of the scapula, with a comminuted scapular fracture and a displaced clavicle.",
       alt: "Cinematic rendering of a fractured scapula with a displaced clavicle and rib fractures."
     },
     ribs: {
-      src: "assets/cine/ribs.jpg?v=20261103160020",
+      src: "assets/cine/ribs.jpg?v=20261104172759",
       cap: "Traumatic right rib fractures, rendered with the chest drain in place — the drain and the fractures in one view.",
       alt: "Cinematic rendering of traumatic right rib fractures with a chest drain in situ."
     }
@@ -688,6 +688,49 @@
       b.classList.toggle("is-on", on);
       b.setAttribute("aria-pressed", on ? "true" : "false");
     });
+  }
+
+  var SEE_CASES = {
+    pelvis: {
+      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261104172759",
+      cap: "One acquisition, two reconstructions: filtered back projection on the left, DLIR-High on the right.",
+      alt: "The same axial CT slice twice: filtered back projection, noise-grainy, and DLIR-High, clean."
+    },
+    abdomen: {
+      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261104172759",
+      cap: "The same comparison higher in the abdomen, where low contrast detectability matters most.",
+      alt: "An upper abdominal axial CT slice twice: filtered back projection and DLIR-High."
+    },
+    vendor: {
+      src: "assets/photos/ge-truefidelity.jpg?v=20261104172759",
+      cap: "Vendor example, not our data: FBP, ASiR-V 50% and GE's TrueFidelity at 0.625 mm, from the GE brochure.",
+      alt: "Three coronal CT reformats: FBP, ASiR-V 50 percent and TrueFidelity."
+    }
+  };
+
+  function seeSelect(key) {
+    var c = SEE_CASES[key];
+    if (!c) return;
+    var img = document.getElementById("seeImg");
+    var cap = document.getElementById("seeCap");
+    var root = document.getElementById("seeGallery");
+    var flag = document.getElementById("seeFlag");
+    if (img) { img.src = c.src; img.alt = c.alt; }
+    if (cap) cap.textContent = c.cap;
+    if (root) root.setAttribute("data-case", key);
+    if (flag) flag.hidden = key !== "vendor";
+    qsa("#seeGallery .gallery__tab").forEach(function (b) {
+      var on = b.getAttribute("data-case") === key;
+      b.classList.toggle("is-on", on);
+      b.setAttribute("aria-pressed", on ? "true" : "false");
+    });
+  }
+
+  function wireSeeGallery() {
+    qsa("#seeGallery .gallery__tab").forEach(function (b) {
+      b.addEventListener("click", function () { seeSelect(b.getAttribute("data-case")); });
+    });
+    seeSelect("pelvis");
   }
 
   function resetLab() { labSelect("foot"); }
@@ -1119,6 +1162,7 @@
   wireVideos();
   wireChips();
   wireGallery();
+  wireSeeGallery();
   wireCine();
   wirePrimeFrame();
   show("attract");
