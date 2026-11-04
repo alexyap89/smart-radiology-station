@@ -3189,3 +3189,24 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-see .gallery--hero .gallery__stage img { width: 100%; height: 100%; object-fit: contain; }
 #s-see .gallery__foot { align-items: center; }
 #s-see .seepage__lede { margin-bottom: 2px; }
+
+/* the MRI screen: our scan is the exhibit, so it gets the larger column and fills it */
+#s-speed .split { grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); }
+#s-speed .col--model { height: 100%; min-height: 0; display: flex; flex-direction: column; }
+#s-speed .gallery--hero { flex: 1 1 auto; min-height: 0; max-width: none; }
+#s-speed .gallery--hero .gallery__stage { flex: 1 1 auto; min-height: 0; height: auto; }
+#s-speed .gallery--hero .gallery__stage img { width: 100%; height: 100%; object-fit: contain; }
+#s-speed .col:first-child { justify-content: center; gap: clamp(10px, 1.6vh, 18px); }
+
+/* a flex child with height:0 absorbs the leftover without inflating the row */
+#s-speed .gallery--hero .gallery__stage { height: 0; flex: 1 1 auto; min-height: 220px; }
+#s-speed .patient { max-width: 100%; align-self: flex-start; }
+#s-speed .patient__meta { text-align: left; }
+#s-speed .col:first-child { justify-content: center; }
+/* let the two columns use the whole screen, not just the height of the text */
+#s-speed, #s-neg, #s-pos { align-content: stretch; }
+#s-speed .split, #s-neg .split, #s-pos .split { height: 100%; min-height: 0; align-items: stretch; }
+#s-speed .col, #s-neg .col, #s-pos .col { min-height: 0; }
+#s-speed .col--model, #s-neg .col--model, #s-pos .col--model, #s-speed .col, #s-neg .col, #s-pos .col { align-self: stretch; }
+/* align-content:start was packing the row to its content height */
+#s-speed .split, #s-neg .split, #s-pos .split, #s-two .split, #s-quiz .split { align-content: stretch; }
