@@ -4164,3 +4164,16 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 @media (min-width: 1380px) and (max-width: 1500px) {
   #s-lab .lab__still-tile img { height: clamp(110px, 21vh, 220px); }
 }
+
+/* the base row: action at the left edge, the rib render and its detail at the right */
+#s-lab .lab__base { display: flex; align-items: flex-end; gap: clamp(16px, 2vw, 34px); }
+#s-lab .lab__nextrow { order: -1; margin-right: auto; align-self: center; }
+#s-lab .lab__stills { justify-content: flex-end; gap: clamp(16px, 2vw, 34px); }
+#s-lab .lab__still-tile img { height: clamp(120px, 21vh, 250px); }
+#s-lab .lab__movies.vids--big { --h: clamp(200px, 44vh, 480px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+/* give the rib pair a little more height; the movies can lose twelve */
+#s-lab .lab__movies.vids--big { --h: clamp(190px, 42vh, 470px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__still-tile img { height: clamp(130px, 24vh, 270px); }
+#s-lab .lab__base { align-items: center; }
