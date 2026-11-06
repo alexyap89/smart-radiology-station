@@ -3737,3 +3737,85 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
   #s-takeaway .tk__line { font-size: 14px; }
   #s-takeaway .tk__close { font-size: 13px; }
 }
+
+/* =========================================================================
+   Lab, third pass: the motion is the point. Three 16:9 movies span the full
+   width at their native aspect (no crop), and the still gallery becomes a
+   caption band beneath them.
+   ========================================================================= */
+#s-lab .renderpage { gap: clamp(10px, 1.6vh, 20px); justify-content: center; }
+#s-lab .lab__movies {
+  display: grid; grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(10px, 1.4vw, 22px); width: 100%; height: auto; min-height: 0; flex: 0 0 auto;
+}
+#s-lab .lab__movies .vid {
+  position: relative; min-height: 0; height: auto; aspect-ratio: 16 / 9;
+  border: 1px solid var(--rule); background: #05080b; overflow: hidden;
+}
+#s-lab .lab__movies .vid video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#s-lab .lab__movies .vid figcaption {
+  position: absolute; left: 10px; bottom: 10px; z-index: 2;
+  font-size: var(--fs-small); letter-spacing: .12em; text-transform: uppercase;
+  background: rgba(4, 8, 12, .72); padding: 5px 10px; border-radius: 3px;
+}
+#s-lab .lab__still { flex: 0 0 auto; min-height: 0; }
+#s-lab .gallery--band {
+  display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto;
+  gap: 6px clamp(14px, 1.8vw, 26px); align-items: start;
+}
+#s-lab .gallery--band .gallery__tabs { grid-column: 1; grid-row: 1; display: flex; gap: 4px; flex-wrap: wrap; max-width: 260px; }
+#s-lab .gallery--band .gallery__stage {
+  grid-column: 2; grid-row: 1 / span 2; height: clamp(150px, 22vh, 240px);
+  display: flex; align-items: center; justify-content: flex-start; background: transparent; border: 0;
+}
+#s-lab .gallery--band .gallery__stage img { max-height: 100%; max-width: 100%; width: auto; height: 100%; object-fit: contain; }
+#s-lab .gallery--band .gallery__foot {
+  grid-column: 1; grid-row: 2; display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 0;
+}
+#s-lab .gallery--band .gallery__cap { margin: 0; max-width: 30ch; }
+/* the old three-row grid still applied to this element; kill its row sizing */
+#s-lab .lab__movies.vids--big { height: auto; grid-template-rows: none; align-items: start; }
+#s-lab .lab__movies.vids--big .vid { height: auto; }
+
+/* the still band becomes one horizontal strip: tabs, picture, caption + way on */
+#s-lab .gallery--band {
+  grid-template-columns: auto minmax(0, 38%) minmax(0, 1fr);
+  grid-template-rows: auto; align-items: center; gap: clamp(14px, 2vw, 34px);
+}
+#s-lab .gallery--band .gallery__tabs { grid-column: 1; grid-row: 1; flex-direction: column; max-width: none; }
+#s-lab .gallery--band .gallery__stage { grid-column: 2; grid-row: 1; height: clamp(170px, 25vh, 260px); justify-content: center; }
+#s-lab .gallery--band .gallery__foot { grid-column: 3; grid-row: 1; justify-content: center; }
+#s-lab .gallery--band .gallery__cap { max-width: 46ch; }
+#s-lab .lab__movies { margin-bottom: clamp(4px, 1vh, 12px); }
+
+/* each clip at its own aspect, full height, no crop */
+#s-lab .lab__movies.vids--big { display: flex; justify-content: center; align-items: center;
+  gap: clamp(10px, 1.4vw, 22px); height: clamp(230px, 36vh, 400px); }
+#s-lab .lab__movies .vid { height: 100%; width: auto; aspect-ratio: var(--ar, 16 / 9); flex: 0 0 auto; }
+#s-lab .lab__movies .vid video { object-fit: cover; }
+
+/* the flex+aspect-ratio combination collapsed to zero width; size explicitly */
+#s-lab .lab__movies.vids--big { --h: clamp(230px, 36vh, 400px); height: var(--h); align-items: stretch; }
+#s-lab .lab__movies .vid { height: var(--h); width: calc(var(--h) * var(--ar, 1.7778)); flex: 0 0 auto; position: relative; }
+#s-lab .lab__movies .vid video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+
+/* four programmes read as a 2x2, not a 3 + 1 orphan */
+#s-takeaway .tk-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#s-takeaway .tk-grid--four .tk:nth-child(4) { grid-column: auto; grid-row: auto; }
+@media (min-width: 1380px) {
+  #s-takeaway .tk-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #s-takeaway .tk-grid--four .tk:nth-child(4) { grid-column: auto; grid-row: auto; }
+}
+
+/* the clip row must stay a row, and fit the stage */
+#s-lab .lab__movies.vids--big { flex-direction: row; flex-wrap: nowrap; --h: clamp(170px, 25vh, 300px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+
+/* the clips at full height the stage allows, the still band giving way */
+#s-lab .lab__movies.vids--big { --h: clamp(230px, 36vh, 400px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__pending-ok { display: block; }
+#s-lab .gallery--band .gallery__stage { height: clamp(140px, 20vh, 220px); }
+#s-lab .lab__movies.vids--big { --h: clamp(240px, 40vh, 430px); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .gallery--band .gallery__stage { height: clamp(120px, 17vh, 200px); }
