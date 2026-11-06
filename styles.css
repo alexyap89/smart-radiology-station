@@ -267,7 +267,7 @@ body::before {
 .split--reverse { grid-template-columns: minmax(200px, 1fr) minmax(200px, 1fr); }
 
 .col { min-width: 0; display: flex; flex-direction: column; gap: clamp(8px, 1.4vh, 16px); }
-.col--wide { max-width: 1180px; }
+.col--wide { max-width: 1180ch; }
 .col--foot { margin-top: clamp(6px, 1.4vh, 18px); }
 
 .stepmark {
@@ -558,7 +558,7 @@ body::before {
 }
 .diagram { margin: 2px 0; }
 .diagram .map { width: min(100%, 720px); }
-.iconstrip { width: 100%; max-width: 560px; opacity: .5; margin: 0; }
+.iconstrip { width: 100%; max-width: 560ch; opacity: .5; margin: 0; }
 .iconstrip img { width: 100%; height: auto; display: block; }
 .map { width: 100%; height: auto; display: block; }
 .map__base { stroke: var(--rule-strong); stroke-width: 1.4; fill: none; }
@@ -1352,7 +1352,7 @@ a.btn { text-decoration: none; display: inline-flex; align-items: center; }
 
 /* the film is the thing a board member is asked to read: give it the room */
 @media (min-width: 901px) { .split--quiz { grid-template-columns: minmax(300px, 1.02fr) minmax(320px, 1fr); } }
-@media (min-width: 901px) { .plate--film .plate__frame { max-height: clamp(260px, 62vh, 560px); } }
+@media (min-width: 901px) { .plate--film .plate__frame { max-height: clamp(260px, 62vh, 560ch); } }
 @media (max-width: 1100px) { .plate--film .plate__frame { max-height: clamp(220px, 46vh, 420px); } }
 @media (max-height: 830px) and (min-width: 721px) { .plate--film .plate__frame { max-height: clamp(200px, 44vh, 360px); } }
 
@@ -2158,7 +2158,7 @@ body[data-started="1"] .timer { display: inline; }
 
 /* ---------- maximise the image frames: these are the screens a board member looks at ---------- */
 #s-quiz .plate__frame { max-height: clamp(300px, 66vh, 720px); }
-#s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(260px, 54vh, 580px); }
+#s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(260px, 54vh, 580ch); }
 #s-lab .gallery__stage { height: clamp(300px, 62vh, 680px); }
 #s-move .cine__lane { height: clamp(300px, 60vh, 660px); }
 
@@ -2190,7 +2190,7 @@ body[data-started="1"] .timer { display: inline; }
 #s-move .cine__lane { height: clamp(240px, 42vh, 450px); }
 
 .col--model .model { max-height: min(48vh, 460px); }
-#s-quiz .plate__frame { max-height: clamp(260px, 58vh, 560px); }
+#s-quiz .plate__frame { max-height: clamp(260px, 58vh, 560ch); }
 #s-quiz .split--quiz { grid-template-columns: minmax(320px, 1.05fr) minmax(340px, 1fr); }
 #s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(220px, 42vh, 430px); }
 
@@ -2211,9 +2211,9 @@ body[data-started="1"] .timer { display: inline; }
 
 /* the frame should be the picture, not a letterbox around it */
 .gallery__stage img { object-fit: contain; }
-#s-lab .gallery { max-width: 580px; }
+#s-lab .gallery { max-width: 580ch; }
 #s-lab .gallery__stage { height: clamp(250px, 46vh, 460px); }
-#s-move .cine__lane { height: clamp(250px, 46vh, 470px); max-width: 560px; width: 100%; }
+#s-move .cine__lane { height: clamp(250px, 46vh, 470px); max-width: 560ch; width: 100%; }
 #s-move .cine { max-width: 100%; }
 #s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(190px, 34vh, 360px); }
 .col--model .model { max-height: min(40vh, 400px); }
@@ -2327,7 +2327,7 @@ body[data-started="1"] .timer { display: inline; }
 #s-pos .viewer__stage, #s-neg .viewer__stage,
 #s-lab .gallery__stage, #s-move .cine__lane { height: var(--media-h); }
 
-#s-quiz .plate__frame { height: clamp(300px, 52vh, 560px); }
+#s-quiz .plate__frame { height: clamp(300px, 52vh, 560ch); }
 
 #s-pos .split, #s-neg .split, #s-lab .split, #s-move .split {
   grid-template-columns: auto minmax(0, 1fr);
@@ -2337,7 +2337,7 @@ body[data-started="1"] .timer { display: inline; }
 #s-lab .gallery, #s-move .cine { max-width: min(100%, 620px); }
 #s-move .cine__lane { max-width: 100%; }
 #s-quiz .plate { max-width: min(100%, 520px); }
-.win__bar { max-width: 430px; }
+.win__bar { max-width: 430ch; }
 .viewer__cap { max-width: 46ch; }
 #s-pos .viewer, #s-neg .viewer { min-width: 0; }
 
@@ -2460,7 +2460,7 @@ body[data-started="1"] .timer { display: inline; }
 #s-pos .viewer__stage, #s-neg .viewer__stage {
   width: auto; aspect-ratio: var(--ar, .75); height: clamp(260px, 46vh, 480px); flex: 0 0 auto;
 }
-#s-pos .win__bar, #s-neg .win__bar { flex-wrap: wrap; row-gap: 6px; max-width: 380px; }
+#s-pos .win__bar, #s-neg .win__bar { flex-wrap: wrap; row-gap: 6px; max-width: 380ch; }
 #s-pos .viewer__cap, #s-neg .viewer__cap { max-width: 38ch; }
 
 /* a narrower control bar so the viewer column can be as wide as the picture */
@@ -2930,7 +2930,7 @@ body.has-full { overflow: hidden; }
 
 /* the bar wraps into two tidy rows; the film gives back the 40px it took */
 #s-quiz .win__bar { flex-wrap: wrap; row-gap: 6px; }
-#s-quiz .plate__frame { height: clamp(300px, 54vh, 580px); }
+#s-quiz .plate__frame { height: clamp(300px, 54vh, 580ch); }
 #s-quiz .win__ctl input[type="range"] { width: clamp(64px, 5vw, 96px); }
 
 /* the tool cards carry the thing each tool actually shows */
@@ -3471,7 +3471,7 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 
 /* keep the capability column and the closing button inside the text column */
 #s-attract .intro__bottom { grid-template-columns: minmax(0, 1fr) minmax(300px, 460px); }
-#s-attract .intro__caps { max-width: 460px; }
+#s-attract .intro__caps { max-width: 460ch; }
 #s-attract .intro__close { max-width: 100%; }
 
 /* the return, as labels rather than another sentence */
@@ -3765,7 +3765,7 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
   display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-rows: auto auto;
   gap: 6px clamp(14px, 1.8vw, 26px); align-items: start;
 }
-#s-lab .gallery--band .gallery__tabs { grid-column: 1; grid-row: 1; display: flex; gap: 4px; flex-wrap: wrap; max-width: 260px; }
+#s-lab .gallery--band .gallery__tabs { grid-column: 1; grid-row: 1; display: flex; gap: 4px; flex-wrap: wrap; max-width: 260ch; }
 #s-lab .gallery--band .gallery__stage {
   grid-column: 2; grid-row: 1 / span 2; height: clamp(150px, 22vh, 240px);
   display: flex; align-items: center; justify-content: flex-start; background: transparent; border: 0;
@@ -4037,7 +4037,7 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-quiz[data-revealed="1"] .copilot__tat { display: none; }
 #s-quiz[data-revealed="1"] .row--tight + .micro,
 #s-quiz[data-revealed="1"] > .split > .col > .micro:last-child { display: none; }
-#s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img { max-height: min(64vh, 560px); width: auto; }
+#s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img { max-height: min(64vh, 560ch); width: auto; }
 #s-quiz[data-revealed="1"] #qReveal { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
 /* with the pre-answer micro gone, the action sits under the verdict */
 #s-quiz[data-revealed="1"] #qReveal #qNext { grid-row: 3; margin-top: 6px; }
@@ -4108,3 +4108,59 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-quiz #qCase:empty { display: none; }
 #s-deliver .deliver__lede { margin: 0; max-width: 62ch; }
 #s-speed .col .body { max-width: none; }
+
+/* the movies take the stage; two renders keep their place as a strip beneath */
+#s-lab .lab__movies.vids--big { --h: clamp(200px, 42vh, 470px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__stills { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+#s-lab .lab__still-tile img { height: clamp(74px, 11vh, 130px); }
+#s-lab .lab__still-tile { flex-direction: row; align-items: center; gap: 12px; }
+#s-lab .lab__still-tile figcaption { flex: 1 1 auto; }
+
+/* the lab is a room with six pictures in it; the scroll banner already names it */
+#s-lab .renderpage { gap: clamp(10px, 1.8vh, 20px); }
+#s-lab .lab__movies.vids--big { --h: clamp(220px, 46vh, 560ch); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+
+/* two reference renders as deliberate tiles, not slivers */
+#s-lab .lab__stills { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 28px); }
+#s-lab .lab__still-tile { flex-direction: row; align-items: center; gap: 14px; }
+#s-lab .lab__still-tile img {
+  width: clamp(120px, 15vw, 230px); height: clamp(84px, 12vh, 150px); flex: 0 0 auto;
+  object-fit: cover; object-position: 50% 45%;
+}
+#s-lab .lab__still-tile figcaption { flex: 1 1 auto; max-width: 34ch; }
+/* the two reference renders show whole, not cropped */
+#s-lab .lab__still-tile img {
+  width: auto; height: clamp(90px, 13vh, 150px); object-fit: contain;
+  background: #05080b; border: 1px solid var(--rule); padding: 0;
+}
+/* equal panels, images letterboxed inside so a portrait render doesn't shrink the tile */
+#s-lab .lab__still-tile img { width: clamp(150px, 16vw, 240px); height: clamp(90px, 13vh, 150px); }
+
+/* two renders at half the page each: big enough to read the anatomy */
+#s-lab .lab__movies.vids--big { --h: clamp(170px, 33vh, 380px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__stills { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(12px, 2vw, 30px); }
+#s-lab .lab__still-tile { flex-direction: column; align-items: stretch; gap: 8px; }
+#s-lab .lab__still-tile img {
+  width: 100%; height: clamp(150px, 26vh, 300px); object-fit: contain;
+  background: #05080b; border: 1px solid var(--rule);
+}
+#s-lab .lab__still-tile figcaption { max-width: none; }
+
+/* the renders hug their content (no black gutters) and the movies get the height back */
+#s-lab .lab__movies.vids--big { --h: clamp(190px, 40vh, 430px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__still-tile { align-items: flex-start; }
+#s-lab .lab__still-tile img { width: auto; height: clamp(120px, 22vh, 230px); }
+#s-lab .lab__stills { align-items: start; }
+/* each render and its caption share one width, and the pair sits as a pair */
+#s-lab .lab__stills { display: flex; gap: clamp(28px, 6vw, 110px); align-items: flex-start; justify-content: flex-start; }
+#s-lab .lab__still-tile { width: fit-content; }
+#s-lab .lab__still-tile figcaption { max-width: 38ch; }
+#s-lab .lab__nextrow { margin-top: 2px; }
+#s-lab .renderpage { gap: clamp(8px, 1.4vh, 16px); }
+@media (min-width: 1380px) and (max-width: 1500px) {
+  #s-lab .lab__still-tile img { height: clamp(110px, 21vh, 220px); }
+}
