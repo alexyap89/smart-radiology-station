@@ -4220,3 +4220,41 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 /* the auto margin was pinning the action to the left; put it at the right */
 #s-lab .lab__nextrow { order: 0; margin-right: 0; }
 #s-lab .lab__base { justify-content: flex-end; align-items: center; }
+
+/* =========================================================================
+   Front page: six equal frames across the full width, and the three blocks
+   distributed over the whole screen instead of stacking in its upper half.
+   ========================================================================= */
+#s-attract .intro { justify-content: space-between; gap: clamp(14px, 2.6vh, 34px); }
+#s-attract .intro__top { align-items: start; }
+#s-attract .intro__h { font-size: clamp(30px, 2.55vw, 46px); max-width: 22ch; }
+#s-attract .intro__spectrum .mods { grid-template-columns: repeat(6, minmax(0, 1fr)) !important; gap: clamp(8px, 1vw, 16px); }
+#s-attract .intro__spectrum .mods__i { width: 100%; }
+#s-attract .intro__spectrum .mods__i .mods__img {
+  width: 100%; height: clamp(110px, 19vh, 220px); object-fit: cover; object-position: 50% 45%;
+}
+#s-attract .intro__close { align-items: flex-end; }
+/* the headline centres against the facts beside it, and the strip takes more height */
+#s-attract .intro__top { align-items: center; }
+#s-attract .intro__spectrum .mods__i .mods__img { height: clamp(120px, 23vh, 250px); }
+
+/* tools: the four cards fill the stage instead of sitting in its upper two thirds */
+#s-tools .col--wide { justify-content: space-between; height: 100%; }
+#s-tools .tools-grid { flex: 1 1 auto; min-height: 0; align-content: stretch; }
+#s-tools .tool { min-height: 0; }
+#s-tools .tool__img { height: 100%; min-height: 0; object-fit: cover; }
+#s-tools .tool__text { align-self: center; }
+/* the stretch above blew the card images up; distribute the rows instead */
+#s-tools .tools-grid { align-content: space-between; align-items: stretch; }
+#s-tools .tool { align-items: center; }
+#s-tools .tool__img { height: clamp(110px, 17vh, 170px); width: clamp(150px, 15vw, 215px); object-fit: cover; }
+/* the cards themselves grow; the pictures inside stay a sane size */
+#s-tools .tools-grid { grid-template-rows: repeat(2, minmax(0, 1fr)); align-content: stretch; }
+#s-tools .tool { height: 100%; }
+
+/* the text columns beside the viewers sit on their own centre line, not pinned to the top */
+#s-pos .col--model, #s-neg .col--model, #s-speed .col:first-child { justify-content: center; }
+/* tool pictures: a landscape crop, not a column of image */
+#s-tools .tool__img { width: clamp(150px, 12.5vw, 210px); height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+#s-tools .tool { gap: clamp(12px, 1.4vw, 22px); }
+#s-tools .tool__d { max-width: 42ch; }
