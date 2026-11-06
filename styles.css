@@ -3867,3 +3867,12 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* four blocks on a tall screen: top, middle, floor */
 #s-attract .intro { justify-content: space-between; gap: clamp(12px, 2vh, 28px); padding-block: clamp(4px, 2vh, 26px); }
 #s-attract .mods { align-self: center; width: 100%; }
+
+/* the intro's evidence as two labelled facts, mirroring the source's own headings */
+#s-attract .intro__facts { display: flex; flex-direction: column; gap: clamp(8px, 1.4vh, 16px); }
+#s-attract .fact { display: flex; flex-direction: column; gap: 3px; }
+#s-attract .fact__k {
+  margin: 0; font-size: var(--fs-small); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan);
+}
+#s-attract .fact__v { margin: 0; font-size: var(--fs-body); line-height: 1.4; color: var(--paper-dim); max-width: 52ch; }
+#s-attract .fact__v b { color: var(--paper); font-weight: 600; }
