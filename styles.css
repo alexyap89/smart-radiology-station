@@ -3855,3 +3855,15 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-cases .cases__pair { flex: 1 1 auto; min-height: 0; }
 #s-cases .pair__fig { height: 100%; }
 #s-cases .pair__fig img { height: 100%; object-fit: cover; }
+
+/* with the copy cut back, the pictures take the middle of the page */
+#s-attract .mods__img { height: clamp(150px, 27vh, 280px); }
+#s-attract .intro { gap: clamp(14px, 3vh, 40px); justify-content: center; }
+#s-attract .mods__img { height: clamp(160px, 33vh, 330px); }
+
+/* six 4:3 films, six 4:3 frames: no crop, the row sets the height */
+#s-attract .mods { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(6px, .8vw, 14px); }
+#s-attract .mods__img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
+/* four blocks on a tall screen: top, middle, floor */
+#s-attract .intro { justify-content: space-between; gap: clamp(12px, 2vh, 28px); padding-block: clamp(4px, 2vh, 26px); }
+#s-attract .mods { align-self: center; width: 100%; }
