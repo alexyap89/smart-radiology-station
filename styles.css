@@ -3397,3 +3397,58 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
   #s-attract .intro__top, #s-attract .intro__bottom { grid-template-columns: minmax(0, 1fr); align-items: start; }
 }
 #s-attract .intro__out { max-width: 96ch; margin: 0; }
+
+/* ---------- from workload to value ---------- */
+#s-value { align-content: stretch; }
+#s-value .value { height: 100%; max-width: none; justify-content: center; }
+#s-value .value__h { font-size: var(--t-h2); max-width: 60ch; margin: 0; }
+#s-value .value__pair {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, .78fr) minmax(0, 1fr);
+  gap: clamp(14px, 2vw, 34px); align-items: center; min-height: 0;
+}
+#s-value .value__k {
+  margin: 0 0 8px; font-size: var(--t-small); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan);
+}
+#s-value .value__list { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+#s-value .value__list li { font-size: var(--t-body); line-height: 1.45; color: var(--paper-faint); padding-left: 14px; position: relative; }
+#s-value .value__list li::before { content: ""; position: absolute; left: 0; top: .58em; width: 5px; height: 5px; border-radius: 50%; background: var(--amber); }
+#s-value .value__list b { display: block; color: var(--paper); font-weight: 600; }
+#s-value .value__fig { margin: 0; display: flex; flex-direction: column; gap: 7px; min-height: 0; }
+#s-value .value__fig img { width: 100%; height: clamp(140px, 30vh, 300px); object-fit: cover; object-position: 50% 45%; border: 1px solid var(--rule); }
+#s-value .value__fig figcaption { font-size: var(--t-small); letter-spacing: .06em; text-transform: uppercase; color: var(--paper-faint); }
+#s-value .value__caps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+#s-value .value__caps li { display: flex; flex-direction: column; gap: 1px; }
+#s-value .value__caps b { font-size: var(--t-h3); color: var(--paper); }
+#s-value .value__caps span { font-size: var(--t-body); line-height: 1.4; color: var(--paper-faint); }
+#s-value .value__strip {
+  border-top: 1px solid var(--rule); padding-top: 10px; display: flex; flex-wrap: wrap;
+  align-items: baseline; gap: 8px 22px;
+}
+#s-value .value__stripk { margin: 0; font-size: var(--t-small); letter-spacing: .16em; text-transform: uppercase; color: var(--cyan); }
+#s-value .value__strip ul { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: 8px 22px; }
+#s-value .value__strip li { font-size: var(--t-body); color: var(--paper-dim); }
+#s-value .btn { align-self: flex-start; }
+@media (max-width: 1100px) {
+  #s-value .value__pair { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* fourteen stops: tighten the rail instead of clipping the last one */
+.steps__item { padding-left: 6px; padding-right: 6px; }
+.steps__item .lbl-full { font-size: var(--t-small); }
+@media (max-width: 1500px) {
+  .steps__item { padding-left: 4px; padding-right: 4px; }
+  .steps__item .lbl-full { letter-spacing: .04em; }
+}
+@media (max-width: 1300px) {
+  .steps { gap: 0; }
+  .steps__item .lbl-full { letter-spacing: 0; }
+}
+
+/* the department photo sits in the page, not on top of it */
+#s-value .value__fig img { filter: brightness(.9) saturate(.94) contrast(1.04); }
+#s-value .value__foot { display: flex; align-items: center; justify-content: space-between; gap: clamp(14px, 2vw, 40px); border-top: 1px solid var(--rule); padding-top: 12px; }
+#s-value .value__strip { border: 0; padding: 0; flex: 1 1 auto; }
+#s-value .value__foot .btn { align-self: center; flex: 0 0 auto; }
+#s-value .value__pair { grid-template-columns: minmax(0, 1fr) minmax(300px, 1.1fr) minmax(0, 1fr); }
+#s-value .value__fig img { height: clamp(160px, 34vh, 320px); }
+#s-value .value__fig img { object-position: 50% 22%; }

@@ -11,7 +11,7 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "cases", "quiz", "pos", "neg", "lab", "render", "see", "move", "two", "speed", "takeaway", "tools"];
+  var ORDER = ["attract", "value", "cases", "quiz", "pos", "neg", "lab", "render", "see", "move", "two", "speed", "takeaway", "tools"];
 
   var state = {
     screen: "attract",
@@ -75,6 +75,7 @@
     var bar = document.getElementById("scenarioBar");
     if (bar) {
       var map = {
+        value:["", "From workload to value"],
         cases:["", "The two cases, and what each one asks of imaging"],
         quiz: ["1", "RbFracture · the fracture copilot, on four emergency films"],
         pos:  ["1", "RbFracture · the case that went to CT"],
@@ -182,9 +183,9 @@
   var FILMS = [
     {
       title: "A man fell and cannot bear weight on his right knee.",
-      img: "assets/cases/pos-film-ap.png?v=20261106144703", ai: "assets/cases/pos-ai-ap.png?v=20261106144703",
+      img: "assets/cases/pos-film-ap.png?v=20261106152142", ai: "assets/cases/pos-ai-ap.png?v=20261106152142",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 4", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261106144703",
+      pimg: "assets/img/patient-a.jpg?v=20261106152142",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Mr Lim</b> · cannot put weight on it · right knee",
       verdict: "Fracture detected.",
@@ -193,9 +194,9 @@
     },
     {
       title: "Same man, lateral view. The joint is swollen.",
-      img: "assets/cases/pos-film-lat.png?v=20261106144703", ai: "assets/cases/pos-ai-lat.png?v=20261106144703",
+      img: "assets/cases/pos-film-lat.png?v=20261106152142", ai: "assets/cases/pos-ai-lat.png?v=20261106152142",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 4", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261106144703",
+      pimg: "assets/img/patient-a.jpg?v=20261106152142",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Mr Lim</b> · cannot put weight on it · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
@@ -204,9 +205,9 @@
     },
     {
       title: "Ms Tan fell too, but she could walk it off. This is her knee.",
-      img: "assets/cases/neg-film-ap.png?v=20261106144703", ai: "assets/cases/neg-ai-ap.png?v=20261106144703",
+      img: "assets/cases/neg-film-ap.png?v=20261106152142", ai: "assets/cases/neg-ai-ap.png?v=20261106152142",
       cap: "Case 2 · left knee · AP", step: "Film 3 of 4", truth: "no",
-      pimg: "assets/img/patient-b-waiting.jpg?v=20261106144703",
+      pimg: "assets/img/patient-b-waiting.jpg?v=20261106152142",
       palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Ms Tan</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected.",
@@ -215,9 +216,9 @@
     },
     {
       title: "Ms Tan, lateral view. She walked in, but the pain has not settled.",
-      img: "assets/cases/neg-film-lat.png?v=20261106144703", ai: "assets/cases/neg-ai-lat.png?v=20261106144703",
+      img: "assets/cases/neg-film-lat.png?v=20261106152142", ai: "assets/cases/neg-ai-lat.png?v=20261106152142",
       cap: "Case 2 · left knee · lateral", step: "Film 4 of 4", truth: "no",
-      pimg: "assets/img/patient-b-waiting.jpg?v=20261106144703",
+      pimg: "assets/img/patient-b-waiting.jpg?v=20261106152142",
       palt: "The patient in the waiting area, being shown the scanner room on a phone.",
       pmeta: "<b>Ms Tan</b> · walked in on it · left knee · no fracture",
       verdict: "No fracture detected. An effusion is.",
@@ -287,10 +288,10 @@
 
   /* ---------------------------------------------------------------- image tabs */
   var VIEWS = {
-    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261106144703", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
-    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261106144703", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
-    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261106144703", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
-    sag:    { src: "assets/cases/neg-sag.png?v=20261106144703", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
+    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261106152142", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
+    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261106152142", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
+    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261106152142", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
+    sag:    { src: "assets/cases/neg-sag.png?v=20261106152142", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
   };
 
   // A frame should be the image, not a letterbox around it: every plate and
@@ -653,17 +654,17 @@
   /* ---------------------------------------------------------------- lab: the render gallery */
   var LAB_CASES = {
     foot: {
-      src: "assets/cine/foot.jpg?v=20261106144703",
+      src: "assets/cine/foot.jpg?v=20261106152142",
       cap: "Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.",
       alt: "Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia."
     },
     scapula: {
-      src: "assets/cine/scapula.jpg?v=20261106144703",
+      src: "assets/cine/scapula.jpg?v=20261106152142",
       cap: "Traumatic structural isolation of the scapula, with a comminuted scapular fracture and a displaced clavicle.",
       alt: "Cinematic rendering of a fractured scapula with a displaced clavicle and rib fractures."
     },
     ribs: {
-      src: "assets/cine/ribs.jpg?v=20261106144703",
+      src: "assets/cine/ribs.jpg?v=20261106152142",
       cap: "Traumatic right rib fractures, rendered with the chest drain in place — the drain and the fractures in one view.",
       alt: "Cinematic rendering of traumatic right rib fractures with a chest drain in situ."
     }
@@ -687,17 +688,17 @@
 
   var SEE_CASES = {
     pelvis: {
-      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261106144703",
+      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261106152142",
       cap: "One acquisition, two reconstructions: filtered back projection on the left, DLIR-High on the right.",
       alt: "The same axial CT slice twice: filtered back projection, noise-grainy, and DLIR-High, clean."
     },
     abdomen: {
-      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261106144703",
+      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261106152142",
       cap: "The same comparison higher in the abdomen, where low contrast detectability matters most.",
       alt: "An upper abdominal axial CT slice twice: filtered back projection and DLIR-High."
     },
     vendor: {
-      src: "assets/photos/ge-truefidelity.jpg?v=20261106144703",
+      src: "assets/photos/ge-truefidelity.jpg?v=20261106152142",
       cap: "Vendor example, not our data: FBP, ASiR-V 50% and GE's TrueFidelity at 0.625 mm, from the GE brochure.",
       alt: "Three coronal CT reformats: FBP, ASiR-V 50 percent and TrueFidelity."
     }
@@ -723,17 +724,17 @@
 
   var SPEED_CASES = {
     coronal: {
-      src: "assets/cases/mri-drb-coronal-stir.jpg?v=20261106144703",
+      src: "assets/cases/mri-drb-coronal-stir.jpg?v=20261106152142",
       cap: "Our own scan. Left: Deep Resolve Boost High. Right: the same patient a year earlier, without it. Coronal T2 STIR.",
       alt: "Coronal T2 STIR of the same patient: Deep Resolve Boost High on the left, the previous year's scan without it on the right."
     },
     axial: {
-      src: "assets/cases/mri-drb-axial-stir.jpg?v=20261106144703",
+      src: "assets/cases/mri-drb-axial-stir.jpg?v=20261106152142",
       cap: "Our own scan. Left: Deep Resolve Boost. Right: the earlier DIXON of the same patient. Axial T2 STIR.",
       alt: "Axial T2 STIR with Deep Resolve Boost on the left and the earlier DIXON study on the right."
     },
     sagittal: {
-      src: "assets/cases/mri-drb-sag-t1.jpg?v=20261106144703",
+      src: "assets/cases/mri-drb-sag-t1.jpg?v=20261106152142",
       cap: "Our own scan. Left: Deep Resolve Boost High. Right: the earlier study without it. Sagittal T1.",
       alt: "Sagittal T1 of the same patient, Deep Resolve Boost High on the left and the earlier study on the right."
     }
