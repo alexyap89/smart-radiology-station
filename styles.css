@@ -3452,3 +3452,6 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-value .value__pair { grid-template-columns: minmax(0, 1fr) minmax(300px, 1.1fr) minmax(0, 1fr); }
 #s-value .value__fig img { height: clamp(160px, 34vh, 320px); }
 #s-value .value__fig img { object-position: 50% 22%; }
+/* all six modalities carry a picture now; labels stay on one baseline */
+.mods__i:not(.mods__i--heavy) b { margin-top: 0; }
+.mods__i b { padding-top: 0; }
