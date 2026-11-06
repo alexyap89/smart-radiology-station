@@ -3625,3 +3625,101 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-lab .lab__foot { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
 #s-lab .lab__foot .micro { margin: 0; }
 
+
+/* =========================================================================
+   Type floor. Ninety-six rules in this file clamped text to 8.5-12.5 px, which
+   is unreadable on a 55-inch mirror at three metres and wasted the screen. Every
+   body-role selector now floors at --fs-body, every label at --fs-small.
+   Specificity is preserved by re-declaring the same selectors last.
+   ========================================================================= */
+.stage { --fs-body: clamp(14px, 1.04vw, 17.5px); --fs-small: clamp(12px, .86vw, 13.5px); }
+.steps__item { font-size: var(--fs-small); }
+.btn { font-size: var(--fs-small); }
+.kicker { font-size: var(--fs-small); }
+.micro { font-size: var(--fs-small); }
+.stepmark { font-size: var(--fs-small); }
+.body { font-size: var(--fs-body); }
+.note { font-size: var(--fs-body); }
+.plate__cap { font-size: var(--fs-small); }
+.choice__q { font-size: var(--fs-body); }
+.outcome__head { font-size: var(--fs-body); }
+.metric__l { font-size: var(--fs-small); }
+.caution { font-size: var(--fs-body); }
+.feedback { font-size: var(--fs-body); }
+.statements span { font-size: var(--fs-body); }
+.sheet__points li { font-size: var(--fs-body); }
+.sheet__facts dd { font-size: var(--fs-body); }
+.viewer__cap { font-size: var(--fs-body); }
+.tool__d { font-size: var(--fs-body); }
+.launch__d { font-size: var(--fs-body); }
+.outcome-chip { font-size: var(--fs-body); }
+.chip { font-size: var(--fs-small); }
+.toast { font-size: var(--fs-small); }
+.tk__b { font-size: var(--fs-body); }
+.tk-list li { font-size: var(--fs-body); }
+.tk-thesis { font-size: var(--fs-body); }
+.sheet__thesis { font-size: var(--fs-small); }
+.tk-limit { font-size: var(--fs-body); }
+.ailist li { font-size: var(--fs-body); }
+.flow3d__list li { font-size: var(--fs-body); }
+.flow3d__stat { font-size: var(--fs-small); }
+.scenario { font-size: var(--fs-small); }
+.scenario__tag { font-size: var(--fs-small); }
+.journey__t { font-size: var(--fs-body); }
+.gallery__tab { font-size: var(--fs-small); }
+.gallery__cap { font-size: var(--fs-body); }
+.dose__sub { font-size: var(--fs-body); }
+.dose__k { font-size: var(--fs-small); }
+.dose__rung { font-size: var(--fs-body); }
+.dose__out { font-size: var(--fs-body); }
+.dose__fine { font-size: var(--fs-small); }
+.cine__tab { font-size: var(--fs-small); }
+.cine__phase { font-size: var(--fs-small); }
+.pilot__flag { font-size: var(--fs-small); }
+.pilot__rows dt { font-size: var(--fs-body); }
+.pilot__rows dd { font-size: var(--fs-body); }
+.pilot__fine { font-size: var(--fs-small); }
+.tk-list { font-size: var(--fs-body); }
+.tk__n { font-size: var(--fs-small); }
+.pair__fig figcaption { font-size: var(--fs-small); }
+.pair__note { font-size: var(--fs-body); }
+#s-lab .gallery__cap { font-size: var(--fs-body); }
+#s-lab .micro, #s-move .micro { font-size: var(--fs-small); }
+#s-move .teach__h { font-size: var(--fs-small); }
+#s-move .teach .body { font-size: var(--fs-body); }
+.tk-thesis, .caution.tk-limit { font-size: var(--fs-body); }
+.patient__meta { font-size: var(--fs-small); }
+#s-speed .note, #s-speed .body--tight { font-size: var(--fs-body); }
+.sim__head .sim__sub { font-size: var(--fs-small); }
+#s-speed .body { font-size: var(--fs-body); }
+#s-two .patient__meta { font-size: var(--fs-small); }
+#s-move .pilot__fine { font-size: var(--fs-small); }
+#s-two .journey__t { font-size: var(--fs-body); }
+#s-two .body { font-size: var(--fs-body); }
+.lab__spot .vid figcaption { font-size: var(--fs-small); }
+#s-lab .lab__facts { font-size: var(--fs-body); }
+#s-see .vendor__cap { font-size: var(--fs-small); }
+#s-takeaway .tk__n { font-size: var(--fs-small); }
+#s-takeaway .tk__b { font-size: var(--fs-body); }
+#s-takeaway .tk-limit, #s-takeaway .tk-thesis { font-size: var(--fs-body); }
+#s-tools .tool__d { font-size: var(--fs-body); }
+.scenario__text { font-size: var(--fs-body); }
+.minihead { font-size: var(--fs-body); }
+.journey__n { font-size: var(--fs-small); }
+.vendor__cap { font-size: var(--fs-small); }
+.dose__fine, .pilot__fine { font-size: var(--fs-small); }
+.attract .kicker { font-size: var(--fs-small); }
+.attract .micro { font-size: var(--fs-small); }
+#s-two .face figcaption { font-size: var(--fs-small); }
+#s-speed .teach__h { font-size: var(--fs-small); }
+#s-speed .teach .body { font-size: var(--fs-body); }
+.pair__fig figcaption b { font-size: var(--fs-small); }
+#s-two .phone__note { font-size: var(--fs-body); }
+#s-quiz .patient__meta, #s-pos .patient__meta, #s-neg .patient__meta, #s-speed .patient__meta { font-size: var(--fs-small); }
+#s-neg .viewer__cap { font-size: var(--fs-body); }
+.scorecard__l { font-size: var(--fs-body); }
+#s-attract .why__k { font-size: var(--fs-small); }
+#s-attract .attract__art--single figcaption { font-size: var(--fs-small); }
+#s-cases .pair__fig figcaption { font-size: var(--fs-small); }
+.mods__i span { font-size: var(--fs-body); }
+#s-takeaway .tk__close { font-size: var(--fs-small); }
