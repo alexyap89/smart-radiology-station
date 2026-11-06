@@ -3264,3 +3264,58 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-attract .attract__art--single img { object-position: center 45%; }
 #s-attract .why__out { font-size: clamp(15px, 1.15vw, 19px); max-width: 46ch; }
 #s-attract .attract__art--single img { object-position: center 30%; }
+
+/* ---------- the two cases, as a second introduction ---------- */
+#s-cases { align-content: stretch; }
+#s-cases .col--wide { height: 100%; justify-content: center; gap: clamp(10px, 1.5vh, 18px); }
+#s-cases .cases__h { font-size: clamp(24px, 2vw, 32px); line-height: 1.14; margin: 0; max-width: 34ch; }
+#s-cases .cases__lede { font-size: clamp(14px, 1.05vw, 16.5px); line-height: 1.5; max-width: 78ch; margin: 0; }
+#s-cases .cases__pair { gap: clamp(12px, 1.6vw, 22px); flex: 1 1 auto; min-height: 0; }
+#s-cases .pair__fig { height: auto; min-height: 0; }
+#s-cases .pair__fig img { flex: 1 1 auto; min-height: 0; }
+#s-cases .pair__fig figcaption { font-size: clamp(12.5px, .92vw, 14.5px); }
+#s-cases .cases__foot { margin-top: 2px; }
+
+/* 13 pips: the wordmark must not wrap, and the cases page must fit its footer */
+.brand__name { white-space: nowrap; }
+@media (max-width: 1500px) { .brand__name { font-size: clamp(15px, 1.2vw, 19px); } }
+
+#s-cases .col--wide { justify-content: flex-start; }
+#s-cases .cases__h { font-size: clamp(22px, 1.9vw, 30px); }
+#s-cases .cases__pair { flex: 0 0 auto; height: clamp(230px, 44vh, 430px); }
+#s-cases .pair__fig { height: 100%; }
+#s-attract .why__foot { gap: 8px; }
+#s-attract .micro { margin: 0; }
+
+/* thirteen pips: shorten what fits, do not clip */
+@media (max-width: 1600px) {
+  .steps { gap: 3px; }
+  .steps__item { font-size: 9px; letter-spacing: .03em; }
+  .steps__item b { font-size: 8.5px; }
+}
+#s-attract .why__grid { margin-bottom: 0; }
+#s-attract .lede { margin-bottom: 0; }
+
+/* the render is shown whole, not cropped, and the decorous timer yields space */
+#s-attract .attract__art--single { background: #05080b; }
+#s-attract .attract__art--single img { object-fit: contain; object-position: center; }
+@media (max-width: 1500px) { #sessionClock { display: none !important; } }
+#s-attract .attract__copy { gap: clamp(8px, 1.3vh, 16px); }
+#s-attract .why__lede { line-height: 1.44; }
+
+/* ---------- the introduction: what radiology runs, and where the load sits ---------- */
+#s-attract { align-content: stretch; }
+#s-attract .intro { height: 100%; max-width: none; justify-content: center; gap: clamp(8px, 1.3vh, 16px); }
+#s-attract .intro__h { font-size: clamp(26px, 2.4vw, 40px); line-height: 1.12; margin: 0; max-width: 30ch; }
+#s-attract .intro__lede { font-size: clamp(14px, 1.05vw, 17px); line-height: 1.5; max-width: 86ch; margin: 0; }
+.mods { list-style: none; margin: 4px 0 0; padding: 0; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: clamp(8px, 1vw, 14px); }
+.mods__i { border-top: 2px solid var(--rule); padding-top: 7px; display: flex; flex-direction: column; gap: 2px; }
+.mods__i b { font-size: clamp(13px, 1vw, 15.5px); color: var(--paper-dim); font-weight: 600; }
+.mods__i span { font-size: clamp(10px, .74vw, 11.5px); letter-spacing: .04em; color: var(--paper-faint); }
+.mods__i--heavy { border-top-color: var(--cyan); }
+.mods__i--heavy b { color: var(--paper); }
+@media (max-width: 1100px) { .mods { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+#s-attract .why__foot { margin-top: 2px; }
+#s-attract .intro { justify-content: space-between; }
+#s-attract .mods { margin: 0; }
+#s-attract .micro { margin: 0; }
