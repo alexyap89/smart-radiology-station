@@ -114,7 +114,7 @@ panels, 3:4 cross-sections) so the whole knee is visible in every pane.
   26 false-positive studies (2.4%)
   turnaround 22 minutes in office hours · 80 minutes overnight
   dual-energy CT replaced MRI as first-line for occult fracture
-  MRI AI reconstruction up to 50% shorter (knee and shoulder reader studies; our own protocols about 37% in an initial evaluation, 8 musculoskeletal anatomies)
+  MRI AI reconstruction up to 50% shorter at the acceleration run (established on spine/brain protocols) · internal initial evaluation about 37% across 8 musculoskeletal anatomies
   preparation experience: 16 of 16 patients positive at one month
   limitation: studies negative on both AI and report were not re-read, so
   sensitivity is likely overestimated (printed in the takeaway summary)

@@ -2159,7 +2159,7 @@ body[data-started="1"] .timer { display: inline; }
 #s-pos .viewer__stage, #s-neg .viewer__stage { height: clamp(260px, 54vh, 580px); }
 #s-lab .gallery__stage { height: clamp(300px, 62vh, 680px); }
 #s-move .cine__lane { height: clamp(300px, 60vh, 660px); }
-#s-lab .vid video { height: clamp(116px, 18vh, 200px); }
+
 #s-lab .split, #s-move .split { grid-template-columns: minmax(0, 1.34fr) minmax(0, 1fr); }
 #s-pos .split { grid-template-columns: minmax(0, 1.14fr) minmax(0, 1fr); }
 .col--model .model { max-height: min(58vh, 600px); }
@@ -2186,7 +2186,7 @@ body[data-started="1"] .timer { display: inline; }
 /* ---------- fit the media screens: big frames, no clipped headings ---------- */
 #s-lab .gallery__stage { height: clamp(240px, 44vh, 470px); }
 #s-move .cine__lane { height: clamp(240px, 42vh, 450px); }
-#s-lab .vid video { height: clamp(96px, 14vh, 150px); }
+
 .col--model .model { max-height: min(48vh, 460px); }
 #s-quiz .plate__frame { max-height: clamp(260px, 58vh, 560px); }
 #s-quiz .split--quiz { grid-template-columns: minmax(320px, 1.05fr) minmax(340px, 1fr); }
@@ -3563,3 +3563,65 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* two pixels: the card padding, not the copy */
 #s-takeaway .tk { padding: clamp(8px, 1.4vh, 14px); }
 #s-takeaway { padding-bottom: 2px; }
+
+/* =========================================================================
+   The lab: the case picture and the movies get a real split instead of
+   a full-width still squeezing three clip ribbons.
+   ========================================================================= */
+#s-lab .renderpage { height: 100%; }
+#s-lab .lab__stage-wrap {
+  display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
+  gap: clamp(12px, 1.6vw, 26px); align-items: stretch; min-height: 0; flex: 1 1 auto;
+}
+#s-lab .gallery { display: flex; flex-direction: column; min-height: 0; }
+#s-lab .gallery__stage { flex: 1 1 auto; min-height: 0; display: flex; }
+#s-lab .gallery__stage img { height: 100%; width: 100%; object-fit: contain; }
+#s-lab .vids--big { display: flex; flex-direction: column; gap: clamp(6px, 1vh, 12px); margin: 0; }
+#s-lab .vids--big .vid { min-height: 0; display: flex; flex-direction: column; }
+#s-lab .vids--big video { width: 100%; height: clamp(84px, 12.5vh, 150px); object-fit: cover; }
+#s-lab .vids--big figcaption { font-size: var(--t-small); }
+@media (max-width: 1100px) {
+  #s-lab .lab__stage-wrap { grid-template-columns: minmax(0, 1fr); }
+  #s-lab .gallery__stage img { height: clamp(200px, 34vh, 340px); }
+}
+#s-lab .lab__foot { display: flex; justify-content: space-between; align-items: baseline; }
+#s-lab .lab__foot .micro { margin: 0; }
+
+/* last word on the lab proportions: the case picture is the hero, the three
+   clips are a steady column beside it, and both fit the stage */
+
+/* the wrap tracks, not intrinsic video sizes, set every height here */
+
+/* three equal clip panels, one stage band; nothing overflows */
+
+
+/* =========================================================================
+   The lab in one block: headline, case picture as the hero, three clips as
+   an equal column beside it, one consistent footer. Nothing else may set
+   heights inside this screen.
+   ========================================================================= */
+
+/* =========================================================================
+   Lab — final geometry (one source of truth; earlier #s-lab rules above lose):
+   headline row; below it a 55/45 stage. Left: the case picture with tabs and
+   caption. Right: three movies as equal rows filling the full height, chip
+   captions. Footer row: the micro line.
+   ========================================================================= */
+#s-lab .renderpage { display: flex; flex-direction: column; min-height: 0; height: 100%; justify-content: center; gap: clamp(8px, 1.4vh, 16px); }
+#s-lab .lab__stage-wrap { flex: 1 1 auto; min-height: 0; display: grid;
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); grid-template-rows: minmax(0, 1fr);
+  gap: clamp(12px, 1.6vw, 26px); }
+#s-lab .gallery { display: flex; flex-direction: column; min-height: 0; max-width: none; }
+#s-lab .gallery__stage { flex: 1 1 auto; min-height: 0; height: auto; display: flex; align-items: center; justify-content: center; background: #05080b; border: 1px solid var(--rule); }
+#s-lab .gallery__stage img { max-width: 100%; max-height: 100%; width: auto; height: auto; }
+#s-lab .gallery__foot { flex: 0 0 auto; margin-top: 8px; display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+#s-lab .vids--big { display: grid; grid-template-rows: repeat(3, minmax(0, 1fr));
+  gap: clamp(8px, 1.4vh, 16px); min-height: 0; height: 100%; margin: 0; }
+#s-lab .vid { position: relative; min-height: 0; height: 100%; overflow: hidden; border: 1px solid var(--rule); background: #05080b; }
+#s-lab .vid video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+#s-lab .vid figcaption { position: absolute; left: 10px; bottom: 10px; z-index: 2;
+  font-size: var(--t-small); letter-spacing: .12em; text-transform: uppercase;
+  background: rgba(4, 8, 12, .78); padding: 5px 10px; border-radius: 3px; }
+#s-lab .lab__foot { flex: 0 0 auto; display: flex; justify-content: space-between; align-items: baseline; gap: 14px; }
+#s-lab .lab__foot .micro { margin: 0; }
+
