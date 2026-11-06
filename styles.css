@@ -3963,3 +3963,27 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-quiz #qAsk { display: flex; flex-direction: column; gap: 10px; }
 #s-quiz #qIntro { display: flex; flex-direction: column; gap: 8px; }
 #s-quiz #qIntro .body { margin: 0; }
+
+/* =========================================================================
+   Editorial pass: no orphans, no widow, no ragged right void.
+   pretty keeps the last line from carrying one word; balance stops headings
+   from leaving a two-word tail. Both are presentational only — no copy and no
+   size changes.
+   ========================================================================= */
+p, li, dd, dt, figcaption, blockquote { text-wrap: pretty; }
+h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
+
+/* captions had a hard 30-46ch cap inside columns twice their width: they
+   wrapped early and left a void. One measure instead. */
+.viewer__cap, .gallery__cap, .panel__cap, .gallery__foot .gallery__cap { max-width: min(100%, 62ch); }
+/* short blocks read better balanced than ragged: 2-4 line captions, card
+   bodies and fact lines are exactly what balance is for */
+.tk__b, .tk__s, .fact__v, .deliver__b, .copilot li,
+.gallery__cap, .viewer__cap, .note, .micro, .tkpage__line, .intro__lede {
+  text-wrap: balance;
+}
+
+/* the speed screen's text column was 38% of the page: 9-line paragraphs and a
+   short last line. Give the argument half the page; the gallery keeps the rest. */
+#s-speed .split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+#s-speed .col .body { max-width: 62ch; }
