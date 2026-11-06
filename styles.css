@@ -20,6 +20,8 @@
   --sans: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   --pad: clamp(18px, 3.2vw, 44px);
+  --fs-body: 16px;
+  --fs-small: 14px;
   --dur: 260ms;
   --ease: cubic-bezier(.22, .61, .36, 1);
 }
@@ -4047,3 +4049,62 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-takeaway .tk__img { height: clamp(110px, 17vh, 185px); object-fit: cover; object-position: 50% 42%; }
 /* card text sits on the picture's centre line, not its top edge */
 #s-takeaway .tk__text { justify-content: center; }
+
+/* =========================================================================
+   Lab: the movies keep their height, the stills get a real panel instead of a
+   strip under the caption. Two bands, one reading order.
+   ========================================================================= */
+#s-lab .lab__movies.vids--big { --h: clamp(150px, 24vh, 280px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__still { flex: 1 1 auto; min-height: 0; display: flex; }
+#s-lab .gallery--band {
+  width: 100%; grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  grid-template-rows: auto auto auto; align-items: start;
+  gap: 8px clamp(16px, 2vw, 30px);
+}
+#s-lab .gallery--band .gallery__tabs { grid-column: 1; grid-row: 1; flex-direction: row; flex-wrap: wrap; }
+#s-lab .gallery--band .gallery__stage {
+  grid-column: 1; grid-row: 2 / span 2;
+  height: clamp(170px, 26vh, 300px); width: 100%;
+  align-items: center; justify-content: center; background: #05080b; border: 1px solid var(--rule);
+}
+#s-lab .gallery--band .gallery__stage img { max-width: 100%; max-height: 100%; width: auto; height: 100%; object-fit: contain; }
+#s-lab .gallery--band .gallery__foot { grid-column: 2; grid-row: 2; align-self: end; }
+#s-lab .lab__foot { grid-column: 2; grid-row: 3; align-self: start; }
+#s-lab .lab__foot .micro { margin: 0; }
+/* both bands bigger, and the movies start at the left edge like the text */
+#s-lab .lab__movies.vids--big { --h: clamp(180px, 32vh, 360px); height: var(--h); justify-content: flex-start; }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .gallery--band .gallery__stage { height: clamp(150px, 23vh, 270px); }
+#s-lab .renderpage { justify-content: center; }
+
+/* overlay captions must never be clipped by a narrow tile */
+#s-lab .lab__movies .vid figcaption {
+  right: auto; max-width: calc(100% - 20px);
+  white-space: normal; line-height: 1.25; letter-spacing: .08em;
+}
+/* the still panel hugs its render instead of framing a void */
+#s-lab .gallery--band { grid-template-columns: auto minmax(260px, 1fr); }
+#s-lab .gallery--band .gallery__stage { width: auto; justify-self: start; }
+#s-lab .gallery--band .gallery__stage img { width: auto; height: 100%; }
+
+/* three renders at once: maximum airtime, no tabs, no void */
+#s-lab .lab__stills { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(10px, 1.4vw, 22px); }
+#s-lab .lab__still-tile { margin: 0; display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+#s-lab .lab__still-tile img {
+  width: 100%; height: clamp(120px, 17vh, 210px); object-fit: cover; object-position: 50% 45%;
+  border: 1px solid var(--rule); background: #05080b;
+}
+#s-lab .lab__still-tile figcaption { font-size: var(--fs-small); line-height: 1.35; color: var(--paper-dim); text-wrap: pretty; }
+#s-lab .lab__still-tile figcaption b { display: block; color: var(--paper); letter-spacing: .1em; text-transform: uppercase; font-size: var(--fs-small); margin-bottom: 2px; }
+#s-lab .lab__nextrow { display: flex; justify-content: flex-end; }
+
+/* the spectrum lead-in is a section label, not a fourth fact */
+#s-attract .section-lead {
+  margin: 0; font-size: var(--fs-small); letter-spacing: .16em; text-transform: uppercase;
+  color: var(--paper-faint);
+}
+/* an empty case line must not hold a blank line open */
+#s-quiz #qCase:empty { display: none; }
+#s-deliver .deliver__lede { margin: 0; max-width: 62ch; }
+#s-speed .col .body { max-width: none; }
