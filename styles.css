@@ -3471,3 +3471,16 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-attract .intro__bottom { grid-template-columns: minmax(0, 1fr) minmax(300px, 460px); }
 #s-attract .intro__caps { max-width: 460px; }
 #s-attract .intro__close { max-width: 100%; }
+
+/* the return, as labels rather than another sentence */
+#s-attract .intro__values {
+  list-style: none; margin: 6px 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 6px 0;
+}
+#s-attract .intro__values li {
+  font-size: var(--t-small); letter-spacing: .14em; text-transform: uppercase; color: var(--paper-faint);
+  padding-right: 16px; margin-right: 16px; border-right: 1px solid var(--rule);
+}
+#s-attract .intro__values li:last-child { border-right: 0; padding-right: 0; margin-right: 0; }
+#s-attract .intro__values li { color: var(--paper-dim); }
+#s-attract .intro__values { margin-top: 10px; }
