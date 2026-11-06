@@ -3484,3 +3484,60 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-attract .intro__values li:last-child { border-right: 0; padding-right: 0; margin-right: 0; }
 #s-attract .intro__values li { color: var(--paper-dim); }
 #s-attract .intro__values { margin-top: 10px; }
+
+/* the takeaway answers the introduction's own words, one promise per programme */
+.jquery-safe {}
+.tk__n { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.tk__tag {
+  font-size: var(--t-small); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cyan); text-align: right;
+}
+.tk__close {
+  margin: 0 0 4px; font-size: var(--t-body); line-height: 1.45; color: var(--paper-dim);
+  max-width: 78ch;
+}
+.tk__close b { color: var(--paper); font-weight: 600; }
+.sheet__loop { margin: 0 0 12px; font-size: 15px; line-height: 1.5; color: var(--paper-dim); }
+.sheet__loop b { color: var(--paper); }
+/* three-deep grid now that the takeaway answers the intro in words and pictures */
+@media (min-width: 900px) {
+  .tk-grid--four { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tk-grid--four .tk:nth-child(4) { grid-column: 2; }
+}
+/* the takeaway cards' picture is a thumbnail, not a panel: cap it */
+.tk__img { height: clamp(64px, 9vw, 120px); object-fit: cover; }
+.tk__text { min-width: 0; }
+.tk:first-child .tk__text, .tk:nth-child(2) .tk__text { min-width: 320px; }
+@media (max-width: 1280px) {
+  .tk-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .tk-grid--four .tk:nth-child(4) { grid-column: auto !important; }
+}
+/* 1440 carries three columns; 1280 and below stay at two */
+@media (min-width: 1380px) {
+  .tk-grid--four { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .tk-grid--four .tk:nth-child(4) { grid-column: 2; }
+}
+@media (max-width: 1379px) {
+  .tk-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; }
+  .tk-grid--four .tk:nth-child(4) { grid-column: auto !important; }
+}
+
+/* last word on the takeaway grid: three columns on a desk, two on the tablet,
+   cards keep their stretch, and the fourth card lands centre-bottom */
+#s-takeaway .tk-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (min-width: 1380px) {
+  #s-takeaway .tk-grid--four { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  #s-takeaway .tk-grid--four .tk:nth-child(4) { grid-column: 2; }
+  #s-takeaway .tk-grid--four { grid-template-rows: none; grid-auto-rows: minmax(150px, auto); }
+}
+/* the fourth card steals a breath: cap the row band so it doesn't become a void */
+#s-takeaway .col--wide { justify-content: center; }
+#s-takeaway .tk-grid--four { flex: 0 0 auto; }
+@media (min-width: 1380px) {
+  #s-takeaway .tk-grid--four { grid-template-rows: none; }
+  #s-takeaway .tk-grid--four .tk:nth-child(4) { grid-column: 2; grid-row: 2; }
+  #s-takeaway .tk__img { height: clamp(110px, 20vh, 190px); }
+}
+/* the overflow at 1440 is the +59px the cards gained: trim the biggest card text */
+#s-takeaway .tk__b { font-size: clamp(13.5px, 1vw, 16px); }
+#s-takeaway .tk-grid--four { gap: clamp(7px, 1.1vh, 13px); }
