@@ -4007,3 +4007,43 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 /* label sits above its fact with air, not glued to it */
 #s-attract .fact { gap: 5px; }
 #s-attract .fact__k { line-height: 1.2; }
+
+/* =========================================================================
+   The AI overlay is the evidence — it gets half the reveal, with the verdict
+   and the comment beside it, instead of a 120px thumbnail under a paragraph.
+   ========================================================================= */
+#s-quiz #qReveal {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 1fr);
+  grid-template-rows: auto auto auto auto;
+  gap: 8px clamp(14px, 1.8vw, 26px);
+  align-items: start;
+}
+#s-quiz #qReveal .reveal__pair { grid-column: 1; grid-row: 1 / span 4; margin: 0; align-self: stretch; }
+#s-quiz #qReveal .reveal__pair .thumb { margin: 0; display: flex; flex-direction: column; min-height: 0; }
+#s-quiz #qReveal .reveal__pair .thumb img {
+  height: auto; width: 100%; max-height: min(52vh, 420px);
+  object-fit: contain; background: #05080b; border: 1px solid var(--rule);
+}
+#s-quiz #qReveal .verdict { grid-column: 2; grid-row: 1; margin: 0; }
+#s-quiz #qReveal #qComment { grid-column: 2; grid-row: 2; margin: 0; }
+#s-quiz #qReveal .copilot__tat { grid-column: 2; grid-row: 3; }
+#s-quiz #qReveal #qNext { grid-column: 2; grid-row: 4; justify-self: start; margin-top: 4px; }
+
+/* once answered, the scaffolding that only mattered before the answer goes,
+   and the AI overlay takes the room */
+#s-quiz[data-revealed="1"] .copilot__tat { display: none; }
+#s-quiz[data-revealed="1"] .row--tight + .micro,
+#s-quiz[data-revealed="1"] > .split > .col > .micro:last-child { display: none; }
+#s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img { max-height: min(64vh, 560px); width: auto; }
+#s-quiz[data-revealed="1"] #qReveal { grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); }
+/* with the pre-answer micro gone, the action sits under the verdict */
+#s-quiz[data-revealed="1"] #qReveal #qNext { grid-row: 3; margin-top: 6px; }
+/* portrait crop: cap by height so the column above never gets pushed off */
+#s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img { max-height: min(48vh, 430px); }
+/* the picture column hugs the picture; the text takes the rest, so no void */
+#s-quiz[data-revealed="1"] #qReveal { grid-template-columns: auto minmax(0, 1fr); }
+/* the cropped overlays are portrait: cap the card panel instead of letting it set the row */
+#s-takeaway .tk__img { height: clamp(110px, 17vh, 185px); object-fit: cover; object-position: 50% 42%; }
+/* card text sits on the picture's centre line, not its top edge */
+#s-takeaway .tk__text { justify-content: center; }
