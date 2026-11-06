@@ -3338,3 +3338,62 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 .mods__i { display: flex; flex-direction: column; height: 100%; align-self: stretch; }
 .mods__i:not(.mods__i--heavy) b { margin-top: auto; }
 .mods__i--heavy { border-top-color: var(--cyan); }
+
+/* =========================================================================
+   Typography and rhythm, one scale for the whole station.
+   Headlines balance, bodies keep a readable measure, and every column uses
+   the same vertical step instead of distributing leftover space.
+   ========================================================================= */
+.stage {
+  --t-h1: clamp(30px, 2.75vw, 46px);
+  --t-h2: clamp(22px, 1.85vw, 32px);
+  --t-h3: clamp(15.5px, 1.15vw, 20px);
+  --t-body: clamp(14.5px, 1.02vw, 17px);
+  --t-small: clamp(11.5px, .8vw, 13px);
+  --rh: clamp(9px, 1.35vh, 17px);
+}
+
+.h2, .why__h, .intro__h, .cases__h, .renderpage__h, .seepage__h, .cinepage__h {
+  font-size: var(--t-h2); line-height: 1.14; letter-spacing: -.005em;
+  text-wrap: balance; margin: 0;
+}
+.h3, .teach__h, .flow3d__h, .journey__h, .minihead { font-size: var(--t-h3); line-height: 1.25; }
+
+.body, .lede, .note, .viewer__cap, .gallery__cap, .tool__d, .tk__b {
+  font-size: var(--t-body); line-height: 1.5;
+}
+.micro, .stepmark, .patient__meta, .win__ctl, .gallery__tab, .cine__tab, .tk__n, .mods__i b {
+  font-size: var(--t-small);
+}
+
+/* one step between blocks, everywhere; no space-between scattering */
+.col, .col--model, .col--wide, .renderpage, .seepage, .cinepage, .why, .intro { gap: var(--rh); }
+#s-attract .intro, #s-cases .col--wide, #s-takeaway .col--wide { justify-content: center; }
+
+/* the front page: a headline that breaks where it should */
+#s-attract .intro__h { font-size: var(--t-h1); line-height: 1.1; max-width: 21ch; }
+#s-attract .intro__lede { font-size: var(--t-body); max-width: 68ch; }
+#s-attract .why__out { font-size: var(--t-h3); }
+
+/* bodies never run the width of a desk */
+.body, .lede, .note { max-width: 66ch; }
+#s-attract .intro__lede, #s-cases .cases__lede { max-width: 72ch; }
+
+/* desktop composition for the front page: a headline paired with its paragraph,
+   the modality strip across the full width, then the consequence and the way in */
+#s-attract .intro__top {
+  display: grid; grid-template-columns: minmax(0, .56fr) minmax(0, .44fr);
+  gap: clamp(16px, 2.4vw, 48px); align-items: end;
+}
+#s-attract .intro__h { max-width: none; }
+#s-attract .intro__lede { margin: 0; }
+#s-attract .intro__bottom {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(16px, 2.4vw, 48px); align-items: end;
+}
+#s-attract .intro__bottom > div { display: flex; flex-direction: column; gap: var(--rh); }
+#s-attract .why__out { font-size: var(--t-h3); margin: 0; }
+@media (max-width: 1100px) {
+  #s-attract .intro__top, #s-attract .intro__bottom { grid-template-columns: minmax(0, 1fr); align-items: start; }
+}
+#s-attract .intro__out { max-width: 96ch; margin: 0; }
