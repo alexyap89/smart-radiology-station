@@ -3723,3 +3723,17 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-cases .pair__fig figcaption { font-size: var(--fs-small); }
 .mods__i span { font-size: var(--fs-body); }
 #s-takeaway .tk__close { font-size: var(--fs-small); }
+
+/* the takeaway's bottom line: the one sentence a board member should repeat */
+.tk__line { margin: 0; font-size: var(--fs-body); line-height: 1.45; color: var(--paper-dim); max-width: 92ch; }
+.tk__line b { color: var(--paper); font-weight: 600; }
+
+/* 1440 takeaway: the bottom line added a row; the four cards give it back */
+@media (min-width: 1280px) and (max-width: 1500px) {
+  #s-takeaway .tk-grid--four { gap: 6px; }
+  #s-takeaway .tk { padding: 7px; }
+  #s-takeaway .tk__img { height: clamp(84px, 13vh, 130px); }
+  #s-takeaway .tk__b { font-size: 13px; line-height: 1.35; }
+  #s-takeaway .tk__line { font-size: 14px; }
+  #s-takeaway .tk__close { font-size: 13px; }
+}
