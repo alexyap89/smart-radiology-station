@@ -3987,3 +3987,23 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
    short last line. Give the argument half the page; the gallery keeps the rest. */
 #s-speed .split { grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
 #s-speed .col .body { max-width: 62ch; }
+
+/* =========================================================================
+   One vertical rhythm. Screens had their own column gaps (3px on one, 16px on
+   another, 56px between a heading and its body on the quiz), which is what made
+   the pages feel assembled rather than set. --space-block is that rhythm.
+   ========================================================================= */
+.stage { --space-block: clamp(9px, 1.35vh, 15px); }
+#s-quiz .col, #s-pos .col, #s-neg .col, #s-two .col, #s-speed .col,
+#s-see .col, #s-move .col, #s-deliver .deliver, #s-takeaway .tkpage, #s-tools .col--wide {
+  gap: var(--space-block);
+}
+/* a heading and the paragraph it introduces sit closer than unrelated blocks */
+.screen h2 + .body, .screen h2 + .lede, .screen h2 + .note,
+.screen h2 + p, .screen .h2 + .body { margin-top: calc(var(--space-block) * -0.4); }
+/* the negative pull made two screens tighter than the rest: use the block step */
+.screen h2 + .body, .screen h2 + .lede, .screen h2 + .note, .screen h2 + p, .screen .h2 + .body { margin-top: 0; }
+
+/* label sits above its fact with air, not glued to it */
+#s-attract .fact { gap: 5px; }
+#s-attract .fact__k { line-height: 1.2; }
