@@ -3849,3 +3849,9 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-lab .gallery--band { grid-template-columns: auto minmax(220px, 320px) minmax(0, 1fr); align-items: end; }
 #s-lab .gallery--band .gallery__tabs { flex-direction: column; align-items: flex-start; }
 #s-lab .gallery--band .gallery__stage { justify-content: flex-start; }
+
+/* the two cases fill the stage instead of sitting in its upper half */
+#s-cases .col--wide { justify-content: space-between; }
+#s-cases .cases__pair { flex: 1 1 auto; min-height: 0; }
+#s-cases .pair__fig { height: 100%; }
+#s-cases .pair__fig img { height: 100%; object-fit: cover; }
