@@ -3319,3 +3319,22 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-attract .intro { justify-content: space-between; }
 #s-attract .mods { margin: 0; }
 #s-attract .micro { margin: 0; }
+
+/* the three heavy modalities carry a picture; the other three keep the baseline */
+.mods__img {
+  width: 100%; height: clamp(56px, 9vh, 104px); object-fit: cover;
+  border: 1px solid var(--rule); margin-bottom: 6px; display: block; background: #05080b;
+}
+.mods__i--heavy:nth-child(1) .mods__img { object-position: 50% 40%; }
+.mods__i--heavy:nth-child(2) .mods__img { object-position: 50% 45%; }
+.mods__i--heavy:nth-child(3) .mods__img { object-position: 50% 45%; }
+.mods__i:not(.mods__i--heavy) { align-self: end; }
+/* one frame shape for the three pictures, so nothing is cropped twice */
+.mods__img { aspect-ratio: 4 / 3; height: auto; width: 100%; object-fit: cover; object-position: center; border: 1px solid var(--rule); margin-bottom: 7px; display: block; background: #05080b; }
+.mods__i { gap: 0; }
+.mods__i b { font-size: clamp(13px, 1.05vw, 16px); padding-bottom: 2px; }
+.mods__img { margin-bottom: 9px; }
+/* every rule on one line, every label on one baseline */
+.mods__i { display: flex; flex-direction: column; height: 100%; align-self: stretch; }
+.mods__i:not(.mods__i--heavy) b { margin-top: auto; }
+.mods__i--heavy { border-top-color: var(--cyan); }
