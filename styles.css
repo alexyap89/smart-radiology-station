@@ -3210,3 +3210,18 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-speed .col--model, #s-neg .col--model, #s-pos .col--model, #s-speed .col, #s-neg .col, #s-pos .col { align-self: stretch; }
 /* align-content:start was packing the row to its content height */
 #s-speed .split, #s-neg .split, #s-pos .split, #s-two .split, #s-quiz .split { align-content: stretch; }
+
+/* ---------- the score card ---------- */
+.scorecard {
+  display: flex; flex-direction: column; gap: 4px;
+  border-left: 2px solid var(--cyan); padding: 6px 0 6px 14px;
+}
+.scorecard__n { margin: 0; font-family: var(--serif); line-height: 1; color: var(--paper); }
+.scorecard__n b { font-size: clamp(40px, 3.6vw, 62px); font-weight: 500; }
+.scorecard__n span { font-size: clamp(18px, 1.5vw, 26px); color: var(--paper-faint); margin-left: 4px; }
+.scorecard__l {
+  margin: 0; font-size: clamp(12px, .92vw, 14px); letter-spacing: .06em;
+  text-transform: uppercase; color: var(--paper-dim);
+}
+.scorecard__note { margin: 2px 0 0; font-size: clamp(13px, 1vw, 15px); color: var(--paper-dim); }
+#qScore[data-score="4"] .scorecard__n { color: var(--cyan); }
