@@ -4177,3 +4177,20 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-lab .lab__movies .vid { height: var(--h); }
 #s-lab .lab__still-tile img { height: clamp(130px, 24vh, 270px); }
 #s-lab .lab__base { align-items: center; }
+
+/* one render, at the right edge; the three clips take everything else */
+#s-lab .lab__movies.vids--big { --h: clamp(200px, 45vh, 490px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__still-tile img { height: clamp(150px, 27vh, 300px); }
+#s-lab .lab__movies.vids--big { --h: clamp(190px, 43vh, 470px); height: var(--h); }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__still-tile img { height: clamp(140px, 25vh, 280px); }
+#s-lab .lab__still-tile figcaption { max-width: 100%; }
+#s-lab .lab__stills { justify-content: flex-end; }
+
+/* the closing strap is the front page's last word */
+#s-attract .intro__strap {
+  margin: 0 0 4px; font-size: clamp(18px, 1.55vw, 27px); font-weight: 600;
+  color: var(--paper); letter-spacing: -.01em; text-wrap: balance;
+}
+#s-attract .intro__out { margin: 0; font-size: var(--fs-body); color: var(--paper-dim); max-width: 78ch; }
