@@ -3541,3 +3541,25 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* the overflow at 1440 is the +59px the cards gained: trim the biggest card text */
 #s-takeaway .tk__b { font-size: clamp(13.5px, 1vw, 16px); }
 #s-takeaway .tk-grid--four { gap: clamp(7px, 1.1vh, 13px); }
+
+/* =========================================================================
+   The lab is one stop now: the gallery and the three movies share the screen.
+   Both shrink to leave room for the other.
+   ========================================================================= */
+#s-lab .gallery--hero .gallery__stage img { height: clamp(220px, 34vh, 340px); }
+#s-lab .vids--big { margin-top: 4px; }
+#s-lab .vids--big video { height: clamp(110px, 17vh, 185px); }
+#s-lab .gallery__cap { font-size: var(--t-small); }
+#s-lab .renderpage { justify-content: center; }
+#s-render { display: none; }
+/* 1440: the longer card 04 body tipped the balance — tighten the closing line */
+#s-takeaway .tk__close { font-size: clamp(12.5px, .92vw, 15.5px); }
+#s-takeaway .tk__b { font-size: clamp(13px, .95vw, 15.5px); }
+/* 1440 keeps the 13px over the line: the grid, not the copy, gives it back */
+#s-takeaway .tk-grid--four { gap: clamp(6px, 1vh, 12px); }
+#s-takeaway .tk { gap: clamp(8px, 1.2vw, 16px); }
+/* the 12-13px at 1440 comes from the wider grid: cap the image band instead of the copy */
+#s-takeaway .tk__img { height: clamp(110px, 18vh, 175px); }
+/* two pixels: the card padding, not the copy */
+#s-takeaway .tk { padding: clamp(8px, 1.4vh, 14px); }
+#s-takeaway { padding-bottom: 2px; }
