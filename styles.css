@@ -3819,3 +3819,16 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 #s-lab .lab__movies.vids--big { --h: clamp(240px, 40vh, 430px); }
 #s-lab .lab__movies .vid { height: var(--h); }
 #s-lab .gallery--band .gallery__stage { height: clamp(120px, 17vh, 200px); }
+
+/* fill the screen instead of stacking everything in its upper two thirds */
+#s-attract .intro { justify-content: space-between; padding-block: clamp(6px, 1.6vh, 22px); }
+#s-attract .intro__top { align-items: start; }
+#s-attract .mods__img { height: clamp(118px, 17vh, 210px); }
+#s-takeaway .tk-grid--four { flex: 1 1 auto; min-height: 0; align-content: stretch; }
+#s-takeaway .tk { min-height: 0; }
+#s-takeaway .tk__img { height: 100%; max-height: none; object-fit: cover; align-self: stretch; }
+#s-takeaway .tk__text { align-self: center; }
+#s-takeaway .tk__tag { white-space: normal; }
+/* the cards fill the width; their pictures stop growing before they eat the buttons */
+#s-takeaway .tk__img { height: 100%; max-height: clamp(88px, 15vh, 150px); }
+#s-takeaway .tk-grid--four { grid-auto-rows: minmax(0, 1fr); }
