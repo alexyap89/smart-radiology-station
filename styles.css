@@ -4202,3 +4202,21 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-takeaway .tk__img { width: clamp(180px, 19vw, 300px); }
 #s-takeaway .tk__img--ai { object-fit: cover; object-position: 50% 50%; }
 #s-takeaway .tk__tag { font-size: clamp(11px, .8vw, 13px); }
+
+/* nothing under the clips: they take the room, sized from the row's width so
+   three native-aspect movies always fill it exactly */
+#s-lab .renderpage { justify-content: center; gap: clamp(12px, 2vh, 26px); }
+#s-lab .lab__movies.vids--big { --h: clamp(200px, 28.4vw, 620px); height: var(--h); justify-content: center; }
+#s-lab .lab__movies .vid { height: var(--h); }
+#s-lab .lab__base { justify-content: flex-start; }
+
+/* the action sits at the end of the row, under the last clip */
+#s-lab .lab__base { justify-content: flex-end; }
+#s-lab .lab__movies .vid figcaption {
+  max-width: calc(100% - 16px); font-size: clamp(10px, .72vw, 12px);
+  letter-spacing: .06em; white-space: normal; line-height: 1.2;
+  padding: 4px 8px;
+}
+/* the auto margin was pinning the action to the left; put it at the right */
+#s-lab .lab__nextrow { order: 0; margin-right: 0; }
+#s-lab .lab__base { justify-content: flex-end; align-items: center; }
