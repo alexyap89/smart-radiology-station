@@ -3876,3 +3876,65 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 }
 #s-attract .fact__v { margin: 0; font-size: var(--fs-body); line-height: 1.4; color: var(--paper-dim); max-width: 52ch; }
 #s-attract .fact__v b { color: var(--paper); font-weight: 600; }
+
+/* ---------- what it delivers ---------- */
+#s-deliver .deliver { height: 100%; max-width: none; justify-content: center; gap: clamp(10px, 2vh, 24px); }
+#s-deliver .deliver__h { font-size: var(--t-h2); max-width: 34ch; }
+#s-deliver .deliver__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 26px); }
+#s-deliver .deliver__card { border-top: 2px solid var(--cyan); padding-top: clamp(8px, 1.2vh, 14px); display: flex; flex-direction: column; gap: 6px; }
+#s-deliver .deliver__n { margin: 0; font-size: var(--fs-small); letter-spacing: .16em; color: var(--paper-faint); }
+#s-deliver .deliver__t { margin: 0; font-size: var(--t-h3); color: var(--paper); }
+#s-deliver .deliver__b { margin: 0; font-size: var(--fs-body); line-height: 1.45; color: var(--paper-dim); }
+
+/* ---------- takeaway ---------- */
+#s-takeaway .tkpage { height: 100%; max-width: none; justify-content: center; gap: clamp(8px, 1.4vh, 16px); }
+#s-takeaway .tkpage__h { font-size: clamp(24px, 2vw, 34px); }
+#s-takeaway .tkpage__lede { margin: 0; max-width: 84ch; }
+#s-takeaway .tk__s { margin: 0; font-size: var(--fs-body); font-weight: 600; color: var(--cyan); line-height: 1.3; }
+#s-takeaway .tkpage__close { border-top: 1px solid var(--rule); padding-top: 10px; display: flex; flex-direction: column; gap: 4px; }
+#s-takeaway .tkpage__strap { margin: 0; font-size: clamp(18px, 1.5vw, 26px); font-weight: 600; color: var(--paper); letter-spacing: -.01em; }
+#s-takeaway .tkpage__line { margin: 0; font-size: var(--fs-body); color: var(--paper-dim); max-width: 92ch; }
+#s-takeaway .tkpage__line b { color: var(--paper); }
+
+/* the spectrum strip: six equal frames, labels on one baseline */
+#s-attract .intro__spectrum { display: flex; flex-direction: column; gap: 8px; }
+#s-attract .intro__spectrum .mods {
+  display: grid !important; grid-template-columns: repeat(6, minmax(0, 1fr)) !important;
+  gap: clamp(6px, .7vw, 12px); align-items: start;
+}
+#s-attract .mods__i { display: flex; flex-direction: column; gap: 6px; min-width: 0; border: 0; padding: 0; }
+#s-attract .mods__i .mods__img { width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; display: block; }
+#s-attract .mods__cap { font-size: var(--fs-small); color: var(--paper-dim); letter-spacing: .02em; }
+
+/* what it delivers: cards carry the screen */
+#s-deliver .deliver { justify-content: center; gap: clamp(14px, 3vh, 34px); }
+#s-deliver .deliver__h { max-width: 46ch; }
+#s-deliver .deliver__grid { flex: 0 1 auto; align-items: stretch; }
+#s-deliver .deliver__card { gap: 10px; padding-bottom: 6px; }
+#s-deliver .deliver__b { max-width: 30ch; }
+
+/* programme cards: the picture is a panel */
+#s-takeaway .tk__img { width: clamp(150px, 17vw, 260px); }
+
+/* grid children were sized by their content; stretch them to the track */
+#s-attract .intro__spectrum .mods > .mods__i { width: 100%; max-width: none; justify-self: stretch; }
+#s-attract .intro__spectrum .mods > .mods__i .mods__img { width: 100%; }
+
+/* programme cards keep their panel, without eating the action row */
+#s-takeaway .tk__img { width: clamp(140px, 15vw, 215px); }
+#s-takeaway .tk__s { font-size: 15px; }
+#s-takeaway .tk__b { font-size: 13.5px; line-height: 1.35; }
+@media (max-width: 1500px) {
+  #s-takeaway .tkpage { gap: 6px; }
+  #s-takeaway .tkpage__lede { display: none; }
+  #s-takeaway .tk__img { width: clamp(120px, 13vw, 180px); }
+  #s-takeaway .tk__n { font-size: 11px; }
+  #s-takeaway .tk__s { font-size: 14px; }
+  #s-takeaway .tk__b { font-size: 12.5px; }
+}
+/* the three "heavy" modalities still carried a fixed pixel height; all six share one rule */
+#s-attract .intro__spectrum .mods__i--heavy .mods__img { height: auto; }
+/* strip figures: one padding, one margin, one baseline */
+#s-attract .intro__spectrum .mods__i,
+#s-attract .intro__spectrum .mods__i--heavy { padding: 0; margin: 0; border: 0; }
+#s-attract .intro__spectrum .mods__img { margin: 0; padding: 0; }
