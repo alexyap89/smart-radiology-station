@@ -3832,3 +3832,20 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* the cards fill the width; their pictures stop growing before they eat the buttons */
 #s-takeaway .tk__img { height: 100%; max-height: clamp(88px, 15vh, 150px); }
 #s-takeaway .tk-grid--four { grid-auto-rows: minmax(0, 1fr); }
+
+/* lab: clip captions bright enough to read, still band laid out as a band */
+#s-lab .lab__movies .vid figcaption { color: var(--paper); background: rgba(4, 8, 12, .82); }
+#s-lab .gallery--band { grid-template-columns: minmax(0, 1fr) minmax(280px, 42%) minmax(0, 1fr); align-items: end; }
+#s-lab .gallery--band .gallery__tabs { flex-direction: row; flex-wrap: wrap; gap: 6px; }
+#s-lab .gallery--band .gallery__stage { height: clamp(150px, 22vh, 250px); }
+#s-lab .gallery--band .gallery__foot { align-items: flex-start; }
+
+/* take-away: the card picture is a panel, not a sliver */
+#s-takeaway .tk { display: flex; gap: clamp(10px, 1.2vw, 18px); align-items: stretch; }
+#s-takeaway .tk__img { width: clamp(110px, 13vw, 210px); height: auto; max-height: none; object-fit: cover; flex: 0 0 auto; }
+#s-takeaway .tk__text { align-self: center; }
+#s-takeaway .tk__tag { white-space: nowrap; }
+/* the band reads left to right: cases, picture, caption and the way on */
+#s-lab .gallery--band { grid-template-columns: auto minmax(220px, 320px) minmax(0, 1fr); align-items: end; }
+#s-lab .gallery--band .gallery__tabs { flex-direction: column; align-items: flex-start; }
+#s-lab .gallery--band .gallery__stage { justify-content: flex-start; }
