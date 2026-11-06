@@ -3959,3 +3959,7 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* a magnet in the reveal kept 12 px at 1440 */
 #s-quiz .reveal .verdict { margin-bottom: 2px; }
 #s-quiz .reveal__pair .thumb img { height: clamp(118px, 17vh, 190px); }
+/* the ask needs air between the promise and the question */
+#s-quiz #qAsk { display: flex; flex-direction: column; gap: 10px; }
+#s-quiz #qIntro { display: flex; flex-direction: column; gap: 8px; }
+#s-quiz #qIntro .body { margin: 0; }
