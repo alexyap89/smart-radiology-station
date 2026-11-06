@@ -3455,3 +3455,19 @@ p, li, figcaption, .body, .note, .viewer__cap, .gallery__cap, .micro, .teach__h,
 /* all six modalities carry a picture now; labels stay on one baseline */
 .mods__i:not(.mods__i--heavy) b { margin-top: 0; }
 .mods__i b { padding-top: 0; }
+
+/* the argument the value page carried, folded into the introduction */
+#s-attract .intro__caps {
+  list-style: none; margin: 0; padding: 0 0 0 16px; border-left: 1px solid var(--rule);
+  display: flex; flex-direction: column; gap: 8px; align-self: end;
+}
+#s-attract .intro__caps li { display: grid; grid-template-columns: 82px minmax(0, 1fr); gap: 10px; align-items: baseline; }
+#s-attract .intro__caps b { font-size: var(--t-h3); color: var(--paper); }
+#s-attract .intro__caps span { font-size: var(--t-body); line-height: 1.35; color: var(--paper-faint); }
+#s-attract .intro__close { display: flex; align-items: center; justify-content: space-between; gap: clamp(14px, 2vw, 36px); }
+#s-attract .intro__close .btn { flex: 0 0 auto; }
+
+/* keep the capability column and the closing button inside the text column */
+#s-attract .intro__bottom { grid-template-columns: minmax(0, 1fr) minmax(300px, 460px); }
+#s-attract .intro__caps { max-width: 460px; }
+#s-attract .intro__close { max-width: 100%; }
