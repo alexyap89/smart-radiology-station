@@ -4258,3 +4258,9 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-tools .tool__img { width: clamp(150px, 12.5vw, 210px); height: auto; aspect-ratio: 4 / 3; object-fit: cover; }
 #s-tools .tool { gap: clamp(12px, 1.4vw, 22px); }
 #s-tools .tool__d { max-width: 42ch; }
+
+/* front page: the gaps were doing the filling; the content should */
+#s-attract .intro { justify-content: center; gap: clamp(14px, 2.2vh, 28px); }
+#s-attract .intro__h { font-size: clamp(32px, 2.85vw, 54px); line-height: 1.08; }
+#s-attract .intro__spectrum .mods__i .mods__img { height: clamp(126px, 25vh, 280px); }
+#s-attract .intro__top { align-items: center; }
