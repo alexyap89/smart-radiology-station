@@ -4428,3 +4428,15 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 }
 /* the room clip sits at the foot of the column: give it room to breathe */
 #s-two .photo--video video { height: clamp(130px, 19vh, 230px); }
+
+/* the right column is the experience itself */
+#s-two .face--video { margin: 0; display: flex; flex-direction: column; gap: 8px; }
+#s-two .face--video video {
+  width: 100%; height: auto; max-height: 62vh; object-fit: contain;
+  background: #05080b; border: 1px solid var(--rule); display: block;
+}
+#s-two .face--video figcaption { font-size: var(--fs-small); color: var(--paper-dim); }
+#s-two .phone { display: none; }
+/* the room clip at the foot of the column was touching the screen edge */
+#s-two .photo--video video { height: clamp(110px, 15vh, 190px); }
+#s-two .face--video video { max-height: 56vh; }
