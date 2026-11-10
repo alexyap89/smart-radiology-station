@@ -123,6 +123,8 @@
 
 > In an initial evaluation of our own protocols: up to half as long on spine and brain studies, about a third shorter across our spine and musculoskeletal work. Quality is not the cost — they come out sharper and less noisy, and our radiologists prefer reading them.
 
+> Be straight about the arithmetic, because the room will ask: five minutes either side is preparation and recovery, and that does not shorten. On a twenty-minute scan, halving the scan takes ten minutes off a thirty-minute slot — not fifteen.
+
 *Pause. This is the number they will quote.*
 
 *press Space*
