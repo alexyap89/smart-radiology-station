@@ -12,10 +12,8 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 > More patients are coming, and more scans with them. We cannot build our way out of that alone. So the question behind this stand is: **how do we make every scan count?**
 
-> Six modalities do that work every day — X-ray, CT, MRI, ultrasound, nuclear medicine, bone densitometry.
-
-*Point at the four pillars.*
-> Four programmes, one ambition: detect earlier, see better, prepare better, scan faster.
+*Point at the four pillars — this is the whole slide.*
+> Four programmes, one ambition: detect earlier, see better, prepare better, scan faster. Each one is running today.
 
 *press Space*
 

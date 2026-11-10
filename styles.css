@@ -4331,3 +4331,19 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 /* five pixels of slack on the prep screen at 1440 */
 #s-two .col { gap: clamp(6px, 1.1vh, 12px); }
 #s-two .photo img { height: clamp(140px, 20vh, 230px); }
+
+/* the front page is now four lines of argument and nothing else */
+#s-attract .intro__top { grid-template-columns: minmax(0, 1fr); }
+#s-attract .intro__h { max-width: 26ch; font-size: clamp(34px, 3.4vw, 62px); }
+#s-attract .intro__k {
+  margin: 0; font-size: var(--fs-small); letter-spacing: .18em; text-transform: uppercase; color: var(--cyan);
+}
+#s-attract .pillars b { font-size: clamp(20px, 1.9vw, 34px); }
+#s-attract .pillars span { font-size: clamp(14px, 1.05vw, 18px); }
+#s-attract .pillars li { padding-top: clamp(10px, 1.6vh, 18px); gap: 6px; }
+#s-attract .intro { justify-content: center; gap: clamp(18px, 3.4vh, 46px); }
+/* three blocks on a tall screen: thesis, pillars, the way in */
+#s-attract .intro { justify-content: space-between; padding-block: clamp(6px, 2.4vh, 30px); }
+#s-attract .intro__h { font-size: clamp(36px, 3.8vw, 70px); max-width: 24ch; }
+#s-attract .pillars b { font-size: clamp(22px, 2.1vw, 38px); }
+#s-attract .pillars span { font-size: clamp(15px, 1.15vw, 19px); }
