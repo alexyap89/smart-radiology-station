@@ -4296,3 +4296,18 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 .saving__lab, .saving__delta { padding-top: 14px; }
 .saving__row { row-gap: 12px; }
 .saving__delta { font-size: 13px; letter-spacing: .02em; }
+
+/* the saving is a range, so the bar is a band, not two bars */
+.saving__track { position: relative; height: 20px; border-radius: 3px; background: #1b2230; }
+.saving__range {
+  position: absolute; top: 0; bottom: 0; left: var(--from); width: calc(var(--to) - var(--from));
+  background: var(--cyan); border-radius: 3px;
+}
+.saving__ends { display: flex; justify-content: space-between; font-size: 10px; color: var(--paper-faint); }
+.saving__ends b { font-weight: 600; color: var(--paper-dim); }
+.saving__delta { padding-top: 0; align-self: center; }
+
+/* the figure's grid was too tight: label on one line, delta on one line */
+.saving__row { grid-template-columns: 18ch minmax(0, 1fr) max-content; align-items: center; }
+.saving__lab { padding-top: 0; font-size: var(--fs-small); }
+.saving__delta { padding-top: 0; white-space: nowrap; }
