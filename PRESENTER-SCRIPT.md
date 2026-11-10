@@ -27,9 +27,9 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 > **Mr Lim** came in at three in the morning. He fell at home and cannot stand on his right knee.
 
-> **Ms Tan** fell, walked it off, and months later has a lump in her neck. She has never been in a scanner.
+> **Ms Tan** has a lump in her neck that has to be imaged. She is claustrophobic and speaks only Hokkien — on her own, she will not get through the scan.
 
-> Between them they are the two ways imaging holds up the hospital: a film that has to be read tonight, and a scan that has to be right the first time.
+> Between them: a film that has to be read tonight, and a scan that cannot happen at all until someone removes the fear around it.
 
 *press Space*
 
@@ -101,7 +101,7 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 ## 8 · Preparation — 4:55–5:30
 
-> Now the other half of the same problem. Ms Tan's first MRI, and her concern is not the diagnosis — it is the machine.
+> Now the other half of the same problem. Ms Tan's finding is potentially serious, and the barrier is not the diagnosis — it is the machine.
 
 > pRIMe puts the scanner on her phone before she arrives: the room, the breath-hold, the sound. In Hokkien, because that is what she speaks.
 
