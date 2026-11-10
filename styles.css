@@ -4420,3 +4420,11 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-attract .pillars img { height: clamp(220px, 44vh, 460px); }
 #s-attract .pillars b { font-size: clamp(20px, 1.9vw, 34px); }
 #s-attract .intro { justify-content: center; gap: clamp(16px, 2.6vh, 34px); }
+
+/* the room footage is a video now, framed like the photograph it replaces */
+#s-two .photo--video video {
+  width: 100%; height: clamp(150px, 24vh, 280px); object-fit: cover;
+  display: block; border: 1px solid var(--rule); background: #05080b;
+}
+/* the room clip sits at the foot of the column: give it room to breathe */
+#s-two .photo--video video { height: clamp(130px, 19vh, 230px); }
