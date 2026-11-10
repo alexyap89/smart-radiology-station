@@ -4440,3 +4440,14 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 /* the room clip at the foot of the column was touching the screen edge */
 #s-two .photo--video video { height: clamp(110px, 15vh, 190px); }
 #s-two .face--video video { max-height: 56vh; }
+
+/* the barriers as three keywords, not a paragraph */
+#s-two .prep__keys {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: 6px 10px;
+}
+#s-two .prep__keys li {
+  font-size: var(--fs-small); letter-spacing: .1em; text-transform: uppercase;
+  color: var(--paper); border: 1px solid var(--rule); border-radius: 3px;
+  padding: 5px 10px; line-height: 1.2;
+}
