@@ -1,5 +1,5 @@
 # Smart Radiology — presenter script
-Twelve screens. Seven and a half minutes. One person at the tablet, one hand on the keyboard.
+Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboard.
 **Space** advances, **←** goes back. The films screen holds until a call is made — that is deliberate.
 
 ---
@@ -14,8 +14,8 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 > Six modalities do that work every day — X-ray, CT, MRI, ultrasound, nuclear medicine, bone densitometry.
 
-*Point at the strap.*
-> Detect earlier. See better. Prepare better. Scan faster.
+*Point at the four pillars.*
+> Four programmes, one ambition: detect earlier, see better, prepare better, scan faster.
 
 *press Space*
 
@@ -35,7 +35,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 3 · Four emergency films — 1:35–2:45
+## 3 · Two emergency films — 1:35–2:30
 
 *Screen shows a knee radiograph.*
 
@@ -45,10 +45,8 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 > RbFracture reads every emergency extremity film the moment it arrives, and returns a flag in minutes — at 3 a.m. as at 3 p.m. The emergency physician gets an answer now, not a waiting report. The radiologist still decides; the flag orders the work.
 
-*Space through the remaining three films, calling each one aloud.*
-> Lateral view — fracture, with fluid in the joint.
-> Different patient, Ms Tan's knee — no fracture.
-> And the lateral — still no fracture, but there is an effusion. That is the film that sends her on for a scan.
+*Space to the lateral, and call it aloud.*
+> Same knee, lateral view — fracture, with fluid in the joint. Two films, and the AI and the reporting radiologist agreed on both.
 
 > Think of it as a safety net, not a replacement.
 
@@ -58,7 +56,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 4 · The CT and the 3D model — 2:45–3:20
+## 4 · The CT and the 3D model — 2:30–3:20
 
 > Mr Lim went to CT. The CT showed the fracture; dual-energy CT revealed the bruise inside the bone.
 
@@ -69,17 +67,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 5 · The negative case — 3:20–3:50
-
-> This is the case that stops. Ms Tan's film was clear, and dual-energy CT ruled out an occult fracture the same night.
-
-> She went home that night with an answer — no fracture — and no admission, and no wait for an MRI slot. **One bed and one scanner slot returned to the department.**
-
-*press Space*
-
----
-
-## 6 · 3D and 4D — 3:50–4:25
+## 5 · 3D and 4D — 3:20–3:55
 
 *Let the three clips run a few seconds in silence.*
 > Everything you are watching was built from scans already on our system. No extra radiation, no extra appointment.
@@ -90,7 +78,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 7 · The denoiser — 4:25–4:55
+## 6 · The denoiser — 3:55–4:25
 
 > Same raw data, two reconstructions. On the left, the scan as we have always built it — grainy at this noise level. On the right, the same data cleaned by AI.
 
@@ -100,7 +88,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 8 · The joint in motion — 4:55–5:25
+## 7 · The joint in motion — 4:25–4:55
 
 *Let one clip play.*
 > A static scan shows the joint. This shows what it does — through the arc of movement, in the same acquisition.
@@ -111,7 +99,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 9 · Preparation — 5:25–6:00
+## 8 · Preparation — 4:55–5:30
 
 > Now the other half of the same problem. Ms Tan's first MRI, and her concern is not the diagnosis — it is the machine.
 
@@ -123,7 +111,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 10 · Acceleration — 6:00–6:35
+## 9 · Acceleration — 5:30–6:05
 
 > The same images, in a shorter scan. Reconstruction rebuilds them from less data.
 
@@ -135,7 +123,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 11 · Four programmes, one ambition — 6:35–7:15
+## 10 · Four programmes, one ambition — 6:05–6:50
 
 > Four programmes. One ambition.
 
@@ -147,7 +135,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 ---
 
-## 12 · Appendix — 7:15 onwards, only if asked
+## 11 · Appendix — 6:45 onwards, only if asked
 
 > Four more tools are running in the department, all available on a phone. The QR codes are on the stand.
 

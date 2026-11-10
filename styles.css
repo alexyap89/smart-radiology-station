@@ -4311,3 +4311,20 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 .saving__row { grid-template-columns: 18ch minmax(0, 1fr) max-content; align-items: center; }
 .saving__lab { padding-top: 0; font-size: var(--fs-small); }
 .saving__delta { padding-top: 0; white-space: nowrap; }
+
+/* the front page is the thesis, four pillars, the spectrum, the way in */
+#s-attract .pillars {
+  list-style: none; margin: 0; padding: 0;
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(12px, 1.6vw, 28px);
+}
+#s-attract .pillars li { border-top: 2px solid var(--cyan); padding-top: 9px; display: flex; flex-direction: column; gap: 4px; }
+#s-attract .pillars b { font-size: clamp(17px, 1.45vw, 26px); font-weight: 600; color: var(--paper); letter-spacing: -.01em; }
+#s-attract .pillars span { font-size: var(--fs-body); color: var(--paper-dim); line-height: 1.35; }
+
+/* the six films must sit on one height, whatever their source ratio */
+#s-attract .intro__spectrum .mods__i .mods__img {
+  height: clamp(120px, 22vh, 260px); width: 100%;
+  object-fit: cover; object-position: 50% 45%; aspect-ratio: auto;
+}
+/* the front page fills the frame: thesis at the top, the way in on the floor */
+#s-attract .intro { justify-content: space-between; gap: clamp(14px, 2.4vh, 30px); }
