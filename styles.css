@@ -4411,3 +4411,12 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
   color: var(--paper); background: rgba(4, 8, 12, .72);
   padding: 3px 7px; border-radius: 2px;
 }
+
+/* the front page is the four pictures; the headline is spoken, not printed */
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+#s-attract .pillars img { height: clamp(220px, 44vh, 460px); }
+#s-attract .pillars b { font-size: clamp(20px, 1.9vw, 34px); }
+#s-attract .intro { justify-content: center; gap: clamp(16px, 2.6vh, 34px); }
