@@ -4484,3 +4484,18 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-two .photo--video video { height: clamp(160px, 24vh, 250px); object-position: 50% 55%; }
 /* show the whole room: contain, not a crop of the ceiling */
 #s-two .photo--video video { object-fit: contain; background: #05080b; }
+
+/* the reveal was sizing the overlay by column width, so a tall scan pushed the
+   Next button off the screen. Cap by height and hug the picture. */
+#s-quiz #qReveal { grid-template-columns: auto minmax(0, 1fr); align-items: start; }
+#s-quiz #qReveal .reveal__pair .thumb img {
+  max-height: min(40vh, 360px); width: auto; max-width: 100%; object-fit: contain;
+}
+#s-quiz #qReveal .reveal__pair .thumb { align-items: flex-start; }
+#s-quiz .plate__frame { height: clamp(260px, 46vh, 500px); }
+
+/* the 3am photo was eating 381px of the films column and pushing Next off the
+   screen; the headline already carries that scene. */
+#s-quiz .night { display: none; }
+/* beat the [data-revealed] rule that was holding the overlay at 48vh */
+#s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img { max-height: min(34vh, 300px); width: auto; }
