@@ -4264,3 +4264,35 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-attract .intro__h { font-size: clamp(32px, 2.85vw, 54px); line-height: 1.08; }
 #s-attract .intro__spectrum .mods__i .mods__img { height: clamp(126px, 25vh, 280px); }
 #s-attract .intro__top { align-items: center; }
+
+/* ---------- the time-saving figure ---------- */
+.saving { margin: 2px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.saving__k { font-size: var(--fs-small); color: var(--paper-faint); letter-spacing: .04em; }
+.saving__row { display: grid; grid-template-columns: 12ch minmax(0, 1fr) 5ch; align-items: center; gap: 10px; }
+.saving__lab { font-size: var(--fs-small); color: var(--paper-dim); }
+.saving__bars { position: relative; display: flex; flex-direction: column; gap: 3px; }
+.saving__bar { height: 12px; border-radius: 2px; width: var(--w); display: flex; align-items: center; }
+.saving__bar b { font-size: 10px; font-weight: 600; letter-spacing: .04em; }
+.saving__bar--std { background: #2a3340; color: var(--paper-faint); }
+.saving__bar--std b { padding-left: 6px; }
+.saving__bar--ai { background: var(--cyan); color: #04141a; }
+.saving__bar--ai b { padding-left: 6px; }
+.saving__delta { font-size: var(--fs-small); color: var(--cyan); text-align: right; font-weight: 600; }
+.saving__note { margin: 2px 0 0; font-size: var(--fs-small); color: var(--paper-faint); }
+
+/* the bars were 12px and read as one smear: make them a proper comparison */
+.saving__row { grid-template-columns: 13ch minmax(0, 1fr) 5ch; gap: 12px; row-gap: 10px; align-items: start; }
+.saving__lab { padding-top: 12px; }
+.saving__bars { gap: 5px; }
+.saving__bar { height: 16px; border-radius: 3px; position: relative; }
+.saving__bar b { font-size: 9.5px; line-height: 1; }
+.saving__bar--std { background: #313b49; }
+.saving__bar--ai { background: var(--cyan); }
+.saving__delta { padding-top: 12px; font-size: 12px; }
+.saving__legend { display: flex; gap: 14px; font-size: 10px; color: var(--paper-faint); letter-spacing: .06em; }
+.saving__legend span::before { content: ""; display: inline-block; width: 10px; height: 8px; margin-right: 5px; border-radius: 2px; background: #313b49; }
+.saving__legend span:last-child::before { background: var(--cyan); }
+.saving__bar { height: 20px; }
+.saving__lab, .saving__delta { padding-top: 14px; }
+.saving__row { row-gap: 12px; }
+.saving__delta { font-size: 13px; letter-spacing: .02em; }
