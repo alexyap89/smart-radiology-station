@@ -4401,3 +4401,13 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-move .cine__tile--single video { max-height: 68vh; }
 /* there is room to give the four programme pictures more presence */
 #s-attract .pillars img { height: clamp(130px, 21vh, 250px); }
+
+/* taller pictures, each tagged with the modality it comes from */
+#s-attract .pillars li { position: relative; }
+#s-attract .pillars img { height: clamp(150px, 24vh, 290px); }
+#s-attract .pillars__mod {
+  position: absolute; top: 8px; left: 8px; z-index: 2;
+  font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+  color: var(--paper); background: rgba(4, 8, 12, .72);
+  padding: 3px 7px; border-radius: 2px;
+}
