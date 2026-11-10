@@ -4399,3 +4399,5 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
   object-fit: contain; flex: 0 1 auto;
 }
 #s-move .cine__tile--single video { max-height: 68vh; }
+/* there is room to give the four programme pictures more presence */
+#s-attract .pillars img { height: clamp(130px, 21vh, 250px); }
