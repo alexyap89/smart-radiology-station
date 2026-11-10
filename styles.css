@@ -4347,3 +4347,55 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-attract .intro__h { font-size: clamp(36px, 3.8vw, 70px); max-width: 24ch; }
 #s-attract .pillars b { font-size: clamp(22px, 2.1vw, 38px); }
 #s-attract .pillars span { font-size: clamp(15px, 1.15vw, 19px); }
+
+/* the four pillars carry the same four pictures as the summary cards */
+#s-attract .pillars li { border-top: 0; padding-top: 0; gap: 8px; }
+#s-attract .pillars img {
+  width: 100%; height: clamp(96px, 15vh, 190px); object-fit: cover; object-position: 50% 45%;
+  border: 1px solid var(--rule); background: #05080b; display: block;
+  border-top: 2px solid var(--cyan);
+}
+#s-attract .intro { justify-content: center; gap: clamp(14px, 2.4vh, 30px); }
+#s-attract .intro__h { font-size: clamp(32px, 3.1vw, 56px); }
+#s-attract .pillars b { font-size: clamp(19px, 1.7vw, 30px); }
+#s-attract .intro { justify-content: space-between; padding-block: clamp(6px, 2vh, 26px); }
+#s-attract .pillars img { height: clamp(110px, 17vh, 210px); }
+
+/* one comparison, labelled on the image itself */
+.compare__legend { margin: 0 0 4px; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.compare__k { font-size: var(--fs-small); letter-spacing: .12em; text-transform: uppercase; }
+.compare__k--ai { color: var(--cyan); text-align: left; }
+.compare__k--std { color: var(--paper-faint); text-align: right; }
+
+/* the comparison frames itself: no black bands above and below */
+#s-speed .gallery__stage { height: auto; background: transparent; border: 0; }
+#s-speed .gallery__stage img { width: 100%; height: auto; max-height: none; object-fit: contain; }
+#s-speed .gallery--hero { max-height: 100%; }
+/* the gallery is a block, not a column that stretches */
+#s-speed .gallery--hero { height: auto; align-self: center; display: flex; flex-direction: column; gap: 8px; }
+#s-speed .gallery__stage { height: auto; flex: 0 0 auto; }
+#s-speed .col--model { justify-content: center; }
+
+/* the comparison keeps its own aspect: 1395x760 was being letterboxed into a square */
+#s-speed .gallery--hero .gallery__stage img { height: auto; width: 100%; object-fit: contain; }
+#s-speed .gallery--hero .gallery__stage { height: auto; }
+/* stop the gallery stretching to the column height */
+#s-speed .gallery--hero { flex: 0 0 auto; height: auto; }
+#s-speed .gallery--hero .gallery__stage { flex: 0 0 auto; }
+
+/* the 4D screen is one workstation capture, shown as large as the frame allows */
+#s-move .cine--single { display: flex; flex-direction: column; align-items: center; gap: 10px; flex: 1 1 auto; min-height: 0; }
+#s-move .cine__tile--single { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; align-items: center; gap: 8px; }
+#s-move .cine__tile--single video {
+  flex: 1 1 auto; min-height: 0; height: 100%; width: auto; max-width: 100%;
+  object-fit: contain; background: #05080b; border: 1px solid var(--rule);
+}
+
+/* the pilot clip keeps its 16:9 frame, capped by height */
+#s-move .cine--single { align-items: center; justify-content: center; }
+#s-move .cine__tile--single { width: 100%; align-items: center; }
+#s-move .cine__tile--single video {
+  width: auto; height: auto; max-width: 100%; max-height: 58vh;
+  object-fit: contain; flex: 0 1 auto;
+}
+#s-move .cine__tile--single video { max-height: 68vh; }
