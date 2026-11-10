@@ -4524,3 +4524,12 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 /* numbers on the grey standard bars need light ink */
 .slot-row:first-of-type .slot-num { fill: var(--paper); }
 .slot-lab { font-size: 11.5px; }
+
+/* slot composition: fixed time, scan time, and what falls out */
+.slot-fix { fill: #313b49; }
+.slot-scan { fill: var(--cyan); }
+.slot-freed { fill: none; stroke: var(--cyan); stroke-width: 1; stroke-dasharray: 4 3; }
+.slot-t { fill: var(--paper); font-size: 11px; text-anchor: middle; }
+.slot-t--dark { fill: #04141a; font-weight: 600; }
+.slot-total { fill: var(--paper-dim); font-size: 11px; text-anchor: start; }
+.slot-freed + .slot-t { fill: var(--cyan); }
