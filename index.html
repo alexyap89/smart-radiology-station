@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Smart Radiology — Is there a fracture?</title>
-<link rel="stylesheet" href="styles.css?v=20261110174134">
+<link rel="stylesheet" href="styles.css?v=20261110174342">
 </head>
 <body>
 
@@ -50,22 +50,22 @@
         <ol class="pillars">
           <li>
             <span class="pillars__mod">X-ray</span>
-            <img src="assets/cases/summary-ai-knee.jpg?v=20261110174134" alt="The RbFracture AI output: the fracture line drawn across the lateral tibial plateau.">
+            <img src="assets/cases/summary-ai-knee.jpg?v=20261110174342" alt="The RbFracture AI output: the fracture line drawn across the lateral tibial plateau.">
             <b>Detect earlier</b><span>the film screened before it is reported</span>
           </li>
           <li>
             <span class="pillars__mod">CT</span>
-            <img src="assets/cine/foot.jpg?v=20261110174134" alt="Cinematic rendering of a Charcot foot.">
+            <img src="assets/cine/foot.jpg?v=20261110174342" alt="Cinematic rendering of a Charcot foot.">
             <b>See better</b><span>models from the scan already taken</span>
           </li>
           <li>
             <span class="pillars__mod">MRI</span>
-            <img src="assets/photos/room-preparation.jpg?v=20261110174134" alt="The preparation video: a radiographer in the MRI room holding a hygiene cap, explaining what will happen.">
+            <img src="assets/photos/room-preparation.jpg?v=20261110174342" alt="The preparation video: a radiographer in the MRI room holding a hygiene cap, explaining what will happen.">
             <b>Prepare better</b><span>the scanner rehearsed before she arrives</span>
           </li>
           <li>
             <span class="pillars__mod">MRI</span>
-            <img src="assets/cases/mri-drb-sag-t1.jpg?v=20261110174134" alt="Sagittal cervical spine T1, Deep Resolve Boost High.">
+            <img src="assets/cases/mri-drb-sag-t1.jpg?v=20261110174342" alt="Sagittal cervical spine T1, Deep Resolve Boost High.">
             <b>Scan faster</b><span>less time in the bore, more capacity</span>
           </li>
         </ol>
@@ -88,11 +88,11 @@
 
         <div class="pair cases__pair">
           <figure class="pair__fig">
-            <img src="assets/img/patient-a.jpg?v=20261110174134" alt="A man in his seventies sits up in a hospital bed, his right knee bandaged, explaining it to the radiographer.">
+            <img src="assets/img/patient-a.jpg?v=20261110174342" alt="A man in his seventies sits up in a hospital bed, his right knee bandaged, explaining it to the radiographer.">
             <figcaption><b>Mr Lim</b>Falls at home at three in the morning. He cannot stand on his right knee.</figcaption>
           </figure>
           <figure class="pair__fig">
-            <img src="assets/img/patient-b-waiting.jpg?v=20261110174134" alt="An elderly woman in the MRI waiting area, a radiographer showing her the scanner room on a phone.">
+            <img src="assets/img/patient-b-waiting.jpg?v=20261110174342" alt="An elderly woman in the MRI waiting area, a radiographer showing her the scanner room on a phone.">
             <figcaption><b>Ms Tan</b>A lump in her neck that has to be imaged. She is claustrophobic and speaks only Hokkien.</figcaption>
           </figure>
         </div>
@@ -109,7 +109,7 @@
 
         <figure class="plate plate--film" data-win>
           <div class="plate__frame">
-            <img id="qImg" src="assets/cases/pos-film-ap.png?v=20261110174134" alt="De-identified knee radiograph" class="plate__img plate__img--film">
+            <img id="qImg" src="assets/cases/pos-film-ap.png?v=20261110174342" alt="De-identified knee radiograph" class="plate__img plate__img--film">
           </div>
           <figcaption class="plate__cap" id="qCap">Case 1 · right knee · AP</figcaption>
           <div class="win__bar">
@@ -136,17 +136,13 @@
               <li data-chip="0"></li><li data-chip="1"></li>
             </ol>
           </div>
-          <h2 class="h2" id="quiz-title">At three in the morning, the film that cannot wait is already at the front of the queue.</h2>
-          <p class="micro" id="qCase"></p>
+          <h2 class="visually-hidden" id="quiz-title">Reading the overnight emergency films</h2>
+          <figure class="night">
+            <img src="assets/img/late-night-reporting.jpg?v=20261110174342" alt="A radiologist at three in the morning, head propped on one hand, reading a knee CT with a lateral tibial plateau fracture on screen.">
+            <figcaption>03:00 · the reporting room</figcaption>
+          </figure>
+
           <div id="qAsk">
-            <div id="qIntro">
-              <p class="body">RbFracture reads every emergency extremity film the moment it is acquired and returns a flag <b>in minutes</b> — at 3 a.m. as at 3 p.m. The emergency physician gets an answer now, not a waiting report, while the radiologist is still working the list.</p>
-              <ul class="copilot">
-                <li><b>Flags on arrival</b> before a radiologist opens the film</li>
-                <li><b>Minutes, not hours</b> — the same at any hour</li>
-                <li><b>The radiologist still decides</b>; the flag orders the work</li>
-              </ul>
-            </div>
             <p class="choice__q">Read this one before the AI does. Is there a fracture?</p>
             <div class="choice__row">
               <button class="btn btn--path" type="button" data-answer="yes">
@@ -162,7 +158,7 @@
             <p class="verdict" id="qVerdict"></p>
             <div class="reveal__pair">
               <figure class="thumb">
-                <img id="qAiImg" src="assets/cases/pos-ai-ap.png?v=20261110174134" alt="AI analysis overlay for the same radiograph">
+                <img id="qAiImg" src="assets/cases/pos-ai-ap.png?v=20261110174342" alt="AI analysis overlay for the same radiograph">
                 <figcaption id="qAiCap">AI analysis · same view</figcaption>
               </figure>
             </div>
@@ -201,7 +197,7 @@
               <button class="tab" type="button" data-view="bme">Dual-energy fusion · marrow oedema</button>
             </div>
             <figure class="viewer__stage" data-win-stage>
-              <img id="posImg" src="assets/cases/pos-ct-coronal.png?v=20261110174134" alt="Coronal CT of the knee in bone window">
+              <img id="posImg" src="assets/cases/pos-ct-coronal.png?v=20261110174342" alt="Coronal CT of the knee in bone window">
             </figure>
             <p class="viewer__cap" id="posCap">Coronal bone window. A coronal split fracture runs through the lateral tibial plateau.</p>
             <div class="win__bar" data-win-for="posImg">
@@ -226,7 +222,7 @@
         <div class="col col--model">
           <p class="stepmark">1 · RbFracture · the same CT</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-a.jpg?v=20261110174134" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
+            <img class="patient__img" src="assets/img/patient-a.jpg?v=20261110174342" alt="The patient: a man in his seventies in a hospital bed, right knee bandaged.">
             <p class="patient__meta"><b>Mr Lim</b> · cannot put weight on it · right knee</p>
           </div>
           <h2 class="h2" id="pos-title">The CT showed the fracture; dual-energy CT revealed the bruise inside the bone.</h2>
@@ -242,8 +238,8 @@
           <div class="row row--tight">
             <button class="btn btn--ghost btn--sm" id="glFull" type="button" aria-pressed="false">Full screen</button>
             <button class="btn btn--ghost btn--sm" id="glReset" type="button">Reset view</button>
-            <a class="btn btn--ghost btn--sm" id="arLink" href="assets/models/tibia-fracture.usdz?v=20261110174134" rel="ar">
-              <img src="assets/models/ar-glyph.svg?v=20261110174134" alt="" class="ar-glyph"> View in AR
+            <a class="btn btn--ghost btn--sm" id="arLink" href="assets/models/tibia-fracture.usdz?v=20261110174342" rel="ar">
+              <img src="assets/models/ar-glyph.svg?v=20261110174342" alt="" class="ar-glyph"> View in AR
             </a>
           </div>
 
@@ -258,9 +254,9 @@
       <div class="col col--wide renderpage">
 
         <div class="lab__movies vids vids--big" aria-label="Rad-ART, three examples in motion">
-          <figure class="vid" style="--ar:1.3422"><video data-src="assets/videos/radart-1c.mp4?v=20261110174134" poster="assets/videos/radart-1c.jpg?v=20261110174134" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
-          <figure class="vid" style="--ar:1.0333"><video data-src="assets/videos/radart-2c.mp4?v=20261110174134" poster="assets/videos/radart-2c.jpg?v=20261110174134" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
-          <figure class="vid" style="--ar:0.8"><video data-src="assets/videos/radart-3c.mp4?v=20261110174134" poster="assets/videos/radart-3c.jpg?v=20261110174134" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
+          <figure class="vid" style="--ar:1.3422"><video data-src="assets/videos/radart-1c.mp4?v=20261110174342" poster="assets/videos/radart-1c.jpg?v=20261110174342" muted loop autoplay playsinline preload="auto"></video><figcaption>Fracture planning</figcaption></figure>
+          <figure class="vid" style="--ar:1.0333"><video data-src="assets/videos/radart-2c.mp4?v=20261110174342" poster="assets/videos/radart-2c.jpg?v=20261110174342" muted loop autoplay playsinline preload="auto"></video><figcaption>Joint anatomy</figcaption></figure>
+          <figure class="vid" style="--ar:0.8"><video data-src="assets/videos/radart-3c.mp4?v=20261110174342" poster="assets/videos/radart-3c.jpg?v=20261110174342" muted loop autoplay playsinline preload="auto"></video><figcaption>Cinematic rendering</figcaption></figure>
         </div>
 
         <div class="lab__base">
@@ -285,7 +281,7 @@
             <button class="gallery__tab" type="button" data-case="vendor" aria-pressed="false">Vendor example · not our data</button>
           </div>
           <figure class="gallery__stage">
-            <img id="seeImg" src="assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261110174134" alt="The same axial CT slice twice: filtered back projection on the left, noise-grainy, and DLIR-High on the right, clean.">
+            <img id="seeImg" src="assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261110174342" alt="The same axial CT slice twice: filtered back projection on the left, noise-grainy, and DLIR-High on the right, clean.">
           </figure>
           <div class="gallery__foot">
             <p class="vendor__flag" id="seeFlag" hidden>Vendor example — not our data</p>
@@ -306,7 +302,7 @@
 
         <div class="cine cine--single" id="moveCine">
           <figure class="cine__tile cine__tile--single">
-            <video data-src="assets/videos/4d-knee-pilot.mp4?v=20261110174134" poster="assets/videos/4d-knee-pilot.jpg?v=20261110174134" muted loop autoplay playsinline preload="auto"></video>
+            <video data-src="assets/videos/4d-knee-pilot.mp4?v=20261110174342" poster="assets/videos/4d-knee-pilot.jpg?v=20261110174342" muted loop autoplay playsinline preload="auto"></video>
             <figcaption>4D dynamic CT · the knee through flexion, from one acquisition</figcaption>
           </figure>
           <div class="cine__bar">
@@ -321,7 +317,7 @@
         <div class="col">
           <p class="stepmark">3 · pRIMe · before the scan</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b-waiting.jpg?v=20261110174134" alt="The patient in the waiting area, being shown the scanner room on a phone.">
+            <img class="patient__img" src="assets/img/patient-b-waiting.jpg?v=20261110174342" alt="The patient in the waiting area, being shown the scanner room on a phone.">
             <p class="patient__meta"><b>Ms Tan</b> · 74 · first MRI · the neck · claustrophobic · speaks Hokkien</p>
           </div>
           <h2 class="h2" id="two-title">A lump in her neck has to be imaged — and she cannot face the scanner.</h2>
@@ -349,7 +345,7 @@
             <button class="btn btn--primary" data-go="speed" type="button">Next: less time in the scanner</button>
             <a class="btn btn--ghost" href="https://primemri.netlify.app" target="_blank" rel="noopener">Open pRIMe in Hokkien ↗</a>
             <figure class="qr">
-              <img src="assets/img/qr-primemri.png?v=20261110174134" alt="QR code that opens pRIMe-MRI in Hokkien on a phone.">
+              <img src="assets/img/qr-primemri.png?v=20261110174342" alt="QR code that opens pRIMe-MRI in Hokkien on a phone.">
               <figcaption>Scan to try it</figcaption>
             </figure>
           </div>
@@ -360,7 +356,7 @@
 
         <div class="col col--face">
           <figure class="face face--video">
-            <video data-src="assets/videos/prime-simulation.mp4?v=20261110174134" poster="assets/videos/prime-simulation.jpg?v=20261110174134"
+            <video data-src="assets/videos/prime-simulation.mp4?v=20261110174342" poster="assets/videos/prime-simulation.jpg?v=20261110174342"
                    muted loop autoplay playsinline preload="metadata"
                    aria-label="The pRIMe preparation experience: a rendered scanner room, station four of seven, explaining the headphones and the scanner's sound."></video>
             <figcaption>pRIMe · the room she will lie in, station by station, in Hokkien</figcaption>
@@ -375,7 +371,7 @@
         <div class="col">
           <p class="stepmark">4 · MRI acceleration · in the scanner</p>
           <div class="patient">
-            <img class="patient__img" src="assets/img/patient-b-waiting.jpg?v=20261110174134" alt="The patient in the waiting area, being shown the scanner room on a phone.">
+            <img class="patient__img" src="assets/img/patient-b-waiting.jpg?v=20261110174342" alt="The patient in the waiting area, being shown the scanner room on a phone.">
             <p class="patient__meta"><b>Ms Tan</b> · in the scanner · the MRI of her neck</p>
           </div>
           <h2 class="h2" id="speed-title">The same images, in a shorter scan.</h2>
@@ -406,7 +402,7 @@
           <div class="gallery gallery--hero" id="speedGallery" data-case="axial">
             <p class="compare__legend"><span class="compare__k compare__k--ai">AI-accelerated</span><span class="compare__k compare__k--std">Conventional</span></p>
             <figure class="gallery__stage">
-              <img id="speedImg" src="assets/cases/mri-drb-axial-stir.jpg?v=20261110174134" alt="Axial T2 STIR of the same patient: AI-accelerated reconstruction on the left, conventional on the right.">
+              <img id="speedImg" src="assets/cases/mri-drb-axial-stir.jpg?v=20261110174342" alt="Axial T2 STIR of the same patient: AI-accelerated reconstruction on the left, conventional on the right.">
             </figure>
             <p class="gallery__cap" id="speedCap">Our own scan. Left: Deep Resolve Boost High. Right: the same patient a year earlier, without it. Coronal T2 STIR.</p>
           </div>
@@ -423,7 +419,7 @@
         <div class="tools-grid">
           <article class="tool tool--lead">
             <p class="tool__k">Most used</p>
-            <img class="tool__img" src="assets/photos/room-preparation.jpg?v=20261110174134" alt="The preparation video: a radiographer in the MRI room holding a hygiene cap.">
+            <img class="tool__img" src="assets/photos/room-preparation.jpg?v=20261110174342" alt="The preparation video: a radiographer in the MRI room holding a hygiene cap.">
             <div class="tool__text">
             <h3 class="tool__h">pRIMe-MRI</h3>
             <p class="tool__d">Rehearse the scanner on your own phone: the room, the breath-hold, the sound. Six languages, no headset.</p>
@@ -432,7 +428,7 @@
           </div>
           </article>
           <article class="tool">
-            <img class="tool__img" src="assets/img/tool-dect.jpg?v=20261110174134" alt="Two DECT coronal reconstructions of a hip: the greyscale image and the virtual non-calcium map that shows marrow oedema.">
+            <img class="tool__img" src="assets/img/tool-dect.jpg?v=20261110174342" alt="Two DECT coronal reconstructions of a hip: the greyscale image and the virtual non-calcium map that shows marrow oedema.">
             <div class="tool__text">
             <h3 class="tool__h">DECT BME</h3>
             <p class="tool__d">How to read bone-marrow oedema on dual-energy CT.</p>
@@ -440,7 +436,7 @@
           </div>
           </article>
           <article class="tool">
-            <img class="tool__img" src="assets/img/tool-radart.jpg?v=20261110174134" alt="A patient-specific 3D render of a foot, from the Rad-ART example set.">
+            <img class="tool__img" src="assets/img/tool-radart.jpg?v=20261110174342" alt="A patient-specific 3D render of a foot, from the Rad-ART example set.">
             <div class="tool__text">
             <h3 class="tool__h">Rad-ART</h3>
             <p class="tool__d">Patient-specific 3D and AR for the consultation, from the scan already taken.</p>
@@ -448,7 +444,7 @@
           </div>
           </article>
           <article class="tool">
-            <img class="tool__img" src="assets/img/tool-dixon.jpg?v=20261110174134" alt="A sagittal lumbar spine MRI from the DIXON protocol case set.">
+            <img class="tool__img" src="assets/img/tool-dixon.jpg?v=20261110174342" alt="A sagittal lumbar spine MRI from the DIXON protocol case set.">
             <div class="tool__text">
             <h3 class="tool__h">DIXON spine</h3>
             <p class="tool__d">An abbreviated lumbar-spine MRI, with the patient explainer beside it.</p>
@@ -473,7 +469,7 @@
 
         <div class="tk-grid tk-grid--four">
           <article class="tk">
-            <img class="tk__img tk__img--ai" src="assets/cases/summary-ai-knee.jpg?v=20261110174134" alt="The RbFracture AI output on case 1: the fracture line drawn across the lateral tibial plateau.">
+            <img class="tk__img tk__img--ai" src="assets/cases/summary-ai-knee.jpg?v=20261110174342" alt="The RbFracture AI output on case 1: the fracture line drawn across the lateral tibial plateau.">
             <div class="tk__text">
               <p class="tk__n">01 · RbFracture AI</p>
               <p class="tk__s">The right finding. Earlier.</p>
@@ -481,7 +477,7 @@
             </div>
           </article>
           <article class="tk">
-            <img class="tk__img" src="assets/cine/foot.jpg?v=20261110174134" alt="Cinematic rendering of a Charcot foot.">
+            <img class="tk__img" src="assets/cine/foot.jpg?v=20261110174342" alt="Cinematic rendering of a Charcot foot.">
             <div class="tk__text">
               <p class="tk__n">02 · 3D + 4D</p>
               <p class="tk__s">See more from the scan already taken.</p>
@@ -489,7 +485,7 @@
             </div>
           </article>
           <article class="tk">
-            <img class="tk__img" src="assets/photos/room-preparation.jpg?v=20261110174134" alt="The preparation video: a radiographer in the MRI room holding a hygiene cap, explaining what will happen.">
+            <img class="tk__img" src="assets/photos/room-preparation.jpg?v=20261110174342" alt="The preparation video: a radiographer in the MRI room holding a hygiene cap, explaining what will happen.">
             <div class="tk__text">
               <p class="tk__n">03 · pRIMe-MRI</p>
               <p class="tk__s">Better prepared patients. Better MRI experiences.</p>
@@ -497,7 +493,7 @@
             </div>
           </article>
           <article class="tk">
-            <img class="tk__img" src="assets/cases/mri-drb-sag-t1.jpg?v=20261110174134" alt="Sagittal cervical spine T1: Deep Resolve Boost High against the earlier scan.">
+            <img class="tk__img" src="assets/cases/mri-drb-sag-t1.jpg?v=20261110174342" alt="Sagittal cervical spine T1: Deep Resolve Boost High against the earlier scan.">
             <div class="tk__text">
               <p class="tk__n">04 · MRI acceleration</p>
               <p class="tk__s">Less time in the scanner. More capacity for patients.</p>
@@ -567,7 +563,7 @@
   </div>
 </div>
 
-<script src="assets/models/tibia-fracture.js?v=20261110174134"></script>
-<script src="app.js?v=20261110174134"></script>
+<script src="assets/models/tibia-fracture.js?v=20261110174342"></script>
+<script src="app.js?v=20261110174342"></script>
 </body>
 </html>

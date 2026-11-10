@@ -1,6 +1,8 @@
 # Smart Radiology — presenter script
-Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboard.
-**Space** advances, **←** goes back. The films screen holds until a call is made — that is deliberate.
+**Eleven screens. Seven minutes.** One person at the tablet, one hand on the keyboard.
+**Space** advances, **←** goes back. The films screen holds until a call is made — deliberately.
+
+> Note: the deck has no separate DECT screen. Dual-energy lives as a tab inside the CT screen, so that beat is folded into section 4.
 
 ---
 
@@ -10,56 +12,60 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 > By 2026, one in five Singaporeans will be 65 or older. We have **7.6 radiologists per 100,000 people**; Europe has thirteen. Over the next five years we expect more than forty unfilled radiologist posts.
 
-> More patients are coming, and more scans with them. We cannot build our way out of that alone. So the question behind this stand is: **how do we make every scan count?**
+> We cannot build our way out of that. So the question behind this stand is simple: **how do we get more out of every scan we take?**
 
-*Point at the four pillars — this is the whole slide.*
-> Four programmes, one ambition: detect earlier, see better, prepare better, scan faster. Each one is running today.
+> Six modalities do that work every day — X-ray, CT, MRI, ultrasound, nuclear medicine, bone densitometry.
+
+*Point at the strap.*
+> Detect earlier. See better. Prepare better. Scan faster.
 
 *press Space*
 
 ---
 
-## 2 · The two cases — 1:00–1:35
+## 2 · The two cases — 1:00–1:30
 
-> Two patients. Composite characters, but every image you are about to see is from our own practice.
+> Two patients. Composite characters — every image you are about to see is from our own practice.
 
 > **Mr Lim** came in at three in the morning. He fell at home and cannot stand on his right knee.
 
-> **Ms Tan** has a lump in her neck that has to be imaged. She is claustrophobic and speaks only Hokkien — on her own, she will not get through the scan.
+> **Ms Tan** fell, walked it off, and months later has a lump in her neck. She has never been in a scanner.
 
-> Between them: a film that has to be read tonight, and a scan that cannot happen at all until someone removes the fear around it.
+> Between them they are the two ways imaging holds up the hospital: a film that has to be read tonight, and a scan that has to be right the first time.
 
 *press Space*
 
 ---
 
-## 3 · Two emergency films — 1:35–2:30
+## 3 · Two emergency films — 1:30–2:25
 
-*Screen shows a knee radiograph.*
+*Screen shows a knee radiograph on the left, the reporting room at three in the morning on the right.*
 
-> Before I show you what the AI found, I want to show you what it is like to be the person on call. Is there a fracture? *(let one board member call it — or answer yourself)*
+> That is the room this film lands in. Before I show you what the AI found, I want you to be the person on call. Is there a fracture? *(let a board member call it — or answer yourself)*
 
 *Tap Yes or No. The AI overlay appears.*
 
 > RbFracture reads every emergency extremity film the moment it arrives, and returns a flag in minutes — at 3 a.m. as at 3 p.m. The emergency physician gets an answer now, not a waiting report. The radiologist still decides; the flag orders the work.
 
-*Space to the lateral, and call it aloud.*
-> Same knee, lateral view — fracture, with fluid in the joint. Two films, and the AI and the reporting radiologist agreed on both.
+*Space to the lateral.*
 
-> Think of it as a safety net, not a replacement.
+> Same man, lateral view — fracture, with fluid in the joint. On a knee that cannot bear weight, that is a fracture until proven otherwise.
 
-> Across 1,102 consecutive emergency films, it caught six fractures the first reports missed. A radiologist caught seven that it missed. **Both numbers matter** — and both are printed on the summary.
+> Think of it as a safety net, not a replacement. Across 1,102 consecutive emergency films it caught six fractures the first reports missed. A radiologist caught seven that it missed. **Both numbers matter** — and both are printed on the summary.
 
 *press Space*
 
 ---
 
-## 4 · The CT and the 3D model — 2:30–3:20
+## 4 · The CT, the model, and the same scan read twice — 2:25–3:20
 
 > Mr Lim went to CT. The CT showed the fracture; dual-energy CT revealed the bruise inside the bone.
 
+*Click the "Dual-energy fusion" tab once.*
+> Same acquisition, read a second way. The spectral map shows oedema — the injury you cannot see on a plain CT. That is the difference between "there is a crack" and "this bone is injured".
+
 *Drag the model once.*
-> The surgeon plans this from the scan already taken, in three dimensions — not from a mental reconstruction of slices.
+> And the surgeon plans it from that same scan, in three dimensions — not from a mental reconstruction of slices.
 
 *press Space*
 
@@ -68,6 +74,7 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 ## 5 · 3D and 4D — 3:20–3:55
 
 *Let the three clips run a few seconds in silence.*
+
 > Everything you are watching was built from scans already on our system. No extra radiation, no extra appointment.
 
 > This is not a printing service. It is digital first: most of these never need to become an object, and the surgeon can hold it on a phone before the operation.
@@ -89,7 +96,8 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 ## 7 · The joint in motion — 4:25–4:55
 
 *Let one clip play.*
-> A static scan shows the joint. This shows what it does — through the arc of movement, in the same acquisition.
+
+> A static scan shows the joint. This shows what it does — through the arc of movement, from the same acquisition.
 
 > Our 4D work is a pilot. I am showing it because it is what the dose saving makes possible, not because it is a service yet.
 
@@ -99,7 +107,7 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 ## 8 · Preparation — 4:55–5:30
 
-> Now the other half of the same problem. Ms Tan's finding is potentially serious, and the barrier is not the diagnosis — it is the machine.
+> Now the other half of the same problem. Ms Tan's first MRI — and her concern is not the diagnosis, it is the machine.
 
 > pRIMe puts the scanner on her phone before she arrives: the room, the breath-hold, the sound. In Hokkien, because that is what she speaks.
 
@@ -113,7 +121,7 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 > The same images, in a shorter scan. Reconstruction rebuilds them from less data.
 
-> In an initial evaluation of our own protocols, up to half as long on spine and brain studies, and about a third shorter across our spine and musculoskeletal work. Quality is not the cost — they come out sharper and less noisy, and our radiologists prefer reading them.
+> In an initial evaluation of our own protocols: up to half as long on spine and brain studies, about a third shorter across our spine and musculoskeletal work. Quality is not the cost — they come out sharper and less noisy, and our radiologists prefer reading them.
 
 *Pause. This is the number they will quote.*
 
@@ -121,13 +129,13 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 ---
 
-## 10 · Four programmes, one ambition — 6:05–6:50
+## 10 · Four programmes, one ambition — 6:05–6:45
 
 > Four programmes. One ambition.
 
 > **Detect earlier** — the film screened before a radiologist opens it. **See better** — models from the scan already taken. **Prepare better** — the scanner rehearsed in the waiting room. **Scan faster** — less time in the bore, more capacity for the next patient.
 
-> Every scan counts, so patients are treated better and faster.
+> More out of every scan, so patients are treated better and faster.
 
 *press Space*
 
@@ -143,16 +151,14 @@ Eleven screens. Seven minutes. One person at the tablet, one hand on the keyboar
 
 **"Is the AI safe?"** — It flags; a radiologist interprets. 96.6% sensitivity, 99.2% negative predictive value, 2.4% false positives. Studies negative on both AI and report were not re-read, so sensitivity is likely overestimated — that limit is printed on the summary.
 
-**"What did it cost?"** — 3D reconstruction runs S$82–299; prints S$560–1,020. We plan 50–65 prints this year against a target of 100 — deliberately, because digital-first is the point.
-
-**"How many scans does this add?"** — None. Every programme here reuses or shortens a scan already commissioned.
-
-**"Is the 4D real?"** — A pilot, with no outcome data yet. The dose target is ≤0.1 mSv at the wrist and ≤1.0 mSv at the elbow.
-
 **"What is the return?"** — No licence line is being asked for tonight. The 3D service already runs at S$82–299 a reconstruction; the case for the rest is capacity, not cost saving — a shorter scan is a slot returned, and a film read sooner is a bed released.
 
 **"Who overrides the AI?"** — The radiologist, always. The flag orders the work; it does not write the report. A flag that contradicts the on-call clinician goes to the radiologist first, not to the patient.
 
 **"What does it cost the staff in time?"** — Training is minutes, not days: the flag appears where the film already opens. The workflow cost we accept is on us to design, and the preparation tool hands the explaining back to the radiographer who was doing it anyway.
+
+**"How many scans does this add?"** — None. Every programme here reuses or shortens a scan already commissioned.
+
+**"Is the 4D real?"** — A pilot, with no outcome data yet. The dose target is ≤0.1 mSv at the wrist and ≤1.0 mSv at the elbow.
 
 **"Will this replace radiologists?"** — No. Our own audit shows the tool missed seven fractures a radiologist caught. It buys time and orders the list; it does not read the film.

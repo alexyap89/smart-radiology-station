@@ -4451,3 +4451,20 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
   color: var(--paper); border: 1px solid var(--rule); border-radius: 3px;
   padding: 5px 10px; line-height: 1.2;
 }
+
+/* the films screen shows the room it is about */
+#s-quiz .night { margin: 0; display: flex; flex-direction: column; gap: 6px; }
+#s-quiz .night img {
+  width: 100%; height: clamp(190px, 30vh, 320px); object-fit: cover; object-position: 50% 42%;
+  border: 1px solid var(--rule);
+}
+#s-quiz .night figcaption {
+  font-size: var(--fs-small); letter-spacing: .12em; text-transform: uppercase; color: var(--paper-faint);
+}
+.visually-hidden {
+  position: absolute !important; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+#s-quiz .night img { height: clamp(200px, 32vh, 340px); object-position: 50% 38%; }
+/* give the night frame its own proportion instead of a letterbox slice */
+#s-quiz .night img { height: clamp(220px, 40vh, 400px); object-position: 50% 30%; }
