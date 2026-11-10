@@ -10,7 +10,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 > By 2026, one in five Singaporeans will be 65 or older. We have **7.6 radiologists per 100,000 people**; Europe has thirteen. Over the next five years we expect more than forty unfilled radiologist posts.
 
-> We cannot build our way out of that. So the question behind this stand is simple: **how do we get more out of every scan we take?**
+> More patients are coming, and more scans with them. We cannot build our way out of that alone. So the question behind this stand is: **how do we make every scan count?**
 
 > Six modalities do that work every day — X-ray, CT, MRI, ultrasound, nuclear medicine, bone densitometry.
 
@@ -141,7 +141,7 @@ Twelve screens. Seven and a half minutes. One person at the tablet, one hand on 
 
 > **Detect earlier** — the film screened before a radiologist opens it. **See better** — models from the scan already taken. **Prepare better** — the scanner rehearsed in the waiting room. **Scan faster** — less time in the bore, more capacity for the next patient.
 
-> More out of every scan, so patients are treated better and faster.
+> Every scan counts, so patients are treated better and faster.
 
 *press Space*
 
