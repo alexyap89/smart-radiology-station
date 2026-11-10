@@ -4468,3 +4468,19 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 #s-quiz .night img { height: clamp(200px, 32vh, 340px); object-position: 50% 38%; }
 /* give the night frame its own proportion instead of a letterbox slice */
 #s-quiz .night img { height: clamp(220px, 40vh, 400px); object-position: 50% 30%; }
+#s-two .photo--video video { height: clamp(120px, 17vh, 210px); object-fit: cover; object-position: 50% 45%; }
+#s-two .photo--video video { height: clamp(150px, 23vh, 260px); }
+.sound {
+  align-self: flex-start; margin-top: 6px; cursor: pointer;
+  background: transparent; border: 1px solid var(--rule); color: var(--paper-dim);
+  font: inherit; font-size: var(--fs-small); letter-spacing: .1em; text-transform: uppercase;
+  padding: 5px 12px; border-radius: 3px;
+}
+.sound:hover { color: var(--paper); border-color: var(--cyan); }
+/* the sound control is a button in the row, not a caption widget */
+#s-two .row .sound { margin: 0; align-self: center; }
+#s-two .row--tight { flex-wrap: wrap; gap: 10px; align-items: center; }
+/* show more of the room than a strip of ceiling */
+#s-two .photo--video video { height: clamp(160px, 24vh, 250px); object-position: 50% 55%; }
+/* show the whole room: contain, not a crop of the ceiling */
+#s-two .photo--video video { object-fit: contain; background: #05080b; }
