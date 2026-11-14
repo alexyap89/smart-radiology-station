@@ -175,49 +175,27 @@ is applied at this stage.
 
 
 ------------------------------------------------------------------------
-BOARD CUT — opening, transition, appendix, and the local ask screen
-(addendum, 2026-11-14)
+BOARD CUT — opening, transition, appendix, hold (addendum, 2026-11-14)
 
 The walk starts on a title screen and one transition line, then the four
 pillar cards as before. It HOLDS on the summary: Space at the end goes
 nowhere, so the close can be delivered without the deck running on.
 
-APPENDIX (outside the normal flow):
-  A ................. open / fold the appendix from any screen
-  ?appendix=1 ....... start with the appendix available
-  ?ai=1 ............. land directly on "Ask Smart Radiology"
-Order: the other tools -> key numbers by pillar -> the ask screen.
+APPENDIX (outside the normal flow): the other tools, then the key numbers
+by pillar. Reachable three ways:
+  Appendix tab ..... top right, beside Restart; click again to return
+  A ................ same, from the keyboard
+  ?appendix=1 ...... start with the appendix available
+The unlock is per page-load: a reload always starts at the title screen.
 
-RUNNING IT FOR THE BOARD (recommended)
+RUNNING IT
   cd <this folder>
   python3 serve-board.py            # loopback AND the Tailnet, port 8123
     http://127.0.0.1:8123/          # on this machine
     http://100.85.251.72:8123/      # from any device on the Tailnet
-  python3 serve-board.py --host tailscale           # Tailnet only
-  python3 serve-board.py --host 127.0.0.1           # loopback only
-  python3 serve-board.py --port 9000 --upstream http://100.85.251.72:8080
-
+  python3 serve-board.py --host tailscale   # Tailnet only
+  python3 serve-board.py --host 127.0.0.1   # loopback only
 Nothing binds 0.0.0.0: loopback and the Tailnet only, never the hospital LAN.
+The published GitHub Pages copy works the same way for the walk and appendix.
 
-serve-board.py serves the files and forwards /api/ask to the local
-llama-server, adding the model key on the server side. The browser therefore
-needs no key at all, and no CORS is involved. GET /api/health reports whether
-a key was found: {"ok": true, "model_key": true}.
-
-THE KEY
-serve-board.py reads HERMES_CUSTOM_Q3_8FN128K_API_KEY from the environment or
-from ~/.hermes/.env. It is never written into this repo and never sent to a
-cloud service. Do not commit a key to these files.
-
-WHY THE LOCAL SERVER, NOT THE LIVE SITE
-GitHub Pages is https, and the model endpoint is http on a private address, so
-a browser blocks that call as mixed content. The ask screen is a local-only
-feature: present from serve-board.py on the presenting laptop. Everything
-else (the whole walk, the appendix, the close) works equally on the live site.
-
-ANSWERS
-Grounded on assets/ai-facts.json — the vetted numbers and the presenter's
-"If they ask" answers from PRESENTER-SCRIPT.md. The model is told to answer in
-three short sentences or fewer, to say "I don't know" outside the facts, and
-never to give clinical advice. On a 20-second timeout the screen says:
-"Ask me directly — the presenter has these answers." No cloud fallback.
+No model endpoint, no key, no cloud: the deck is static.

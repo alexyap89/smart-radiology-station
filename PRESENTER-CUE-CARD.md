@@ -27,39 +27,16 @@ Space at the summary does nothing but toast — the deck cannot run past the clo
 | 3D drag | Leave the model still; the still frame reads fine |
 | 360° room | Let it sit on the first frame; say the same line |
 | Denoiser / accelerated-vs-conventional | The slider's default split already shows both sides |
-| Ask screen hangs | 20 s and it says "Ask me directly — the presenter has these answers." — answer it yourself; that is the answer |
 
 ## Appendix (only if asked)
 
-- **Appendix** tab — click it from any screen; click again to return to the summary. The tab stays lit while you are inside.
+- **Appendix** tab — click it from any screen; click again to return to the summary. The tab stays lit while you are inside. It holds the other tools and the key numbers only.
 - **A** — same thing from the keyboard.
 - `?appendix=1` — start with the appendix available.
-- `?ai=1` — land straight on **Ask Smart Radiology** (hand the laptop, or type the question yourself).
-- Appendix order: tools → key numbers by pillar → ask screen.
+- Appendix order: tools → key numbers by pillar.
 - The unlock is per page-load: a reload always starts at the title screen, so a stray `?appendix=1` test cannot leave the talk starting in the appendix.
 - "View the measured summary" opens a sheet over the close; Space closes it, then Space holds. Esc also closes it.
 
-## Ask screen — how it runs on the night
-
-Present from the local server, not the live site:
-
-```
-cd "<the repo folder>"
-python3 serve-board.py
-```
-
-Open **http://127.0.0.1:8123/** on the presenting laptop, or
-**http://100.85.251.72:8123/** from any device on the Tailnet (same server —
-the default binds loopback and Tailscale, never the hospital LAN). The model
-key is read server-side from `~/.hermes/.env`; the browser never sees it.
-Check `…/api/health` reads `"model_key": true` before the session.
-
-The live GitHub Pages copy cannot run the ask screen (https page, http model
-endpoint — the browser blocks it). Everything else works on the live site.
-
-Type or let a board member type; answers stream in about 2–3 seconds. Offline
-or slow: 20 s and it prints "Ask me directly — the presenter has these answers."
-
 ## The five answers they will ask for
 
-The live screen answers from `assets/ai-facts.json`; if it is off or slow, these are the same answers, in your words: AI safety (96.6% sensitivity, 99.2% NPV, 2.4% false positives, radiologist decides), the return (capacity, not cost saving), who overrides (the radiologist, always), staff cost (minutes of training), extra scans (none — every programme reuses or shortens a scan already commissioned).
+Answer these yourself, in your words: AI safety (96.6% sensitivity, 99.2% NPV, 2.4% false positives, radiologist decides), the return (capacity, not cost saving), who overrides (the radiologist, always), staff cost (minutes of training), extra scans (none — every programme reuses or shortens a scan already commissioned).

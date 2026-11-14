@@ -12,10 +12,10 @@
 
   var IDLE_MS = 180000;
   // The main walk ends on the summary and HOLDS there. The appendix screens
-  // (tools, key numbers, the live ask) are outside ORDER: reachable only by
-  // pressing A or by ?appendix=1 (?ai=1 lands directly on the ask screen).
+  // (tools, key numbers) are outside ORDER: reachable by the Appendix tab,
+  // by pressing A, or by ?appendix=1.
   var MAIN_ORDER = ["opening", "transition", "attract", "cases", "quiz", "pos", "lab", "see", "move", "two", "speed", "takeaway"];
-  var APPENDIX_ORDER = ["tools", "keynums", "ask"];
+  var APPENDIX_ORDER = ["tools", "keynums"];
   var ORDER = MAIN_ORDER.slice();
 
   function refreshOrder() {
@@ -112,7 +112,6 @@
         two:  ["3", "pRIMe · the scan starts in the waiting room"],
         tools:["", ""],
         keynums:["", ""],
-        ask:  ["", ""],
         takeaway:["", "What the four programmes can prove"],
         attract:["", ""]
       };
@@ -294,9 +293,9 @@
   var FILMS = [
     {
       title: "A man fell and cannot bear weight on his right knee.",
-      img: "assets/cases/pos-film-ap.png?v=20261114164506", ai: "assets/cases/pos-ai-ap.png?v=20261114164506",
+      img: "assets/cases/pos-film-ap.png?v=20261114175526", ai: "assets/cases/pos-ai-ap.png?v=20261114175526",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 2", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261114164506",
+      pimg: "assets/img/patient-a.jpg?v=20261114175526",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Mr Lim</b> · cannot put weight on it · right knee",
       verdict: "Fracture detected.",
@@ -305,9 +304,9 @@
     },
     {
       title: "Same man, lateral view. The joint is swollen.",
-      img: "assets/cases/pos-film-lat.png?v=20261114164506", ai: "assets/cases/pos-ai-lat.png?v=20261114164506",
+      img: "assets/cases/pos-film-lat.png?v=20261114175526", ai: "assets/cases/pos-ai-lat.png?v=20261114175526",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 2", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261114164506",
+      pimg: "assets/img/patient-a.jpg?v=20261114175526",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Mr Lim</b> · cannot put weight on it · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
@@ -382,10 +381,10 @@
 
   /* ---------------------------------------------------------------- image tabs */
   var VIEWS = {
-    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261114164506", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
-    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261114164506", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
-    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261114164506", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
-    sag:    { src: "assets/cases/neg-sag.png?v=20261114164506", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
+    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261114175526", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
+    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261114175526", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
+    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261114175526", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
+    sag:    { src: "assets/cases/neg-sag.png?v=20261114175526", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
   };
 
   // A frame should be the image, not a letterbox around it: every plate and
@@ -761,17 +760,17 @@
   /* ---------------------------------------------------------------- lab: the render gallery */
   var LAB_CASES = {
     foot: {
-      src: "assets/cine/foot.jpg?v=20261114164506",
+      src: "assets/cine/foot.jpg?v=20261114175526",
       cap: "Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.",
       alt: "Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia."
     },
     scapula: {
-      src: "assets/cine/scapula.jpg?v=20261114164506",
+      src: "assets/cine/scapula.jpg?v=20261114175526",
       cap: "Traumatic structural isolation of the scapula, with a comminuted scapular fracture and a displaced clavicle.",
       alt: "Cinematic rendering of a fractured scapula with a displaced clavicle and rib fractures."
     },
     ribs: {
-      src: "assets/cine/ribs.jpg?v=20261114164506",
+      src: "assets/cine/ribs.jpg?v=20261114175526",
       cap: "Traumatic right rib fractures, rendered with the chest drain in place — the drain and the fractures in one view.",
       alt: "Cinematic rendering of traumatic right rib fractures with a chest drain in situ."
     }
@@ -795,17 +794,17 @@
 
   var SEE_CASES = {
     pelvis: {
-      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261114164506",
+      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261114175526",
       cap: "One acquisition, two reconstructions. Left: the scan as conventionally rebuilt, grainy at this noise level. Right: the same raw data denoised by AI.",
       alt: "The same axial CT slice twice: filtered back projection, noise-grainy, and DLIR-High, clean."
     },
     abdomen: {
-      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261114164506",
+      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261114175526",
       cap: "The same comparison higher in the abdomen, where low contrast detectability matters most.",
       alt: "An upper abdominal axial CT slice twice: filtered back projection and DLIR-High."
     },
     vendor: {
-      src: "assets/photos/ge-truefidelity.jpg?v=20261114164506",
+      src: "assets/photos/ge-truefidelity.jpg?v=20261114175526",
       cap: "Vendor example, not our data: conventional, half-strength and AI reconstruction at 0.625 mm, from the vendor brochure.",
       alt: "Three coronal CT reformats: FBP, ASiR-V 50 percent and TrueFidelity."
     }
@@ -831,17 +830,17 @@
 
   var SPEED_CASES = {
     coronal: {
-      src: "assets/cases/mri-drb-coronal-stir.jpg?v=20261114164506",
+      src: "assets/cases/mri-drb-coronal-stir.jpg?v=20261114175526",
       cap: "Our own scan. Left: Deep Resolve Boost High. Right: the same patient a year earlier. Coronal T2 STIR through the posterior fossa and neck.",
       alt: "Coronal T2 STIR of the same patient: Deep Resolve Boost High on the left, the previous year's scan on the right."
     },
     axial: {
-      src: "assets/cases/mri-drb-axial-stir.jpg?v=20261114164506",
+      src: "assets/cases/mri-drb-axial-stir.jpg?v=20261114175526",
       cap: "Our own scan, axial T2 STIR. Left: AI-accelerated reconstruction. Right: the conventional reconstruction of the same study.",
       alt: "Axial T2 STIR, Deep Resolve Boost study on the left and the earlier DIXON study on the right."
     },
     sagittal: {
-      src: "assets/cases/mri-drb-sag-t1.jpg?v=20261114164506",
+      src: "assets/cases/mri-drb-sag-t1.jpg?v=20261114175526",
       cap: "Our own scan. Sagittal T1. Left: Deep Resolve Boost High study. Right: the earlier scan.",
       alt: "Sagittal T1 of the cervical spine: the Deep Resolve Boost High study on the left, the earlier scan on the right."
     }
@@ -1347,192 +1346,14 @@
     });
   }
 
-  /* ---------------------------------------------------------------- ask: live local assistant (appendix, ?ai=1)
-     Grounded on assets/ai-facts.js?v=20261114164506on. The API key lives ONLY in this browser's
-     localStorage under 'srs_ai_key' — never in a committed file. Replies stream
-     from a local llama-server; 20 s timeout, plain fallback message otherwise. */
-  var ASK_ENDPOINT = "http://100.85.251.72:8080/v1/chat/completions";
-  var ASK_MODEL = "qwen3.8-flash-next-unsloth-ud-q4_k_xl";
-  var ASK_PROXY = "/api/ask";
-  var ASK_HEALTH = "/api/health";
-  var askMode = null;   // "proxy" (serve-board.py) | "direct" (localStorage key) | "none"
-  var ASK_TIMEOUT_MS = 20000;
-  var ASK_FALLBACK = "Ask me directly — the presenter has these answers.";
-  var askFacts = null, askFactsFailed = false, askBusy = false;
-
-  function askKey() {
-    try { return window.localStorage.getItem("srs_ai_key") || ""; } catch (e) { return ""; }
-  }
-
-  function loadAskFacts(cb) {
-    if (askFacts || askFactsFailed) { cb(); return; }
-    fetch("assets/ai-facts.js?v=20261114164506on", { cache: "no-store" })
-      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.text(); })
-      .then(function (t) { askFacts = t; cb(); })
-      .catch(function () { askFactsFailed = true; cb(); });
-  }
-
-  function askSystemPrompt() {
-    return "You are Smart Radiology, answering questions at a hospital radiology department exhibition stand. " +
-      "Answer ONLY from this vetted fact sheet:\n\n" + (askFacts || "(fact sheet unavailable)") + "\n\n" +
-      "Rules: answer in at most three short sentences. If the fact sheet does not cover the question, reply exactly: I don't know. " +
-      "Never invent numbers. Never give clinical advice or diagnosis. Plain spoken English.";
-  }
-
-  function askRender(text) {
-    var el = document.getElementById("askAnswer");
-    if (!el) return;
-    el.hidden = false;
-    el.textContent = text;
-  }
-
-  /* The deck is normally served by serve-board.py, which forwards /api/ask to
-     the local llama-server with the key added server-side: no key in the
-     browser, no CORS. Opened as a file or from GitHub Pages, it falls back to
-     a direct call with the key from localStorage, and says so when neither is
-     available. */
-  function askSetHint(mode) {
-    var hint = document.getElementById("askKeyHint");
-    if (hint) hint.hidden = mode !== "none";
-  }
-
-  function askProbe(cb) {
-    if (askMode) { cb(askMode); return; }
-    fetch(ASK_HEALTH, { cache: "no-store" })
-      .then(function (r) { return r.json(); })
-      .then(function (j) {
-        askMode = (j && j.ok && j.model_key) ? "proxy" : (askKey() ? "direct" : "none");
-        cb(askMode);
-      })
-      .catch(function () {
-        askMode = askKey() ? "direct" : "none";
-        cb(askMode);
-      });
-  }
-
-  function askAsk(question) {
-    if (askBusy || !question) return;
-    var sendBtn = document.getElementById("askSend");
-    askProbe(function (mode) {
-      askSetHint(mode);
-      if (mode === "none") return;
-      askSend(question, mode, sendBtn);
-    });
-  }
-
-  function askSend(question, mode, sendBtn) {
-    askBusy = true;
-    if (sendBtn) sendBtn.disabled = true;
-    askRender("");
-
-    var settled = false;
-    var controller = ("AbortController" in window) ? new AbortController() : null;
-    var timer = window.setTimeout(function () {
-      if (settled) return;
-      settled = true;
-      if (controller) controller.abort();
-      askRender(ASK_FALLBACK);
-      askDone();
-    }, ASK_TIMEOUT_MS);
-    function askDone() {
-      window.clearTimeout(timer);
-      askBusy = false;
-      if (sendBtn) sendBtn.disabled = false;
-    }
-
-    loadAskFacts(function () {
-      if (settled) return;
-      if (askFactsFailed) {
-        settled = true;
-        askRender(ASK_FALLBACK);
-        askDone();
-        return;
-      }
-      var body = JSON.stringify({
-        model: ASK_MODEL,
-        stream: true,
-        temperature: 0.2,
-        max_tokens: 180,
-        chat_template_kwargs: { enable_thinking: false },
-        messages: [
-          { role: "system", content: askSystemPrompt() },
-          { role: "user", content: question }
-        ]
-      });
-      var headers = { "Content-Type": "application/json" };
-      if (mode === "direct") headers.Authorization = "Bearer " + askKey();
-      fetch(mode === "proxy" ? ASK_PROXY : ASK_ENDPOINT, {
-        method: "POST",
-        headers: headers,
-        body: body,
-        signal: controller ? controller.signal : undefined
-      }).then(function (res) {
-        if (!res.ok || !res.body) throw new Error("HTTP " + res.status);
-        var reader = res.body.getReader();
-        var decoder = new TextDecoder();
-        var buf = "";
-        var text = "";
-        function pump() {
-          return reader.read().then(function (r) {
-            if (r.done) {
-              if (settled) return;
-              settled = true;
-              askRender(text.trim() || ASK_FALLBACK);
-              askDone();
-              return;
-            }
-            buf += decoder.decode(r.value, { stream: true });
-            var lines = buf.split("\n");
-            buf = lines.pop();
-            lines.forEach(function (line) {
-              line = line.trim();
-              if (line.indexOf("data:") !== 0) return;
-              var payload = line.slice(5).trim();
-              if (!payload || payload === "[DONE]") return;
-              try {
-                var delta = JSON.parse(payload);
-                var piece = delta.choices && delta.choices[0] &&
-                  (delta.choices[0].delta && delta.choices[0].delta.content ||
-                   delta.choices[0].text) || "";
-                if (piece) { text += piece; if (!settled) askRender(text); }
-              } catch (e) { /* partial frame */ }
-            });
-            return pump();
-          });
-        }
-        return pump();
-      }).catch(function () {
-        if (settled) return;
-        settled = true;
-        askRender(ASK_FALLBACK);
-        askDone();
-      });
-    });
-  }
-
-  function wireAsk() {
-    var form = document.getElementById("askForm");
-    if (!form) return;
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var input = document.getElementById("askInput");
-      var q = input ? input.value.trim() : "";
-      askAsk(q);
-    });
-    askProbe(askSetHint);
-  }
-
   /* ---------------------------------------------------------------- init */
-  // URL gates: ?appendix=1 unlocks the appendix for this machine;
-  // ?ai=1 additionally lands on the live ask screen.
+  // URL gate: ?appendix=1 starts with the appendix available.
   (function urlGates() {
     var q = "";
     try { q = window.location.search || ""; } catch (e) {}
     if (/[?&]appendix=1/.test(q)) setAppendix(true);
     refreshOrder();
-    var start = appendixOn() ? "tools" : "opening";
-    if (/[?&]ai=1/.test(q)) { setAppendix(true); start = "ask"; }
-    window.__srsStart = start;
+    window.__srsStart = appendixOn() ? "tools" : "opening";
   }());
 
   window.addEventListener("error", function () {
@@ -1548,6 +1369,5 @@
   wireSpeedGallery();
   wireCine();
   wirePrimeFrame();
-  wireAsk();
   show(window.__srsStart || "opening");
 }());

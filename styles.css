@@ -4665,68 +4665,6 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
   color: var(--paper);
 }
 
-/* ---------------------------------------------------------------- ask */
-.askpage__lede { margin-bottom: clamp(14px, 2vh, 24px); }
-.ask {
-  display: flex;
-  gap: 10px;
-  align-items: stretch;
-  max-width: 760px;
-}
-.ask__input {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-family: var(--sans);
-  font-size: 15px;
-  color: var(--paper);
-  background: var(--ink-2);
-  border: 1px solid var(--rule-strong);
-  border-radius: 2px;
-  padding: 12px 14px;
-  outline: none;
-}
-.ask__input::placeholder { color: var(--paper-faint); }
-.ask__input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(95,208,216,.12); }
-.ask__send { flex: 0 0 auto; }
-
-.ask__hint {
-  max-width: 760px;
-  margin: clamp(12px, 2vh, 20px) 0 0;
-  padding: clamp(10px, 1.4vw, 16px);
-  border: 1px solid var(--rule);
-  background: rgba(232, 163, 61, .06);
-}
-.ask__snippet {
-  margin: 8px 0;
-  padding: 9px 11px;
-  background: var(--ink-2);
-  border: 1px solid var(--rule);
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  font-size: 12px;
-  color: var(--amber);
-  overflow-x: auto;
-}
-.ask__answer {
-  max-width: 760px;
-  margin-top: clamp(16px, 2.4vh, 26px);
-  padding: 14px 18px;
-  border-left: 2px solid var(--cyan);
-  background: rgba(95, 208, 216, .06);
-  font-family: var(--serif);
-  font-size: clamp(15px, 1.4vw, 20px);
-  line-height: 1.45;
-  color: var(--paper);
-  white-space: pre-wrap;
-}
-.ask__note { margin-top: clamp(10px, 1.6vh, 16px); }
-
-@media (max-width: 620px) {
-  .opening__motif { gap: 14px; }
-  .ask { flex-wrap: wrap; }
-  .ask__input { flex-basis: 100%; }
-  .ask__send { flex-basis: 100%; }
-}
-
 /* key-numbers appendix page (own screen since the board cut) */
 .keynums-page .keynums { border-top: 0; margin-top: clamp(6px, 1.4vh, 14px); padding-top: 0; }
 .keynums-page .keynums__grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
@@ -4746,10 +4684,6 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 /* key-numbers page: shave 10px so it holds one screen at 1600x900 */
 .keynums-page .keynums dl { gap: 7px; }
 .keynums-page .keynums__grid > li { padding: clamp(10px, 1.2vw, 15px); }
-
-/* the deck already has a .ask (column) for the quiz; the appendix form is a row */
-#s-ask .ask { flex-direction: row; align-items: stretch; }
-@media (max-width: 620px) { #s-ask .ask { flex-direction: column; } }
 
 /* appendix tab — a real, visible tab beside Restart */
 .tab.is-on {
