@@ -11,10 +11,28 @@
   var overlay = document.getElementById("overlay");
 
   var IDLE_MS = 180000;
-  var ORDER = ["attract", "cases", "quiz", "pos", "lab", "see", "move", "two", "speed", "takeaway", "tools"];
+  // The main walk ends on the summary and HOLDS there. The appendix screens
+  // (tools, key numbers, the live ask) are outside ORDER: reachable only by
+  // pressing A or by ?appendix=1 (?ai=1 lands directly on the ask screen).
+  var MAIN_ORDER = ["opening", "transition", "attract", "cases", "quiz", "pos", "lab", "see", "move", "two", "speed", "takeaway"];
+  var APPENDIX_ORDER = ["tools", "keynums", "ask"];
+  var ORDER = MAIN_ORDER.slice();
+
+  function refreshOrder() {
+    ORDER = appendixOn() ? MAIN_ORDER.concat(APPENDIX_ORDER) : MAIN_ORDER.slice();
+  }
+  /* Appendix state is deliberately in memory only: a reload always starts the
+     board walk at the opening, and a stray ?appendix=1 test can never leave the
+     deck silently starting in the appendix on stage. */
+  var appendixUnlocked = false;
+  function appendixOn() { return appendixUnlocked; }
+  function setAppendix(on) {
+    appendixUnlocked = !!on;
+    refreshOrder();
+  }
 
   var state = {
-    screen: "attract",
+    screen: "opening",
     qIndex: 0,
     correct: 0,
     answered: {},       // index -> "yes" | "no"
@@ -57,6 +75,7 @@
     }
     state.screen = name;
     app.setAttribute("data-screen", name);
+    if (name !== "opening" && !state.running) startClock();
 
     qsa(".screen").forEach(function (sec) {
       var on = sec.id === "s-" + name;
@@ -64,7 +83,13 @@
       sec.setAttribute("aria-hidden", on ? "false" : "true");
     });
 
-    var pipOf = function (screen) { return screen; };
+    var pipOf = function (screen) { return screen === "transition" ? "opening" : screen; };
+    var apxTab = document.getElementById("appendixTab");
+    if (apxTab) {
+      var inApx = APPENDIX_ORDER.indexOf(name) !== -1;
+      apxTab.classList.toggle("is-on", inApx);
+      apxTab.setAttribute("aria-pressed", inApx ? "true" : "false");
+    }
     qsa(".steps__item").forEach(function (el) {
       var idx = ORDER.indexOf(el.getAttribute("data-pip"));
       var at = ORDER.indexOf(pipOf(name));
@@ -75,6 +100,8 @@
     var bar = document.getElementById("scenarioBar");
     if (bar) {
       var map = {
+        opening:["", ""],
+        transition:["", ""],
         cases:["", "The two cases, and what each one asks of imaging"],
         quiz: ["1", "RbFracture · the fracture copilot, on two emergency films"],
         pos:  ["1", "RbFracture · the case that went to CT"],
@@ -83,7 +110,9 @@
         move: ["2", "3D + 4D Lab · the joint in motion"],
         speed:["4", "MRI acceleration · less time in the scanner"],
         two:  ["3", "pRIMe · the scan starts in the waiting room"],
-        tools:["", "The tools behind all four programmes"],
+        tools:["", ""],
+        keynums:["", ""],
+        ask:  ["", ""],
         takeaway:["", "What the four programmes can prove"],
         attract:["", ""]
       };
@@ -103,7 +132,8 @@
     if (name === "pos") startModel();
     if (name === "takeaway") {
       var answered = Object.keys(state.answered).length;
-      var hits = [0, 1].filter(function (i) { return state.answered[i] === true; }).length;
+      var hits = FILMS.map(function (_, i) { return i; })
+        .filter(function (i) { return state.answered[i] === true; }).length;
       var tk = document.getElementById("tkScore");
       if (tk && answered < 4) { tk.hidden = true; tk.textContent = ""; }
       else if (tk) {
@@ -140,7 +170,17 @@
   function stepScreen(dir) {
     var i = ORDER.indexOf(state.screen);
     if (i < 0) return;
-    var n = (i + dir + ORDER.length) % ORDER.length;
+    // hold-state: the summary is the last beat of the walk, and the opening
+    // title is the first. Space on either end stays put unless the appendix
+    // has been unlocked with A / ?appendix=1.
+    var n = i + dir;
+    if (n < 0) n = 0;
+    if (n >= ORDER.length) {
+      if (overlay && overlay.hidden) {
+        toast("info", "End of the walk — press A for the appendix.", 1600);
+      }
+      return;
+    }
     go(ORDER[n]);
   }
   document.addEventListener("keydown", function (e) {
@@ -181,6 +221,24 @@
     if (typeof window.__modelExit === "function") window.__modelExit();
   });
 
+  document.addEventListener("keydown", function (e) {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    var tag = (e.target && e.target.tagName) || "";
+    if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT") return;
+    if (!overlay || !overlay.hidden) return;
+    if (e.key !== "a" && e.key !== "A") return;
+    e.preventDefault();
+    if (appendixOn()) {
+      // A inside the appendix folds it away; A anywhere else opens it again
+      if (APPENDIX_ORDER.indexOf(state.screen) !== -1) { setAppendix(false); go("takeaway"); return; }
+      go("tools");
+      return;
+    }
+    setAppendix(true);
+    toast("info", "Appendix unlocked.", 1400);
+    go("tools");
+  });
+
   var lastGo = { name: "", at: 0 };
   function go(name) {
     if (state.screen === name) return;
@@ -191,20 +249,25 @@
   }
 
   /* ---------------------------------------------------------------- clock */
+  var clockTimer = null;
   function startClock() {
     if (state.running) return;
     state.running = true;
     document.body.setAttribute("data-started", "1");
     if (clockEl) clockEl.hidden = false;
     state.startedAt = Date.now();
-    window.setInterval(function () {
+    if (clockTimer) window.clearInterval(clockTimer);
+    clockTimer = window.setInterval(function () {
       var s = Math.floor((Date.now() - state.startedAt) / 1000);
-      clockEl.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+      if (clockEl) {
+        clockEl.textContent = String(Math.floor(s / 60)).padStart(2, "0") + ":" + String(s % 60).padStart(2, "0");
+      }
     }, 1000);
   }
   function stopClock() {
     state.running = false;
     state.startedAt = 0;
+    if (clockTimer) { window.clearInterval(clockTimer); clockTimer = null; }
     document.body.removeAttribute("data-started");
     if (clockEl) { clockEl.textContent = "00:00"; clockEl.hidden = true; }
   }
@@ -231,9 +294,9 @@
   var FILMS = [
     {
       title: "A man fell and cannot bear weight on his right knee.",
-      img: "assets/cases/pos-film-ap.png?v=20261110213120", ai: "assets/cases/pos-ai-ap.png?v=20261110213120",
+      img: "assets/cases/pos-film-ap.png?v=20261114164506", ai: "assets/cases/pos-ai-ap.png?v=20261114164506",
       cap: "Case 1 · right knee · AP", step: "Film 1 of 2", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261110213120",
+      pimg: "assets/img/patient-a.jpg?v=20261114164506",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Mr Lim</b> · cannot put weight on it · right knee",
       verdict: "Fracture detected.",
@@ -242,9 +305,9 @@
     },
     {
       title: "Same man, lateral view. The joint is swollen.",
-      img: "assets/cases/pos-film-lat.png?v=20261110213120", ai: "assets/cases/pos-ai-lat.png?v=20261110213120",
+      img: "assets/cases/pos-film-lat.png?v=20261114164506", ai: "assets/cases/pos-ai-lat.png?v=20261114164506",
       cap: "Case 1 · right knee · lateral", step: "Film 2 of 2", truth: "yes",
-      pimg: "assets/img/patient-a.jpg?v=20261110213120",
+      pimg: "assets/img/patient-a.jpg?v=20261114164506",
       palt: "The patient: a man in his seventies in a hospital bed, right knee bandaged.",
       pmeta: "<b>Mr Lim</b> · cannot put weight on it · right knee",
       verdict: "Fracture, effusion and lipohaemarthrosis detected.",
@@ -319,10 +382,10 @@
 
   /* ---------------------------------------------------------------- image tabs */
   var VIEWS = {
-    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261110213120", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
-    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261110213120", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
-    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261110213120", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
-    sag:    { src: "assets/cases/neg-sag.png?v=20261110213120", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
+    ct:     { src: "assets/cases/pos-ct-coronal.png?v=20261114164506", cap: "Coronal bone window. A split fracture runs through the lateral tibial plateau." },
+    bme:    { src: "assets/cases/pos-bme-fusion.png?v=20261114164506", cap: "Dual-energy fusion: the marrow oedema map. The bruise inside the bone, invisible on plain CT." },
+    bmeneg: { src: "assets/cases/neg-bme-fusion.png?v=20261114164506", cap: "Dual-energy fusion: no marrow oedema. Nothing for the spectral map to flag." },
+    sag:    { src: "assets/cases/neg-sag.png?v=20261114164506", cap: "Sagittal reformat: joint-space narrowing and osteophytes. Degenerative, not acute." }
   };
 
   // A frame should be the image, not a letterbox around it: every plate and
@@ -698,17 +761,17 @@
   /* ---------------------------------------------------------------- lab: the render gallery */
   var LAB_CASES = {
     foot: {
-      src: "assets/cine/foot.jpg?v=20261110213120",
+      src: "assets/cine/foot.jpg?v=20261114164506",
       cap: "Charcot arthropathy. The talar dome is articulating with the midfoot instead of the tibia, and a large effusion has displaced the ankle tendons.",
       alt: "Cinematic rendering of a Charcot foot: the talar dome articulating with the midfoot instead of the tibia."
     },
     scapula: {
-      src: "assets/cine/scapula.jpg?v=20261110213120",
+      src: "assets/cine/scapula.jpg?v=20261114164506",
       cap: "Traumatic structural isolation of the scapula, with a comminuted scapular fracture and a displaced clavicle.",
       alt: "Cinematic rendering of a fractured scapula with a displaced clavicle and rib fractures."
     },
     ribs: {
-      src: "assets/cine/ribs.jpg?v=20261110213120",
+      src: "assets/cine/ribs.jpg?v=20261114164506",
       cap: "Traumatic right rib fractures, rendered with the chest drain in place — the drain and the fractures in one view.",
       alt: "Cinematic rendering of traumatic right rib fractures with a chest drain in situ."
     }
@@ -732,17 +795,17 @@
 
   var SEE_CASES = {
     pelvis: {
-      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261110213120",
+      src: "assets/photos/ct-fbp-dlir-pelvis.jpg?v=20261114164506",
       cap: "One acquisition, two reconstructions. Left: the scan as conventionally rebuilt, grainy at this noise level. Right: the same raw data denoised by AI.",
       alt: "The same axial CT slice twice: filtered back projection, noise-grainy, and DLIR-High, clean."
     },
     abdomen: {
-      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261110213120",
+      src: "assets/photos/ct-fbp-dlir-abdomen.jpg?v=20261114164506",
       cap: "The same comparison higher in the abdomen, where low contrast detectability matters most.",
       alt: "An upper abdominal axial CT slice twice: filtered back projection and DLIR-High."
     },
     vendor: {
-      src: "assets/photos/ge-truefidelity.jpg?v=20261110213120",
+      src: "assets/photos/ge-truefidelity.jpg?v=20261114164506",
       cap: "Vendor example, not our data: conventional, half-strength and AI reconstruction at 0.625 mm, from the vendor brochure.",
       alt: "Three coronal CT reformats: FBP, ASiR-V 50 percent and TrueFidelity."
     }
@@ -768,17 +831,17 @@
 
   var SPEED_CASES = {
     coronal: {
-      src: "assets/cases/mri-drb-coronal-stir.jpg?v=20261110213120",
+      src: "assets/cases/mri-drb-coronal-stir.jpg?v=20261114164506",
       cap: "Our own scan. Left: Deep Resolve Boost High. Right: the same patient a year earlier. Coronal T2 STIR through the posterior fossa and neck.",
       alt: "Coronal T2 STIR of the same patient: Deep Resolve Boost High on the left, the previous year's scan on the right."
     },
     axial: {
-      src: "assets/cases/mri-drb-axial-stir.jpg?v=20261110213120",
+      src: "assets/cases/mri-drb-axial-stir.jpg?v=20261114164506",
       cap: "Our own scan, axial T2 STIR. Left: AI-accelerated reconstruction. Right: the conventional reconstruction of the same study.",
       alt: "Axial T2 STIR, Deep Resolve Boost study on the left and the earlier DIXON study on the right."
     },
     sagittal: {
-      src: "assets/cases/mri-drb-sag-t1.jpg?v=20261110213120",
+      src: "assets/cases/mri-drb-sag-t1.jpg?v=20261114164506",
       cap: "Our own scan. Sagittal T1. Left: Deep Resolve Boost High study. Right: the earlier scan.",
       alt: "Sagittal T1 of the cervical spine: the Deep Resolve Boost High study on the left, the earlier scan on the right."
     }
@@ -1012,7 +1075,13 @@
 
     renderFilm();
     closeOverlay();
-    show("attract");
+    show("opening");
+    var apxTab = document.getElementById("appendixTab");
+    if (apxTab) {
+      var inApx = APPENDIX_ORDER.indexOf(name) !== -1;
+      apxTab.classList.toggle("is-on", inApx);
+      apxTab.setAttribute("aria-pressed", inApx ? "true" : "false");
+    }
     qsa(".steps__item").forEach(function (el) { el.classList.remove("is-done", "is-live"); });
   }
 
@@ -1046,12 +1115,23 @@
     if (t.hasAttribute("data-go")) {
       var dest = t.getAttribute("data-go");
       if (dest === "attract") { resetAll(); return; }
+      if (APPENDIX_ORDER.indexOf(dest) !== -1 && !appendixOn()) setAppendix(true);
       if (!state.running) startClock();
       go(dest);
     }
   });
 
   document.getElementById("restartBtn").addEventListener("click", resetAll);
+
+  (function wireAppendixTab() {
+    var tab = document.getElementById("appendixTab");
+    if (!tab) return;
+    tab.addEventListener("click", function () {
+      if (APPENDIX_ORDER.indexOf(state.screen) !== -1) { setAppendix(false); go("takeaway"); return; }
+      setAppendix(true);
+      go("tools");
+    });
+  }());
 
   var qNextBtn = document.getElementById("qNext");
   if (qNextBtn) qNextBtn.addEventListener("click", nextFilm);
@@ -1267,7 +1347,194 @@
     });
   }
 
+  /* ---------------------------------------------------------------- ask: live local assistant (appendix, ?ai=1)
+     Grounded on assets/ai-facts.js?v=20261114164506on. The API key lives ONLY in this browser's
+     localStorage under 'srs_ai_key' — never in a committed file. Replies stream
+     from a local llama-server; 20 s timeout, plain fallback message otherwise. */
+  var ASK_ENDPOINT = "http://100.85.251.72:8080/v1/chat/completions";
+  var ASK_MODEL = "qwen3.8-flash-next-unsloth-ud-q4_k_xl";
+  var ASK_PROXY = "/api/ask";
+  var ASK_HEALTH = "/api/health";
+  var askMode = null;   // "proxy" (serve-board.py) | "direct" (localStorage key) | "none"
+  var ASK_TIMEOUT_MS = 20000;
+  var ASK_FALLBACK = "Ask me directly — the presenter has these answers.";
+  var askFacts = null, askFactsFailed = false, askBusy = false;
+
+  function askKey() {
+    try { return window.localStorage.getItem("srs_ai_key") || ""; } catch (e) { return ""; }
+  }
+
+  function loadAskFacts(cb) {
+    if (askFacts || askFactsFailed) { cb(); return; }
+    fetch("assets/ai-facts.js?v=20261114164506on", { cache: "no-store" })
+      .then(function (r) { if (!r.ok) throw new Error(String(r.status)); return r.text(); })
+      .then(function (t) { askFacts = t; cb(); })
+      .catch(function () { askFactsFailed = true; cb(); });
+  }
+
+  function askSystemPrompt() {
+    return "You are Smart Radiology, answering questions at a hospital radiology department exhibition stand. " +
+      "Answer ONLY from this vetted fact sheet:\n\n" + (askFacts || "(fact sheet unavailable)") + "\n\n" +
+      "Rules: answer in at most three short sentences. If the fact sheet does not cover the question, reply exactly: I don't know. " +
+      "Never invent numbers. Never give clinical advice or diagnosis. Plain spoken English.";
+  }
+
+  function askRender(text) {
+    var el = document.getElementById("askAnswer");
+    if (!el) return;
+    el.hidden = false;
+    el.textContent = text;
+  }
+
+  /* The deck is normally served by serve-board.py, which forwards /api/ask to
+     the local llama-server with the key added server-side: no key in the
+     browser, no CORS. Opened as a file or from GitHub Pages, it falls back to
+     a direct call with the key from localStorage, and says so when neither is
+     available. */
+  function askSetHint(mode) {
+    var hint = document.getElementById("askKeyHint");
+    if (hint) hint.hidden = mode !== "none";
+  }
+
+  function askProbe(cb) {
+    if (askMode) { cb(askMode); return; }
+    fetch(ASK_HEALTH, { cache: "no-store" })
+      .then(function (r) { return r.json(); })
+      .then(function (j) {
+        askMode = (j && j.ok && j.model_key) ? "proxy" : (askKey() ? "direct" : "none");
+        cb(askMode);
+      })
+      .catch(function () {
+        askMode = askKey() ? "direct" : "none";
+        cb(askMode);
+      });
+  }
+
+  function askAsk(question) {
+    if (askBusy || !question) return;
+    var sendBtn = document.getElementById("askSend");
+    askProbe(function (mode) {
+      askSetHint(mode);
+      if (mode === "none") return;
+      askSend(question, mode, sendBtn);
+    });
+  }
+
+  function askSend(question, mode, sendBtn) {
+    askBusy = true;
+    if (sendBtn) sendBtn.disabled = true;
+    askRender("");
+
+    var settled = false;
+    var controller = ("AbortController" in window) ? new AbortController() : null;
+    var timer = window.setTimeout(function () {
+      if (settled) return;
+      settled = true;
+      if (controller) controller.abort();
+      askRender(ASK_FALLBACK);
+      askDone();
+    }, ASK_TIMEOUT_MS);
+    function askDone() {
+      window.clearTimeout(timer);
+      askBusy = false;
+      if (sendBtn) sendBtn.disabled = false;
+    }
+
+    loadAskFacts(function () {
+      if (settled) return;
+      if (askFactsFailed) {
+        settled = true;
+        askRender(ASK_FALLBACK);
+        askDone();
+        return;
+      }
+      var body = JSON.stringify({
+        model: ASK_MODEL,
+        stream: true,
+        temperature: 0.2,
+        max_tokens: 180,
+        chat_template_kwargs: { enable_thinking: false },
+        messages: [
+          { role: "system", content: askSystemPrompt() },
+          { role: "user", content: question }
+        ]
+      });
+      var headers = { "Content-Type": "application/json" };
+      if (mode === "direct") headers.Authorization = "Bearer " + askKey();
+      fetch(mode === "proxy" ? ASK_PROXY : ASK_ENDPOINT, {
+        method: "POST",
+        headers: headers,
+        body: body,
+        signal: controller ? controller.signal : undefined
+      }).then(function (res) {
+        if (!res.ok || !res.body) throw new Error("HTTP " + res.status);
+        var reader = res.body.getReader();
+        var decoder = new TextDecoder();
+        var buf = "";
+        var text = "";
+        function pump() {
+          return reader.read().then(function (r) {
+            if (r.done) {
+              if (settled) return;
+              settled = true;
+              askRender(text.trim() || ASK_FALLBACK);
+              askDone();
+              return;
+            }
+            buf += decoder.decode(r.value, { stream: true });
+            var lines = buf.split("\n");
+            buf = lines.pop();
+            lines.forEach(function (line) {
+              line = line.trim();
+              if (line.indexOf("data:") !== 0) return;
+              var payload = line.slice(5).trim();
+              if (!payload || payload === "[DONE]") return;
+              try {
+                var delta = JSON.parse(payload);
+                var piece = delta.choices && delta.choices[0] &&
+                  (delta.choices[0].delta && delta.choices[0].delta.content ||
+                   delta.choices[0].text) || "";
+                if (piece) { text += piece; if (!settled) askRender(text); }
+              } catch (e) { /* partial frame */ }
+            });
+            return pump();
+          });
+        }
+        return pump();
+      }).catch(function () {
+        if (settled) return;
+        settled = true;
+        askRender(ASK_FALLBACK);
+        askDone();
+      });
+    });
+  }
+
+  function wireAsk() {
+    var form = document.getElementById("askForm");
+    if (!form) return;
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var input = document.getElementById("askInput");
+      var q = input ? input.value.trim() : "";
+      askAsk(q);
+    });
+    askProbe(askSetHint);
+  }
+
   /* ---------------------------------------------------------------- init */
+  // URL gates: ?appendix=1 unlocks the appendix for this machine;
+  // ?ai=1 additionally lands on the live ask screen.
+  (function urlGates() {
+    var q = "";
+    try { q = window.location.search || ""; } catch (e) {}
+    if (/[?&]appendix=1/.test(q)) setAppendix(true);
+    refreshOrder();
+    var start = appendixOn() ? "tools" : "opening";
+    if (/[?&]ai=1/.test(q)) { setAppendix(true); start = "ask"; }
+    window.__srsStart = start;
+  }());
+
   window.addEventListener("error", function () {
     toast("info", "Continuing — a display element failed to load.", 2200);
   });
@@ -1281,5 +1548,6 @@
   wireSpeedGallery();
   wireCine();
   wirePrimeFrame();
-  show("attract");
+  wireAsk();
+  show(window.__srsStart || "opening");
 }());

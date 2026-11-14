@@ -4533,3 +4533,227 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 .slot-t--dark { fill: #04141a; font-weight: 600; }
 .slot-total { fill: var(--paper-dim); font-size: 11px; text-anchor: start; }
 .slot-freed + .slot-t { fill: var(--cyan); }
+
+
+/* =========================================================================
+   Board cut — opening title, transition beat, appendix key numbers, ask
+   (appended by build; every rule scoped to the four new blocks)
+   ========================================================================= */
+
+/* ---------------------------------------------------------------- opening */
+.screen--opening .opening,
+.screen--transition .transition {
+  height: 100%;
+  display: grid;
+  align-content: center;
+  justify-items: start;
+  max-width: 1180px;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 clamp(4px, 2vw, 28px);
+}
+
+.opening__kicker {
+  margin: 0 0 clamp(14px, 2.6vh, 30px);
+  font-size: clamp(9px, .86vw, 12px);
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+
+.opening__title {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(46px, 8.6vw, 132px);
+  line-height: .98;
+  letter-spacing: -.015em;
+  color: var(--paper);
+}
+
+.opening__sub {
+  margin: clamp(16px, 2.8vh, 32px) 0 0;
+  max-width: 34ch;
+  font-size: clamp(14px, 1.5vw, 21px);
+  line-height: 1.45;
+  color: var(--paper-dim);
+}
+
+.opening__motif {
+  list-style: none;
+  margin: clamp(30px, 6vh, 72px) 0 0;
+  padding: 0;
+  display: flex;
+  gap: clamp(16px, 3.4vw, 54px);
+  flex-wrap: wrap;
+}
+.opening__motif li { display: grid; gap: 9px; justify-items: start; }
+.opening__motif i {
+  width: 26px; height: 2px; background: var(--rule-strong);
+  animation: opPulse 6s var(--ease) infinite;
+}
+.opening__motif li:nth-child(2) i { animation-delay: .4s; }
+.opening__motif li:nth-child(3) i { animation-delay: .8s; }
+.opening__motif li:nth-child(4) i { animation-delay: 1.2s; }
+.opening__motif b {
+  font-weight: 400;
+  font-size: clamp(10px, .84vw, 12px);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--paper-faint);
+}
+@keyframes opPulse {
+  0%, 88%, 100% { background: var(--rule-strong); }
+  92% { background: var(--cyan); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .opening__motif i { animation: none; }
+}
+
+/* ---------------------------------------------------------------- transition */
+.screen--transition .transition { max-width: 1080px; }
+.transition__line {
+  margin: 0;
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(30px, 4.9vw, 74px);
+  line-height: 1.1;
+  letter-spacing: -.012em;
+  max-width: 22ch;
+  color: var(--paper);
+}
+
+/* ---------------------------------------------------------------- key numbers */
+.keynums {
+  border-top: 1px solid var(--rule);
+  margin-top: clamp(4px, 1vh, 10px);
+  padding-top: clamp(10px, 1.6vh, 18px);
+}
+.keynums__h {
+  margin: 0 0 clamp(8px, 1.2vh, 14px);
+  font-family: var(--serif);
+  font-weight: 400;
+  font-size: clamp(14px, 1.3vw, 18px);
+  color: var(--paper-dim);
+}
+.keynums__grid {
+  list-style: none;
+  margin: 0; padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.keynums__grid > li { background: var(--ink); padding: clamp(10px, 1.2vw, 16px); }
+.keynums__pillar {
+  margin: 0 0 8px;
+  font-size: 9px; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--cyan);
+}
+.keynums dl { margin: 0; display: grid; gap: 7px; }
+.keynums dl > div { display: grid; gap: 2px; }
+.keynums dt {
+  font-size: 10px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--paper-faint);
+}
+.keynums dd {
+  margin: 0;
+  font-family: var(--serif);
+  font-size: clamp(13px, 1.15vw, 17px);
+  line-height: 1.3;
+  color: var(--paper);
+}
+
+/* ---------------------------------------------------------------- ask */
+.askpage__lede { margin-bottom: clamp(14px, 2vh, 24px); }
+.ask {
+  display: flex;
+  gap: 10px;
+  align-items: stretch;
+  max-width: 760px;
+}
+.ask__input {
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--paper);
+  background: var(--ink-2);
+  border: 1px solid var(--rule-strong);
+  border-radius: 2px;
+  padding: 12px 14px;
+  outline: none;
+}
+.ask__input::placeholder { color: var(--paper-faint); }
+.ask__input:focus { border-color: var(--cyan); box-shadow: 0 0 0 3px rgba(95,208,216,.12); }
+.ask__send { flex: 0 0 auto; }
+
+.ask__hint {
+  max-width: 760px;
+  margin: clamp(12px, 2vh, 20px) 0 0;
+  padding: clamp(10px, 1.4vw, 16px);
+  border: 1px solid var(--rule);
+  background: rgba(232, 163, 61, .06);
+}
+.ask__snippet {
+  margin: 8px 0;
+  padding: 9px 11px;
+  background: var(--ink-2);
+  border: 1px solid var(--rule);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  color: var(--amber);
+  overflow-x: auto;
+}
+.ask__answer {
+  max-width: 760px;
+  margin-top: clamp(16px, 2.4vh, 26px);
+  padding: 14px 18px;
+  border-left: 2px solid var(--cyan);
+  background: rgba(95, 208, 216, .06);
+  font-family: var(--serif);
+  font-size: clamp(15px, 1.4vw, 20px);
+  line-height: 1.45;
+  color: var(--paper);
+  white-space: pre-wrap;
+}
+.ask__note { margin-top: clamp(10px, 1.6vh, 16px); }
+
+@media (max-width: 620px) {
+  .opening__motif { gap: 14px; }
+  .ask { flex-wrap: wrap; }
+  .ask__input { flex-basis: 100%; }
+  .ask__send { flex-basis: 100%; }
+}
+
+/* key-numbers appendix page (own screen since the board cut) */
+.keynums-page .keynums { border-top: 0; margin-top: clamp(6px, 1.4vh, 14px); padding-top: 0; }
+.keynums-page .keynums__grid { grid-template-columns: repeat(2, minmax(260px, 1fr)); }
+.keynums-page .keynums__grid > li { padding: clamp(12px, 1.5vw, 20px); }
+.keynums-page .keynums dd { font-size: clamp(14px, 1.35vw, 20px); }
+.keynums-page .keynums dl { gap: 9px; }
+@media (max-width: 700px) { .keynums-page .keynums__grid { grid-template-columns: 1fr; } }
+.screen--transition .transition__line { max-width: none; }
+
+/* transition beat: one clause per line, set by hand in the markup */
+.screen--transition .transition { max-width: none; }
+.screen--transition .transition__line {
+  font-size: clamp(24px, 3.8vw, 58px);
+  line-height: 1.16;
+  max-width: none;
+}
+/* key-numbers page: shave 10px so it holds one screen at 1600x900 */
+.keynums-page .keynums dl { gap: 7px; }
+.keynums-page .keynums__grid > li { padding: clamp(10px, 1.2vw, 15px); }
+
+/* the deck already has a .ask (column) for the quiz; the appendix form is a row */
+#s-ask .ask { flex-direction: row; align-items: stretch; }
+@media (max-width: 620px) { #s-ask .ask { flex-direction: column; } }
+
+/* appendix tab — a real, visible tab beside Restart */
+.tab.is-on {
+  border-color: var(--cyan);
+  color: var(--cyan);
+  box-shadow: inset 0 0 0 1px rgba(95, 208, 216, .18);
+}
