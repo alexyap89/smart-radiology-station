@@ -4747,3 +4747,66 @@ h1, h2, h3, .h1, .h2, .h3 { text-wrap: balance; }
 
 #s-quiz .split--quiz { grid-template-columns: minmax(0, max-content) minmax(320px, 560px); }
 #s-quiz .plate--film .plate__frame { max-width: min(100%, 50vw); }
+
+/* below ~1250px the paired layout cannot hold: stack it, and let the film keep
+   the width. Without this the question column collapsed to one word per line. */
+@media (max-width: 1250px) {
+  #s-quiz .split--quiz {
+    grid-template-columns: minmax(0, 1fr);
+    justify-content: stretch;
+    row-gap: clamp(12px, 2vh, 22px);
+  }
+  #s-quiz .plate--film .plate__frame {
+    height: clamp(300px, 46vh, 520px);
+    max-width: 100%;
+    margin-inline: 0;
+  }
+  #s-quiz .reveal__pair .thumb img { max-width: 100%; height: auto; max-height: 32vh; }
+}
+/* the AI thumbnail inside the reveal must never outgrow its column */
+#s-quiz .reveal__pair .thumb img { max-width: 100%; }
+
+/* In the paired layout the panel is ~560px: the reveal's auto column was taking
+   the whole width for the overlay and leaving the verdict one word per line.
+   Stack it there; the wide (>1250 stacked-page) layout keeps the side-by-side. */
+@media (min-width: 1251px) {
+  #s-quiz #qReveal,
+  #s-quiz[data-revealed="1"] #qReveal {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  #s-quiz #qReveal .reveal__pair,
+  #s-quiz[data-revealed="1"] #qReveal .reveal__pair { grid-column: 1; grid-row: 1; }
+  #s-quiz #qReveal .verdict,
+  #s-quiz[data-revealed="1"] #qReveal .verdict { grid-column: 1; grid-row: 2; }
+  #s-quiz #qReveal #qComment,
+  #s-quiz[data-revealed="1"] #qReveal #qComment { grid-column: 1; grid-row: 3; }
+  #s-quiz #qReveal .copilot__tat,
+  #s-quiz[data-revealed="1"] #qReveal .copilot__tat { grid-column: 1; grid-row: 4; }
+  #s-quiz #qReveal #qNext,
+  #s-quiz[data-revealed="1"] #qReveal #qNext { grid-column: 1; grid-row: 5; justify-self: start; margin-top: 4px; }
+  #s-quiz #qReveal .reveal__pair .thumb img,
+  #s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img {
+    width: auto; max-width: 100%; max-height: min(26vh, 230px);
+  }
+}
+
+/* a half-screen window gets the stacked reveal too: 250px of text beside a
+   470px overlay is still a squeeze */
+@media (max-width: 900px) {
+  #s-quiz #qReveal,
+  #s-quiz[data-revealed="1"] #qReveal {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 8px;
+  }
+  #s-quiz #qReveal .reveal__pair,
+  #s-quiz[data-revealed="1"] #qReveal .reveal__pair { grid-column: 1; grid-row: 1; }
+  #s-quiz #qReveal .verdict,
+  #s-quiz[data-revealed="1"] #qReveal .verdict { grid-column: 1; grid-row: 2; }
+  #s-quiz #qReveal #qComment,
+  #s-quiz[data-revealed="1"] #qReveal #qComment { grid-column: 1; grid-row: 3; }
+  #s-quiz #qReveal #qNext,
+  #s-quiz[data-revealed="1"] #qReveal #qNext { grid-column: 1; grid-row: 4; justify-self: start; }
+  #s-quiz #qReveal .reveal__pair .thumb img,
+  #s-quiz[data-revealed="1"] #qReveal .reveal__pair .thumb img { width: auto; max-width: 100%; max-height: 30vh; }
+}
